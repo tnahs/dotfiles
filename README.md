@@ -6,11 +6,27 @@
     + File > Export... > Export vCard...
     + Copy to `~/Workspace/preferences/private`
 3. `gitpush` dotfile repository changes
-3. Copy to External HDD
+4. Copy to External HDD
     + `~/Workspace`
     + `~/Pictures`
     + `~/Movies`
     + `~/Music`
+
+# Re-installation
+
+1. Create Bootable USB
+   1. Download [macOS Mojave](https://itunes.apple.com/tw/app/macos-mojave/id1398502828?l=en&mt=12)
+   2. Format USB drive with `Mac OS Extented (Journaled)` format
+   3. Create bootable USB with
+        ```bash
+        sudo /Applications/Install\ macOS\ Mojave.app/Contents/Resources/createinstallmedia --volume /Volumes/Untitled --applicationpath /Applications/Install\ macOS\ Mojave.app --nointeraction
+        ```
+2. Format and Install your Mac
+   1. Plug in the bootable USB
+   2. Restart & hold down the Option(⌥) key
+   3. Choose Install macOS Mojave(the bootable USB)
+   4. Select Disk Utility from the menu and erase you Startup Disk(usually named Macintosh HD) with Mac OS Extended (Journaled)
+   5. Go back to the main menu; select Install macOS and choose your HDD when prompted
 
 # Restore
 
@@ -32,14 +48,19 @@ or [Command Line Tools](https://developer.apple.com/downloads/)
 
 ## Restore
 
-https://github.com/tnahs/dotfiles
-copy Brewfile
 
-## Create and Restore Workspace Folder
 
-``` bash
-mkdir ~/Workspace
-```
+## Restore Workspace
+
+1. Restore from to External HDD
+    + `~/Workspace`
+    + `~/Pictures`
+    + `~/Movies`
+    + `~/Music`
+
+2. Copy `Brewfile` from `~/Workspace/preferences/dotfiles` to `$HOME` (or from [tnahs/dotfiles](https://github.com/tnahs/dotfiles))
+3. Run `brew bundle`
+
 
 ## Manually Install
 
@@ -48,4 +69,7 @@ mkdir ~/Workspace
 + [DeDRM_tools](https://github.com/apprenticeharper/DeDRM_tools/releases/)
 + [Wacom Tablet Driver](https://www.wacom.com/en-us/support/product-support/drivers)
 + [Audacity](http://www.audacityteam.org/)
-+
+
+## Config macOS
+
+1. Run: `config/config-Mojave.sh`

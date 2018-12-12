@@ -1,21 +1,27 @@
 #!/bin/sh
 
-# REFERENCE
 # ----------------------------------------------------------------------------------------------- #
-#	rsync
-#	-v, --verbose              Increase verbosity
-#	-q, --quiet                Quiet mode
-#	-a, --archive              Archive mode
-#	-E, --extended-attributes  Copy extended attributes (xattr)
-#   --delete-after             Receiver deletes after transfer, not before
-# ----------------------------------------------------------------------------------------------- #
-#   zip
-#	-r, --recurse-paths        Travel the directory structure recursively
-#	-q, --quiet                Quiet mode
-#   -y, --symlinks             Store symbolic links instead of the file referred to by the link.
+# For macOS Mojave version 10.14.1 (18B75)
 # ----------------------------------------------------------------------------------------------- #
 
-# LOCATIONS macOS Mojave
+# ----------------------------------------------------------------------------------------------- #
+#	rsync
+#		-v, --verbose              Increase verbosity
+#		-q, --quiet                Quiet mode
+#		-a, --archive              Archive mode
+#		-E, --extended-attributes  Copy extended attributes (xattr)
+#   	--delete-after             Receiver deletes after transfer, not before
+# ----------------------------------------------------------------------------------------------- #
+#   zip
+#		-r, --recurse-paths        Travel the directory structure recursively
+#		-q, --quiet                Quiet mode
+#   	-y, --symlinks             Store symbolic links instead of referenced file.
+# ----------------------------------------------------------------------------------------------- #
+#	cp
+#		-R   					   Copy the folder and subtree (recursive).
+#		-f					       Overwrite file regardless of permissions.
+# ----------------------------------------------------------------------------------------------- #
+
 # ----------------------------------------------------------------------------------------------- #
 #	Moom: ~/Library/Preferences/com.manytricks.Moom.plist
 #	Photoshop: ~/Library/Preferences/Adobe Photoshop CC 2018 Settings
@@ -54,11 +60,11 @@ function backup_preferences {
 	# misc
 
 		# Photoshop preferences
-		cp -f $HOME"/Library/Preferences/Adobe Photoshop CC 2019 Settings" \
+		cp -R -f $HOME"/Library/Preferences/Adobe Photoshop CC 2019 Settings" \
 			$LOCALWORK"/preferences/photoshop"
 
 		# Safri Bookmarks
-		cp -f $HOME"/Library/Safari/Bookmarks.plist"
+		cp -f $HOME"/Library/Safari/Bookmarks.plist" \
 			$LOCALWORK"/preferences/private"
 }
 

@@ -47,8 +47,8 @@ function backup_preferences {
 	# dotfiles
 
 		# Bash
-		cp -f $HOME"/.bashrc" $LOCALWORK"/preferences/dotfiles/"
-		cp -f $HOME"/.bash_profile" $LOCALWORK"/preferences/dotfiles/"
+		cp -f $HOME"/.bashrc" $LOCALWORK"/preferences/dotfiles"
+		cp -f $HOME"/.bash_profile" $LOCALWORK"/preferences/dotfiles"
 
 		# Moom Shortcuts
 		cp -f $HOME"/Library/Preferences/com.manytricks.Moom.plist" \

@@ -3,13 +3,14 @@
 
 + [Google Backup & Sync](https://www.google.com/drive/download/backup-and-sync/)
 + [Dropbox](https://www.dropbox.com/)
-+ [Super Duper!](http://www.shirt-pocket.com/SuperDuper/SuperDuperDescription.html)
 + [Moom](https://manytricks.com/moom/)
 + [AppCleaner](http://freemacsoft.net/appcleaner/)
-+ [Daisy Disk](https://daisydiskapp.com/)
-+ [Keyboard Cleaner](http://jan.prima.de/~jan/plok/archives/48-Keyboard-Cleaner.html)
 + [The Unarchiver](https://theunarchiver.com/)
++ [Keyboard Cleaner](http://jan.prima.de/~jan/plok/archives/48-Keyboard-Cleaner.html)
++ [Daisy Disk](https://daisydiskapp.com/)
 + [Transmission](https://transmissionbt.com/)
++ [Super Duper!](http://www.shirt-pocket.com/SuperDuper/SuperDuperDescription.html)
++ [Wacom Tablet Driver](https://www.wacom.com/en-us/support/product-support/drivers)
 
 
 # Design
@@ -21,6 +22,7 @@
 
 # Audio/Video
 
++ [Spotify](https://www.spotify.com)
 + [VLC](https://www.videolan.org/vlc/index.html)
 + [Audacity](http://www.audacityteam.org/)
 

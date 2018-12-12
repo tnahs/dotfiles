@@ -5,7 +5,7 @@
     + Edit > Select All
     + File > Export... > Export vCard...
     + Copy to `~/Workspace/preferences/private`
-3. `gitpush` dotfile repository changes
+3. `gitpush` [tnahs/dotfiles](https://github.com/tnahs/dotfiles) repository changes
 4. Copy to External HDD
     + `~/Workspace`
     + `~/Pictures`
@@ -16,26 +16,28 @@
 
 1. Create Bootable USB
    1. Download [macOS Mojave](https://itunes.apple.com/tw/app/macos-mojave/id1398502828?l=en&mt=12)
-   2. Format USB drive with `Mac OS Extented (Journaled)` format
+   2. Format USB drive as `Mac OS Extented (Journaled)`
    3. Create bootable USB with
         ```bash
         sudo /Applications/Install\ macOS\ Mojave.app/Contents/Resources/createinstallmedia --volume /Volumes/Untitled --applicationpath /Applications/Install\ macOS\ Mojave.app --nointeraction
         ```
-2. Format and Install your Mac
-   1. Plug in the bootable USB
+2. Format and Install
+   1. Plug in the Bootable USB
    2. Restart & hold down the Option(⌥) key
-   3. Choose Install macOS Mojave(the bootable USB)
-   4. Select Disk Utility from the menu and erase you Startup Disk(usually named Macintosh HD) with Mac OS Extended (Journaled)
-   5. Go back to the main menu; select Install macOS and choose your HDD when prompted
+   3. Choose Install macOS Mojave
+   4. Select `Disk Utility` from the menu and format startup disk as `Mac OS Extented (Journaled)`
+   5. Exit `Disk Utility`
+   6. Select `Install macOS Mojave`
 
 # Restore
 
 ## Install homebrew
-https://docs.brew.sh/
 
 ``` bash
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
+
+https://docs.brew.sh/
 
 ## Install Command Line Tools
 
@@ -43,11 +45,7 @@ https://docs.brew.sh/
 xcode-select --install
 # sudo xcodebuild -license accept
 ```
-or [Command Line Tools](https://developer.apple.com/downloads/)
-
-
-## Restore
-
+or via. [Command Line Tools](https://developer.apple.com/downloads/)
 
 
 ## Restore Workspace
@@ -60,6 +58,7 @@ or [Command Line Tools](https://developer.apple.com/downloads/)
 
 2. Copy `Brewfile` from `~/Workspace/preferences/dotfiles` to `$HOME` (or from [tnahs/dotfiles](https://github.com/tnahs/dotfiles))
 3. Run `brew bundle`
+4. Restore `Apple Books` via `README.md` in `~/Workspace/reading/ibooks`
 
 
 ## Manually Install

@@ -111,28 +111,28 @@ function backup_anki {
 
 function backup_reading {
 
-	IBOOKSARCHIVES=$LOCALWORK"/reading/ibooks/archives"
-	NEWIBOOKSARCHIVE="ibooks-"$DATE.zip
+	APPLEBOOKS_ARCHIVES=$LOCALWORK"/reading/apple-books/archives"
+	NEW_APPLEBOOKS_ARCHIVE="apple-books-"$DATE.zip
 
-	# Run only if iBooks is not running.
-	if [[ ! $(pgrep -x "iBooks") ]]; then
+	# Run only if Apple Books is not running.
+	if [[ ! $(pgrep -x "Books") ]]; then
 
-		if [ -d $IBOOKSARCHIVES ]; then
+		if [ -d $APPLEBOOKS_ARCHIVES ]; then
 
-			echo "Archiving iBooks..."
+			echo "Archiving Apple Books..."
 
-			zip -ryq $IBOOKSARCHIVES/$NEWIBOOKSARCHIVE \
+			zip -ryq $APPLEBOOKS_ARCHIVES/$NEW_APPLEBOOKS_ARCHIVE \
 				$HOME"/Library/Containers/com.apple.BKAgentService/" \
 				$HOME"/Library/Containers/com.apple.iBooksX/"
 			# list by modification time > output anything over 5 > delete them
-			cd $IBOOKSARCHIVES; ls -tp  | tail -n +6 | xargs rm -rf
+			cd $APPLEBOOKS_ARCHIVES; ls -tp  | tail -n +6 | xargs rm -rf
 
 		else
 
 			echo ""
 			echo "### ERROR:"
-			echo "### iBooks backup directory doesn't exist!"
-			echo "### Skipping iBooks!"
+			echo "### Apple Books backup directory doesn't exist!"
+			echo "### Skipping Apple Books!"
 			echo ""
 
 		fi
@@ -141,8 +141,8 @@ function backup_reading {
 
 		echo ""
 		echo "### WARNING:"
-		echo "### iBooks is running!"
-		echo "### Skipping iBooks!"
+		echo "### Apple Books is running!"
+		echo "### Skipping Apple Books!"
 		echo ""
 
 	fi

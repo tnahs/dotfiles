@@ -71,27 +71,27 @@ function backup_preferences {
 
 function backup_anki {
 
-	ANKIDECK=$HOME"/Library/Application Support/Anki2" # working Anki deck location
-	ANKIARCHIVES=$LOCALWORK"/projects/anki/archives" # backup Anki deck & archive location
-	NEWANKIARCHIVE="ankideck-"$DATE.zip
+	ANKI_DECK=$HOME"/Library/Application Support/Anki2" # working Anki deck location
+	ANKI_ARCHIVES=$LOCALWORK"/projects/anki/archives" # backup Anki deck & archive location
+	NEW_ANKI_ARCHIVE="ankideck-"$DATE.zip
 
 	# Run only if Anki is not running.
 	if [[ ! $(pgrep -x "Anki") ]]; then
 
 		# Run only if Anki archive directory exists.
-		if [ -d $ANKIARCHIVES ]; then
+		if [ -d $ANKI_ARCHIVES ]; then
 
 			echo "Archiving Anki..."
 
-			# need quotes around "$ANKIDECK" to escape spaces
-			zip -ryq $ANKIARCHIVES/$NEWANKIARCHIVE "$ANKIDECK"
+			# need quotes around "$ANKI_DECK" to escape spaces
+			zip -ryq $ANKI_ARCHIVES/$NEW_ANKI_ARCHIVE "$ANKI_DECK"
 			# list by modification time > output anything over 5 > delete them
-			cd $ANKIARCHIVES; ls -tp | tail -n +7 | xargs rm -rf
+			cd $ANKI_ARCHIVES; ls -tp | tail -n +7 | xargs rm -rf
 
 			echo "Backing up Anki..."
 
 			# copy un-archived current Anki deck to Workspace
-			rsync -aqE --delete-after "$ANKIDECK" $ANKIARCHIVES"/current"
+			rsync -aqE --delete-after "$ANKI_DECK" $ANKI_ARCHIVES"/current"
 
 		else
 

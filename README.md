@@ -3,18 +3,23 @@
 
 ## Back-up
 
-1. Run: `backup.sh`
-2. Save Contacts
-    + Edit > Select All
-    + File > Export... > Export vCard...
+1. Run Backup Script
+   + Run: `mojave-backup.sh`
+     + via `~/Workspace/preferences/dotfiles/scripts/mojave-backup.sh`
+     + or [`tnahs/dotfiles/scripts/mojave-backup.sh`](https://github.com/tnahs/dotfiles/blob/master/scripts/mojave-backup.sh)
+3. Save **Contacts**
+    + Open **Contacts**
+    + `Edit` > `Select All`
+    + `File` > `Export...` > `Export vCard...`
     + Copy to `~/Workspace/preferences/private`
-3. `git push` any [`tnahs/dotfiles`](https://github.com/tnahs/dotfiles) repository changes
-4. Copy folders to external HDD:
+4. `git push` any [`tnahs/dotfiles`](https://github.com/tnahs/dotfiles) repository changes
+5. Copy folders to external HDD:
     + `~/Workspace`
+    + `~/Downloads`
     + `~/Pictures`
     + `~/Movies`
     + `~/Music`
-5. `VSCode`
+6. Save **VSCode** Settings
    1. `Cmd + Shift + P`
    2. `Sync` > `Sync: Update / Upload Settings`
 
@@ -23,18 +28,21 @@
 
 1. Create Bootable USB
    1. Download [macOS Mojave](https://itunes.apple.com/tw/app/macos-mojave/id1398502828?l=en&mt=12)
-   2. Format USB drive as `Mac OS Extended (Journaled)`
-   3. Create bootable USB with
+   2. Format USB drive
+      + Name: `Untitled`
+      + Format: `Mac OS Extended (Journaled)`
+      + Scheme: `GUID Partition Map`
+   3.  Create bootable USB with:
         ```bash
         sudo /Applications/Install\ macOS\ Mojave.app/Contents/Resources/createinstallmedia --volume /Volumes/Untitled --applicationpath /Applications/Install\ macOS\ Mojave.app --nointeraction
         ```
-2. Format and Install
-   1. Plug in the Bootable USB
-   2. Restart & hold down the Option(⌥) key
-   3. Choose Install macOS Mojave
-   4. Select `Disk Utility` from the menu and format startup disk as `Mac OS Extended (Journaled)`
-   5. Exit `Disk Utility`
-   6. Select `Install macOS Mojave`
+2.  Format and Install
+    1. Plug in the Bootable USB
+    2. Restart & hold down the Option `⌥` key
+    3. Choose `Install macOS Mojave`
+    4. Select `Disk Utility` from the menu and format startup disk as `Mac OS Extended (Journaled)`
+    5. Exit `Disk Utility`
+    6. Select `Install macOS Mojave`
 
 
 ## Restore
@@ -64,36 +72,43 @@ or install via [Command Line Tools](https://developer.apple.com/downloads/)
 
 1. Restore folders from to external HDD
     + `~/Workspace`
+    + `~/Downloads`
     + `~/Pictures`
     + `~/Movies`
     + `~/Music`
 
 
-### Restore dotfiles and Apps
+### Restore dotfiles and macOS Apps
 
 1. Initialize Mojave
    + Run: `mojave-init.sh`
      + via `~/Workspace/preferences/dotfiles/scripts/mojave-init.sh`
      + or [`tnahs/dotfiles/scripts/mojave-init.sh`](https://github.com/tnahs/dotfiles/blob/master/scripts/mojave-init.sh)
-   + This does this...
-2.  Initialize Mojave
+   + This script:
+     + Creates symlinks from `~/Workspace/preferences/dotfiles` to `~/` for:
+       + `.bashrc`
+       + `.bash_profile`
+       + `.gitconfig`
+       + `.gitignore`
+     + Installs all apps found in `~/Workspace/preferences/dotfiles/Brewfile`
+1.  Configure Mojave
     + Run: `mojave-config.sh`
       + via `~/Workspace/preferences/dotfiles/scripts/mojave-config.sh`
       + or [`tnahs/dotfiles/scripts/mojave-config.sh`](https://github.com/tnahs/dotfiles/blob/master/scripts/mojave-config.sh)
-    + This does that...
+    + Sets global macOS preferences. Forked from https://mths.be/macos
 
 
-### Restore App Configurations
+### Restore macOS App Configurations
 
-1. Restore `Apple Books` via `README.md` in `~/Workspace/reading/ibooks`
-2. `VSCode`
-   1. `Cmd + Shift + P`
-   2. `Sync` > `Sync: Download Settings`
+1. Restore **Apple Books** EPUBs/Database via `~/Workspace/reading/ibooks/README.md`
+2. Restore **VSCode** Settings
+   1. Install [`Settings Sync`](https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync) from Extensions Manager
+      + or via `code --install-extension Shan.code-settings-sync`
+   2. `Cmd + Shift + P`
+   3. `Sync` > `Sync: Download Settings`
+   4. Enter `Github Personal Access Token` found in `~/Workspace/preferences/private/vscode-settings-sync-token.txt`
+   5. Enter Gist ID: `d35243a837d404d545cb56144030f4ee`
 
-
-### Config macOS
-
-2. Run: `config/mojave-config.sh`
 
 ### Manually Install
 

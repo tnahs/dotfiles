@@ -118,7 +118,7 @@ defaults write com.apple.finder DisableAllAnimations -bool true
 # All My Files : `PfAF`
 # Other…       : `PfLo`
 defaults write com.apple.finder NewWindowTarget -string "PfHm"
-#defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/"
+# defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/"
 
 # Finder: show hidden files by default
 defaults write com.apple.finder AppleShowAllFiles -bool true

@@ -13,18 +13,23 @@ alias ll="ls -lah"
 # Quick cd
 alias k="cd $HOME/Desktop; ls -lah;"
 alias l="cd $HOME/Downloads; ls -lah;"
-alias w="cd $HOME/Workspace/; ls -lah;"
-alias p="cd $HOME/Workspace/projects/; ls -lah;"
+alias w="cd $HOME/Workspace; ls -lah;"
+alias p="cd $HOME/Workspace/projects; ls -lah;"
 
 #
 
 # Edit this file
 alias editbash="code $HOME/.bashrc"
+# alias editbash="code $HOME/Workspace/preferences/dotfiles/.bashrc"
 
 #
 
 # Open all TODO lists i.e. _[project-name]-todo.md
 alias todo="find $HOME/Workspace/projects -name \_*-todo.* -exec code {} \;"
+
+# dotfiles
+alias dotfiles="cd $HOME/Workspace/preferences/dotfiles"
+alias dotfiles_code="dotfiles; code .;"
 
 # hlts
 alias hlts="cd $HOME/Workspace/projects/hlts/hlts/; pipenv shell;"

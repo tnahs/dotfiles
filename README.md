@@ -1,5 +1,6 @@
 # macOS 10.14 Mojave
 
+
 ## Back-up
 
 1. Run: `backup.sh`
@@ -7,15 +8,16 @@
     + Edit > Select All
     + File > Export... > Export vCard...
     + Copy to `~/Workspace/preferences/private`
-3. `git push` any [tnahs/dotfiles](https://github.com/tnahs/dotfiles) repository changes
+3. `git push` any [`tnahs/dotfiles`](https://github.com/tnahs/dotfiles) repository changes
 4. Copy folders to external HDD:
     + `~/Workspace`
     + `~/Pictures`
     + `~/Movies`
     + `~/Music`
-5. VSCode
+5. `VSCode`
    1. `Cmd + Shift + P`
    2. `Sync` > `Sync: Update / Upload Settings`
+
 
 ## Re-installation
 
@@ -34,7 +36,9 @@
    5. Exit `Disk Utility`
    6. Select `Install macOS Mojave`
 
+
 ## Restore
+
 
 ### Install homebrew
 
@@ -53,7 +57,7 @@ If not, run:
 ``` bash
 xcode-select --install
 ```
-or install via. [Command Line Tools](https://developer.apple.com/downloads/)
+or install via [Command Line Tools](https://developer.apple.com/downloads/)
 
 
 ### Restore Workspace
@@ -63,16 +67,33 @@ or install via. [Command Line Tools](https://developer.apple.com/downloads/)
     + `~/Pictures`
     + `~/Movies`
     + `~/Music`
-2. Restore apps with `Homebrew`
-   1. Locate latest `Brewfile':
-      + [tnahs/dotfiles/Brewfile](https://github.com/tnahs/dotfiles/blob/master/Brewfile)
-      + `~/Workspace/preferences/dotfiles/Brewfile`
-   2. Copy `Brewfile` to `~/`
-   3. In Terminal run: `brew bundle`
-3. Restore `Apple Books` via `README.md` in `~/Workspace/reading/ibooks`
-4. `VSCode`
+
+
+### Restore dotfiles and Apps
+
+1. Initialize Mojave
+   + Run: `mojave-init.sh`
+     + via `~/Workspace/preferences/dotfiles/scripts/mojave-init.sh`
+     + or [`tnahs/dotfiles/scripts/mojave-init.sh`](https://github.com/tnahs/dotfiles/blob/master/scripts/mojave-init.sh)
+   + This does this...
+2.  Initialize Mojave
+    + Run: `mojave-config.sh`
+      + via `~/Workspace/preferences/dotfiles/scripts/mojave-config.sh`
+      + or [`tnahs/dotfiles/scripts/mojave-config.sh`](https://github.com/tnahs/dotfiles/blob/master/scripts/mojave-config.sh)
+    + This does that...
+
+
+### Restore App Configurations
+
+1. Restore `Apple Books` via `README.md` in `~/Workspace/reading/ibooks`
+2. `VSCode`
    1. `Cmd + Shift + P`
    2. `Sync` > `Sync: Download Settings`
+
+
+### Config macOS
+
+2. Run: `config/mojave-config.sh`
 
 ### Manually Install
 
@@ -81,7 +102,3 @@ or install via. [Command Line Tools](https://developer.apple.com/downloads/)
 + [DeDRM_tools](https://github.com/apprenticeharper/DeDRM_tools/releases/)
 + [Wacom Tablet Driver](https://www.wacom.com/en-us/support/product-support/drivers)
 + [Audacity](http://www.audacityteam.org/)
-
-### Config macOS
-
-1. Run: `config/config-Mojave.sh`

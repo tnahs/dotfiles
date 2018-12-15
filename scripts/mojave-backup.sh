@@ -44,28 +44,20 @@ function backup_preferences {
 
 	echo "Backing up preferences..."
 
-	# dotfiles
+	# Brewfile
+	brew bundle dump --force --file=$LOCALWORK"/preferences/dotfiles/Brewfile"
 
-		# Bash
-		cp -f $HOME"/.bashrc" $LOCALWORK"/preferences/dotfiles"
-		cp -f $HOME"/.bash_profile" $LOCALWORK"/preferences/dotfiles"
+	# Moom Shortcuts
+	cp -f $HOME"/Library/Preferences/com.manytricks.Moom.plist" \
+		$LOCALWORK"/preferences/dotfiles/moom"
 
-		# Moom Shortcuts
-		cp -f $HOME"/Library/Preferences/com.manytricks.Moom.plist" \
-			$LOCALWORK"/preferences/dotfiles/moom"
+	# Photoshop preferences
+	cp -R -f $HOME"/Library/Preferences/Adobe Photoshop CC 2019 Settings" \
+		$LOCALWORK"/preferences/photoshop"
 
-		# Brewfile
-		brew bundle dump --force --file=$LOCALWORK"/preferences/dotfiles/Brewfile"
-
-	# misc
-
-		# Photoshop preferences
-		cp -R -f $HOME"/Library/Preferences/Adobe Photoshop CC 2019 Settings" \
-			$LOCALWORK"/preferences/photoshop"
-
-		# Safri Bookmarks
-		cp -f $HOME"/Library/Safari/Bookmarks.plist" \
-			$LOCALWORK"/preferences/private"
+	# Safri Bookmarks
+	cp -f $HOME"/Library/Safari/Bookmarks.plist" \
+		$LOCALWORK"/preferences/private"
 }
 
 

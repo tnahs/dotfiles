@@ -26,7 +26,7 @@
 
 ## Re-installation
 
-1. Create Bootable USB
+1. Create Bootable USB via https://support.apple.com/en-us/HT201372
    1. Download [macOS Mojave](https://itunes.apple.com/tw/app/macos-mojave/id1398502828?l=en&mt=12)
    2. Format USB drive
       + Name: `Untitled`
@@ -34,7 +34,7 @@
       + Scheme: `GUID Partition Map`
    3.  Create bootable USB with:
         ```bash
-        sudo /Applications/Install\ macOS\ Mojave.app/Contents/Resources/createinstallmedia --volume /Volumes/Untitled --applicationpath /Applications/Install\ macOS\ Mojave.app --nointeraction
+        sudo /Applications/Install\ macOS\ Mojave.app/Contents/Resources/createinstallmedia --volume /Volumes/Untitled
         ```
 2.  Format and Install
     1. Plug in the Bootable USB
@@ -117,3 +117,4 @@ or install via [Command Line Tools](https://developer.apple.com/downloads/)
 + [DeDRM_tools](https://github.com/apprenticeharper/DeDRM_tools/releases/)
 + [Wacom Tablet Driver](https://www.wacom.com/en-us/support/product-support/drivers)
 + [Audacity](http://www.audacityteam.org/)
++ Adobe Digital Editions from `~/Workspace/preferences/misc/installers`

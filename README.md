@@ -59,9 +59,7 @@ via https://docs.brew.sh/
 
 ### Install Command Line Tools
 
-During install of Homebrew, the script will kindly detect that you have not yet installed Xcode Command Line Tools, and pop up a dialog asking if you want to install it. Yes, you do.
-
-If not, run:
+During install of Homebrew, the script should install Command Line Tools. If not, run:
 ``` bash
 xcode-select --install
 ```
@@ -91,7 +89,7 @@ or install via [Command Line Tools](https://developer.apple.com/downloads/)
        + `.gitconfig`
        + `.gitignore`
      + Installs all apps found in `~/Workspace/preferences/dotfiles/Brewfile`
-1.  Configure Mojave
+2.  Configure Mojave
     + Run: `mojave-config.sh`
       + via `~/Workspace/preferences/dotfiles/scripts/mojave-config.sh`
       + or [`tnahs/dotfiles/scripts/mojave-config.sh`](https://github.com/tnahs/dotfiles/blob/master/scripts/mojave-config.sh)
@@ -100,14 +98,22 @@ or install via [Command Line Tools](https://developer.apple.com/downloads/)
 
 ### Restore macOS App Configurations
 
-1. Restore **Apple Books** EPUBs/Database via `~/Workspace/reading/ibooks/README.md`
-2. Restore **VSCode** Settings
-   1. Install [`Settings Sync`](https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync) from Extensions Manager
+1. Restore **VSCode** Settings
+   1. Install `Souce Code Pro` from `~/Workspace/preferences/misc/fonts`
+   2. Install [`Settings Sync`](https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync) from Extensions Manager
       + or via `code --install-extension Shan.code-settings-sync`
-   2. `Cmd + Shift + P`
-   3. `Sync` > `Sync: Download Settings`
-   4. Enter `Github Personal Access Token` found in `~/Workspace/preferences/private/vscode-settings-sync-token.txt`
-   5. Enter Gist ID: `d35243a837d404d545cb56144030f4ee`
+   3. `Cmd + Shift + P`
+   4. `Sync` > `Sync: Download Settings`
+   5. Enter `Github Personal Access Token` found in `~/Workspace/preferences/private/vscode-settings-sync-token.txt`
+   6. Enter Gist ID: `d35243a837d404d545cb56144030f4ee`
+2. Restore **Moom** preferences
+   1. Copy `com.manytricks.Moom.plist` to `~/Library/Preferences`
+      + via `~/Workspace/preferences/dotfiles/moom/com.manytricks.Moom.plist`
+      + or [`tnahs/dotfiles/moom/com.manytricks.Moom.plist`](https://github.com/tnahs/dotfiles/blob/master/moom/com.manytricks.Moom.plist)
+        ``` bash
+        cp -f $HOME"/Workspace/preferences/dotfiles/moom/com.manytricks.Moom.plist" $HOME"/Library/Preferences"
+        ```
+3. Restore **Apple Books** EPUBs/Database via `~/Workspace/reading/apple-books/README.md`
 
 
 ### Manually Install

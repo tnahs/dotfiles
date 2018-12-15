@@ -11,5 +11,5 @@ ln -s $HOME"/Workspace/preferences/dotfiles/.gitignore" $HOME"/.gitignore"
 # Restore apps with Homebrew
 #   via. ~/Workspace/preferences/dotfiles/Brewfile
 #   or https://github.com/tnahs/dotfiles/blob/master/Brewfile
-ln -s $HOME"/Workspace/preferences/dotfiles/Brewfile" "~/Brewfile"
-brew bundle
+ln -s $HOME"/Workspace/preferences/dotfiles/Brewfile" $HOME"/Brewfile"
+cd && brew bundle

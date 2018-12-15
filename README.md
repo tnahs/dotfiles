@@ -103,16 +103,27 @@ or install via [Command Line Tools](https://developer.apple.com/downloads/)
 1. Restore **VSCode** Settings
    1. Install `Souce Code Pro` from `~/Workspace/preferences/misc/fonts`
    2. Install [`Settings Sync`](https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync) from Extensions Manager
-      + or via `code --install-extension Shan.code-settings-sync`
    3. `Cmd + Shift + P`
    4. `Sync` > `Sync: Download Settings`
    5. Enter `Github Personal Access Token` found in `~/Workspace/preferences/private/vscode-settings-sync-token.txt`
    6. Enter Gist ID: `d35243a837d404d545cb56144030f4ee`
-2. Restore **Moom** preferences
+
+``` bash
+# Install Settings Sync via Terminal
+code --install-extension Shan.code-settings-sync
+```
+
+1. Restore **Moom** preferences
    1. Copy `com.manytricks.Moom.plist` to `~/Library/Preferences`
-       + `cp -f $HOME"/Workspace/preferences/dotfiles/moom/com.manytricks.Moom.plist" $HOME"/Library/Preferences"`
-         + via `~/Workspace/preferences/dotfiles/moom/com.manytricks.Moom.plist`
-         + or [`tnahs/dotfiles/moom/com.manytricks.Moom.plist`](https://github.com/tnahs/dotfiles/blob/master/moom/com.manytricks.Moom.plist)
+      + via `~/Workspace/preferences/dotfiles/moom/com.manytricks.Moom.plist`
+      + or [`tnahs/dotfiles/moom/com.manytricks.Moom.plist`](https://github.com/tnahs/dotfiles/blob/master/moom/com.manytricks.Moom.plist)
+
+
+``` bash
+# Copy from ~/Workspace/preferences/dotfiles/moom/com.manytricks.Moom.plist to ~/Library/Preferences
+cp -f $HOME"/Workspace/preferences/dotfiles/moom/com.manytricks.Moom.plist" $HOME"/Library/Preferences"
+```
+
 3. Restore **Apple Books** EPUBs/Database via `~/Workspace/reading/apple-books/README.md`
 
 

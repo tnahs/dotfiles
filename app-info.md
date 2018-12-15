@@ -17,7 +17,7 @@
 
 + [Adobe Photoshop](http://www.adobe.com/products/photoshop.html)
 + [Adobe Lightroom](http://www.adobe.com/products/photoshop-lightroom.html)
-+ [Fusion360](https://www.autodesk.com/products/fusion-360/students-teachers-educators)# Video
++ [Fusion360](https://www.autodesk.com/products/fusion-360/students-teachers-educators)
 
 
 # Audio/Video

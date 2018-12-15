@@ -316,4 +316,5 @@ defaults write com.apple.messageshelper.MessageController SOInputLineSettings -d
 echo "Removing all .DS_store files..."
 find / -name ".DS_Store" -depth -exec rm {} \;
 
-echo "Done! Note that some of these changes require a logout/restart to take effect."
+echo "Mojave Configuration Done!"
+echo "Note that some of these changes require a logout/restart to take effect."

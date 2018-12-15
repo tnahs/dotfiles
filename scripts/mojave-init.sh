@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 
+###############################################################################
+# dtofiles                                                                    #
+###############################################################################
 
-# Create synlinks to bashrc, .bash_profile, .gitconfig and .gitignore
+# Create symlinks to .bashrc, .bash_profile, .gitconfig and .gitignore
 #   via. ~/Workspace/preferences/dotfiles/
 #   or https://github.com/tnahs/dotfiles/
 ln -s $HOME"/Workspace/preferences/dotfiles/.bashrc" $HOME"/.bashrc"
@@ -10,20 +13,32 @@ ln -s $HOME"/Workspace/preferences/dotfiles/.gitconfig" $HOME"/.gitconfig"
 ln -s $HOME"/Workspace/preferences/dotfiles/.gitignore" $HOME"/.gitignore"
 
 
-# Restore apps with Homebrew
+###############################################################################
+# Homebrew                                                               #
+###############################################################################
+
+# Create symlink to Brewfile and restore apps with Homebrew
 #   via. ~/Workspace/preferences/dotfiles/Brewfile
 #   or https://github.com/tnahs/dotfiles/blob/master/Brewfile
 ln -s $HOME"/Workspace/preferences/dotfiles/Brewfile" $HOME"/Brewfile"
 cd && brew bundle
 
 
+###############################################################################
+# Fonts                                                                       #
+###############################################################################
+
 # Install fonts
 #   via. ~/Workspace/preferences/dotfiles/fonts/
-#   or https://github.com/tnahs/dotfiles/fonts
+#   or https://github.com/tnahs/dotfiles/fonts/
 find $HOME"/Workspace/preferences/dotfiles/fonts" \
     \( -name "*.ttf" -or -name "*.otf" \) \
     -exec cp -v {} $HOME"/Library/Fonts" \;
 
+
+###############################################################################
+# Terminal                                                                    #
+###############################################################################
 
 # Set Terminal theme
 osascript <<EOD
@@ -42,6 +57,11 @@ osascript <<EOD
 
 EOD
 
+
+###############################################################################
+# Moom                                                                        #
+###############################################################################
+
 # Restore Moom preferences
 #   via ~/Workspace/preferences/dotfiles/moom/com.manytricks.Moom.plist
 #   or https://github.com/tnahs/dotfiles/blob/master/moom/com.manytricks.Moom.plist
@@ -49,5 +69,11 @@ cp -f $HOME"/Workspace/preferences/dotfiles/moom/com.manytricks.Moom.plist" \
     $HOME"/Library/Preferences"
 
 
-# Install VSCodde Settings Sync Extension
+###############################################################################
+# VSCode                                                                      #
+###############################################################################
+
+# Install Settings Sync Extension
 code --install-extension Shan.code-settings-sync
+
+echo "Mojave Initilization Done!"

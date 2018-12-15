@@ -42,9 +42,6 @@ defaults write NSGlobalDomain NSDisableAutomaticTermination -bool true
 # Restart automatically if the computer freezes
 sudo systemsetup -setrestartfreeze on
 
-# Disable Notification Center and remove the menu bar icon
-# launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2> /dev/null
-
 # Disable automatic capitalization as it’s annoying when typing code
 defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
 
@@ -59,6 +56,12 @@ defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
 
 # Disable auto-correct
 defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
+
+# Add Airport, Displays, Bluetooth and Volume to menubar
+open "/System/Library/CoreServices/Menu Extras/AirPort.menu"
+open "/System/Library/CoreServices/Menu Extras/Displays.menu"
+open "/System/Library/CoreServices/Menu Extras/Bluetooth.menu"
+open "/System/Library/CoreServices/Menu Extras/Volume.menu"
 
 ###############################################################################
 # SSD-specific tweaks                                                         #
@@ -158,7 +161,7 @@ defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 # Enable spring loading for directories
 defaults write NSGlobalDomain com.apple.springing.enabled -bool true
 
-# Remove the spring loading delay for directories
+# Shorten the spring loading delay for directories
 defaults write NSGlobalDomain com.apple.springing.delay -float 0.5
 
 # Avoid creating .DS_Store files on network or USB volumes
@@ -200,6 +203,7 @@ defaults write com.apple.dock mru-spaces -bool false
 
 # Remove the auto-hiding Dock delay
 defaults write com.apple.dock autohide-delay -float 0
+
 # Speed-up the animation when hiding/showing the Dock
 defaults write com.apple.dock autohide-time-modifier -float 0.5
 

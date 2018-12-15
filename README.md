@@ -98,33 +98,42 @@ or install via [Command Line Tools](https://developer.apple.com/downloads/)
     + Sets global macOS preferences. Forked from https://mths.be/macos
 
 
+### Manual macOS Configurations
+
+1. General
+    + Recent items: None
+2. Trackpad
+   + Point & Click
+     + [x] Look up & data detectors: Tap with three fingers
+     + [x] Seconday click: Click or tap with two fingers
+     + [x] Tap to click
+   + More Gestures
+     + [x] Swipe between pages: Swipe with three fingers
+3. Spotlight
+   + Search Results
+     + Disable all but:
+       + [x] Applications
+       + [x] Documents
+       + [x] Folders
+       + [x] Images
+       + [x] Movies
+       + [x] Music
+       + [x] PDF Documents
+       + [x] System Preferences
+5. Users & Groups
+   + Guest User
+     + [ ] Allow guests to log in to this computer
+
 ### Restore macOS App Configurations
 
 1. Restore **VSCode** Settings
-   1. Install `Souce Code Pro` from `~/Workspace/preferences/misc/fonts`
-   2. Install [`Settings Sync`](https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync) from Extensions Manager
-   3. `Cmd + Shift + P`
-   4. `Sync` > `Sync: Download Settings`
-   5. Enter `Github Personal Access Token` found in `~/Workspace/preferences/private/vscode-settings-sync-token.txt`
-   6. Enter Gist ID: `d35243a837d404d545cb56144030f4ee`
+   1. Make sure [`Settings Sync`](https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync) is installed
+   2. `Cmd + Shift + P`
+   3. `Sync` > `Sync: Download Settings`
+   4. Enter `Github Personal Access Token` found in `~/Workspace/preferences/private/vscode-settings-sync-token.txt`
+   5. Enter Gist ID: `d35243a837d404d545cb56144030f4ee`
 
-``` bash
-# Install Settings Sync via Terminal
-code --install-extension Shan.code-settings-sync
-```
-
-1. Restore **Moom** preferences
-   1. Copy `com.manytricks.Moom.plist` to `~/Library/Preferences`
-      + via `~/Workspace/preferences/dotfiles/moom/com.manytricks.Moom.plist`
-      + or [`tnahs/dotfiles/moom/com.manytricks.Moom.plist`](https://github.com/tnahs/dotfiles/blob/master/moom/com.manytricks.Moom.plist)
-
-
-``` bash
-# Copy from ~/Workspace/preferences/dotfiles/moom/com.manytricks.Moom.plist to ~/Library/Preferences
-cp -f $HOME"/Workspace/preferences/dotfiles/moom/com.manytricks.Moom.plist" $HOME"/Library/Preferences"
-```
-
-3. Restore **Apple Books** EPUBs/Database via `~/Workspace/reading/apple-books/README.md`
+2. Restore **Apple Books** EPUBs/Database via `~/Workspace/reading/apple-books/README.md`
 
 
 ### Manually Install

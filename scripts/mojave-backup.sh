@@ -37,34 +37,38 @@
 
 
 DATE=`date +%Y-%m-%d`
-LOCALWORK=$HOME"/Workspace" # local Workspace location
+WORKSPACE=$HOME"/Workspace" # local Workspace location
 
 
-function backup_preferences {
+function run_backup_preferences {
 
 	echo "Backing up preferences..."
 
 	# Brewfile
-	brew bundle dump --force --file=$LOCALWORK"/preferences/dotfiles/Brewfile"
+	BREWFILE=$WORKSPACE"/preferences/dotfiles/Brewfile"
+	if [ -f $BREWFILE ]; then
+		mv -f $BREWFILE $WORKSPACE"/preferences/dotfiles/Brewfile.bak"
+	fi
+	brew bundle dump --file=$BREWFILE
 
 	# Moom Shortcuts
 	cp -f $HOME"/Library/Preferences/com.manytricks.Moom.plist" \
-		$LOCALWORK"/preferences/dotfiles/moom"
+		$WORKSPACE"/preferences/dotfiles/moom"
 
 	# Photoshop preferences
 	cp -R -f $HOME"/Library/Preferences/Adobe Photoshop CC 2019 Settings" \
-		$LOCALWORK"/preferences/photoshop"
+		$WORKSPACE"/preferences/photoshop"
 
 	# Safri Bookmarks
 	cp -f $HOME"/Library/Safari/Bookmarks.plist" \
-		$LOCALWORK"/preferences/private"
+		$WORKSPACE"/preferences/private"
 }
 
 
-function backup_anki {
+function run_backup_anki {
 
 	ANKI_DECK=$HOME"/Library/Application Support/Anki2" # working Anki deck location
-	ANKI_ARCHIVES=$LOCALWORK"/projects/anki/archives" # backup Anki deck & archive location
+	ANKI_ARCHIVES=$WORKSPACE"/projects/anki/archives" # backup Anki deck & archive location
 	NEW_ANKI_ARCHIVE="ankideck-"$DATE.zip
 
 	# Run only if Anki is not running.
@@ -107,9 +111,9 @@ function backup_anki {
 }
 
 
-function backup_reading {
+function run_backup_reading {
 
-	APPLEBOOKS_ARCHIVES=$LOCALWORK"/reading/apple-books/archives"
+	APPLEBOOKS_ARCHIVES=$WORKSPACE"/reading/apple-books/archives"
 	NEW_APPLEBOOKS_ARCHIVE="apple-books-"$DATE.zip
 
 	# Run only if Apple Books is not running.
@@ -147,17 +151,30 @@ function backup_reading {
 }
 
 
-if [ "$1" = "-all" ]; then
-	backup_preferences
-	backup_reading
-	backup_anki
-elif [ "$1" = "-preferences" ]; then
-	backup_preferences
-elif [ "$1" = "-reading" ]; then
-	backup_reading
-elif [ "$1" = "-anki" ]; then
-	backup_anki
+if [ -d $WORKSPACE ]; then
+
+	if [ "$1" = "all" ]; then
+		run_backup_preferences
+		run_backup_reading
+		run_backup_anki
+
+	elif [ "$1" = "preferences" ]; then
+		run_backup_preferences
+
+	elif [ "$1" = "reading" ]; then
+		run_backup_reading
+
+	elif [ "$1" = "anki" ]; then
+		run_backup_anki
+
+	else
+		echo "ERROR: PLEASE SUPPLY THE PROPER ARGUMENT!"
+		echo "ERROR: EXITING!"
+		exit
+	fi
+
 else
-	echo "ERROR: Please supply the proper argument!"
+	echo "ERROR: $WORKSPACE DOES NOT EXIST!"
+	echo "ERROR: EXITING!"
 	exit
 fi

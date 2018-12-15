@@ -48,6 +48,13 @@
 
 ## Restore
 
+### Clone [`tnahs/dotfiles`](https://github.com/tnahs/dotfiles) repository
+
+
+``` bash
+mkdir -p $HOME/"Workspace/preferences/dotfiles"
+git clone https://github.com/tnahs/dotfiles $HOME/"Workspace/preferences/dotfiles"
+```
 
 ### Install homebrew
 

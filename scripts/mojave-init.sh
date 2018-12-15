@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 ###############################################################################
-# dtofiles                                                                    #
+# dotfiles                                                                    #
 ###############################################################################
 
 # Create symlinks to .bashrc, .bash_profile, .gitconfig and .gitignore
@@ -16,6 +16,9 @@ ln -s $HOME"/Workspace/preferences/dotfiles/.gitignore" $HOME"/.gitignore"
 ###############################################################################
 # Homebrew                                                               #
 ###############################################################################
+
+# Install Homebrew - https://brew.sh
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 # Create symlink to Brewfile and restore apps with Homebrew
 #   via. ~/Workspace/preferences/dotfiles/Brewfile

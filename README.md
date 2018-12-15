@@ -117,4 +117,5 @@ or install via [Command Line Tools](https://developer.apple.com/downloads/)
 + [DeDRM_tools](https://github.com/apprenticeharper/DeDRM_tools/releases/)
 + [Wacom Tablet Driver](https://www.wacom.com/en-us/support/product-support/drivers)
 + [Audacity](http://www.audacityteam.org/)
++ [Fusion360](https://www.autodesk.com/products/fusion-360/students-teachers-educators)# Video
 + Adobe Digital Editions from `~/Workspace/preferences/misc/installers`

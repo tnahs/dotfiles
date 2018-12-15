@@ -124,13 +124,6 @@ or install via [Command Line Tools](https://developer.apple.com/downloads/)
    + Guest User
      + [ ] Allow guests to log in to this computer
 
-``` bash
-# Add Airport, Displays, Bluetooth and Volume to menubar
-open "/System/Library/CoreServices/Menu Extras/AirPort.menu"
-open "/System/Library/CoreServices/Menu Extras/Displays.menu"
-open "/System/Library/CoreServices/Menu Extras/Bluetooth.menu"
-open "/System/Library/CoreServices/Menu Extras/Volume.menu"
-```
 
 ### Restore macOS App Configurations
 

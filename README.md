@@ -71,7 +71,8 @@ or install via [Command Line Tools](https://developer.apple.com/downloads/)
 
 1. Restore folders from to external HDD
     + `~/Workspace`
-    + `~/Downloads``~/Dropbox`
+    + `~/Downloads`
+    + `~/Dropbox`
     + `~/Pictures`
     + `~/Movies`
     + `~/Music`
@@ -109,11 +110,9 @@ or install via [Command Line Tools](https://developer.apple.com/downloads/)
    6. Enter Gist ID: `d35243a837d404d545cb56144030f4ee`
 2. Restore **Moom** preferences
    1. Copy `com.manytricks.Moom.plist` to `~/Library/Preferences`
-      + via `~/Workspace/preferences/dotfiles/moom/com.manytricks.Moom.plist`
-      + or [`tnahs/dotfiles/moom/com.manytricks.Moom.plist`](https://github.com/tnahs/dotfiles/blob/master/moom/com.manytricks.Moom.plist)
-        ``` bash
-        cp -f $HOME"/Workspace/preferences/dotfiles/moom/com.manytricks.Moom.plist" $HOME"/Library/Preferences"
-        ```
+       + `cp -f $HOME"/Workspace/preferences/dotfiles/moom/com.manytricks.Moom.plist" $HOME"/Library/Preferences"`
+         + via `~/Workspace/preferences/dotfiles/moom/com.manytricks.Moom.plist`
+         + or [`tnahs/dotfiles/moom/com.manytricks.Moom.plist`](https://github.com/tnahs/dotfiles/blob/master/moom/com.manytricks.Moom.plist)
 3. Restore **Apple Books** EPUBs/Database via `~/Workspace/reading/apple-books/README.md`
 
 

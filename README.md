@@ -16,6 +16,7 @@
 5. Copy folders to external HDD:
     + `~/Workspace`
     + `~/Downloads`
+    + `~/Dropbox`
     + `~/Pictures`
     + `~/Movies`
     + `~/Music`
@@ -72,7 +73,7 @@ or install via [Command Line Tools](https://developer.apple.com/downloads/)
 
 1. Restore folders from to external HDD
     + `~/Workspace`
-    + `~/Downloads`
+    + `~/Downloads``~/Dropbox`
     + `~/Pictures`
     + `~/Movies`
     + `~/Music`

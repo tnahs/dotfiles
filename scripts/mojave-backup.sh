@@ -39,13 +39,13 @@
 
 
 DATE=`date +%Y-%m-%d`
-DOTFILES=$HOME"/dotfiles"
+DOTFILES=$HOME"/.dotfiles"
 WORKSPACE=$HOME"/Workspace"
 
 
 function run_backup_dotfiles {
 
-	echo "Backing up dotfiles..."
+	echo "Backing up .dotfiles..."
 
 	# Brewfile
 	if [ -f $DOTFILES"/Brewfile" ]; then

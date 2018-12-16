@@ -1,29 +1,48 @@
-# macOS 10.14 Mojave
+# dotfiles (macOS 10.14 Mojave)
 
 
-## Back-up
+## A. Back-up 
 
-1. Run Backup Script
-   + Run: `~/dotfiles/scripts/mojave-backup.sh`
-3. Save **Contacts**
+
+### Run Backup Script
+
+``` bash
+bash $HOME"/.dotfiles/scripts/mojave-backup.sh all
+```
++ Backs up
+     + dotfiles
+          + `Brewfile`
+          + **Moom** Preferences
+     + App Preferences
+          + **Photoshop** Preferences
+          + **Safari** Bookmarks
+     + All **Anki** Data
+     + **Apple Books** EPUBs and Database
+
+<br>
+
+### Manually backup
+
+1. Save **Contacts**
     + Open **Contacts**
     + `Edit` > `Select All`
     + `File` > `Export...` > `Export vCard...`
     + Copy to `~/Workspace/preferences/private`
-4. `git push` any [`tnahs/dotfiles`](https://github.com/tnahs/dotfiles) repository changes
-5. Copy folders to external HDD:
+2. Copy folders to external HDD:
     + `~/Workspace`
     + `~/Downloads`
     + `~/Dropbox`
     + `~/Pictures`
     + `~/Movies`
     + `~/Music`
-6. Save **VSCode** Settings
+3. Save **VSCode** Settings
    1. `Cmd + Shift + P`
    2. `Sync` > `Sync: Update / Upload Settings`
+4. `git push` any [`tnahs/dotfiles`](https://github.com/tnahs/dotfiles) repository changes
 
+<br>
 
-## Re-installation
+## B. Re-installation
 
 1. Create Bootable USB via https://support.apple.com/en-us/HT201372
    1. Download [macOS Mojave](https://itunes.apple.com/tw/app/macos-mojave/id1398502828?l=en&mt=12)
@@ -43,47 +62,71 @@
     5. Exit `Disk Utility`
     6. Select `Install macOS Mojave`
 
+<br>
+
+---
+
+<br>
 
 ## Restore
 
 
-### Clone [`tnahs/dotfiles`](https://github.com/tnahs/dotfiles) repository
+### A. Install Homebrew
 
 ``` bash
-git clone https://github.com/tnahs/dotfiles $HOME"/dotfiles"
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
 
-### Setup dotfiles, install apps and configure Mojave
-
-1. Initialize Mojave
-   + Run: `$HOME"/dotfiles/scripts/mojave-init.sh"`
-   + This script:
-     + Creates symlinks from `~/dotfiles` to `~/` for:
-       + `.bashrc`
-       + `.bash_profile`
-       + `.gitconfig`
-       + `.gitignore`
-       + `Brewfile`
-     + Installs **Homebrew**
-     + Installs apps found in `~/dotfiles/Brewfile`
-     + Installs fonts
-     + Set **Terminal** theme
-     + Restores **Moom** preferences
-     + Installs **VSCode** "Settings Sync" Extension
-2.  Configure Mojave
-     + Run: `$HOME"/dotfiles/scripts/mojave-config.sh"`
-     + This script:
-          + Sets global macOS preferences.
-          + Forked from https://mths.be/macos
+via https://brew.sh
 
 During install of **Homebrew**, the script should install **Command Line Tools**. If not, run:
 ``` bash
 xcode-select --install
 ```
-or install via [Command Line Tools](https://developer.apple.com/downloads/)
+or install via https://developer.apple.com/downloads/
 
+<br>
 
-### Manual macOS Configurations
+### B. Clone [`tnahs/dotfiles`](https://github.com/tnahs/dotfiles) repository
+
+``` bash
+git clone https://github.com/tnahs/dotfiles $HOME"/.dotfiles"
+```
+
+<br>
+
+### C. Initialize Mojave
+
+``` bash
+bash $HOME"/.dotfiles/scripts/mojave-init.sh"`
+```
+
++ Creates symlinks from `~/dotfiles` to `~/` for:
+     + `.bashrc`
+     + `.bash_profile`
+     + `.gitconfig`
+     + `.gitignore`
+     + `Brewfile`
++ Installs apps found in `~/dotfiles/Brewfile`
++ Installs fonts
++ Set **Terminal** theme
++ Restores **Moom** preferences
++ Installs **VSCode** "Settings Sync" Extension
+
+<br>
+
+### D. Configure Mojave
+     
+``` bash
+bash $HOME"/.dotfiles/scripts/mojave-config.sh"`
+```
+
++ Sets global macOS preferences.
++ Forked from https://mths.be/macos
+
+<br>
+
+### E. Manual Mojave Configurations
 
 1. General
     + Recent items: None
@@ -140,8 +183,9 @@ or install via [Command Line Tools](https://developer.apple.com/downloads/)
 
 TODO: Get these to work programatically!
 
+<br>
 
-### Restore Workspace
+### F. Restore Workspace
 
 1. Restore folders from to external HDD
     + `~/Workspace`
@@ -151,8 +195,9 @@ TODO: Get these to work programatically!
     + `~/Movies`
     + `~/Music`
 
+<br>
 
-### Restore macOS App Configurations
+### G. Restore macOS App Configurations
 
 1. Restore **VSCode** Settings
    1. Make sure [`Settings Sync`](https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync) is installed
@@ -160,11 +205,13 @@ TODO: Get these to work programatically!
    3. `Sync` > `Sync: Download Settings`
    4. Enter `Github Personal Access Token` found in `~/Workspace/preferences/private/vscode-settings-sync-token.txt`
    5. Enter Gist ID: `d35243a837d404d545cb56144030f4ee`
-2. Restore **Apple Books** EPUBs/Database via `~/Workspace/reading/apple-books/README.md`
+2. Restore **Apple Books** EPUBs and Database via `~/Workspace/reading/apple-books/README.md`
 
+<br>
 
-### Manually Install
+### H. Manually Install
 
++ [Adobe Creative Cloud](https://www.adobe.com/creativecloud/desktop-app.html)
 + [Anki](https://apps.ankiweb.net/)
 + [Infovox iVox Voice Manager](http://www.assistiveware.com/product/infovox-ivox)
 + [DeDRM_tools](https://github.com/apprenticeharper/DeDRM_tools/releases/)
@@ -173,6 +220,8 @@ TODO: Get these to work programatically!
 + [Fusion360](https://www.autodesk.com/products/fusion-360/students-teachers-educators)
 + Adobe Digital Editions from `~/Workspace/preferences/misc/installers`
 
-### Check out
+<br>
+
+### I. Check out
 
 + https://gif.ski

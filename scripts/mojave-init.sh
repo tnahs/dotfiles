@@ -47,13 +47,11 @@ find $HOME"/.dotfiles/fonts" \
 osascript <<EOD
 
     set themeName to "Pro"
-    set fontName to "Source Code Pro"
-    set fontSize to "13"
+    set fontSize to "11"
 
 	tell application "Terminal"
 
 		set default settings to settings set themeName
-		set font name of default settings to fontName
 		set font size of default settings to fontSize
 
 	end tell

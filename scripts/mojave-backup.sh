@@ -67,7 +67,7 @@ function run_backup_preferences {
 	cp -R -f $HOME"/Library/Preferences/Adobe Photoshop CC 2019 Settings" \
 		$WORKSPACE"/preferences/photoshop"
 
-	# Safri Bookmarks
+	# Safari Bookmarks
 	cp -f $HOME"/Library/Safari/Bookmarks.plist" \
 		$WORKSPACE"/preferences/private"
 }

@@ -176,9 +176,14 @@ bash $HOME"/.dotfiles/scripts/mojave-config.sh"
      + Guest User
           + [ ] Allow guests to log in to this computer
 6. Safari
+     + Search
+          + Search Engine: `DuckDuckGo`
+          + Smart Search Field:
+               + [ ] Enable Quick Website Search
+               + [ ] Preload Top Hit in the Background
      + Advanced
           + [x] Show Develop menu in menu bar
-               + Websites > Notifications
+     + Websites > Notifications
           + [ ] Allow websites to ask for permission to send push notifications
 
 TODO: Get these to work programatically!

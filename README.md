@@ -1,7 +1,7 @@
 # dotfiles (macOS 10.14 Mojave)
 
 
-## A. Back-up 
+## A. Back-up
 
 
 ### Run Backup Script
@@ -116,7 +116,7 @@ bash $HOME"/.dotfiles/scripts/mojave-init.sh"
 <br>
 
 ### D. Configure Mojave
-     
+
 ``` bash
 bash $HOME"/.dotfiles/scripts/mojave-config.sh"
 ```
@@ -128,10 +128,8 @@ bash $HOME"/.dotfiles/scripts/mojave-config.sh"
 
 ### E. Manual Mojave Configurations
 
-1. General
-     + Recent items: None
-2. Finder > Preferences
-     + [ ] Recents
+1. Finder > Preferences
+   + Disable all but:
      + [x] AirDrop
      + [x] Applications
      + [x] Desktop
@@ -140,48 +138,64 @@ bash $HOME"/.dotfiles/scripts/mojave-config.sh"
      + [x] Music
      + [x] Pictures
      + [x] {USER FOLDER}
-     + [ ] iCloud Drive
      + [x] {USER COMPUTER}
      + [x] Hard disks
      + [x] External disks
-     + [ ] CDs, DVDs, and iPods
-     + [ ] Bonjour computers
-     + [ ] Connected Servers
-     + [ ] Recent Tags
-3. Trackpad
-     + Point & Click
-          + [x] Look up & data detectors: Tap with three fingers
-          + [x] Seconday click: Click or tap with two fingers
-          + [x] Tap to click
-     + More Gestures     
-          + [x] Swipe between pages: Swipe with three fingers
-4. Keyboard
-     + Shortcuts
-          + Setup Switch Spaces Hotkeys
-5. Spotlight
-     + Search Results
-          + Disable all but:
-               + [x] Applications
-               + [x] Documents
-               + [x] Folders
-               + [x] Images
-               + [x] Movies
-               + [x] Music
-               + [x] PDF Documents
-               + [x] System Preferences
-6. Users & Groups
-     + Guest User
-          + [ ] Allow guests to log in to this computer
-7. Safari
-     + Search > Smart Search Field:
-               + [ ] Enable Quick Website Search
-               + [ ] Preload Top Hit in the Background
-     + Advanced
-          + [x] Show Develop menu in menu bar
+2. System Preferences
+   1. General
+        + Recent items: None
+   2. Displays
+      + Nightshift
+        + Schedule
+          + Sunset to Sunrise
+      + Displays
+        + Resolution
+          + [x] Scaled
+            + [x] More Space
+   4. Trackpad
+      + Point & Click
+        + [x] Look up & data detectors: Tap with three fingers
+        + [x] Tap to click
+      + More Gestures
+        + [x] Swipe between pages: Swipe with three fingers
+   5. Keyboard
+      + Shortcuts
+        + Setup Switch Spaces Hotkeys
+   6. Spotlight
+      + Search Results
+        + Disable all but:
+          + [x] Applications
+          + [x] Documents
+          + [x] Folders
+          + [x] Images
+          + [x] Movies
+          + [x] Music
+          + [x] PDF Documents
+          + [x] System Preferences
+          + [x] Calculator
+          + [x] Conversion
+   7. Users & Groups
+      + Guest User
+        + [ ] Allow guests to log in to this computer
+   8. Safari
+      + Search > Smart Search Field:
+        + [ ] Enable Quick Website Search
+        + [ ] Preload Top Hit in the Background
+      + Advanced
+        + [x] Show Develop menu in menu bar
      + Websites > Notifications
-          + [ ] Allow websites to ask for permission to send push notifications
+        + [ ] Allow websites to ask for permission to send push notifications
+   9. iCloud
+      + Sign into iCloud
+        + Disable all but:
+          + [x] Contacts
+          + [x] Calendars
+          + [x] Safari
+          + [x] Keychain
+          + [x] Find My Mac
 
-TODO: Get these to work programatically!
+
+TODO: Get these to work programmatically!
 
 <br>
 

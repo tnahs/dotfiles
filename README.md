@@ -98,16 +98,16 @@ git clone https://github.com/tnahs/dotfiles $HOME"/.dotfiles"
 ### C. Initialize Mojave
 
 ``` bash
-bash $HOME"/.dotfiles/scripts/mojave-init.sh"`
+bash $HOME"/.dotfiles/scripts/mojave-init.sh"
 ```
 
-+ Creates symlinks from `~/dotfiles` to `~/` for:
++ Creates symlinks from `~/.dotfiles` to `~/` for:
      + `.bashrc`
      + `.bash_profile`
      + `.gitconfig`
      + `.gitignore`
      + `Brewfile`
-+ Installs apps found in `~/dotfiles/Brewfile`
++ Installs apps found in `~/.dotfiles/Brewfile`
 + Installs fonts
 + Set **Terminal** theme
 + Restores **Moom** preferences
@@ -118,7 +118,7 @@ bash $HOME"/.dotfiles/scripts/mojave-init.sh"`
 ### D. Configure Mojave
      
 ``` bash
-bash $HOME"/.dotfiles/scripts/mojave-config.sh"`
+bash $HOME"/.dotfiles/scripts/mojave-config.sh"
 ```
 
 + Sets global macOS preferences.
@@ -129,7 +129,7 @@ bash $HOME"/.dotfiles/scripts/mojave-config.sh"`
 ### E. Manual Mojave Configurations
 
 1. General
-    + Recent items: None
+     + Recent items: None
 2. Finder > Preferences
      + [ ] Recents
      + [x] AirDrop
@@ -149,36 +149,36 @@ bash $HOME"/.dotfiles/scripts/mojave-config.sh"`
      + [ ] Connected Servers
      + [ ] Recent Tags
 3. Trackpad
-   + Point & Click
-     + [x] Look up & data detectors: Tap with three fingers
-     + [x] Seconday click: Click or tap with two fingers
-     + [x] Tap to click
-   + More Gestures
-     + [x] Swipe between pages: Swipe with three fingers
+     + Point & Click
+          + [x] Look up & data detectors: Tap with three fingers
+          + [x] Seconday click: Click or tap with two fingers
+          + [x] Tap to click
+     + More Gestures     
+          + [x] Swipe between pages: Swipe with three fingers
 4. Keyboard
      + Shortcuts
           + Setup Switch Spaces Hotkeys
 4. Spotlight
-   + Search Results
-     + Disable all but:
-       + [x] Applications
-       + [x] Documents
-       + [x] Folders
-       + [x] Images
-       + [x] Movies
-       + [x] Music
-       + [x] PDF Documents
-       + [x] System Preferences
+     + Search Results
+          + Disable all but:
+               + [x] Applications
+               + [x] Documents
+               + [x] Folders
+               + [x] Images
+               + [x] Movies
+               + [x] Music
+               + [x] PDF Documents
+               + [x] System Preferences
 5. Terminal
-   + Profiles > Text
+     + Profiles > Text
           + [x] Antialias text
 5. Users & Groups
-   + Guest User
-     + [ ] Allow guests to log in to this computer
+     + Guest User
+          + [ ] Allow guests to log in to this computer
 6. Safari
      + Advanced
           + [x] Show Develop menu in menu bar
-     + Websites > Notifications
+               + Websites > Notifications
           + [ ] Allow websites to ask for permission to send push notifications
 
 TODO: Get these to work programatically!

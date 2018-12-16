@@ -109,7 +109,7 @@ bash $HOME"/.dotfiles/scripts/mojave-init.sh"
      + `Brewfile`
 + Installs apps found in `~/.dotfiles/Brewfile`
 + Installs fonts
-+ Set **Terminal** theme
++ Sets **Terminal** theme
 + Restores **Moom** preferences
 + Installs **VSCode** "Settings Sync" Extension
 
@@ -206,6 +206,7 @@ TODO: Get these to work programatically!
    4. Enter `Github Personal Access Token` found in `~/Workspace/preferences/private/vscode-settings-sync-token.txt`
    5. Enter Gist ID: `d35243a837d404d545cb56144030f4ee`
 2. Restore **Apple Books** EPUBs and Database via `~/Workspace/reading/apple-books/README.md`
+3. Register **Moom** with license file in `~/Workspace/preferences/private/`
 
 <br>
 

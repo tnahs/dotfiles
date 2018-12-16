@@ -127,13 +127,16 @@ or install via [Command Line Tools](https://developer.apple.com/downloads/)
        + [x] PDF Documents
        + [x] System Preferences
 5. Terminal
-   + Profiles
-     + Text
+   + Profiles > Text
           + [x] Antialias text
 5. Users & Groups
    + Guest User
      + [ ] Allow guests to log in to this computer
-
+6. Safari
+     + Advanced
+          + [x] Show Develop menu in menu bar
+     + Websites > Notifications
+          + [ ] Allow websites to ask for permission to send push notifications
 TODO: Get these to work programatically!
 
 

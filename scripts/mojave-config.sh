@@ -1,6 +1,12 @@
 #!/usr/bin/env bash
 
-# ~/.macos — https://mths.be/macos
+# Forked from: https://mths.be/macos
+
+
+###############################################################################
+# 	For macOS Mojave version 10.14.1 (18B75)                                  #
+###############################################################################
+
 
 # Close any open System Preferences panes, to prevent them from overriding
 # settings we’re about to change
@@ -11,6 +17,7 @@ sudo -v
 
 # Keep-alive: update existing `sudo` time stamp until `.macos` has finished
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+
 
 ###############################################################################
 # General UI/UX                                                               #
@@ -65,6 +72,7 @@ defaults -currentHost write com.apple.systemuiserver menuExtras -array \
     "/System/Library/CoreServices/Menu Extras/Volume.menu" \
     "/System/Library/CoreServices/Menu Extras/Bluetooth.menu"
 
+
 ###############################################################################
 # SSD-specific tweaks                                                         #
 ###############################################################################
@@ -80,6 +88,7 @@ sudo touch /private/var/vm/sleepimage
 
 # …and make sure it can’t be rewritten
 sudo chflags uchg /private/var/vm/sleepimage
+
 
 ###############################################################################
 # Trackpad, mouse, keyboard, Bluetooth accessories, and input                 #
@@ -104,6 +113,7 @@ defaults write NSGlobalDomain InitialKeyRepeat -int 15
 # Increase sound quality for Bluetooth headphones/headsets
 defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40
 
+
 ###############################################################################
 # Screen                                                                      #
 ###############################################################################
@@ -113,6 +123,7 @@ defaults write com.apple.screencapture location -string "${HOME}/Downloads"
 
 # Save screenshots in PNG format (other options: BMP, GIF, JPG, PDF, TIFF)
 defaults write com.apple.screencapture type -string "png"
+
 
 ###############################################################################
 # Finder                                                                      #
@@ -182,6 +193,7 @@ chflags nohidden ~/Library
 # Show the /Volumes folder
 sudo chflags nohidden /Volumes
 
+
 ###############################################################################
 # Dock, Dashboard, and hot corners                                            #
 ###############################################################################
@@ -220,6 +232,7 @@ defaults write com.apple.dock showhidden -bool true
 # Don’t show recent applications in Dock
 defaults write com.apple.dock show-recents -bool false
 
+
 ###############################################################################
 # Safari & WebKit                                                             #
 ###############################################################################
@@ -240,11 +253,11 @@ defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebK
 # Disable Safari’s thumbnail cache for History and Top Sites
 defaults write com.apple.Safari DebugSnapshotsUpdatePolicy -int 2
 
-# Enable Safari’s debug menu
-defaults write com.apple.Safari IncludeInternalDebugMenu -bool true
-
 # Make Safari’s search banners default to Contains instead of Starts With
 defaults write com.apple.Safari FindOnPageMatchesWordStartsOnly -bool false
+
+# Enable Safari’s debug menu
+defaults write com.apple.Safari IncludeInternalDebugMenu -bool true
 
 # Enable the Develop menu and the Web Inspector in Safari
 defaults write com.apple.Safari IncludeDevelopMenu -bool true
@@ -256,6 +269,7 @@ defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
 
 # Enable continuous spellchecking
 defaults write com.apple.Safari WebContinuousSpellCheckingEnabled -bool true
+
 # Disable auto-correct
 defaults write com.apple.Safari WebAutomaticSpellingCorrectionEnabled -bool false
 
@@ -278,12 +292,14 @@ defaults write com.apple.Safari SendDoNotTrackHTTPHeader -bool true
 # Update extensions automatically
 defaults write com.apple.Safari InstallExtensionUpdatesAutomatically -bool true
 
+
 ###############################################################################
 # Time Machine                                                                #
 ###############################################################################
 
 # Prevent Time Machine from prompting to use new hard drives as backup volume
 defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
+
 
 ###############################################################################
 # Address Book, Dashboard, iCal, TextEdit, and Disk Utility                   #
@@ -292,12 +308,14 @@ defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 # Use plain text mode for new TextEdit documents
 defaults write com.apple.TextEdit RichText -int 0
 
+
 ###############################################################################
 # Photos                                                                      #
 ###############################################################################
 
 # Prevent Photos from opening automatically when devices are plugged in
 defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true
+
 
 ###############################################################################
 # Messages                                                                    #
@@ -311,6 +329,7 @@ defaults write com.apple.messageshelper.MessageController SOInputLineSettings -d
 
 # Disable continuous spell checking
 defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "continuousSpellCheckingEnabled" -bool false
+
 
 ###############################################################################
 # Cleanup                                                                     #

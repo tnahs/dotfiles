@@ -4,9 +4,7 @@
 ## Back-up
 
 1. Run Backup Script
-   + Run: `mojave-backup.sh`
-     + via `~/Workspace/preferences/dotfiles/scripts/mojave-backup.sh`
-     + or [`tnahs/dotfiles/scripts/mojave-backup.sh`](https://github.com/tnahs/dotfiles/blob/master/scripts/mojave-backup.sh)
+   + Run: `~/dotfiles/scripts/mojave-backup.sh`
 3. Save **Contacts**
     + Open **Contacts**
     + `Edit` > `Select All`
@@ -48,29 +46,95 @@
 
 ## Restore
 
-### Clone [`tnahs/dotfiles`](https://github.com/tnahs/dotfiles) repository
 
+### Clone [`tnahs/dotfiles`](https://github.com/tnahs/dotfiles) repository
 
 ``` bash
 git clone https://github.com/tnahs/dotfiles $HOME"/dotfiles"
 ```
 
-### Install homebrew
+### Setup dotfiles and install apps and configure Mojave
 
-``` bash
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-```
-
-via https://docs.brew.sh/
-
-
-### Install Command Line Tools
+1. Initialize Mojave
+   + Run: `$HOME"/dotfiles/scripts/mojave-init.sh"`
+   + This script:
+     + Creates symlinks from `~/dotfiles` to `~/` for:
+       + `.bashrc`
+       + `.bash_profile`
+       + `.gitconfig`
+       + `.gitignore`
+       + `Brewfile`
+     + Installs Homebrew
+     + Installs apps found in `~/dotfiles/Brewfile`
+     + Installs fonts
+     + Set **Terminal** theme
+     + Restores **Moom** preferences
+     + Installs **VSCode** "Settings Sync" Extension
+2.  Configure Mojave
+     + Run: `$HOME"/dotfiles/scripts/mojave-config.sh"`
+     + This script:
+          + Sets global macOS preferences.
+          + Forked from https://mths.be/macos
 
 During install of Homebrew, the script should install Command Line Tools. If not, run:
 ``` bash
 xcode-select --install
 ```
 or install via [Command Line Tools](https://developer.apple.com/downloads/)
+
+
+### Manual macOS Configurations
+
+1. General
+    + Recent items: None
+2. Finder > Preferences
+     + [ ] Recents
+     + [x] AirDrop
+     + [x] Applications
+     + [x] Desktop
+     + [x] Downloads
+     + [x] Movies
+     + [x] Music
+     + [x] Pictures
+     + [x] {USER FOLDER}
+     + [ ] iCloud Drive
+     + [x] {USER COMPUTER}
+     + [x] Hard disks
+     + [x] External disks
+     + [ ] CDs, DVDs, and iPods
+     + [ ] Bonjour computers
+     + [ ] Connected Servers
+     + [ ] Recent Tags
+3. Trackpad
+   + Point & Click
+     + [x] Look up & data detectors: Tap with three fingers
+     + [x] Seconday click: Click or tap with two fingers
+     + [x] Tap to click
+   + More Gestures
+     + [x] Swipe between pages: Swipe with three fingers
+4. Keyboard
+     + Shortcuts
+          + Setup Switch Spaces Hotkeys
+4. Spotlight
+   + Search Results
+     + Disable all but:
+       + [x] Applications
+       + [x] Documents
+       + [x] Folders
+       + [x] Images
+       + [x] Movies
+       + [x] Music
+       + [x] PDF Documents
+       + [x] System Preferences
+5. Terminal
+   + Profiles
+     + Text
+          + [x] Antialias text
+5. Users & Groups
+   + Guest User
+     + [ ] Allow guests to log in to this computer
+
+TODO: Get these to work programatically!
 
 
 ### Restore Workspace
@@ -82,53 +146,6 @@ or install via [Command Line Tools](https://developer.apple.com/downloads/)
     + `~/Pictures`
     + `~/Movies`
     + `~/Music`
-
-
-### Restore dotfiles and macOS Apps
-
-1. Initialize Mojave
-   + Run: `mojave-init.sh`
-     + via `~/Workspace/preferences/dotfiles/scripts/mojave-init.sh`
-     + or [`tnahs/dotfiles/scripts/mojave-init.sh`](https://github.com/tnahs/dotfiles/blob/master/scripts/mojave-init.sh)
-   + This script:
-     + Creates symlinks from `~/Workspace/preferences/dotfiles` to `~/` for:
-       + `.bashrc`
-       + `.bash_profile`
-       + `.gitconfig`
-       + `.gitignore`
-     + Installs all apps found in `~/Workspace/preferences/dotfiles/Brewfile`
-2.  Configure Mojave
-    + Run: `mojave-config.sh`
-      + via `~/Workspace/preferences/dotfiles/scripts/mojave-config.sh`
-      + or [`tnahs/dotfiles/scripts/mojave-config.sh`](https://github.com/tnahs/dotfiles/blob/master/scripts/mojave-config.sh)
-    + Sets global macOS preferences. Forked from https://mths.be/macos
-
-
-### Manual macOS Configurations
-
-1. General
-    + Recent items: None
-2. Trackpad
-   + Point & Click
-     + [x] Look up & data detectors: Tap with three fingers
-     + [x] Seconday click: Click or tap with two fingers
-     + [x] Tap to click
-   + More Gestures
-     + [x] Swipe between pages: Swipe with three fingers
-3. Spotlight
-   + Search Results
-     + Disable all but:
-       + [x] Applications
-       + [x] Documents
-       + [x] Folders
-       + [x] Images
-       + [x] Movies
-       + [x] Music
-       + [x] PDF Documents
-       + [x] System Preferences
-5. Users & Groups
-   + Guest User
-     + [ ] Allow guests to log in to this computer
 
 
 ### Restore macOS App Configurations

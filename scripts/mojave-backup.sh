@@ -1,59 +1,67 @@
 #!/bin/sh
 
-# ----------------------------------------------------------------------------------------------- #
-# For macOS Mojave version 10.14.1 (18B75)
-# ----------------------------------------------------------------------------------------------- #
 
-# ----------------------------------------------------------------------------------------------- #
-#	rsync
-#		-v, --verbose              Increase verbosity
-#		-q, --quiet                Quiet mode
-#		-a, --archive              Archive mode
-#		-E, --extended-attributes  Copy extended attributes (xattr)
-#   	--delete-after             Receiver deletes after transfer, not before
-# ----------------------------------------------------------------------------------------------- #
-#   zip
-#		-r, --recurse-paths        Travel the directory structure recursively
-#		-q, --quiet                Quiet mode
-#   	-y, --symlinks             Store symbolic links instead of referenced file.
-# ----------------------------------------------------------------------------------------------- #
-#	cp
-#		-R   					   Copy the folder and subtree (recursive).
-#		-f					       Overwrite file regardless of permissions.
-# ----------------------------------------------------------------------------------------------- #
+###############################################################################
+# For macOS Mojave version 10.14.1 (18B75)                                    #
+###############################################################################
 
-# ----------------------------------------------------------------------------------------------- #
-#	Moom: ~/Library/Preferences/com.manytricks.Moom.plist
-#	Photoshop: ~/Library/Preferences/Adobe Photoshop CC 2018 Settings
-#	Safari Bookmarks: ~/Library/Safari/Bookmarks.plist
-#	Anki: ~/Library/Application Support/Anki2/
-#	Apple Books Database: ~/Library/Containers/com.apple.iBooksX/
-#	Apple Books EPUBs: ~/Library/Containers/com.apple.BKAgentService/
-# ----------------------------------------------------------------------------------------------- #
 
-# ----------------------------------------------------------------------------------------------- #
-#   NOTE: No trailing slash moves folder and contents.
-# ----------------------------------------------------------------------------------------------- #
+###############################################################################
+# rsync                                                                       #
+#  -v, --verbose              Increase verbosity 							  #
+#  -q, --quiet                Quiet mode 									  #
+#  -a, --archive              Archive mode 									  #
+#  -E, --extended-attributes  Copy extended attributes (xattr) 				  #
+#  --delete-after             Receiver deletes after transfer, not before     #
+###############################################################################
+# zip                                                                         #
+#  -r, --recurse-paths        Travel the directory structure recursively      #
+#  -q, --quiet                Quiet mode                                      #
+#  -y, --symlinks             Store symbolic links instead of referenced file #
+###############################################################################
+# cp                                                                          #
+#  -R                         Copy the folder and subtree (recursive).        #
+#  -f                         Overwrite file regardless of permissions.       #
+###############################################################################
+
+###############################################################################
+# Moom: ~/Library/Preferences/com.manytricks.Moom.plist                       # 
+# Photoshop: ~/Library/Preferences/Adobe Photoshop CC 2018 Settings           # 
+# Safari Bookmarks: ~/Library/Safari/Bookmarks.plist                          # 
+# Anki: ~/Library/Application Support/Anki2/                                  # 
+# Apple Books Database: ~/Library/Containers/com.apple.iBooksX/               # 
+# Apple Books EPUBs: ~/Library/Containers/com.apple.BKAgentService/           # 
+###############################################################################
+
+###############################################################################
+# NOTE: No trailing slash moves folder and contents.                          #
+###############################################################################
 
 
 DATE=`date +%Y-%m-%d`
-WORKSPACE=$HOME"/Workspace" # local Workspace location
+DOTFILES=$HOME"/dotfiles"
+WORKSPACE=$HOME"/Workspace"
+
+
+function run_backup_dotfiles {
+
+	echo "Backing up dotfiles..."
+
+	# Brewfile
+	if [ -f $DOTFILES"/Brewfile" ]; then
+		mv -f $DOTFILES"/Brewfile" $DOTFILES"/Brewfile.bak"
+	fi
+	brew bundle dump --file=$DOTFILES"/Brewfile"
+
+	# Moom Shortcuts
+	cp -f $HOME"/Library/Preferences/com.manytricks.Moom.plist" \
+		$DOTFILES"/moom"
+}
 
 
 function run_backup_preferences {
 
 	echo "Backing up preferences..."
-
-	# Brewfile
-	BREWFILE=$WORKSPACE"/preferences/dotfiles/Brewfile"
-	if [ -f $BREWFILE ]; then
-		mv -f $BREWFILE $WORKSPACE"/preferences/dotfiles/Brewfile.bak"
-	fi
-	brew bundle dump --file=$BREWFILE
-
-	# Moom Shortcuts
-	cp -f $HOME"/Library/Preferences/com.manytricks.Moom.plist" \
-		$WORKSPACE"/preferences/dotfiles/moom"
 
 	# Photoshop preferences
 	cp -R -f $HOME"/Library/Preferences/Adobe Photoshop CC 2019 Settings" \
@@ -151,15 +159,19 @@ function run_backup_reading {
 }
 
 
-if [ -d $WORKSPACE ]; then
+if [ -d $WORKSPACE ] && [ -d $DOTFILES ]; then
 
 	if [ "$1" = "all" ]; then
 		run_backup_preferences
+		run_backup_dotfiles
 		run_backup_reading
 		run_backup_anki
 
 	elif [ "$1" = "preferences" ]; then
 		run_backup_preferences
+
+	elif [ "$1" = "dotfiles" ]; then
+		run_backup_dotfiles
 
 	elif [ "$1" = "reading" ]; then
 		run_backup_reading
@@ -174,7 +186,7 @@ if [ -d $WORKSPACE ]; then
 	fi
 
 else
-	echo "ERROR: $WORKSPACE DOES NOT EXIST!"
+	echo "ERROR: $WORKSPACE OR $DOTFILES DOES NOT EXIST!"
 	echo "ERROR: EXITING!"
 	exit
 fi

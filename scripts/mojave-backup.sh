@@ -180,13 +180,20 @@ if [ -d $WORKSPACE ] && [ -d $DOTFILES ]; then
 		run_backup_anki
 
 	else
-		echo "ERROR: PLEASE SUPPLY THE PROPER ARGUMENT!"
-		echo "ERROR: EXITING!"
+		echo ""
+		echo "### ERROR:"
+		echo "### PLEASE SUPPLY THE PROPER ARGUMENT!"
+		echo "### EXITING!"
+		echo ""
 		exit
 	fi
 
 else
-	echo "ERROR: $WORKSPACE OR $DOTFILES DOES NOT EXIST!"
-	echo "ERROR: EXITING!"
+
+	echo ""
+	echo "### ERROR:"
+	echo "### $WORKSPACE OR $DOTFILES DOES NOT EXIST!"
+	echo "### EXITING!"
+	echo ""
 	exit
 fi

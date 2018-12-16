@@ -158,7 +158,7 @@ bash $HOME"/.dotfiles/scripts/mojave-config.sh"
 4. Keyboard
      + Shortcuts
           + Setup Switch Spaces Hotkeys
-4. Spotlight
+5. Spotlight
      + Search Results
           + Disable all but:
                + [x] Applications
@@ -169,13 +169,10 @@ bash $HOME"/.dotfiles/scripts/mojave-config.sh"
                + [x] Music
                + [x] PDF Documents
                + [x] System Preferences
-5. Terminal
-     + Profiles > Text
-          + [x] Antialias text
-5. Users & Groups
+6. Users & Groups
      + Guest User
           + [ ] Allow guests to log in to this computer
-6. Safari
+7. Safari
      + Search > Smart Search Field:
                + [ ] Enable Quick Website Search
                + [ ] Preload Top Hit in the Background

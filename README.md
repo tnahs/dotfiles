@@ -137,6 +137,7 @@ or install via [Command Line Tools](https://developer.apple.com/downloads/)
           + [x] Show Develop menu in menu bar
      + Websites > Notifications
           + [ ] Allow websites to ask for permission to send push notifications
+
 TODO: Get these to work programatically!
 
 
@@ -171,3 +172,7 @@ TODO: Get these to work programatically!
 + [Audacity](http://www.audacityteam.org/)
 + [Fusion360](https://www.autodesk.com/products/fusion-360/students-teachers-educators)
 + Adobe Digital Editions from `~/Workspace/preferences/misc/installers`
+
+### Check out
+
++ https://gif.ski

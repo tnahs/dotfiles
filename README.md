@@ -53,7 +53,7 @@
 git clone https://github.com/tnahs/dotfiles $HOME"/dotfiles"
 ```
 
-### Setup dotfiles and install apps and configure Mojave
+### Setup dotfiles, install apps and configure Mojave
 
 1. Initialize Mojave
    + Run: `$HOME"/dotfiles/scripts/mojave-init.sh"`
@@ -64,7 +64,7 @@ git clone https://github.com/tnahs/dotfiles $HOME"/dotfiles"
        + `.gitconfig`
        + `.gitignore`
        + `Brewfile`
-     + Installs Homebrew
+     + Installs **Homebrew**
      + Installs apps found in `~/dotfiles/Brewfile`
      + Installs fonts
      + Set **Terminal** theme
@@ -76,7 +76,7 @@ git clone https://github.com/tnahs/dotfiles $HOME"/dotfiles"
           + Sets global macOS preferences.
           + Forked from https://mths.be/macos
 
-During install of Homebrew, the script should install Command Line Tools. If not, run:
+During install of **Homebrew**, the script should install **Command Line Tools**. If not, run:
 ``` bash
 xcode-select --install
 ```
@@ -156,7 +156,6 @@ TODO: Get these to work programatically!
    3. `Sync` > `Sync: Download Settings`
    4. Enter `Github Personal Access Token` found in `~/Workspace/preferences/private/vscode-settings-sync-token.txt`
    5. Enter Gist ID: `d35243a837d404d545cb56144030f4ee`
-
 2. Restore **Apple Books** EPUBs/Database via `~/Workspace/reading/apple-books/README.md`
 
 

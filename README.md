@@ -145,7 +145,7 @@ bash $HOME"/.dotfiles/scripts/mojave-config.sh"
    1. General
         + Recent items: None
    2. Displays
-      + Nightshift
+      + Night Shift
         + Schedule
           + Sunset to Sunrise
       + Displays
@@ -165,6 +165,8 @@ bash $HOME"/.dotfiles/scripts/mojave-config.sh"
       + Search Results
         + Disable all but:
           + [x] Applications
+          + [x] Calculator
+          + [x] Conversion
           + [x] Documents
           + [x] Folders
           + [x] Images
@@ -172,8 +174,6 @@ bash $HOME"/.dotfiles/scripts/mojave-config.sh"
           + [x] Music
           + [x] PDF Documents
           + [x] System Preferences
-          + [x] Calculator
-          + [x] Conversion
    7. Users & Groups
       + Guest User
         + [ ] Allow guests to log in to this computer

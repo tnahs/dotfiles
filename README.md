@@ -222,6 +222,8 @@ TODO: Get these to work programmatically!
    5. Enter Gist ID: `d35243a837d404d545cb56144030f4ee`
 2. Restore **Apple Books** EPUBs and Database via `~/Workspace/reading/apple-books/README.md`
 3. Register **Moom** with license file in `~/Workspace/preferences/private/`
+4. Setup **Dropbox**
+5. Setup **Google Backup and Sync**
 
 <br>
 

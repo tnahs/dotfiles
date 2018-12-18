@@ -143,7 +143,8 @@ bash $HOME"/.dotfiles/scripts/mojave-config.sh"
      + [x] External disks
 2. System Preferences
    1. General
-        + Recent items: None
+      + Click in the scroll bar to: Jump to the spot that's clicked
+      + Recent items: None
    2. Displays
       + Night Shift
         + Schedule
@@ -152,16 +153,16 @@ bash $HOME"/.dotfiles/scripts/mojave-config.sh"
         + Resolution
           + [x] Scaled
             + [x] More Space
-   4. Trackpad
+   3. Trackpad
       + Point & Click
         + [x] Look up & data detectors: Tap with three fingers
         + [x] Tap to click
       + More Gestures
         + [x] Swipe between pages: Swipe with three fingers
-   5. Keyboard
+   4. Keyboard
       + Shortcuts
         + Setup Switch Spaces Hotkeys
-   6. Spotlight
+   5. Spotlight
       + Search Results
         + Disable all but:
           + [x] Applications
@@ -174,18 +175,18 @@ bash $HOME"/.dotfiles/scripts/mojave-config.sh"
           + [x] Music
           + [x] PDF Documents
           + [x] System Preferences
-   7. Users & Groups
+   6. Users & Groups
       + Guest User
         + [ ] Allow guests to log in to this computer
-   8. Safari
+   7. Safari
       + Search > Smart Search Field:
         + [ ] Enable Quick Website Search
         + [ ] Preload Top Hit in the Background
       + Advanced
         + [x] Show Develop menu in menu bar
-     + Websites > Notifications
+      + Websites > Notifications
         + [ ] Allow websites to ask for permission to send push notifications
-   9. iCloud
+   8. iCloud
       + Sign into iCloud
         + Disable all but:
           + [x] Contacts
@@ -228,10 +229,13 @@ TODO: Get these to work programmatically!
 
 + [Adobe Creative Cloud](https://www.adobe.com/creativecloud/desktop-app.html)
 + [Anki](https://apps.ankiweb.net/)
+  + Setup
+  + Icon - `~/Workspace/preferences/misc/icons`
 + [Infovox iVox Voice Manager](http://www.assistiveware.com/product/infovox-ivox)
 + [DeDRM_tools](https://github.com/apprenticeharper/DeDRM_tools/releases/)
 + [Wacom Tablet Driver](https://www.wacom.com/en-us/support/product-support/drivers)
 + [Audacity](http://www.audacityteam.org/)
+  + Icon - `~/Workspace/preferences/misc/icons`
 + [Fusion360](https://www.autodesk.com/products/fusion-360/students-teachers-educators)
 + Adobe Digital Editions from `~/Workspace/preferences/misc/installers`
 

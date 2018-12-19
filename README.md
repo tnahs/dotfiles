@@ -231,10 +231,13 @@ TODO: Get these to work programmatically!
 
 + [Adobe Creative Cloud](https://www.adobe.com/creativecloud/desktop-app.html)
 + [Anki](https://apps.ankiweb.net/)
+  + TODO Setup
+  + TODO Icon - `~/Workspace/preferences/misc/icons`
 + [Infovox iVox Voice Manager](http://www.assistiveware.com/product/infovox-ivox)
 + [DeDRM_tools](https://github.com/apprenticeharper/DeDRM_tools/releases/)
 + [Wacom Tablet Driver](https://www.wacom.com/en-us/support/product-support/drivers)
 + [Audacity](http://www.audacityteam.org/)
+  + TODO Icon - `~/Workspace/preferences/misc/icons`
 + [Fusion360](https://www.autodesk.com/products/fusion-360/students-teachers-educators)
 + Adobe Digital Editions from `~/Workspace/preferences/misc/installers`
 

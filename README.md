@@ -195,9 +195,6 @@ bash $HOME"/.dotfiles/scripts/mojave-config.sh"
           + [x] Keychain
           + [x] Find My Mac
 
-
-TODO: Get these to work programmatically!
-
 <br>
 
 ### F. Restore Workspace
@@ -218,31 +215,54 @@ TODO: Get these to work programmatically!
    1. Make sure [`Settings Sync`](https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync) is installed
    2. `Cmd + Shift + P`
    3. `Sync` > `Sync: Download Settings`
-   4. Enter `Github Personal Access Token` found in `~/Workspace/preferences/private/vscode-settings-sync-token.txt`
-   5. Enter Gist ID: `d35243a837d404d545cb56144030f4ee`
-2. Restore **Apple Books** EPUBs and Database via `~/Workspace/reading/apple-books/README.md`
-3. Register **Moom** with license file in `~/Workspace/preferences/private/`
-4. Setup **Dropbox**
-5. Setup **Google Backup and Sync**
+   4. Enter `Github Personal Access Token` and `Gist ID` found in:
+      + `~/Workspace/preferences/private/vscode-settings-sync-token.txt`
+2. Restore **Apple Books** EPUBs and Database:
+   1. Disable Syncing
+      + Open `Apple Books`
+      + `Books` > `Preferences...` > `General`
+        + [ ] Sync: Sync collections, bookmarks, and highlights across devices
+   2. (Optional) Disable and clear `iCloud Drive`
+      + Open `System Preferences` > `iCloud`
+        + [ ] `iCloud Drive`
+        + Click `Manage...` at the bottom of the page
+        + Select `Books`
+        + Press `Delete Documents and Data`
+      + Any books that were present should disappear from `Apple Books`.
+      + Restart
+   3. Restore
+        + Close `Apple Books`
+        + Navigate to: `~/Library/Containers`
+        + Delete if exists:
+          + `com.apple.BKAgentService`
+          + `com.apple.iBooksX`
+          + `com.apple.iBooksX.CacheDelete`
+        + If there were existing books in the library
+          + Restart
+        + Extract latest archive in `~/Workspace/preferences/apple-books/archives`
+        + Move extracted library folders to `~/Library/Containers`
+            + `com.apple.BKAgentService`
+            + `com.apple.iBooksX`
+        + Restart
+        + All the books and annotations should be restored
+3. TODO: Restore **Anki**
+   + Custom Icon from: `~/Workspace/preferences/misc/icons`
+4. Register **Moom** with license file in `~/Workspace/preferences/private/`
+5. Setup **Dropbox**
+6. Setup **Google Backup and Sync**
 
 <br>
 
 ### H. Manually Install
 
 + [Adobe Creative Cloud](https://www.adobe.com/creativecloud/desktop-app.html)
-+ [Anki](https://apps.ankiweb.net/)
-  + TODO Setup
-  + TODO Icon - `~/Workspace/preferences/misc/icons`
 + [Infovox iVox Voice Manager](http://www.assistiveware.com/product/infovox-ivox)
 + [DeDRM_tools](https://github.com/apprenticeharper/DeDRM_tools/releases/)
+  + After Installation
+    + Run: `chmod +x /Applications/DeDRM.app/Contents/MacOS/*`
+      + via https://github.com/apprenticeharper/DeDRM_tools/issues/505#issuecomment-396103048
 + [Wacom Tablet Driver](https://www.wacom.com/en-us/support/product-support/drivers)
 + [Audacity](http://www.audacityteam.org/)
-  + TODO Icon - `~/Workspace/preferences/misc/icons`
+  + Custom Icon from: `~/Workspace/preferences/misc/icons`
 + [Fusion360](https://www.autodesk.com/products/fusion-360/students-teachers-educators)
 + Adobe Digital Editions from `~/Workspace/preferences/misc/installers`
-
-<br>
-
-### I. Check out
-
-+ https://gif.ski

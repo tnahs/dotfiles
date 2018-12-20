@@ -25,12 +25,12 @@
 ###############################################################################
 
 ###############################################################################
-# Moom: ~/Library/Preferences/com.manytricks.Moom.plist                       # 
-# Photoshop: ~/Library/Preferences/Adobe Photoshop CC 2018 Settings           # 
-# Safari Bookmarks: ~/Library/Safari/Bookmarks.plist                          # 
-# Anki: ~/Library/Application Support/Anki2/                                  # 
-# Apple Books Database: ~/Library/Containers/com.apple.iBooksX/               # 
-# Apple Books EPUBs: ~/Library/Containers/com.apple.BKAgentService/           # 
+# Moom: ~/Library/Preferences/com.manytricks.Moom.plist                       #
+# Photoshop: ~/Library/Preferences/Adobe Photoshop CC 2018 Settings           #
+# Safari Bookmarks: ~/Library/Safari/Bookmarks.plist                          #
+# Anki: ~/Library/Application Support/Anki2/                                  #
+# Apple Books Database: ~/Library/Containers/com.apple.iBooksX/               #
+# Apple Books EPUBs: ~/Library/Containers/com.apple.BKAgentService/           #
 ###############################################################################
 
 ###############################################################################
@@ -77,7 +77,7 @@ function run_backup_anki {
 
 	ANKI_DECK=$HOME"/Library/Application Support/Anki2" # working Anki deck location
 	ANKI_ARCHIVES=$WORKSPACE"/projects/anki/archives" # backup Anki deck & archive location
-	NEW_ANKI_ARCHIVE="ankideck-"$DATE.zip
+	NEW_ANKI_ARCHIVE="anki21deck-"$DATE.zip
 
 	# Run only if Anki is not running.
 	if [[ ! $(pgrep -x "Anki") ]]; then

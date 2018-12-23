@@ -25,6 +25,14 @@ alias editbash="code $HOME/.dotfiles/.bashrc"
 # Open all TODO lists i.e. _[project-name]-todo.md
 alias todo="find $HOME/Workspace/projects -name \_*-todo.* -exec code {} \;"
 
+#
+
+# dotfiles
+alias dotfiles="cd $HOME/.dotfiles; ls -lah;"
+
+# anki
+alias anki="cd $HOME/Workspace/projects/anki-setup; ls -lah;"
+
 # hlts
 alias hlts="cd $HOME/Workspace/projects/hlts/hlts/; pipenv shell;"
 alias hlts_code="code $HOME/Workspace/projects/hlts/"
@@ -36,10 +44,6 @@ alias bsync="cd $HOME/Workspace/projects/hlts-bsync/hlts-bsync/; pipenv shell;"
 alias bsync_code="code $HOME/Workspace/projects/hlts-bsync/hlts-bsync/"
 
 #
-
-# dotfiles
-alias dotfiles="cd $HOME/.dotfiles"
-alias dotfiles_code="dotfiles; code .;"
 
 # Run mojave-backup.sh
 alias backup_preferences="bash $HOME/.dotfiles/scripts/mojave-backup.sh preferences"

@@ -33,6 +33,9 @@ alias dotfiles="cd $HOME/.dotfiles; ls -lah;"
 # anki
 alias anki="cd $HOME/Workspace/projects/anki-setup; ls -lah;"
 
+# jfolio
+alias jfolio="cd $HOME/Workspace/projects/jfolio/jfolio/; pipenv shell;"
+
 # hlts
 alias hlts="cd $HOME/Workspace/projects/hlts/hlts/; pipenv shell;"
 alias hlts_code="code $HOME/Workspace/projects/hlts/"

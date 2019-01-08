@@ -88,14 +88,21 @@ function run_backup_anki {
 			echo "Archiving Anki..."
 
 			# need quotes around "$ANKI_DECK" to escape spaces
-			zip -ryq $ANKI_ARCHIVES/$NEW_ANKI_ARCHIVE "$ANKI_DECK"
+			zip \
+				--recurse-paths \
+				--symlinks \
+				$ANKI_ARCHIVES/$NEW_ANKI_ARCHIVE "$ANKI_DECK"
 			# list by modification time > output anything over 5 > delete them
 			cd $ANKI_ARCHIVES; ls -tp | tail -n +7 | xargs rm -rf
 
 			echo "Backing up Anki..."
 
 			# copy un-archived current Anki deck to Workspace
-			rsync -aqE --delete-after "$ANKI_DECK" $ANKI_ARCHIVES"/current"
+			rsync \
+				--archive \
+				--extended-attributes \
+				--delete-after \
+				"$ANKI_DECK" $ANKI_ARCHIVES"/current"
 
 		else
 
@@ -131,7 +138,10 @@ function run_backup_reading {
 
 			echo "Archiving Apple Books..."
 
-			zip -ryq $APPLEBOOKS_ARCHIVES/$NEW_APPLEBOOKS_ARCHIVE \
+			zip \
+				--recurse-paths \
+				--symlinks \
+				$APPLEBOOKS_ARCHIVES/$NEW_APPLEBOOKS_ARCHIVE \
 				$HOME"/Library/Containers/com.apple.BKAgentService/" \
 				$HOME"/Library/Containers/com.apple.iBooksX/"
 			# list by modification time > output anything over 5 > delete them

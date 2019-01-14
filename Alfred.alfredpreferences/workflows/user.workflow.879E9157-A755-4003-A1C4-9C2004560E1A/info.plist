@@ -94,6 +94,21 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>openwith</key>
+				<string></string>
+				<key>sourcefile</key>
+				<string>~/Downloads</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openfile</string>
+			<key>uid</key>
+			<string>6FED0870-597B-400B-BB9E-B4839689A833</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>action</key>
 				<integer>0</integer>
 				<key>argument</key>
@@ -122,21 +137,6 @@
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>openwith</key>
-				<string></string>
-				<key>sourcefile</key>
-				<string>~/Downloads</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.openfile</string>
-			<key>uid</key>
-			<string>6FED0870-597B-400B-BB9E-B4839689A833</string>
-			<key>version</key>
-			<integer>3</integer>
-		</dict>
 	</array>
 	<key>readme</key>
 	<string></string>
@@ -145,30 +145,30 @@
 		<key>6FED0870-597B-400B-BB9E-B4839689A833</key>
 		<dict>
 			<key>xpos</key>
-			<integer>360</integer>
+			<integer>500</integer>
 			<key>ypos</key>
-			<integer>340</integer>
+			<integer>320</integer>
 		</dict>
 		<key>CA16A787-CB80-479C-AE7D-D08535E18A7F</key>
 		<dict>
 			<key>xpos</key>
-			<integer>210</integer>
+			<integer>350</integer>
 			<key>ypos</key>
-			<integer>210</integer>
+			<integer>190</integer>
 		</dict>
 		<key>CB950839-F5DA-4673-ACE3-6AA605124F9F</key>
 		<dict>
 			<key>xpos</key>
-			<integer>360</integer>
+			<integer>500</integer>
 			<key>ypos</key>
-			<integer>210</integer>
+			<integer>190</integer>
 		</dict>
 		<key>E463FC8B-7FC2-49FC-92A0-E2B5AF7A3B42</key>
 		<dict>
 			<key>xpos</key>
-			<integer>210</integer>
+			<integer>350</integer>
 			<key>ypos</key>
-			<integer>340</integer>
+			<integer>320</integer>
 		</dict>
 	</dict>
 	<key>webaddress</key>

@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string></string>
+	<key>category</key>
+	<string>Tools</string>
+	<key>connections</key>
+	<dict>
+		<key>23739818-9A93-4CB7-9042-B8356E9982B5</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>3237A00D-FFA7-4D0E-AAE8-2647E517CB14</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>3237A00D-FFA7-4D0E-AAE8-2647E517CB14</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>ECE41CA9-AC91-4542-BBE8-C59197ECFD06</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>608D8F87-19FF-4283-9573-BC2483AD438A</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>D72C0DE5-D09B-4152-9105-2562B52A68AE</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>71F4FB9C-9A9B-4035-A36D-C4D66F9EC176</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>3237A00D-FFA7-4D0E-AAE8-2647E517CB14</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>D72C0DE5-D09B-4152-9105-2562B52A68AE</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>ECE41CA9-AC91-4542-BBE8-C59197ECFD06</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>ECE41CA9-AC91-4542-BBE8-C59197ECFD06</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>D21CC823-7589-4C34-B079-0CACEF8C8CDF</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>FB0B0519-81FB-4B49-83BF-A05088013E30</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>D72C0DE5-D09B-4152-9105-2562B52A68AE</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string></string>
+	<key>description</key>
+	<string></string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>OCR Screenshot</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>action</key>
+				<integer>0</integer>
+				<key>argument</key>
+				<integer>3</integer>
+				<key>focusedappvariable</key>
+				<false/>
+				<key>focusedappvariablename</key>
+				<string></string>
+				<key>hotkey</key>
+				<integer>18</integer>
+				<key>hotmod</key>
+				<integer>1179648</integer>
+				<key>hotstring</key>
+				<string>1</string>
+				<key>leftcursor</key>
+				<false/>
+				<key>modsmode</key>
+				<integer>0</integer>
+				<key>relatedAppsMode</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.hotkey</string>
+			<key>uid</key>
+			<string>608D8F87-19FF-4283-9573-BC2483AD438A</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string># Capture screen interatively.
+/usr/sbin/screencapture -i temp-screenshot.png
+
+# Runs OCR on captured bitmap.
+/usr/local/bin/tesseract -l eng temp-screenshot.png temp-ocr &gt; /dev/null 2&gt;&amp;1
+
+# Store OCR text.
+OCR=$(&lt;temp-ocr.txt)
+
+# Remove temp files.
+rm temp-ocr.txt temp-screenshot.png
+
+# Pass OCR text
+echo "$OCR"</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>D72C0DE5-D09B-4152-9105-2562B52A68AE</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>ocren</string>
+				<key>subtext</key>
+				<string></string>
+				<key>text</key>
+				<string>OCR Screenshot to English</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>FB0B0519-81FB-4B49-83BF-A05088013E30</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>autopaste</key>
+				<false/>
+				<key>clipboardtext</key>
+				<string>{query}</string>
+				<key>transient</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.clipboard</string>
+			<key>uid</key>
+			<string>D21CC823-7589-4C34-B079-0CACEF8C8CDF</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>68</integer>
+				<key>script</key>
+				<string>import re
+import sys
+
+ocr_text = sys.argv[1]
+
+ocr_text = re.sub(r"[\t\n\r]", " ", ocr_text)
+ocr_text = re.sub(r"\s{2,}", " ", ocr_text)
+ocr_text = re.sub(r"\s*$", "", ocr_text)
+ocr_text = re.sub(r"^\s*", "", ocr_text)
+
+sys.stdout.write(ocr_text)</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>3</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>ECE41CA9-AC91-4542-BBE8-C59197ECFD06</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string># Capture screen interatively.
+/usr/sbin/screencapture -i temp-screenshot.png
+
+# Runs OCR on captured bitmap.
+/usr/local/bin/tesseract -l fra temp-screenshot.png temp-ocr &gt; /dev/null 2&gt;&amp;1
+
+# Store OCR text.
+OCR=$(&lt;temp-ocr.txt)
+
+# Remove temp files.
+rm temp-ocr.txt temp-screenshot.png
+
+# Pass OCR text
+echo "$OCR" | xargs</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>3237A00D-FFA7-4D0E-AAE8-2647E517CB14</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>action</key>
+				<integer>0</integer>
+				<key>argument</key>
+				<integer>3</integer>
+				<key>focusedappvariable</key>
+				<false/>
+				<key>focusedappvariablename</key>
+				<string></string>
+				<key>hotkey</key>
+				<integer>19</integer>
+				<key>hotmod</key>
+				<integer>1179648</integer>
+				<key>hotstring</key>
+				<string>2</string>
+				<key>leftcursor</key>
+				<false/>
+				<key>modsmode</key>
+				<integer>0</integer>
+				<key>relatedAppsMode</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.hotkey</string>
+			<key>uid</key>
+			<string>71F4FB9C-9A9B-4035-A36D-C4D66F9EC176</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>ocrfr</string>
+				<key>subtext</key>
+				<string></string>
+				<key>text</key>
+				<string>OCR Screenshot to French</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>23739818-9A93-4CB7-9042-B8356E9982B5</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string></string>
+	<key>uidata</key>
+	<dict>
+		<key>23739818-9A93-4CB7-9042-B8356E9982B5</key>
+		<dict>
+			<key>xpos</key>
+			<integer>230</integer>
+			<key>ypos</key>
+			<integer>460</integer>
+		</dict>
+		<key>3237A00D-FFA7-4D0E-AAE8-2647E517CB14</key>
+		<dict>
+			<key>xpos</key>
+			<integer>440</integer>
+			<key>ypos</key>
+			<integer>340</integer>
+		</dict>
+		<key>608D8F87-19FF-4283-9573-BC2483AD438A</key>
+		<dict>
+			<key>xpos</key>
+			<integer>240</integer>
+			<key>ypos</key>
+			<integer>70</integer>
+		</dict>
+		<key>71F4FB9C-9A9B-4035-A36D-C4D66F9EC176</key>
+		<dict>
+			<key>xpos</key>
+			<integer>230</integer>
+			<key>ypos</key>
+			<integer>340</integer>
+		</dict>
+		<key>D21CC823-7589-4C34-B079-0CACEF8C8CDF</key>
+		<dict>
+			<key>xpos</key>
+			<integer>800</integer>
+			<key>ypos</key>
+			<integer>200</integer>
+		</dict>
+		<key>D72C0DE5-D09B-4152-9105-2562B52A68AE</key>
+		<dict>
+			<key>xpos</key>
+			<integer>440</integer>
+			<key>ypos</key>
+			<integer>70</integer>
+		</dict>
+		<key>ECE41CA9-AC91-4542-BBE8-C59197ECFD06</key>
+		<dict>
+			<key>xpos</key>
+			<integer>650</integer>
+			<key>ypos</key>
+			<integer>200</integer>
+		</dict>
+		<key>FB0B0519-81FB-4B49-83BF-A05088013E30</key>
+		<dict>
+			<key>xpos</key>
+			<integer>230</integer>
+			<key>ypos</key>
+			<integer>190</integer>
+		</dict>
+	</dict>
+	<key>webaddress</key>
+	<string></string>
+</dict>
+</plist>

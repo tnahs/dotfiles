@@ -113,37 +113,6 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>action</key>
-				<integer>0</integer>
-				<key>argument</key>
-				<integer>3</integer>
-				<key>focusedappvariable</key>
-				<false/>
-				<key>focusedappvariablename</key>
-				<string></string>
-				<key>hotkey</key>
-				<integer>18</integer>
-				<key>hotmod</key>
-				<integer>1179648</integer>
-				<key>hotstring</key>
-				<string>1</string>
-				<key>leftcursor</key>
-				<false/>
-				<key>modsmode</key>
-				<integer>0</integer>
-				<key>relatedAppsMode</key>
-				<integer>0</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.trigger.hotkey</string>
-			<key>uid</key>
-			<string>608D8F87-19FF-4283-9573-BC2483AD438A</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>concurrently</key>
 				<false/>
 				<key>escaping</key>
@@ -174,6 +143,37 @@ echo "$OCR"</string>
 			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
 			<string>D72C0DE5-D09B-4152-9105-2562B52A68AE</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>action</key>
+				<integer>0</integer>
+				<key>argument</key>
+				<integer>3</integer>
+				<key>focusedappvariable</key>
+				<false/>
+				<key>focusedappvariablename</key>
+				<string></string>
+				<key>hotkey</key>
+				<integer>18</integer>
+				<key>hotmod</key>
+				<integer>1179648</integer>
+				<key>hotstring</key>
+				<string>1</string>
+				<key>leftcursor</key>
+				<false/>
+				<key>modsmode</key>
+				<integer>0</integer>
+				<key>relatedAppsMode</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.hotkey</string>
+			<key>uid</key>
+			<string>608D8F87-19FF-4283-9573-BC2483AD438A</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
@@ -228,10 +228,8 @@ import sys
 
 ocr_text = sys.argv[1]
 
-ocr_text = re.sub(r"[\t\n\r]", " ", ocr_text)
-ocr_text = re.sub(r"\s{2,}", " ", ocr_text)
-ocr_text = re.sub(r"\s*$", "", ocr_text)
-ocr_text = re.sub(r"^\s*", "", ocr_text)
+# Normalize whitespace.
+ocr_text = " ".join(ocr_text.split())
 
 sys.stdout.write(ocr_text)</string>
 				<key>scriptargtype</key>

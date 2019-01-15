@@ -25,7 +25,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>ECE41CA9-AC91-4542-BBE8-C59197ECFD06</string>
+				<string>E2CD2E9F-675E-4A58-9F2C-25F0765C3ECB</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -64,7 +64,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>ECE41CA9-AC91-4542-BBE8-C59197ECFD06</string>
+				<string>E2CD2E9F-675E-4A58-9F2C-25F0765C3ECB</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -73,7 +73,7 @@
 				<false/>
 			</dict>
 		</array>
-		<key>ECE41CA9-AC91-4542-BBE8-C59197ECFD06</key>
+		<key>E2CD2E9F-675E-4A58-9F2C-25F0765C3ECB</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
@@ -223,15 +223,20 @@ echo "$OCR"</string>
 				<key>escaping</key>
 				<integer>68</integer>
 				<key>script</key>
-				<string>import re
+				<string># -*- coding: utf-8 -*-
+
+import re
 import sys
 
-ocr_text = sys.argv[1]
+query = sys.argv[1]
 
 # Normalize whitespace.
-ocr_text = " ".join(ocr_text.split())
+query = " ".join(query.split())
 
-sys.stdout.write(ocr_text)</string>
+# Clean characters.
+query = re.sub("‘", "'", query)
+
+sys.stdout.write(query)</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -242,7 +247,7 @@ sys.stdout.write(ocr_text)</string>
 			<key>type</key>
 			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
-			<string>ECE41CA9-AC91-4542-BBE8-C59197ECFD06</string>
+			<string>E2CD2E9F-675E-4A58-9F2C-25F0765C3ECB</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
@@ -258,7 +263,7 @@ sys.stdout.write(ocr_text)</string>
 /usr/sbin/screencapture -i temp-screenshot.png
 
 # Runs OCR on captured bitmap.
-/usr/local/bin/tesseract -l fra temp-screenshot.png temp-ocr &gt; /dev/null 2&gt;&amp;1
+/usr/local/bin/tesseract -l fra+eng temp-screenshot.png temp-ocr &gt; /dev/null 2&gt;&amp;1
 
 # Store OCR text.
 OCR=$(&lt;temp-ocr.txt)
@@ -267,7 +272,7 @@ OCR=$(&lt;temp-ocr.txt)
 rm temp-ocr.txt temp-screenshot.png
 
 # Pass OCR text
-echo "$OCR" | xargs</string>
+echo "$OCR"</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -294,11 +299,11 @@ echo "$OCR" | xargs</string>
 				<key>focusedappvariablename</key>
 				<string></string>
 				<key>hotkey</key>
-				<integer>19</integer>
+				<integer>50</integer>
 				<key>hotmod</key>
-				<integer>1179648</integer>
+				<integer>1048576</integer>
 				<key>hotstring</key>
-				<string>2</string>
+				<string>`</string>
 				<key>leftcursor</key>
 				<false/>
 				<key>modsmode</key>
@@ -356,7 +361,7 @@ echo "$OCR" | xargs</string>
 		<key>608D8F87-19FF-4283-9573-BC2483AD438A</key>
 		<dict>
 			<key>xpos</key>
-			<integer>240</integer>
+			<integer>230</integer>
 			<key>ypos</key>
 			<integer>70</integer>
 		</dict>
@@ -370,9 +375,9 @@ echo "$OCR" | xargs</string>
 		<key>D21CC823-7589-4C34-B079-0CACEF8C8CDF</key>
 		<dict>
 			<key>xpos</key>
-			<integer>800</integer>
+			<integer>770</integer>
 			<key>ypos</key>
-			<integer>200</integer>
+			<integer>210</integer>
 		</dict>
 		<key>D72C0DE5-D09B-4152-9105-2562B52A68AE</key>
 		<dict>
@@ -381,12 +386,12 @@ echo "$OCR" | xargs</string>
 			<key>ypos</key>
 			<integer>70</integer>
 		</dict>
-		<key>ECE41CA9-AC91-4542-BBE8-C59197ECFD06</key>
+		<key>E2CD2E9F-675E-4A58-9F2C-25F0765C3ECB</key>
 		<dict>
 			<key>xpos</key>
-			<integer>650</integer>
+			<integer>630</integer>
 			<key>ypos</key>
-			<integer>200</integer>
+			<integer>210</integer>
 		</dict>
 		<key>FB0B0519-81FB-4B49-83BF-A05088013E30</key>
 		<dict>

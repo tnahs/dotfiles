@@ -51,7 +51,7 @@ alias bsync_code="code $HOME/Workspace/projects/hlts-bsync/hlts-bsync/"
 # Run mojave-backup.sh
 alias backup_preferences="bash $HOME/.dotfiles/scripts/mojave-backup.sh preferences"
 alias backup_dotfiles="bash $HOME/.dotfiles/scripts/mojave-backup.sh dotfiles"
-alias backup_reading="bash $HOME/.dotfiles/scripts/mojave-backup.sh reading"
+alias backup_books="bash $HOME/.dotfiles/scripts/mojave-backup.sh books"
 alias backup_anki="bash $HOME/.dotfiles/scripts/mojave-backup.sh anki"
 alias backup_all="bash $HOME/.dotfiles/scripts/mojave-backup.sh all"
 

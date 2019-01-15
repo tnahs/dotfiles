@@ -1,18 +1,9 @@
-#!/bin/sh
-
+#!/usr/bin/env bash
 
 ###############################################################################
 # For macOS Mojave version 10.14.1 (18B75)                                    #
 ###############################################################################
 
-
-###############################################################################
-# rsync                                                                       #
-#  -v, --verbose              Increase verbosity 							  #
-#  -q, --quiet                Quiet mode 									  #
-#  -a, --archive              Archive mode 									  #
-#  -E, --extended-attributes  Copy extended attributes (xattr) 				  #
-#  --delete-after             Receiver deletes after transfer, not before     #
 ###############################################################################
 # zip                                                                         #
 #  -r, --recurse-paths        Travel the directory structure recursively      #
@@ -41,6 +32,35 @@
 DATE=`date +%Y-%m-%d`
 DOTFILES=$HOME"/.dotfiles"
 WORKSPACE=$HOME"/Workspace"
+ARCHIVES=$HOME"/Workspace/archives"
+
+
+function trim_folder_contents {
+
+	# Run only if rmtrash is installed.
+	if [ -x "$(command -v rmtrash)" ]; then
+
+		FOLDER=$1
+		LIMIT=$2
+
+		echo "Trimming: $FOLDER to $LIMIT files..."
+
+		cd $FOLDER
+
+		# Adding 1 to the Limit and prepending a "+"
+		TAIL_LIMIT="+$(($LIMIT+1))"
+
+		# List by modification time | output items over TAIL_LIMIT | delete them.
+		ls -tp  | tail -n $TAIL_LIMIT | xargs rmtrash
+	else
+
+		echo ""
+		echo "### WARNING:"
+		echo "### rmtrash not installed!"
+		echo "### Files in $FOLDER will not be trimmed!"
+		echo ""
+	fi
+}
 
 
 function run_backup_dotfiles {
@@ -75,34 +95,31 @@ function run_backup_preferences {
 
 function run_backup_anki {
 
-	ANKI_DECK=$HOME"/Library/Application Support/Anki2" # working Anki deck location
-	ANKI_ARCHIVES=$WORKSPACE"/projects/anki/archives" # backup Anki deck & archive location
-	NEW_ANKI_ARCHIVE="anki21deck-"$DATE.zip
+	ANKI_DECK=$HOME"/Library/Application Support/Anki2"
+	ANKI_ARCHIVES=$ARCHIVES"/anki"
+	NEW_ANKI_ARCHIVE="anki21deck-$DATE.zip"
+
+	function archive_anki {
+
+		echo "Archiving Anki 2.1..."
+
+		# Need quotes around "$ANKI_DECK" to escape spaces
+		zip \
+			--recurse-paths \
+			--symlinks \
+			--quiet \
+			$ANKI_ARCHIVES/$NEW_ANKI_ARCHIVE "$ANKI_DECK"
+	}
 
 	# Run only if Anki is not running.
 	if [[ ! $(pgrep -x "Anki") ]]; then
 
-		# Run only if Anki archive directory exists.
+		# And only if Anki archive directory exists.
 		if [ -d $ANKI_ARCHIVES ]; then
 
-			echo "Archiving Anki..."
+			archive_anki
 
-			# need quotes around "$ANKI_DECK" to escape spaces
-			zip \
-				--recurse-paths \
-				--symlinks \
-				$ANKI_ARCHIVES/$NEW_ANKI_ARCHIVE "$ANKI_DECK"
-			# list by modification time > output anything over 5 > delete them
-			cd $ANKI_ARCHIVES; ls -tp | tail -n +7 | xargs rm -rf
-
-			echo "Backing up Anki..."
-
-			# copy un-archived current Anki deck to Workspace
-			rsync \
-				--archive \
-				--extended-attributes \
-				--delete-after \
-				"$ANKI_DECK" $ANKI_ARCHIVES"/current"
+			trim_folder_contents $ANKI_ARCHIVES 5
 
 		else
 
@@ -111,7 +128,6 @@ function run_backup_anki {
 			echo "### Anki backup directory doesn't exist!"
 			echo "### Skipping Anki!"
 			echo ""
-
 		fi
 
 	else
@@ -121,40 +137,45 @@ function run_backup_anki {
 		echo "### Anki is running!"
 		echo "### Skipping Anki!"
 		echo ""
-
 	fi
 }
 
 
-function run_backup_reading {
+function run_backup_books {
 
-	APPLEBOOKS_ARCHIVES=$WORKSPACE"/reading/apple-books/archives"
-	NEW_APPLEBOOKS_ARCHIVE="apple-books-"$DATE.zip
+	BOOKS_ARCHIVES=$ARCHIVES"/apple-books"
+	NEW_BOOKS_ARCHIVE="apple-books-$DATE.zip"
+
+	function archive_books {
+
+		echo "Archiving Apple Books..."
+
+		zip \
+			--recurse-paths \
+			--symlinks \
+			--quiet \
+			$BOOKS_ARCHIVES/$NEW_BOOKS_ARCHIVE \
+			$HOME"/Library/Containers/com.apple.BKAgentService/" \
+			$HOME"/Library/Containers/com.apple.iBooksX/"
+	}
 
 	# Run only if Apple Books is not running.
 	if [[ ! $(pgrep -x "Books") ]]; then
 
-		if [ -d $APPLEBOOKS_ARCHIVES ]; then
+		# And only if Apple Books archive directory exists.
+		if [ -d $BOOKS_ARCHIVES ]; then
 
-			echo "Archiving Apple Books..."
+			archive_books
 
-			zip \
-				--recurse-paths \
-				--symlinks \
-				$APPLEBOOKS_ARCHIVES/$NEW_APPLEBOOKS_ARCHIVE \
-				$HOME"/Library/Containers/com.apple.BKAgentService/" \
-				$HOME"/Library/Containers/com.apple.iBooksX/"
-			# list by modification time > output anything over 5 > delete them
-			cd $APPLEBOOKS_ARCHIVES; ls -tp  | tail -n +6 | xargs rm -rf
+			trim_folder_contents $BOOKS_ARCHIVES 5
 
 		else
 
 			echo ""
 			echo "### ERROR:"
-			echo "### Apple Books backup directory doesn't exist!"
+			echo "### Apple Books archive directory doesn't exist!"
 			echo "### Skipping Apple Books!"
 			echo ""
-
 		fi
 
 	else
@@ -164,32 +185,37 @@ function run_backup_reading {
 		echo "### Apple Books is running!"
 		echo "### Skipping Apple Books!"
 		echo ""
-
 	fi
 }
 
 
-if [ -d $WORKSPACE ] && [ -d $DOTFILES ]; then
+if [ -d $DOTFILES ] && [ -d $WORKSPACE ] && [ -d $ARCHIVES ]; then
 
 	if [ "$1" = "all" ]; then
+
 		run_backup_preferences
 		run_backup_dotfiles
-		run_backup_reading
+		run_backup_books
 		run_backup_anki
-
-	elif [ "$1" = "preferences" ]; then
-		run_backup_preferences
-
-	elif [ "$1" = "dotfiles" ]; then
-		run_backup_dotfiles
-
-	elif [ "$1" = "reading" ]; then
-		run_backup_reading
 
 	elif [ "$1" = "anki" ]; then
+
 		run_backup_anki
 
+	elif [ "$1" = "books" ]; then
+
+		run_backup_books
+
+	elif [ "$1" = "dotfiles" ]; then
+
+		run_backup_dotfiles
+
+	elif [ "$1" = "preferences" ]; then
+
+		run_backup_preferences
+
 	else
+
 		echo ""
 		echo "### ERROR:"
 		echo "### PLEASE SUPPLY THE PROPER ARGUMENT!"
@@ -202,7 +228,7 @@ else
 
 	echo ""
 	echo "### ERROR:"
-	echo "### $WORKSPACE OR $DOTFILES DOES NOT EXIST!"
+	echo "### $DOTFILES OR $WORKSPACE OR $ARCHIVES DOES NOT EXIST!"
 	echo "### EXITING!"
 	echo ""
 	exit

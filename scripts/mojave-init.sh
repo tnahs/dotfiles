@@ -29,10 +29,21 @@ cd && brew bundle
 
 
 ###############################################################################
+# Atom                                                                        #
+###############################################################################
+
+# Create symlink to .atom config folder
+#   via. ~/.dotfiles/.atom
+ln -s $HOME"/.dotfiles/.atom" $HOME"/.atom"
+
+
+###############################################################################
 # Fonts                                                                       #
 ###############################################################################
 
 # Install fonts
+# TODO: Improve this so we install first .otf then if not available install
+# the .ttf. Doing this to preserve all versions of the current font...
 #   via. ~/.dotfiles/fonts/
 find $HOME"/.dotfiles/fonts" \
     \( -name "*.ttf" -or -name "*.otf" \) \

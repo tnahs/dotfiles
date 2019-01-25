@@ -29,6 +29,13 @@
 ###############################################################################
 
 
+###############################################################################
+# TODO: Double square brackets is a bash extension to [ ]. It doesn't require
+# variables to be quoted, not even if they contain spaces.  Also worth trying:
+# -e to test if a path exists without testing what type of file it is.
+###############################################################################
+
+
 DATE=`date +%Y-%m-%d`
 DOTFILES=$HOME"/.dotfiles"
 WORKSPACE=$HOME"/Workspace"
@@ -55,7 +62,7 @@ function trim_folder_contents {
 	else
 
 		echo ""
-		echo "### WARNING:"
+		echo "### Warning:"
 		echo "### rmtrash not installed!"
 		echo "### Files in $FOLDER will not be trimmed!"
 		echo ""
@@ -124,7 +131,7 @@ function run_backup_anki {
 		else
 
 			echo ""
-			echo "### WARNING:"
+			echo "### Warning:"
 			echo "### Anki backup directory doesn't exist!"
 			echo "### Skipping Anki!"
 			echo ""
@@ -133,7 +140,7 @@ function run_backup_anki {
 	else
 
 		echo ""
-		echo "### WARNING:"
+		echo "### Warning:"
 		echo "### Anki is running!"
 		echo "### Skipping Anki!"
 		echo ""
@@ -181,7 +188,7 @@ function run_backup_books {
 	else
 
 		echo ""
-		echo "### WARNING:"
+		echo "### Warning:"
 		echo "### Apple Books is running!"
 		echo "### Skipping Apple Books!"
 		echo ""

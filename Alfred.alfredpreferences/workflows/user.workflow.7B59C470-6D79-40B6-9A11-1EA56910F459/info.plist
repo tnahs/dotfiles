@@ -12,7 +12,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>3237A00D-FFA7-4D0E-AAE8-2647E517CB14</string>
+				<string>F41FE2FB-3172-459C-8CD7-2B406532934E</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -21,11 +21,11 @@
 				<false/>
 			</dict>
 		</array>
-		<key>3237A00D-FFA7-4D0E-AAE8-2647E517CB14</key>
+		<key>4370299F-B452-4897-875D-DF9B03E4718C</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>E2CD2E9F-675E-4A58-9F2C-25F0765C3ECB</string>
+				<string>9D034232-8AB2-42C6-BD38-1DF767A36C8B</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -38,7 +38,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>D72C0DE5-D09B-4152-9105-2562B52A68AE</string>
+				<string>4370299F-B452-4897-875D-DF9B03E4718C</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -51,7 +51,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>3237A00D-FFA7-4D0E-AAE8-2647E517CB14</string>
+				<string>F41FE2FB-3172-459C-8CD7-2B406532934E</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -60,7 +60,46 @@
 				<false/>
 			</dict>
 		</array>
-		<key>D72C0DE5-D09B-4152-9105-2562B52A68AE</key>
+		<key>72C0A93B-CDD7-4137-BB71-B47C4352851E</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>820A9184-4960-489C-ADA7-4B263C87786A</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>820A9184-4960-489C-ADA7-4B263C87786A</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>9D034232-8AB2-42C6-BD38-1DF767A36C8B</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>9BA81736-1357-40EB-B46E-B41FC69844EB</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>820A9184-4960-489C-ADA7-4B263C87786A</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>9D034232-8AB2-42C6-BD38-1DF767A36C8B</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
@@ -86,11 +125,24 @@
 				<false/>
 			</dict>
 		</array>
+		<key>F41FE2FB-3172-459C-8CD7-2B406532934E</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>9D034232-8AB2-42C6-BD38-1DF767A36C8B</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>FB0B0519-81FB-4B49-83BF-A05088013E30</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>D72C0DE5-D09B-4152-9105-2562B52A68AE</string>
+				<string>4370299F-B452-4897-875D-DF9B03E4718C</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -113,56 +165,20 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>script</key>
-				<string># Capture screen interatively.
-/usr/sbin/screencapture -i temp-screenshot.png
-
-# Runs OCR on captured bitmap.
-/usr/local/bin/tesseract -l eng temp-screenshot.png temp-ocr &gt; /dev/null 2&gt;&amp;1
-
-# Store OCR text.
-OCR=$(&lt;temp-ocr.txt)
-
-# Remove temp files.
-rm temp-ocr.txt temp-screenshot.png
-
-# Pass OCR text
-echo "$OCR"</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>0</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>D72C0DE5-D09B-4152-9105-2562B52A68AE</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>action</key>
 				<integer>0</integer>
 				<key>argument</key>
-				<integer>3</integer>
+				<integer>0</integer>
 				<key>focusedappvariable</key>
 				<false/>
 				<key>focusedappvariablename</key>
 				<string></string>
 				<key>hotkey</key>
-				<integer>18</integer>
+				<integer>14</integer>
 				<key>hotmod</key>
-				<integer>1179648</integer>
+				<integer>1835008</integer>
 				<key>hotstring</key>
-				<string>1</string>
+				<string>E</string>
 				<key>leftcursor</key>
 				<false/>
 				<key>modsmode</key>
@@ -176,6 +192,24 @@ echo "$OCR"</string>
 			<string>608D8F87-19FF-4283-9573-BC2483AD438A</string>
 			<key>version</key>
 			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string>{query}</string>
+				<key>variables</key>
+				<dict>
+					<key>language</key>
+					<string>eng</string>
+				</dict>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.argument</string>
+			<key>uid</key>
+			<string>4370299F-B452-4897-875D-DF9B03E4718C</string>
+			<key>version</key>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -201,17 +235,67 @@ echo "$OCR"</string>
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>autopaste</key>
+				<key>action</key>
+				<integer>0</integer>
+				<key>argument</key>
+				<integer>0</integer>
+				<key>focusedappvariable</key>
 				<false/>
-				<key>clipboardtext</key>
-				<string>{query}</string>
-				<key>transient</key>
+				<key>focusedappvariablename</key>
+				<string></string>
+				<key>hotkey</key>
+				<integer>3</integer>
+				<key>hotmod</key>
+				<integer>1835008</integer>
+				<key>hotstring</key>
+				<string>F</string>
+				<key>leftcursor</key>
 				<false/>
+				<key>modsmode</key>
+				<integer>0</integer>
+				<key>relatedAppsMode</key>
+				<integer>0</integer>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.output.clipboard</string>
+			<string>alfred.workflow.trigger.hotkey</string>
 			<key>uid</key>
-			<string>D21CC823-7589-4C34-B079-0CACEF8C8CDF</string>
+			<string>71F4FB9C-9A9B-4035-A36D-C4D66F9EC176</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string># Capture screen interatively.
+/usr/sbin/screencapture -i temp-screenshot.png
+
+# Runs OCR on captured bitmap.
+/usr/local/bin/tesseract -l ${language} temp-screenshot.png temp-ocr &gt; /dev/null 2&gt;&amp;1
+
+# Store OCR text.
+OCR=$(&lt;temp-ocr.txt)
+
+# Remove temp files.
+rm temp-ocr.txt temp-screenshot.png
+
+# Pass OCR text
+echo "$OCR"</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>9D034232-8AB2-42C6-BD38-1DF767A36C8B</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
@@ -254,69 +338,37 @@ sys.stdout.write(query)</string>
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>concurrently</key>
+				<key>autopaste</key>
 				<false/>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>script</key>
-				<string># Capture screen interatively.
-/usr/sbin/screencapture -i temp-screenshot.png
-
-# Runs OCR on captured bitmap.
-/usr/local/bin/tesseract -l fra+eng temp-screenshot.png temp-ocr &gt; /dev/null 2&gt;&amp;1
-
-# Store OCR text.
-OCR=$(&lt;temp-ocr.txt)
-
-# Remove temp files.
-rm temp-ocr.txt temp-screenshot.png
-
-# Pass OCR text
-echo "$OCR"</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>0</integer>
+				<key>clipboardtext</key>
+				<string>{query}</string>
+				<key>transient</key>
+				<false/>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.action.script</string>
+			<string>alfred.workflow.output.clipboard</string>
 			<key>uid</key>
-			<string>3237A00D-FFA7-4D0E-AAE8-2647E517CB14</string>
+			<string>D21CC823-7589-4C34-B079-0CACEF8C8CDF</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>action</key>
-				<integer>0</integer>
 				<key>argument</key>
-				<integer>3</integer>
-				<key>focusedappvariable</key>
-				<false/>
-				<key>focusedappvariablename</key>
-				<string></string>
-				<key>hotkey</key>
-				<integer>50</integer>
-				<key>hotmod</key>
-				<integer>1048576</integer>
-				<key>hotstring</key>
-				<string>`</string>
-				<key>leftcursor</key>
-				<false/>
-				<key>modsmode</key>
-				<integer>0</integer>
-				<key>relatedAppsMode</key>
-				<integer>0</integer>
+				<string>{query}</string>
+				<key>variables</key>
+				<dict>
+					<key>language</key>
+					<string>fra+eng</string>
+				</dict>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.trigger.hotkey</string>
+			<string>alfred.workflow.utility.argument</string>
 			<key>uid</key>
-			<string>71F4FB9C-9A9B-4035-A36D-C4D66F9EC176</string>
+			<string>F41FE2FB-3172-459C-8CD7-2B406532934E</string>
 			<key>version</key>
-			<integer>2</integer>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -339,6 +391,76 @@ echo "$OCR"</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>action</key>
+				<integer>0</integer>
+				<key>argument</key>
+				<integer>0</integer>
+				<key>focusedappvariable</key>
+				<false/>
+				<key>focusedappvariablename</key>
+				<string></string>
+				<key>hotkey</key>
+				<integer>38</integer>
+				<key>hotmod</key>
+				<integer>1835008</integer>
+				<key>hotstring</key>
+				<string>J</string>
+				<key>leftcursor</key>
+				<false/>
+				<key>modsmode</key>
+				<integer>0</integer>
+				<key>relatedAppsMode</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.hotkey</string>
+			<key>uid</key>
+			<string>9BA81736-1357-40EB-B46E-B41FC69844EB</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string>{query}</string>
+				<key>variables</key>
+				<dict>
+					<key>language</key>
+					<string>jpn</string>
+				</dict>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.argument</string>
+			<key>uid</key>
+			<string>820A9184-4960-489C-ADA7-4B263C87786A</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>ocrjp</string>
+				<key>subtext</key>
+				<string></string>
+				<key>text</key>
+				<string>OCR Screenshot to Japanese</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>72C0A93B-CDD7-4137-BB71-B47C4352851E</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
 	</array>
 	<key>readme</key>
 	<string></string>
@@ -351,12 +473,12 @@ echo "$OCR"</string>
 			<key>ypos</key>
 			<integer>460</integer>
 		</dict>
-		<key>3237A00D-FFA7-4D0E-AAE8-2647E517CB14</key>
+		<key>4370299F-B452-4897-875D-DF9B03E4718C</key>
 		<dict>
 			<key>xpos</key>
-			<integer>440</integer>
+			<integer>420</integer>
 			<key>ypos</key>
-			<integer>340</integer>
+			<integer>150</integer>
 		</dict>
 		<key>608D8F87-19FF-4283-9573-BC2483AD438A</key>
 		<dict>
@@ -372,26 +494,54 @@ echo "$OCR"</string>
 			<key>ypos</key>
 			<integer>340</integer>
 		</dict>
+		<key>72C0A93B-CDD7-4137-BB71-B47C4352851E</key>
+		<dict>
+			<key>xpos</key>
+			<integer>230</integer>
+			<key>ypos</key>
+			<integer>720</integer>
+		</dict>
+		<key>820A9184-4960-489C-ADA7-4B263C87786A</key>
+		<dict>
+			<key>xpos</key>
+			<integer>420</integer>
+			<key>ypos</key>
+			<integer>690</integer>
+		</dict>
+		<key>9BA81736-1357-40EB-B46E-B41FC69844EB</key>
+		<dict>
+			<key>xpos</key>
+			<integer>230</integer>
+			<key>ypos</key>
+			<integer>600</integer>
+		</dict>
+		<key>9D034232-8AB2-42C6-BD38-1DF767A36C8B</key>
+		<dict>
+			<key>xpos</key>
+			<integer>560</integer>
+			<key>ypos</key>
+			<integer>400</integer>
+		</dict>
 		<key>D21CC823-7589-4C34-B079-0CACEF8C8CDF</key>
 		<dict>
 			<key>xpos</key>
-			<integer>770</integer>
+			<integer>860</integer>
 			<key>ypos</key>
-			<integer>210</integer>
-		</dict>
-		<key>D72C0DE5-D09B-4152-9105-2562B52A68AE</key>
-		<dict>
-			<key>xpos</key>
-			<integer>440</integer>
-			<key>ypos</key>
-			<integer>70</integer>
+			<integer>400</integer>
 		</dict>
 		<key>E2CD2E9F-675E-4A58-9F2C-25F0765C3ECB</key>
 		<dict>
 			<key>xpos</key>
-			<integer>630</integer>
+			<integer>710</integer>
 			<key>ypos</key>
-			<integer>210</integer>
+			<integer>400</integer>
+		</dict>
+		<key>F41FE2FB-3172-459C-8CD7-2B406532934E</key>
+		<dict>
+			<key>xpos</key>
+			<integer>420</integer>
+			<key>ypos</key>
+			<integer>430</integer>
 		</dict>
 		<key>FB0B0519-81FB-4B49-83BF-A05088013E30</key>
 		<dict>

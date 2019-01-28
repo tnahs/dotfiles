@@ -8,6 +8,19 @@
 	<string>Tools</string>
 	<key>connections</key>
 	<dict>
+		<key>08E1B1E4-92AE-49C8-A30E-93F7B2A7A415</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>85291720-CA90-44D4-91B2-55375C18D203</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>23739818-9A93-4CB7-9042-B8356E9982B5</key>
 		<array>
 			<dict>
@@ -77,7 +90,20 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>9D034232-8AB2-42C6-BD38-1DF767A36C8B</string>
+				<string>08E1B1E4-92AE-49C8-A30E-93F7B2A7A415</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>85291720-CA90-44D4-91B2-55375C18D203</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>D21CC823-7589-4C34-B079-0CACEF8C8CDF</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -315,12 +341,16 @@ import sys
 query = sys.argv[1]
 
 # Normalize whitespace.
-query = " ".join(query.split())
+# query = " ".join(query.split())
 
 # Clean characters.
 query = re.sub("‘", "'", query)
 
-sys.stdout.write(query)</string>
+# Remove extra linebreaks.
+query = re.sub("\n{2,}", "\n", query)
+query = re.sub("\n+$", "", query)
+
+print(query)</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -332,23 +362,6 @@ sys.stdout.write(query)</string>
 			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
 			<string>E2CD2E9F-675E-4A58-9F2C-25F0765C3ECB</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>autopaste</key>
-				<false/>
-				<key>clipboardtext</key>
-				<string>{query}</string>
-				<key>transient</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.clipboard</string>
-			<key>uid</key>
-			<string>D21CC823-7589-4C34-B079-0CACEF8C8CDF</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
@@ -390,6 +403,96 @@ sys.stdout.write(query)</string>
 			<string>23739818-9A93-4CB7-9042-B8356E9982B5</string>
 			<key>version</key>
 			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>autopaste</key>
+				<false/>
+				<key>clipboardtext</key>
+				<string>{query}</string>
+				<key>transient</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.clipboard</string>
+			<key>uid</key>
+			<string>D21CC823-7589-4C34-B079-0CACEF8C8CDF</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string># Capture screen interatively.
+/usr/sbin/screencapture -i temp-screenshot.png
+
+# Runs OCR on captured bitmap.
+/usr/local/bin/tesseract -l ${language} temp-screenshot.png temp-ocr &gt; /dev/null 2&gt;&amp;1
+
+# Store OCR text.
+OCR=$(&lt;temp-ocr.txt)
+
+# Remove temp files.
+rm temp-ocr.txt temp-screenshot.png
+
+# Pass OCR text
+echo "$OCR"</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>08E1B1E4-92AE-49C8-A30E-93F7B2A7A415</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>68</integer>
+				<key>script</key>
+				<string># -*- coding: utf-8 -*-
+
+import re
+import sys
+
+query = sys.argv[1]
+
+# Remove spaces.
+query = re.sub(" ", "", query)
+
+# Remove extra linebreaks.
+query = re.sub("\n{2,}", "\n", query)
+query = re.sub("\n+$", "", query)
+
+print(query)</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>3</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>85291720-CA90-44D4-91B2-55375C18D203</string>
+			<key>version</key>
+			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -466,6 +569,13 @@ sys.stdout.write(query)</string>
 	<string></string>
 	<key>uidata</key>
 	<dict>
+		<key>08E1B1E4-92AE-49C8-A30E-93F7B2A7A415</key>
+		<dict>
+			<key>xpos</key>
+			<integer>560</integer>
+			<key>ypos</key>
+			<integer>580</integer>
+		</dict>
 		<key>23739818-9A93-4CB7-9042-B8356E9982B5</key>
 		<dict>
 			<key>xpos</key>
@@ -478,14 +588,14 @@ sys.stdout.write(query)</string>
 			<key>xpos</key>
 			<integer>420</integer>
 			<key>ypos</key>
-			<integer>150</integer>
+			<integer>160</integer>
 		</dict>
 		<key>608D8F87-19FF-4283-9573-BC2483AD438A</key>
 		<dict>
 			<key>xpos</key>
 			<integer>230</integer>
 			<key>ypos</key>
-			<integer>70</integer>
+			<integer>80</integer>
 		</dict>
 		<key>71F4FB9C-9A9B-4035-A36D-C4D66F9EC176</key>
 		<dict>
@@ -508,6 +618,13 @@ sys.stdout.write(query)</string>
 			<key>ypos</key>
 			<integer>690</integer>
 		</dict>
+		<key>85291720-CA90-44D4-91B2-55375C18D203</key>
+		<dict>
+			<key>xpos</key>
+			<integer>710</integer>
+			<key>ypos</key>
+			<integer>580</integer>
+		</dict>
 		<key>9BA81736-1357-40EB-B46E-B41FC69844EB</key>
 		<dict>
 			<key>xpos</key>
@@ -525,9 +642,9 @@ sys.stdout.write(query)</string>
 		<key>D21CC823-7589-4C34-B079-0CACEF8C8CDF</key>
 		<dict>
 			<key>xpos</key>
-			<integer>860</integer>
+			<integer>930</integer>
 			<key>ypos</key>
-			<integer>400</integer>
+			<integer>490</integer>
 		</dict>
 		<key>E2CD2E9F-675E-4A58-9F2C-25F0765C3ECB</key>
 		<dict>
@@ -548,7 +665,7 @@ sys.stdout.write(query)</string>
 			<key>xpos</key>
 			<integer>230</integer>
 			<key>ypos</key>
-			<integer>190</integer>
+			<integer>200</integer>
 		</dict>
 	</dict>
 	<key>webaddress</key>

@@ -1,11 +1,14 @@
 "*":
   core:
     allowPendingPaneItems: false
+    disabledPackages: [
+      "typewriter"
+    ]
     restorePreviousWindowsOnStart: "no"
     telemetryConsent: "limited"
     themes: [
       "one-light-ui"
-      "solarized-light-syntax"
+      "pen-paper-coffee-syntax"
     ]
     titleBar: "custom-inset"
   editor:
@@ -40,6 +43,8 @@
     textOpacity: 0.2
   "project-manager":
     prettifyTitle: false
+  "toggle-gutter":
+    showGutters: false
   typewriter:
     enabledForAllScopes: true
   welcome:

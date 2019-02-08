@@ -1,0 +1,51 @@
+{
+  "_from": "https://www.atom.io/api/packages/toggle-gutter/versions/0.3.4/tarball",
+  "_id": "toggle-gutter@0.3.4",
+  "_inBundle": false,
+  "_integrity": "sha512-J1FndfHsmDrqkCelMWaUVzuX6KwkTnG3VH8p9ZEdSSedPLZtbRL2uMPhwehtzd/cmLG6n4tH/wFBo0gPaUZ24g==",
+  "_location": "/toggle-gutter",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "remote",
+    "raw": "https://www.atom.io/api/packages/toggle-gutter/versions/0.3.4/tarball",
+    "rawSpec": "https://www.atom.io/api/packages/toggle-gutter/versions/0.3.4/tarball",
+    "saveSpec": "https://www.atom.io/api/packages/toggle-gutter/versions/0.3.4/tarball",
+    "fetchSpec": "https://www.atom.io/api/packages/toggle-gutter/versions/0.3.4/tarball"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://www.atom.io/api/packages/toggle-gutter/versions/0.3.4/tarball",
+  "_shasum": "88e6d743869df2efbc33a75b375ce3b0859ee2f1",
+  "_spec": "https://www.atom.io/api/packages/toggle-gutter/versions/0.3.4/tarball",
+  "_where": "/private/var/folders/z4/kfq8jl4x1_dbln4j5hmqy_nc0000gn/T/apm-install-dir-119030-86127-1r4otp0.bilf",
+  "bugs": {
+    "url": "https://github.com/MaximSokolov/toggle-gutter/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "Quickly toggle visability of Atom's gutters",
+  "devDependencies": {
+    "eslint": "^3.19.0"
+  },
+  "engines": {
+    "atom": ">=1.19.0 <2.0.0"
+  },
+  "homepage": "https://github.com/MaximSokolov/toggle-gutter#readme",
+  "keywords": [
+    "gutter"
+  ],
+  "license": "MIT",
+  "main": "./lib/main",
+  "name": "toggle-gutter",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MaximSokolov/toggle-gutter.git"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "test": "npm run lint && apm test"
+  },
+  "version": "0.3.4"
+}

@@ -1,0 +1,54 @@
+#!/usr/bin/env bash
+
+
+CURRENTDIR=$(cd `dirname $0` && pwd)
+
+
+function ocr_folder {
+
+    language=$1
+
+    OUTPUT="extracted-ocr.txt"
+    TEMP="temp-ocr"
+
+    rm $OUTPUT > /dev/null 2>&1
+    touch $OUTPUT
+
+    for image in *".png"; do
+
+        tesseract -l "$language" "$image" "$TEMP" > /dev/null 2>&1
+
+        # Store OCR text.
+        TEXT=$(<"$TEMP.txt")
+
+        # Append OCR to text file.
+        echo $TEXT >> $OUTPUT
+
+        echo "Extracting $language text from $image"
+
+    done
+
+    rm "$TEMP.txt"
+    open $OUTPUT
+}
+
+
+if [[ $1 = "english" ]]; then
+
+		ocr_folder "eng"
+
+	elif [[ $1 = "french" ]]; then
+
+		ocr_folder "fr+eng"
+
+    elif [[ $1 = "japanese" ]]; then
+
+		ocr_folder "jp"
+
+	else
+
+		echo ""
+		echo "ERROR: Please supply the proper argument!"
+		echo ""
+		exit
+	fi

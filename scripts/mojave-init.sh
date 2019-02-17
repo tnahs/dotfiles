@@ -10,12 +10,23 @@
 # git and bash                                                                #
 ###############################################################################
 
-# Create symlinks to .bashrc, .bash_profile, .gitconfig and .gitignore
+# Create symlinks to .bashrc, .bash_profile
 #   via. ~/.dotfiles/
 ln -s $HOME"/.dotfiles/.bashrc" $HOME"/.bashrc"
 ln -s $HOME"/.dotfiles/.bash_profile" $HOME"/.bash_profile"
+
+# Create symlinks to bin
+#   via. ~/.dotfiles/
+ln -s $HOME"/.dotfiles/bin" $HOME"/bin"
+
+# Create symlinks to .gitconfig and .gitignore
+#   via. ~/.dotfiles/
 ln -s $HOME"/.dotfiles/.gitconfig" $HOME"/.gitconfig"
 ln -s $HOME"/.dotfiles/.gitignore" $HOME"/.gitignore"
+
+# Create symlink to .atom config folder
+#   via. ~/.dotfiles/
+ln -s $HOME"/.dotfiles/.atom" $HOME"/.atom"
 
 
 ###############################################################################
@@ -26,15 +37,6 @@ ln -s $HOME"/.dotfiles/.gitignore" $HOME"/.gitignore"
 #   via. ~/.dotfiles/Brewfile
 ln -s $HOME"/.dotfiles/Brewfile" $HOME"/Brewfile"
 cd && brew bundle
-
-
-###############################################################################
-# Atom                                                                        #
-###############################################################################
-
-# Create symlink to .atom config folder
-#   via. ~/.dotfiles/.atom
-ln -s $HOME"/.dotfiles/.atom" $HOME"/.atom"
 
 
 ###############################################################################

@@ -1,6 +1,6 @@
-#!/usr/bin/env bash
+#!/usr/local/bin/bash
 
-export PATH=$PATH":$HOME/Workspace/projects/bin"
+export PATH=$PATH":$HOME/bin"
 export PATH=$PATH":/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 
 # Don't create Python binary files
@@ -32,6 +32,11 @@ alias dotfiles="cd $HOME/.dotfiles; ls -lah;"
 
 # anki
 alias anki="cd $HOME/Workspace/projects/anki-setup; ls -lah;"
+
+# ocr
+alias ocreng="$HOME/bin/ocr-folder.sh english;"
+alias ocrfr="$HOME/bin/ocr-folder.sh french;"
+alias ocrjp="$HOME/bin/ocr-folder.sh japanese;"
 
 # jfolio
 alias jfolio="cd $HOME/Workspace/projects/jfolio/jfolio/; pipenv shell;"

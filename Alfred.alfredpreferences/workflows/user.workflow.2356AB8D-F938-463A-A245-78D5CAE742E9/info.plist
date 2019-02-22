@@ -17,6 +17,8 @@
 				<integer>0</integer>
 				<key>modifiersubtext</key>
 				<string></string>
+				<key>vitoclose</key>
+				<false/>
 			</dict>
 		</array>
 	</dict>
@@ -25,7 +27,7 @@
 	<key>description</key>
 	<string>A countdown timer that uses Mountain Lion User Notifications.</string>
 	<key>disabled</key>
-	<false/>
+	<true/>
 	<key>name</key>
 	<string>Timer</string>
 	<key>objects</key>
@@ -33,10 +35,16 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>concurrently</key>
+				<false/>
 				<key>escaping</key>
 				<integer>62</integer>
 				<key>script</key>
 				<string>/usr/bin/python timer.py {query} &gt; /dev/null 2&gt;&amp;1 &amp;</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
 				<key>type</key>
 				<integer>0</integer>
 			</dict>
@@ -44,6 +52,8 @@
 			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
 			<string>DCBD6FFA-4D13-4247-AF98-C8DFFDAD688B</string>
+			<key>version</key>
+			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -63,6 +73,8 @@
 			<string>alfred.workflow.input.keyword</string>
 			<key>uid</key>
 			<string>1E0EB256-22B6-40E2-8D60-360D4234D802</string>
+			<key>version</key>
+			<integer>1</integer>
 		</dict>
 	</array>
 	<key>readme</key>
@@ -90,11 +102,15 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 	<dict>
 		<key>1E0EB256-22B6-40E2-8D60-360D4234D802</key>
 		<dict>
+			<key>xpos</key>
+			<integer>300</integer>
 			<key>ypos</key>
 			<real>130</real>
 		</dict>
 		<key>DCBD6FFA-4D13-4247-AF98-C8DFFDAD688B</key>
 		<dict>
+			<key>xpos</key>
+			<integer>500</integer>
 			<key>ypos</key>
 			<real>130</real>
 		</dict>

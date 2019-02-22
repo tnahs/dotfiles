@@ -30,6 +30,9 @@ alias todo="find $HOME/Workspace/projects -name \_*-todo.* -exec code {} \;"
 # dotfiles
 alias dotfiles="cd $HOME/.dotfiles; ls -lah;"
 
+# homebrew
+alias brewski='brew update && brew upgrade && brew cleanup; brew doctor'
+
 # anki
 alias anki="cd $HOME/Workspace/projects/anki-setup; ls -lah;"
 

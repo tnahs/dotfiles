@@ -23,7 +23,6 @@
 # Audio/Video
 
 + [Spotify](https://www.spotify.com)
-+ [VLC](https://www.videolan.org/vlc/index.html)
 + [Audacity](http://www.audacityteam.org/)
 
 
@@ -47,4 +46,3 @@
 + [Cakebrew](https://www.cakebrew.com/)
 + [DB Browser for SQLite](http://sqlitebrowser.org/)
 + [Xcode](https://developer.apple.com/downloads/)
-+ [Source Code Pro](https://fonts.google.com/specimen/Source+Code+Pro)

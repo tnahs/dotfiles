@@ -41,8 +41,8 @@ alias ocreng="$HOME/bin/ocr-folder.sh english;"
 alias ocrfr="$HOME/bin/ocr-folder.sh french;"
 alias ocrjp="$HOME/bin/ocr-folder.sh japanese;"
 
-# jfolio
-alias jfolio="cd $HOME/Workspace/projects/jfolio/jfolio/; pipenv shell;"
+# pfolio
+alias pfolio="cd $HOME/Workspace/projects/pfolio/pfolio/; pipenv shell;"
 
 # hlts
 alias hlts="cd $HOME/Workspace/projects/hlts/hlts/; pipenv shell;"

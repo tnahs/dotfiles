@@ -50,9 +50,9 @@ alias hlts_code="code $HOME/Workspace/projects/hlts/"
 alias hlts_serv="flask run"
 alias hlts_gogo="hlts_code; hlts_serv;"
 
-# hlts-bsync
-alias bsync="cd $HOME/Workspace/projects/hlts-bsync/hlts-bsync/; pipenv shell;"
-alias bsync_code="code $HOME/Workspace/projects/hlts-bsync/hlts-bsync/"
+# hlts add-ons
+alias hlts_applebooks="cd $HOME/Workspace/projects/hlts-applebooks/hlts-applebooks/; pipenv shell;"
+alias hlts_kindle="cd $HOME/Workspace/projects/hlts-kindle/hlts-kindle/; pipenv shell;"
 
 #
 

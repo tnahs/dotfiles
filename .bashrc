@@ -45,7 +45,7 @@ alias hlts_serv="flask run"
 alias hlts_gogo="hlts_code; hlts_serv;"
 
 # hlts add-ons
-alias hlts_applebooks="cd $HOME/Workspace/projects/hlts-applebooks/hlts-applebooks/; pipenv shell;"
+alias hltsync="cd $HOME/Workspace/projects/hltsync/hltsync/; pipenv shell;"
 alias hlts_kindle="cd $HOME/Workspace/projects/hlts-kindle/hlts-kindle/; pipenv shell;"
 
 #

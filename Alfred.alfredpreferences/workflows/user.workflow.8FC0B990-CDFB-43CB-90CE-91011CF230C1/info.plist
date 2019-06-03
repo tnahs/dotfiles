@@ -22,16 +22,6 @@
 			</dict>
 			<dict>
 				<key>destinationuid</key>
-				<string>96D6C85A-547B-41FC-863A-9904CC878F35</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-			<dict>
-				<key>destinationuid</key>
 				<string>19FBE279-9A15-4BB4-9187-55654F8E5EEA</string>
 				<key>modifiers</key>
 				<integer>0</integer>
@@ -137,7 +127,7 @@
 				<key>spaces</key>
 				<string></string>
 				<key>url</key>
-				<string>https://www.larousse.fr/dictionnaires/rechercher?q={query}&amp;l=francais&amp;culture=</string>
+				<string>https://www.larousse.fr/dictionnaires/francais/{query}</string>
 				<key>utf8</key>
 				<true/>
 			</dict>

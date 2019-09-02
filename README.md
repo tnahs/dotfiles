@@ -217,7 +217,7 @@ bash $HOME"/.dotfiles/scripts/mojave-config.sh"
    3. `Sync` > `Sync: Download Settings`
    4. Enter `Github Personal Access Token` and `Gist ID` found in:
       + `~/Workspace/preferences/private/vscode-settings-sync-token.txt`
-2. Restore **Apple Books** EPUBs and Database:
+2. Restore **Apple Books** EPUBs and Database: (Updated 09-01-2019 macOS Mojave 10.14.6)
    1. Disable Syncing
       + Open `Apple Books`
       + `Books` > `Preferences...` > `General`
@@ -233,29 +233,34 @@ bash $HOME"/.dotfiles/scripts/mojave-config.sh"
    3. Restore
         + Close `Apple Books`
         + Navigate to: `~/Library/Containers`
-        + Delete if exists:
-          + `com.apple.BKAgentService`
-          + `com.apple.iBooksX`
-          + `com.apple.iBooksX.CacheDelete`
-        + If there were existing books in the library
-          + Restart
-        + Extract latest archive in `~/Workspace/preferences/apple-books/archives`
-        + Move extracted library folders to `~/Library/Containers`
+        + If not after a fresh OS install or with an unwanted/broken library:
+          + Delete:
             + `com.apple.BKAgentService`
-            + `com.apple.iBooksX`
-        + Restart
+            + `com.apple.iBooksX*`
+          + Restart (Note: If you open `Apple Books` before a restart you'll see all your books but they will have broken links. But after a restart `Apple Books` will look like it's just been opened for the first time.)
+          + Open & Close `Apple Books`. This creates the `com.apple.BKAgentService` and `com.apple.iBooksX` folders.
+        + Delete:
+          + `~/Library/Containers/com.apple.BKAgentService`:
+          + `~/Library/Containers/com.apple.iBooksX.*` (Note the `.` after `iBooksX`)
+          + `~/Library/Containers/com.apple.iBooksX/Data/Documents/AEAnnotation`:
+          + `~/Library/Containers/com.apple.iBooksX/Data/Documents/BKLibrary`:
+        + Extract latest archive in `~/Workspace/preferences/apple-books/archives`
+        + Move to `~/Library/Containers`:
+          + `com.apple.BKAgentService`
+        + Move to `~/Library/Containers/com.apple.iBooksX/Data/Documents`:
+          + `com.apple.iBooksX/Data/Documents/AEAnnotation`
+          + `com.apple.iBooksX/Data/Documents/BKLibrary`
+        + Restart (Note: If you open Apple books before a restart you'll see all your collections but no books will appear.)
         + All the books and annotations should be restored
 3. TODO: Restore **Anki**
    + Custom Icon from: `~/Workspace/preferences/misc/icons`
 4. Register **Moom** with license file in `~/Workspace/preferences/private/`
 5. Setup **Dropbox**
-6. Setup **Google Backup and Sync**
 
 <br>
 
 ### H. Manually Install
 
-+ [Adobe Creative Cloud](https://www.adobe.com/creativecloud/desktop-app.html)
 + [Infovox iVox Voice Manager](http://www.assistiveware.com/product/infovox-ivox)
 + [DeDRM_tools](https://github.com/apprenticeharper/DeDRM_tools/releases/)
   + After Installation

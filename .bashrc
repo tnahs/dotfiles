@@ -25,7 +25,7 @@ alias todo="find $HOME/Workspace/projects -name \_*-todo.* -exec code {} \;"
 alias dotfiles="cd $HOME/.dotfiles; ls -lah;"
 
 # homebrew
-alias brewski='brew update && brew upgrade && brew cleanup; brew doctor'
+alias brewski="brew update && brew upgrade && brew cleanup; brew doctor"
 
 # anki
 alias anki="cd $HOME/Workspace/projects/anki-setup; ls -lah;"
@@ -72,8 +72,3 @@ alias lscleanup="/System/Library/Frameworks/CoreServices.framework/Frameworks/La
 # Show/hide hidden files in Finder
 alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
 alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
-
-#
-
-# Set prompt via http://bashrcgenerator.com
-export PS1="\[\033[38;5;244m\]\u\[$(tput sgr0)\]\[\033[38;5;15m\]@\[$(tput sgr0)\]\[\033[38;5;244m\]\h\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]\[\033[38;5;129m\]\w\[$(tput sgr0)\]\[\033[38;5;15m\]\n\\$ \[$(tput sgr0)\]"

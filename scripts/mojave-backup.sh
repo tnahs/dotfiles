@@ -86,14 +86,14 @@ function run_backup_dotfiles {
 }
 
 
-function run_backup_preferences {
-
-	echo "Backing up preferences..."
-
-	# Safari Bookmarks
-	cp -f $HOME"/Library/Safari/Bookmarks.plist" \
-		$WORKSPACE"/preferences/private"
-}
+# function run_backup_preferences {
+#
+# 	echo "Backing up preferences..."
+#
+# 	# Safari Bookmarks
+# 	cp -f $HOME"/Library/Safari/Bookmarks.plist" \
+# 		$WORKSPACE"/preferences/private"
+# }
 
 
 function run_backup_anki {
@@ -196,7 +196,7 @@ if [ -d $DOTFILES ] && [ -d $WORKSPACE ] && [ -d $ARCHIVES ]; then
 
 	if [ "$1" = "all" ]; then
 
-		run_backup_preferences
+		# run_backup_preferences
 		run_backup_dotfiles
 		run_backup_books
 		run_backup_anki

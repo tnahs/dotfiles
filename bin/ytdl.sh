@@ -34,20 +34,6 @@
 #         --external-downloader-args "-c -j 3 -x 3 -s 3 -k 1M" \
 #     "$@" # URL
 
-# youtube-dl \
-#     --output "%(uploader)s - %(title)s - %(id)s.%(ext)s" \
-#     --continue \
-#     --add-metadata \
-#     --write-info-json \
-#     --embed-subs \
-#     --all-subs \
-#     --external-downloader aria2c --external-downloader-args "-c -j 3 -x 3 -s 3 -k 1M" \
-#     "$@" # URL
-
-# https://github.com/ytdl-org/youtube-dl/issues/11287#issuecomment-262715401
-    # --write-info-json \
-    # --hls-prefer-native \
-
 
 youtube-dl \
     --output "%(uploader)s - %(title)s - %(id)s.%(ext)s" \
@@ -55,4 +41,17 @@ youtube-dl \
     --add-metadata \
     --embed-subs \
     --all-subs \
+    --external-downloader aria2c --external-downloader-args "-c -j 3 -x 3 -s 3 -k 1M" \
     "$@" # URL
+
+# https://github.com/ytdl-org/youtube-dl/issues/11287#issuecomment-262715401
+    # --write-info-json \
+    # --hls-prefer-native \
+
+# youtube-dl \
+#     --output "%(uploader)s - %(title)s - %(id)s.%(ext)s" \
+#     --continue \
+#     --add-metadata \
+#     --embed-subs \
+#     --all-subs \
+#     "$@" # URL

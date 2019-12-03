@@ -1,43 +1,36 @@
 #!/usr/local/bin/bash
 
+# navigation
 alias ll="ls -lah"
 alias k="cd $HOME/Desktop; ls -lah;"
 alias l="cd $HOME/Downloads; ls -lah;"
 alias w="cd $HOME/Workspace; ls -lah;"
 alias p="cd $HOME/Workspace/projects; ls -lah;"
 
+# misc
 alias editbash="code $HOME/.dotfiles/.bashrc"
-
 alias brewski="brew update && brew upgrade && brew cleanup; brew doctor"
+
+# projects
+alias ankisetup="cd $HOME/Workspace/projects/anki-setup; ls -lah;"
+alias hltsdata="cd $HOME/Workspace/projects/hlts-data/hlts-data/; pipenv shell;"
+alias pfolio="cd $HOME/Workspace/projects/pfolio/pfolio/; pipenv shell;"
+alias dotfiles="cd $HOME/.dotfiles; ls -lah;"
 
 # ocr
 alias ocreng="$HOME/bin/ocr-folder.sh english;"
 alias ocrfr="$HOME/bin/ocr-folder.sh french;"
 alias ocrjp="$HOME/bin/ocr-folder.sh japanese;"
 
-
-# dotfiles
-alias dotfiles="cd $HOME/.dotfiles; ls -lah;"
-
-# anki
-alias anki="cd $HOME/Workspace/projects/anki-setup; ls -lah;"
-
-# pfolio
-alias pfolio="cd $HOME/Workspace/projects/pfolio/pfolio/; pipenv shell;"
-
-# hlts-data
-alias hlts="cd $HOME/Workspace/projects/hlts-data/hlts-data/; pipenv shell;"
-
-#
-
-# Run mojave-backup.sh
+# backup
 alias backup_preferences="bash $HOME/.dotfiles/scripts/mojave-backup.sh preferences"
 alias backup_dotfiles="bash $HOME/.dotfiles/scripts/mojave-backup.sh dotfiles"
 alias backup_books="bash $HOME/.dotfiles/scripts/mojave-backup.sh books"
 alias backup_anki="bash $HOME/.dotfiles/scripts/mojave-backup.sh anki"
 alias backup_all="bash $HOME/.dotfiles/scripts/mojave-backup.sh all"
 
-#
+
+# utilities
 
 # Recursively delete `.DS_Store` files
 alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"

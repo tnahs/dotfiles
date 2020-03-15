@@ -41,3 +41,17 @@ alias lscleanup="/System/Library/Frameworks/CoreServices.framework/Frameworks/La
 # Show/hide hidden files in Finder
 alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
 alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
+
+
+function dlvid {
+    for url in "$@"; do
+        youtube-dl \
+            --output "%(uploader)s - %(title)s - %(id)s.%(ext)s" \
+            --continue \
+            --add-metadata \
+            --embed-subs \
+            --all-subs \
+            --external-downloader aria2c --external-downloader-args "-c -j 3 -x 3 -s 3 -k 1M" \
+            "$url"
+    done
+}

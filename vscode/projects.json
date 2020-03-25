@@ -1,0 +1,37 @@
+[
+    {
+        "name": "dotfiles",
+        "rootPath": "$home/.dotfiles",
+        "paths": [],
+        "group": "",
+        "enabled": true
+    },
+    {
+        "name": "read-stor",
+        "rootPath": "$home/Workspace/projects/read-stor",
+        "paths": [],
+        "group": "",
+        "enabled": true
+    },
+    {
+        "name": "pfolio",
+        "rootPath": "$home/Workspace/projects/pfolio/pfolio",
+        "paths": [],
+        "group": "",
+        "enabled": true
+    },
+    {
+        "name": "anki-setup",
+        "rootPath": "$home/Workspace/projects/anki-setup",
+        "paths": [],
+        "group": "",
+        "enabled": true
+    },
+    {
+        "name": "anki-addons",
+        "rootPath": "$home/Workspace/projects/anki-addons",
+        "paths": [],
+        "group": "",
+        "enabled": true
+    }
+]

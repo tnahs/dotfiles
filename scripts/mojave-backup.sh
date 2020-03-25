@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 ###############################################################################
 # For macOS Mojave version 10.14.1 (18B75)                                    #
@@ -83,6 +83,8 @@ function run_backup_dotfiles {
 	# Moom Shortcuts
 	cp -f $HOME"/Library/Preferences/com.manytricks.Moom.plist" \
 		$DOTFILES"/moom"
+
+	# TODO: Add VSCode `settings.json` and `projects.json`.
 }
 
 
@@ -197,25 +199,25 @@ if [ -d $DOTFILES ] && [ -d $WORKSPACE ] && [ -d $ARCHIVES ]; then
 	if [ "$1" = "all" ]; then
 
 		# run_backup_preferences
-		run_backup_dotfiles
-		run_backup_books
-		run_backup_anki
+		# run_backup_dotfiles
+		# run_backup_books
+		# run_backup_anki
 
 	elif [ "$1" = "anki" ]; then
 
-		run_backup_anki
+		# run_backup_anki
 
 	elif [ "$1" = "books" ]; then
 
-		run_backup_books
+		# run_backup_books
 
 	elif [ "$1" = "dotfiles" ]; then
 
-		run_backup_dotfiles
+		# run_backup_dotfiles
 
 	elif [ "$1" = "preferences" ]; then
 
-		run_backup_preferences
+		# run_backup_preferences
 
 	else
 

@@ -81,11 +81,11 @@ cd project-name
 # Builds the virtual environment.
 poetry install
 
-#
-poetry add --dev black mypy flake8 [other-packages]
+# (Optional)
+poetry add --dev black mypy flake8 # ...other-packages
 
 #
-poetry add [other-packages]
+poetry add cowsay # ...other-packages
 
 #
 poerty env info
@@ -116,7 +116,7 @@ code .
     Add:
     ``` json
     {
-        "python.pythonPath": "~/Library/Caches/pypoetry/virtualenvs/[project-name]/bin/python"
+        "python.pythonPath": "~/Library/Caches/pypoetry/virtualenvs/project-name/bin/python"
     }
     ```
 

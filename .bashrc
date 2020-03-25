@@ -51,3 +51,5 @@ function dlvid {
             "$url"
     done
 }
+# Created by `userpath` on 2020-03-24 21:34:43
+export PATH="$PATH:/Users/shant/.local/bin"

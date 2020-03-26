@@ -14,7 +14,7 @@
         "tab.activeBorder": "#E57373",
         "notificationLink.foreground": "#E57373"
     },
-    "workbench.colorTheme": "Activate SCARLET protocol (beta)",
+    "workbench.colorTheme": "Activate UMBRA protocol",
     "workbench.iconTheme": "city-lights-icons-vsc",
     //
     // UI Explorer Sidebar
@@ -91,7 +91,6 @@
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
     //
     // Extenstions
-    "projectManager.projectsLocation": "~/.dotfiles/projects.json",
     "sync.gist": "d35243a837d404d545cb56144030f4ee",
     "sync.autoUpload": true,
     "sync.quietSync": true,

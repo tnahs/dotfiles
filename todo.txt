@@ -1,3 +1,4 @@
-TODO: Write `scripts/init.py`.
-TODO: Package `scripts/backup.py` so it's excecutable and includes `psutil`.
-TODO: Sift through `scripts/moajave-config.sh` and clean up.
+TODO: Finsih writing & documenting `scripts/setup-build.py`.
+TODO: Sift through `scripts/setup-config.sh` and clean up.
+TODO: Convert all `bash` stuff to `zsh`.
+TODO: Clean up items in `/docs`

@@ -29,7 +29,7 @@
 
 ## `poetry`
 
-1. Install via curl
+1. Install `poetry` via curl
 
     ``` bash
     curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python

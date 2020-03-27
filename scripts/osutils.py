@@ -2,7 +2,7 @@ import logging
 import pathlib
 import shutil
 import subprocess
-from typing import List, Optional, Set, Iterator
+from typing import List, Optional, Set, Iterator, Union
 
 import psutil
 
@@ -11,6 +11,58 @@ class OSUtils:
     def __init__(self, logger: logging.Logger) -> None:
 
         self._logger = logger
+
+    def run(
+        self,
+        command: List[Union[str, pathlib.Path]],
+        path: Optional[pathlib.Path] = None,
+    ) -> None:
+        """ Runs a terminal command.
+
+        command -- Command to run.
+        path -- Path to run the command in.
+
+        Note: Shell features such as pipes, wildcards and `~` expansion etc.
+        are *not* supported.
+
+        subprocess.run()
+
+            If shell is True, the specified command will be executed through
+            the shell. This can be useful if you are using Python primarily for
+            the enhanced control flow it offers over most system shells and
+            still want convenient access to other shell features such as shell
+            pipes, filename wildcards, environment variable expansion, and
+            expansion of ~ to a user’s home directory.
+
+            If `check` is true, and the process exits with a non-zero exit
+            code, a CalledProcessError exception will be raised. Attributes of
+            that exception hold the arguments, the exit code, and stdout and
+            stderr if they were captured.
+
+            If `capture_output` is true, stdout and stderr will be captured.
+
+            If `cwd` is not None, the function changes the working directory to
+            `cwd` before executing the child. `cwd` can be a string, bytes or
+            path-like object. In particular, the function looks for executable
+            (or for the first item in args) relative to `cwd` if the executable
+            path is a relative path.
+
+            via https://docs.python.org/3/library/subprocess.html#subprocess.run
+        """
+
+        command_normalized: List[str] = [str(s) for s in command]
+        command_string: str = " ".join(command_normalized)
+
+        self._logger.debug(f"Running command `{command_string}`...")
+
+        try:
+            subprocess.run(
+                command_normalized, check=True, capture_output=True, cwd=path,
+            )
+        except subprocess.CalledProcessError:
+            self._logger.exception(
+                f"Exception raised while attempting to run command: {command_string}."
+            )
 
     def make(self, path: pathlib.Path) -> None:
         """ Makes a file or directory. Does not raise an Exception if the file
@@ -128,16 +180,7 @@ class OSUtils:
         if recursive:
             flags.append("-R")
 
-        try:
-            subprocess.run(
-                ["cp", *flags, *[str(s) for s in sources], destination],
-                check=True,
-                capture_output=True,
-            )
-        except subprocess.CalledProcessError:
-            self._logger.exception(
-                "Exception raised while attempting to run `cp` command."
-            )
+        self.run(command=["cp", *flags, *sources, destination])
 
     def link(
         self, original: pathlib.Path, symbolic: pathlib.Path, force: bool = False
@@ -164,10 +207,10 @@ class OSUtils:
                 return
 
             self._logger.warning(
-                f"Linking `{original}` -> `{symbolic}` Skipped! Cannot create "
+                f"Linking `{original}` -> `{symbolic}` skipped! Cannot create "
                 f"a link to an existing item: `{symbolic}`. Or link already "
-                "exists. If so, run with force=True to refresh link. Use "
-                "with caution, this will *remove* `{symbolic}` permanantly!"
+                f"exists. If so, run with force=True to refresh link. Use "
+                f"with caution, this will *remove* `{symbolic}` permanantly!"
             )
 
     def archive(self, sources: List[pathlib.Path], destination: pathlib.Path) -> None:
@@ -201,22 +244,9 @@ class OSUtils:
             #   ".tgz"   -> [".tgz"]
             destination = destination.with_suffix(".tar.gz")
 
-        try:
-            subprocess.run(
-                [
-                    "tar",
-                    "--create",
-                    "--gzip",
-                    f"--file={destination}",
-                    *[str(s) for s in sources],
-                ],
-                check=True,
-                capture_output=True,
-            )
-        except subprocess.CalledProcessError:
-            self._logger.exception(
-                "Exception raised while attempting to run `tar` command."
-            )
+        self.run(
+            command=["tar", "--create", "--gzip", f"--file={destination}", *sources]
+        )
 
     def prune(
         self,
@@ -312,3 +342,12 @@ class OSUtils:
                 return True
 
         return False
+
+
+class Loading:
+
+    phases = ["⣾", "⣷", "⣯", "⣟", "⡿", "⢿", "⣻", "⣽"]
+
+    def update(self):
+        i = self.index % len(self.phases)
+        self.write(self.phases[i])

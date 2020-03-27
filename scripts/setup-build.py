@@ -1,7 +1,6 @@
 import argparse
 import logging
 import pathlib
-import subprocess
 from datetime import datetime
 from typing import Dict
 
@@ -32,29 +31,25 @@ class DotfilePaths:
 
 
 class Build:
-    def __init__(self, logger: logging.Logger) -> None:
+    def __init__(self, python_version: str, logger: logging.Logger) -> None:
 
+        self._python_version = python_version
         self._logger = logger
         self._osutils = osutils.OSUtils(logger=logger)
 
     def rebuild(self) -> None:
-        pass
+        self._run_link_dotfiles()
+        self._run_source_profile()
+        self._run_install_brewfile()
+        self._restore_application_preferences()
 
     def _run_link_dotfiles(self) -> None:
 
         paths = [
             {
-                "original": DotfilePaths.root / "bash" / ".bash_profile",
-                "symbolic": Defaults.home / ".bash_profile",
+                "original": DotfilePaths.root / "zsh" / ".zshrc",
+                "symbolic": Defaults.home / ".zshrc",
             },
-            {
-                "original": DotfilePaths.root / "bash" / ".bashrc",
-                "symbolic": Defaults.home / ".bashrc",
-            },
-            # {
-            #     "original": DotfilePaths.root / "zsh" / ".zshrc",
-            #     "symbolic": Defaults.home / ".zshrc",
-            # },
             {
                 "original": DotfilePaths.root / ".gitignore",
                 "symbolic": Defaults.home / ".gitignore",
@@ -77,26 +72,13 @@ class Build:
 
     def _run_source_profile(self) -> None:
 
-        # profile_path = Defaults.home / ".zshrc"
-        profile_path = Defaults.home / ".bash_profile"
+        path = Defaults.home / ".zshrc"
 
-        try:
-            subprocess.run(
-                ["source", str(profile_path)], check=True, capture_output=True,
-            )
-        except subprocess.CalledProcessError:
-            self._logger.exception(
-                "Exception raised while attempting to run `source` command."
-            )
+        self._osutils.run(command=["source", path])
 
     def _run_install_brewfile(self) -> None:
 
-        try:
-            subprocess.run(["brew", "bundle"], check=True, cwd=pathlib.Path.home())
-        except subprocess.CalledProcessError:
-            self._logger.exception(
-                "Exception raised while attempting to run `brew bundle` command."
-            )
+        self._osutils.run(command=["brew", "bundle"], path=pathlib.Path.home())
 
     def _restore_application_preferences(self) -> None:
 
@@ -106,57 +88,42 @@ class Build:
 
         self._logger.info("Restoring Moom preferences...")
 
-        moom_source = DotfilePaths.root / "moom"
-        moom_destination = (
-            Defaults.home / "Library/Preferences/com.manytricks.Moom.plist"
-        )
+        moom_source = DotfilePaths.root / "moom" / "com.manytricks.Moom.plist"
+        moom_destination = Defaults.home / "Library/Preferences"
 
         self._osutils.copy(
             sources=[moom_source], destination=moom_destination,
         )
 
         #
+        self._logger.info("Installing VSCode Settings Sync extension...")
 
-        try:
-            subprocess.run(
-                ["code", "--install-extension", "Shan.code-settings-sync"], check=True,
-            )
-        except subprocess.CalledProcessError:
-            self._logger.exception(
-                "Exception raised while attempting to run `code` command."
-            )
+        self._osutils.run(
+            command=["code", "--install-extension", "Shan.code-settings-sync"]
+        )
 
-    def _install_global_packages(self) -> None:
+    def _install_python_packages(self) -> None:
 
-        # Bothbrew `pipx` and `pyenv` should have already been installed
-        # through the `Brewfile`.
-
-        try:
-            subprocess.run(["pipx", "install", "bpython"], check=True)
-        except subprocess.CalledProcessError:
-            self._logger.exception(
-                "Exception raised while attempting to run `pipx` command."
-            )
-
-        try:
-            subprocess.run(["pyenv", "install", "3.8.0"], check=True)
-            subprocess.run(["pyenv", "global", "3.8.0"], check=True)
-        except subprocess.CalledProcessError:
-            self._logger.exception(
-                "Exception raised while attempting to run `pyenv` command."
-            )
-
-        try:
-            subprocess.run(["pip", "install", "psutil"], check=True)
-        except subprocess.CalledProcessError:
-            self._logger.exception(
-                "Exception raised while attempting to run `pyenv` command."
-            )
+        """ At this point `pipx` and `pyenv` have been installed through
+        `Homebrew` via the `Brewfile`. """
+        self._osutils.run(command=["pipx", "install", "bpython"])
+        self._osutils.run(command=["pyenv", "install", self._python_version])
+        self._osutils.run(command=["pyenv", "global", self._python_version])
+        self._osutils.run(command=["pip", "install", "psutil"])
 
 
 if __name__ == "__main__":
 
     parser = argparse.ArgumentParser(add_help=False)
+    parser.add_argument(
+        "-py",
+        "--python",
+        metavar="VERSION",
+        dest="python_version",
+        type=str,
+        required=True,
+        help="Version to install (via pyenv).",
+    )
     parser.add_argument(
         "-v", "--verbose", action="store_true", default=False,
     )
@@ -164,8 +131,8 @@ if __name__ == "__main__":
         "-h",
         "--help",
         action="help",
+        help="Show help message.",
         default=argparse.SUPPRESS,
-        help="Re-build stuff!",
     )
     args = parser.parse_args()
 
@@ -176,5 +143,5 @@ if __name__ == "__main__":
 
     #
 
-    rebuild = Build(logger=logger)
+    rebuild = Build(python_version=args.python_version, logger=logger)
     rebuild.rebuild()

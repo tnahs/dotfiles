@@ -1,9 +1,8 @@
 import argparse
 import logging
 import pathlib
-import subprocess
 from datetime import datetime
-from typing import Dict, Tuple
+from typing import Dict, Tuple, List
 
 import osutils
 
@@ -44,16 +43,17 @@ class ArchivePaths:
 
 
 class Backup:
-    def __init__(self, choice: str, logger: logging.Logger) -> None:
+    def __init__(self, choices: List[str], logger: logging.Logger) -> None:
 
+        self._choices = choices
         self._logger = logger
-        self._choice = choice
 
         self._osutils = osutils.OSUtils(logger=logger)
 
     def backup(self) -> None:
 
-        getattr(self, f"_run_{self._choice}")()
+        for choice in self._choices:
+            getattr(self, f"_run_{choice}")()
 
     def _run_all(self) -> None:
         self._run_dotfiles()
@@ -64,22 +64,15 @@ class Backup:
 
         self._logger.info("Dumping Brewfile...")
 
-        try:
-            subprocess.run(
-                [
-                    "brew",
-                    "bundle",
-                    "dump",
-                    "--force",
-                    f"--file={DotfilePaths.root}/Brewfile",
-                ],
-                check=True,
-                capture_output=True,
-            )
-        except subprocess.CalledProcessError:
-            self._logger.exception(
-                "Exception raised while attempting to run `brew` command."
-            )
+        self._osutils.run(
+            command=[
+                "brew",
+                "bundle",
+                "dump",
+                "--force",
+                f"--file={DotfilePaths.root}/Brewfile",
+            ],
+        )
 
         #
 
@@ -112,16 +105,7 @@ class Backup:
 
         vscode_extensions = DotfilePaths.root / "vscode" / "extensions.txt"
 
-        try:
-            subprocess.run(
-                ["code", "--list-extensions", ">", str(vscode_extensions)],
-                check=True,
-                capture_output=True,
-            )
-        except subprocess.CalledProcessError:
-            self._logger.exception(
-                "Exception raised while attempting to run `code` command."
-            )
+        self._osutils.run(command=["code", "--list-extensions", ">", vscode_extensions])
 
     def _run_anki(self) -> None:
 
@@ -163,13 +147,21 @@ if __name__ == "__main__":
 
     parser = argparse.ArgumentParser(add_help=False)
     parser.add_argument(
-        "choice", type=str, choices=Defaults.choices,
+        "choices",
+        nargs="+",
+        choices=Defaults.choices,
+        type=str,
+        help="Thing(s) to backup.",
     )
     parser.add_argument(
         "-v", "--verbose", action="store_true", default=False,
     )
     parser.add_argument(
-        "-h", "--help", action="help", help="Back-up stuff!", default=argparse.SUPPRESS,
+        "-h",
+        "--help",
+        action="help",
+        help="Show help message.",
+        default=argparse.SUPPRESS,
     )
     args = parser.parse_args()
 
@@ -180,5 +172,5 @@ if __name__ == "__main__":
 
     #
 
-    backup = Backup(choice=args.choice, logger=logger)
+    backup = Backup(choices=args.choices, logger=logger)
     backup.backup()

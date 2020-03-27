@@ -1,4 +1,3 @@
-TODO: Finsih writing & documenting `scripts/setup-build.py`.
-TODO: Sift through `scripts/setup-config.sh` and clean up.
-TODO: Convert all `bash` stuff to `zsh`.
-TODO: Clean up items in `/docs`
+TODO: Double-check `scripts/setup-build.py` and `scripts/setup-backup.py`
+TODO: Sift through `scripts/setup-config.sh` and clean-up.
+TODO: Clean-up items in `/docs`

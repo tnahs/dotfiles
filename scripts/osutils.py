@@ -342,12 +342,3 @@ class OSUtils:
                 return True
 
         return False
-
-
-class Loading:
-
-    phases = ["⣾", "⣷", "⣯", "⣟", "⡿", "⢿", "⣻", "⣽"]
-
-    def update(self):
-        i = self.index % len(self.phases)
-        self.write(self.phases[i])

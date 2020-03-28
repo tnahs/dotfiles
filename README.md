@@ -8,7 +8,7 @@
 
     via https://brew.sh
 
-2. During install of **Homebrew**, the script should install **Command Line Tools**. If not, run:
+2. During installation, **Homebrew** should ask to install **Command Line Tools**. If not, run:
 
     ``` zsh
     xcode-select --install
@@ -18,7 +18,7 @@
 3. Clone this repository:
 
     ``` zsh
-    git clone https://github.com/tnahs/dotfiles $HOME"/.dotfiles"
+    git clone https://github.com/tnahs/dotfiles ~/.dotfiles
     ```
 
 4. Build **dotfiles**:

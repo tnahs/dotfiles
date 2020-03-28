@@ -84,11 +84,15 @@
 	<key>NSWindow Frame NSNavPanelAutosaveName</key>
 	<string>791 785 799 448 0 0 2560 1577 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>815 597 1195 585 0 0 2560 1577 </string>
+	<string>4 334 1672 693 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>426 711 1339 607 0 0 2560 1577 </string>
+	<string>0 442 1195 585 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
-	<string>1042 561 1339 607 0 0 2560 1577 </string>
+	<string>0 442 1195 585 0 0 1680 1027 </string>
+	<key>NSWindow Frame iTerm Window 3</key>
+	<string>916 729 1195 585 0 0 2560 1577 </string>
+	<key>NSWindow Frame iTerm Window 4</key>
+	<string>0 442 1195 585 0 0 1680 1027 </string>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -1584,7 +1588,7 @@
 	<key>NoSyncInstallationId</key>
 	<string>AEF6EE26-38F3-4F2A-B85C-105DCDCEEE67</string>
 	<key>NoSyncLaunchExperienceControllerRunCount</key>
-	<integer>2</integer>
+	<integer>8</integer>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
@@ -2287,6 +2291,8 @@
 	<real>606819904.77006602</real>
 	<key>OpenBookmark</key>
 	<false/>
+	<key>PassOnControlClick</key>
+	<false/>
 	<key>PointerActions</key>
 	<dict>
 		<key>Button,1,1,,</key>
@@ -2331,7 +2337,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2020-03-25T21:48:09Z</date>
+	<date>2020-03-26T21:48:11Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>SoundForEsc</key>
@@ -2343,6 +2349,8 @@
 	<key>TabViewType</key>
 	<integer>0</integer>
 	<key>TabsHaveCloseButton</key>
+	<true/>
+	<key>ThreeFingerEmulates</key>
 	<true/>
 	<key>UseBorder</key>
 	<false/>

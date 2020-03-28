@@ -1,35 +1,34 @@
 # dotfiles
 
-1. Install Homebrew
+1. Install **Homebrew**:
 
-    ``` bash
+    ``` zsh
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
     ```
 
     via https://brew.sh
 
 2. During install of **Homebrew**, the script should install **Command Line Tools**. If not, run:
-3.
-    ``` bash
+
+    ``` zsh
     xcode-select --install
     ```
     or install via https://developer.apple.com/downloads/
 
+3. Clone this repository:
 
-3. Clone [`tnahs/dotfiles`](https://github.com/tnahs/dotfiles) repository
-
-    ``` bash
+    ``` zsh
     git clone https://github.com/tnahs/dotfiles $HOME"/.dotfiles"
     ```
 
-4. Init and Install
+4. Build **dotfiles**:
 
-    ``` bash
-    python ~/.dotfiles/scripts/init.py --verbose
+    ``` zsh
+    python ~/.dotfiles/scripts/setup-build.py --verbose
     ```
 
-5. Configure Mojave
+5. Configure **macOS**:
 
-    ``` bash
-    bash ~/.dotfiles/scripts/macos-config.sh
+    ``` zsh
+    zsh ~/.dotfiles/scripts/setup-config.sh
     ```

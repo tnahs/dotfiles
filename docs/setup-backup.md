@@ -1,20 +1,21 @@
-# Back-up
+# Back-up Workspace
 
-### Run Backup Script
+1. Run backup script:
 
-``` bash
-python ~/.dotfiles/scripts/backup.py --verbose all
-```
+    ``` zsh
+    python ~/.dotfiles/scripts/setup-backup.py --verbose all
+    ```
 
-### Manually backup
+2. Export **Contacts**:
+    1. Open **Contacts**
+    2. `Edit > Select All`
+    3. `File > Export... > Export vCard...`
+    4. Copy to `~/Workspace/preferences/private`
 
-1. Export Contacts
-    + Open `Contacts`
-    + `Edit` > `Select All`
-    + `File` > `Export...` > `Export vCard...`
-    + Copy to `~/Workspace/preferences/private`
-2. Copy folders to external HDD:
+3. Copy folders to external HDD:
     + `~/Workspace`
     + `~/Media`
     + `~/Dropbox`
-3. Push any changes made to [`dotfiles`](https://github.com/tnahs/dotfiles) repository.
+    + etc.
+
+4. Push any changes made to [`dotfiles`](https://github.com/tnahs/dotfiles) repository

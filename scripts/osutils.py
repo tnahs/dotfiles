@@ -1,8 +1,10 @@
 import logging
 import pathlib
+import re
 import shutil
 import subprocess
-from typing import List, Optional, Set, Iterator, Union
+import unicodedata
+from typing import Iterator, List, Optional, Set, Union
 
 import psutil
 
@@ -64,11 +66,13 @@ class OSUtils:
                 f"Exception raised while attempting to run command: {command_string}."
             )
 
-    def make(self, path: pathlib.Path) -> None:
-        """ Makes a file or directory. Does not raise an Exception if the file
-        or directory exists.
+    def make(self, path: pathlib.Path, as_file: bool = False) -> None:
+        """ Makes a file or directory. By default directorties are created
+        unless `as_file=True`. Does not raise an Exception if the file or
+        directory exists.
 
-        path -- Path to a file or directory to create.
+        path -- Path to a file or directory.
+        as_file -- Make a file instead.
 
         Path.mkdir()
 
@@ -93,11 +97,11 @@ class OSUtils:
 
         https://docs.python.org/3/library/pathlib.html#pathlib.Path.touch """
 
-        if path.is_dir():
-            path.mkdir(parents=True, exist_ok=True)
-
-        elif path.is_file():
+        if as_file:
             path.touch(exist_ok=True)
+            return
+
+        path.mkdir(parents=True, exist_ok=True)
 
     def remove(self, path: pathlib.Path) -> None:
         """ Removes a file or directory.
@@ -173,7 +177,7 @@ class OSUtils:
 
             via https://ss64.com/osx/cp.html """
 
-        self.make(destination)
+        self.make(path=destination)
 
         flags: List[str] = ["-p"]
 
@@ -342,3 +346,29 @@ class OSUtils:
                 return True
 
         return False
+
+    @staticmethod
+    def slugify(string: str, delimiter: str = "-", allow_unicode: bool = False):
+        """ Convert to ASCII if 'allow_unicode' is False. Convert spaces to
+        hyphens. Remove characters that aren't alphanumerics, underscores, or
+        hyphens. Convert to lowercase. Also strip leading and trailing
+        whitespace.
+
+        via. https://docs.djangoproject.com/en/2.1/_modules/django/utils/text/#slugify
+        """
+
+        string = str(string)
+
+        if allow_unicode:
+            string = unicodedata.normalize("NFKC", string)
+        else:
+            string = (
+                unicodedata.normalize("NFKD", string)
+                .encode("ascii", "ignore")
+                .decode("ascii")
+            )
+
+        string = re.sub(r"[^\w\s-]", "", string).strip().lower()
+        string = re.sub(r"[-\s]+", delimiter, string)
+
+        return string

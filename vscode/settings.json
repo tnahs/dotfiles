@@ -65,7 +65,7 @@
     "python.linting.flake8Enabled": true,
     "python.linting.pylintEnabled": false,
     "python.linting.flake8Args": [
-        "--ignore=E501,E128,E711,E131,E126,E241,T499"
+        "--ignore=E501,E128,E711,E131,E126,E241,T499,E231"
     ],
     //
     // Poetry / venv
@@ -94,6 +94,7 @@
     "sync.gist": "d35243a837d404d545cb56144030f4ee",
     "sync.autoUpload": true,
     "sync.quietSync": true,
+    "gitlens.codeLens.enabled": false,
     "todo-tree.filtering.useBuiltInExcludes": "file and search excludes",
     "todo-tree.general.tags": [
         "WIP",

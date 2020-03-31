@@ -1,1 +1,14 @@
-// Empty
+[
+    {
+        "key": "Cmd+Shift+I",
+        "command": "python.sortImports"
+    },
+    {
+        "key": "cmd+q",
+        "command": "-workbench.action.quit"
+    },
+    {
+        "key": "cmd+q cmd+q",
+        "command": "workbench.action.quit"
+    }
+]

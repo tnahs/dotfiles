@@ -347,28 +347,26 @@ class OSUtils:
 
         return False
 
-    @staticmethod
-    def slugify(string: str, delimiter: str = "-", allow_unicode: bool = False):
-        """ Convert to ASCII if 'allow_unicode' is False. Convert spaces to
-        hyphens. Remove characters that aren't alphanumerics, underscores, or
-        hyphens. Convert to lowercase. Also strip leading and trailing
-        whitespace.
+    def slugify(self, string: str, delimiter: str = "-", lowercase: bool = True):
+        """ Returns a normalized string. Converts to ASCII, strips non-word
+        characters, lowers case and replaces spaces with `delimeter`.
 
-        via. https://docs.djangoproject.com/en/2.1/_modules/django/utils/text/#slugify
+        via. https://docs.djangoproject.com/en/3.0/_modules/django/utils/text/#slugify
         """
 
         string = str(string)
 
-        if allow_unicode:
-            string = unicodedata.normalize("NFKC", string)
-        else:
-            string = (
-                unicodedata.normalize("NFKD", string)
-                .encode("ascii", "ignore")
-                .decode("ascii")
-            )
+        string = (
+            unicodedata.normalize("NFKD", string)
+            .encode("ascii", "ignore")
+            .decode("ascii")
+        )
 
-        string = re.sub(r"[^\w\s-]", "", string).strip().lower()
-        string = re.sub(r"[-\s]+", delimiter, string)
+        if lowercase:
+            string = string.lower()
+
+        string = string.strip()
+        string = re.sub(r"[^\w\s-]", "", string)
+        string = re.sub(r"[\s-]+", delimiter, string)
 
         return string

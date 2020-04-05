@@ -36,7 +36,6 @@ alias brewski="brew update && brew upgrade && brew cleanup; brew doctor"
 
 # bash/dotfiles
 alias editdot="code $HOME/.dotfiles "
-alias editbash="code $HOME/.dotfiles/bash"
 alias editzsh="code $HOME/.dotfiles/zsh"
 
 
@@ -48,6 +47,7 @@ function dlvid {
             --add-metadata \
             --embed-subs \
             --all-subs \
+            --ignore-errors \
             --external-downloader aria2c --external-downloader-args "-c -j 3 -x 3 -s 3 -k 1M" \
             "$url"
     done

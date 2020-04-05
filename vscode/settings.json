@@ -14,7 +14,7 @@
         "tab.activeBorder": "#E57373",
         "notificationLink.foreground": "#E57373"
     },
-    "workbench.colorTheme": "Activate UMBRA protocol",
+    "workbench.colorTheme": "Cyberpunk",
     "workbench.iconTheme": "city-lights-icons-vsc",
     //
     // UI Explorer Sidebar
@@ -29,6 +29,7 @@
     "files.associations": {
         "*.toml": "ini",
         "*.spec": "python",
+        "*.stor": "yaml",
         "*.qss": "css"
     },
     //
@@ -65,7 +66,7 @@
     "python.linting.flake8Enabled": true,
     "python.linting.pylintEnabled": false,
     "python.linting.flake8Args": [
-        "--ignore=E501,E128,E711,E131,E126,E241,T499,E231"
+        "--ignore=E501,E128,E711,E131,E126,E241,T499,E231,W503"
     ],
     //
     // Poetry / venv
@@ -97,16 +98,16 @@
     "gitlens.codeLens.enabled": false,
     "todo-tree.filtering.useBuiltInExcludes": "file and search excludes",
     "todo-tree.general.tags": [
-        "WIP",
-        "BUG",
-        "TEMP",
-        "TODO",
-        "NOTE",
-        "QUESTION",
-        "TESTING",
-        "DEBUGGING",
-        "WARNING",
-        "FIXME"
+        "WIP:",
+        "BUG:",
+        "TEMP:",
+        "TODO:",
+        "NOTE:",
+        "QUESTION:",
+        "TESTING:",
+        "DEBUGGING:",
+        "WARNING:",
+        "FIXME:"
     ],
     "todo-tree.highlights.defaultHighlight": {
         "icon": "alert",

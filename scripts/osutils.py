@@ -9,10 +9,12 @@ from typing import Iterator, List, Optional, Set, Union
 import psutil
 
 
-class OSUtils:
-    def __init__(self, logger: logging.Logger) -> None:
+logger = logging.getLogger(__name__)
 
-        self._logger = logger
+
+class OSUtils:
+
+    TRASH = pathlib.Path("~/.Trash")
 
     def run(
         self,
@@ -29,13 +31,6 @@ class OSUtils:
 
         subprocess.run()
 
-            If shell is True, the specified command will be executed through
-            the shell. This can be useful if you are using Python primarily for
-            the enhanced control flow it offers over most system shells and
-            still want convenient access to other shell features such as shell
-            pipes, filename wildcards, environment variable expansion, and
-            expansion of ~ to a user’s home directory.
-
             If `check` is true, and the process exits with a non-zero exit
             code, a CalledProcessError exception will be raised. Attributes of
             that exception hold the arguments, the exit code, and stdout and
@@ -49,20 +44,19 @@ class OSUtils:
             (or for the first item in args) relative to `cwd` if the executable
             path is a relative path.
 
-            via https://docs.python.org/3/library/subprocess.html#subprocess.run
-        """
+        https://docs.python.org/3/library/subprocess.html#subprocess.run """
 
         command_normalized: List[str] = [str(s) for s in command]
-        command_string: str = " ".join(command_normalized)
 
-        self._logger.debug(f"Running command `{command_string}`...")
+        command_string: str = " ".join(command_normalized)
+        logger.debug(f"Running command `{command_string}`...")
 
         try:
             subprocess.run(
                 command_normalized, check=True, capture_output=True, cwd=path,
             )
         except subprocess.CalledProcessError:
-            self._logger.exception(
+            logger.exception(
                 f"Exception raised while attempting to run command: {command_string}."
             )
 
@@ -84,9 +78,9 @@ class OSUtils:
 
             If `exist_ok` is true, FileExistsError exceptions will be ignored
             (same behavior as the POSIX mkdir -p command), but only if the last
-            path component is not an existing non-directory file.
+            path component is not an existing non file.
 
-        via https://docs.python.org/3/library/pathlib.html#pathlib.Path.mkdir
+        https://docs.python.org/3/library/pathlib.html#pathlib.Path.mkdir
 
         Path.touch()
 
@@ -97,11 +91,37 @@ class OSUtils:
 
         https://docs.python.org/3/library/pathlib.html#pathlib.Path.touch """
 
-        if as_file:
-            path.touch(exist_ok=True)
-            return
+        logger.debug(f"Making `{path}`...")
 
-        path.mkdir(parents=True, exist_ok=True)
+        if as_file is True:
+            path.touch(exist_ok=True)
+        else:
+            path.mkdir(parents=True, exist_ok=True)
+
+    def move(self, source: pathlib.Path, destination: pathlib.Path, force: bool = True):
+        """ Move files and/or directories.
+
+        source -- Path to file and/or directory to move.
+        destination -- Path to move to.
+
+        mv [options] source target
+
+            Move files and/or folders.
+
+            -i
+                Prompt before moving a file that would overwrite an existing
+                file. A response of `y` or `Y`, will allow the move to proceed.
+
+        https://ss64.com/osx/mv.html """
+
+        flags: List[str] = []
+
+        if force is False:
+            flags.append("-i")
+
+        logger.debug(f"Moving `{source}` to `{destination}`...")
+
+        self.run(command=["mv", *flags, source, destination])
 
     def remove(self, path: pathlib.Path) -> None:
         """ Removes a file or directory.
@@ -114,7 +134,7 @@ class OSUtils:
             (but not a symbolic link to a directory). If ignore_errors is true,
             errors resulting from failed removals will be ignored.
 
-        via https://docs.python.org/3/library/shutil.html#shutil.rmtree
+        https://docs.python.org/3/library/shutil.html#shutil.rmtree
 
         Path.unlink()
 
@@ -123,14 +143,22 @@ class OSUtils:
             If missing_ok is true, FileNotFoundError exceptions will be ignored
             (same behavior as the POSIX rm -f command).
 
-        via https://docs.python.org/3/library/pathlib.html#pathlib.Path.unlink
-        """
+        https://docs.python.org/3/library/pathlib.html#pathlib.Path.unlink """
+
+        logger.debug("Removing `{path}`...")
 
         if path.is_dir():
             shutil.rmtree(path)
 
         elif path.is_file():
             path.unlink(missing_ok=True)
+
+    def trash(self, path: pathlib.Path) -> None:
+        """ Move an item to the Trash. """
+
+        logger.debug("Moving `{path}` to Trash...")
+
+        self.move(source=path, destination=self.TRASH)
 
     def copy(
         self,
@@ -175,7 +203,7 @@ class OSUtils:
 
             -v   Verbose - show files as they are copied.
 
-            via https://ss64.com/osx/cp.html """
+        https://ss64.com/osx/cp.html """
 
         self.make(path=destination)
 
@@ -183,6 +211,9 @@ class OSUtils:
 
         if recursive:
             flags.append("-R")
+
+        sources_string = ", ".join([f"`{source}`" for source in sources])
+        logger.debug(f"Copying {sources_string} to `{destination}`")
 
         self.run(command=["cp", *flags, *sources, destination])
 
@@ -198,24 +229,26 @@ class OSUtils:
 
             Make this path a symbolic link to target.
 
-        via https://docs.python.org/3/library/pathlib.html
-        """
+        https://docs.python.org/3/library/pathlib.html """
+
+        logger.debug(f"Linking `{original}` to `{symbolic}`...")
+
         try:
             symbolic.symlink_to(original)
 
         except FileExistsError:
 
-            if force is True:
-                self.remove(symbolic)
-                symbolic.symlink_to(original)
+            if force is not True:
+                logger.warning(
+                    f"Linking `{original}` to `{symbolic}` skipped! Cannot create "
+                    f"a link to an existing item: `{symbolic}`. Or link already "
+                    f"exists. If so, run with force=True to refresh link. Use "
+                    f"with caution, this will *remove* `{symbolic}` permanantly!"
+                )
                 return
 
-            self._logger.warning(
-                f"Linking `{original}` -> `{symbolic}` skipped! Cannot create "
-                f"a link to an existing item: `{symbolic}`. Or link already "
-                f"exists. If so, run with force=True to refresh link. Use "
-                f"with caution, this will *remove* `{symbolic}` permanantly!"
-            )
+            self.remove(symbolic)
+            symbolic.symlink_to(original)
 
     def archive(self, sources: List[pathlib.Path], destination: pathlib.Path) -> None:
         """ Writes a `tar` archives from list of files and/or directories.
@@ -239,7 +272,7 @@ class OSUtils:
             --gzip
                 (create mode only) Compress the resulting archive with gzip(1).
 
-            via https://ss64.com/osx/tar.html """
+        https://ss64.com/osx/tar.html """
 
         # Ensure the destination path has a tar-like file extension.
         if destination.suffixes not in [[".tar", ".gz"], [".tgz"]]:
@@ -247,6 +280,8 @@ class OSUtils:
             #   "tar.gz" -> [".tar", ".gz"]
             #   ".tgz"   -> [".tgz"]
             destination = destination.with_suffix(".tar.gz")
+
+        logger.debug(f"Creating archive `{destination}`...")
 
         self.run(
             command=["tar", "--create", "--gzip", f"--file={destination}", *sources]
@@ -256,60 +291,65 @@ class OSUtils:
         self,
         path: pathlib.Path,
         size: int,
+        trash: bool = True,
         ignore_globs: Optional[List[str]] = None,
         ignore_files: bool = False,
         ignore_directories: bool = False,
     ) -> None:
-        """ Removes (read: rm -f) items from a directory based on a size limit
-        preserving the newest files based on metadata changes.
+        """ Removes items from a directory based on a size limit, preserving
+        the newest files based on metadata changes.
 
         Only runs if prunable contents are *greater than* `size`.
 
         path -- Path to prune.
-        size -- Size to prune to.
-        ignore_globs -- List of glob patterns to ignore.
-        ignore_files -- Ignore pruning files.
-        ignore_directories -- Ignore pruning directories. """
+        size -- Size to prune down to.
+        trash -- Send pruned files to the Trash.
+        ignore_globs -- Igore files/directories that match these glob patterns.
+        ignore_files -- Do not prune files.
+        ignore_directories -- Do not prune directories. """
 
-        self._logger.debug(
-            f"Path `{path}` contains {len(list(path.iterdir()))} items..."
-        )
+        logger.debug(f"Path `{path}` contains {len(list(path.iterdir()))} items...")
 
         if ignore_globs is None:
+            # Ignore system files be default.
             ignore_globs = [".*"]
 
-        ignore: Set[pathlib.Path] = set()
+        ignoring: Set[pathlib.Path] = set()
         for glob in ignore_globs:
-            globbed: Iterator[pathlib.Path] = path.glob(glob)
-            ignore.update(globbed)
+            items: Iterator[pathlib.Path] = path.glob(glob)
+            ignoring.update(items)
 
         prunables: List[pathlib.Path] = []
         for item in path.iterdir():
 
-            if item in ignore:
+            if item in ignoring:
                 continue
 
             if item.is_file() and ignore_files is True:
-                ignore.add(item)
+                ignoring.add(item)
                 continue
 
             if item.is_dir() and ignore_directories is True:
-                ignore.add(item)
+                ignoring.add(item)
                 continue
 
             prunables.append(item)
 
-        self._logger.debug(f"Ignoring {len(ignore)} items in `{path}`...")
+        logger.debug(f"Ignoring {len(ignoring)} items in `{path}`...")
 
-        # Skip if the number of prunables items is under the size limit.
         if len(prunables) <= size:
+            logger.debug(
+                f"Pruning skipped! Number of prunable items is under the size limit."
+            )
             return
 
-        self._logger.debug(f"Found {len(prunables)} prunable items in `{path}`...")
+        logger.debug(f"Found {len(prunables)} prunable items in `{path}`...")
 
         # Sort by the time of most recent metadata change on Unix.
-        # via https://docs.python.org/3/library/os.html#os.stat_result.st_ctime
+        # https://docs.python.org/3/library/os.html#os.stat_result.st_ctime
         prunables = sorted(prunables, reverse=True, key=lambda p: p.stat().st_ctime)
+
+        logger.info(f"Pruning `{path}` to {size} items...")
 
         for count, path in enumerate(prunables, start=1):
 
@@ -317,11 +357,14 @@ class OSUtils:
             if count <= size:
                 continue
 
-            self.remove(path=path)
+            logger.debug(f"Removing {path.name} from `{path}`...")
 
-            self._logger.debug(f"Removed {path.name} from `{path}`...")
-
-        self._logger.info(f"Pruned `{path}` to {size} items...")
+            # This explicit block is more of a safety measure to help prevent
+            # un-wanted removal on incorrect use of the API.
+            if trash is False:
+                self.remove(path=path)
+            else:
+                self.trash(path=path)
 
     def process_is_running(self, process_names: List[str]) -> bool:
         """ Check to see an process is currently running.
@@ -330,20 +373,26 @@ class OSUtils:
 
         process_names = [name.lower() for name in process_names]
 
-        for proc in psutil.process_iter():
+        for process in psutil.process_iter():
 
             try:
-                pinfo = proc.as_dict(attrs=["name"])
+                process_info = process.as_dict(attrs=["name"])
             except psutil.NoSuchProcess:
                 """ When a process doesn't have a name it might mean it's a
                 zombie process which ends up raising a NoSuchProcess exception
                 or its subclass the ZombieProcess exception. """
-                pass
-            except Exception:
-                raise
+                continue
 
-            if pinfo["name"].lower() in process_names:
+            process_name = process_info["name"].lower()
+
+            if process_name in process_names:
+                logger.debug(f"Process `{process_name}` currently running.")
                 return True
+
+        process_names_string = ", ".join([f"`{name}`" for name in process_names])
+        logger.debug(
+            f"No process with name(s) {process_names_string} currently running."
+        )
 
         return False
 
@@ -351,7 +400,7 @@ class OSUtils:
         """ Returns a normalized string. Converts to ASCII, strips non-word
         characters, lowers case and replaces spaces with `delimeter`.
 
-        via. https://docs.djangoproject.com/en/3.0/_modules/django/utils/text/#slugify
+        https://docs.djangoproject.com/en/3.0/_modules/django/utils/text/#slugify
         """
 
         string = str(string)
@@ -366,7 +415,7 @@ class OSUtils:
             string = string.lower()
 
         string = string.strip()
-        string = re.sub(r"[^\w\s-]", "", string)
-        string = re.sub(r"[\s-]+", delimiter, string)
+        string = re.sub(fr"[^\w\s{delimiter}]", "", string)
+        string = re.sub(fr"[\s{delimiter}]+", delimiter, string)
 
         return string

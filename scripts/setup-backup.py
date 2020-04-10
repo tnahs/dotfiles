@@ -1,16 +1,21 @@
 import argparse
 import logging
 import pathlib
+import sys
 from datetime import datetime
-from typing import Dict, Tuple, List
+from typing import Dict, List, Tuple
 
 import osutils
+
 
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s %(levelname)s: %(message)s",
     datefmt="%Y-%m-%d %H:%M:%S",
 )
+
+
+logger = logging.getLogger()
 
 
 class Defaults:
@@ -43,14 +48,20 @@ class ArchivePaths:
 
 
 class Backup:
-    def __init__(self, choices: List[str], logger: logging.Logger) -> None:
+
+    osutils = osutils.OSUtils()
+
+    def __init__(self, choices: List[str]) -> None:
 
         self._choices = choices
-        self._logger = logger
-
-        self._osutils = osutils.OSUtils(logger=logger)
 
     def backup(self) -> None:
+
+        try:
+            ArchivePaths.anki.resolve(strict=True)
+            ArchivePaths.applebooks.resolve(strict=True)
+        except FileNotFoundError:
+            raise
 
         for choice in self._choices:
             getattr(self, f"_run_{choice}")()
@@ -62,9 +73,9 @@ class Backup:
 
     def _run_dotfiles(self) -> None:
 
-        self._logger.info("Dumping Brewfile...")
+        logger.info("Dumping Brewfile...")
 
-        self._osutils.run(
+        self.osutils.run(
             command=[
                 "brew",
                 "bundle",
@@ -76,18 +87,18 @@ class Backup:
 
         #
 
-        self._logger.info("Backing up Moom preferences...")
+        logger.info("Backing up Moom preferences...")
 
         moom_source = Defaults.home / "Library/Preferences/com.manytricks.Moom.plist"
         moom_destination = DotfilePaths.root / "moom"
 
-        self._osutils.copy(
+        self.osutils.copy(
             sources=[moom_source], destination=moom_destination,
         )
 
         #
 
-        self._logger.info("Backing up VSCode `[settings|projects|keybindings].json`...")
+        logger.info("Backing up VSCode `[settings|projects|keybindings].json`...")
 
         vscode_user_root = Defaults.home / "Library/Application Support/Code/User/"
         vscode_sources = [
@@ -97,50 +108,48 @@ class Backup:
         ]
         vscode_destination = DotfilePaths.root / "vscode"
 
-        self._osutils.copy(sources=vscode_sources, destination=vscode_destination)
+        self.osutils.copy(sources=vscode_sources, destination=vscode_destination)
 
         #
 
-        self._logger.info("Dumping up VSCode extensions list...")
+        logger.info("Dumping up VSCode extensions list...")
 
         vscode_extensions = DotfilePaths.root / "vscode" / "extensions.txt"
 
-        self._osutils.run(command=["code", "--list-extensions", ">", vscode_extensions])
+        self.osutils.run(command=["code", "--list-extensions", ">", vscode_extensions])
 
     def _run_anki(self) -> None:
 
-        if self._osutils.process_is_running(process_names=["Anki"]):
+        if self.osutils.process_is_running(process_names=["Anki"]):
             logging.warning("Anki is currently running! Skipping...")
             return
 
-        self._logger.info(f"Backing up Anki `Application Support` folder...")
+        logger.info(f"Backing up Anki `Application Support` folder...")
 
         # Anki deck and addons folder
         source = Defaults.home / "Library/Application Support/Anki2/"
         destination = ArchivePaths.anki / f"anki-{Defaults.today}.tar.gz"
 
-        self._osutils.archive(sources=[source], destination=destination)
-        self._osutils.prune(path=ArchivePaths.anki, size=5)
+        self.osutils.archive(sources=[source], destination=destination)
+        self.osutils.prune(path=ArchivePaths.anki, size=5)
 
     def _run_applebooks(self) -> None:
 
-        if self._osutils.process_is_running(
-            process_names=["Books", "iBooks", "Apple Books"]
+        if self.osutils.process_is_running(
+            process_names=["Books", "iBooks", "Apple Books", "AppleBooks"]
         ):
             logging.warning("Apple Books is currently running! Skipping...")
             return
 
-        self._logger.info(f"Backing up Apple Books...")
+        logger.info(f"Backing up Apple Books...")
 
         # Apple Books databases / EPUBs
         db_source = Defaults.home / "Library/Containers/com.apple.iBooksX/"
         epubs_source = Defaults.home / "Library/Containers/com.apple.BKAgentService/"
         destination = ArchivePaths.applebooks / f"apple-books-{Defaults.today}.tar.gz"
 
-        self._osutils.archive(
-            sources=[db_source, epubs_source], destination=destination
-        )
-        self._osutils.prune(path=ArchivePaths.applebooks, size=5)
+        self.osutils.archive(sources=[db_source, epubs_source], destination=destination)
+        self.osutils.prune(path=ArchivePaths.applebooks, size=5)
 
 
 if __name__ == "__main__":
@@ -167,10 +176,14 @@ if __name__ == "__main__":
 
     #
 
-    logger = logging.getLogger()
     logger.setLevel(Defaults.verbose[args.verbose])
 
     #
 
-    backup = Backup(choices=args.choices, logger=logger)
-    backup.backup()
+    backup = Backup(choices=args.choices)
+
+    try:
+        backup.backup()
+    except Exception:
+        logger.exception("Exception raised while attempting to backup.")
+        sys.exit(-1)

@@ -1,6 +1,7 @@
 import argparse
 import logging
 import pathlib
+import sys
 from datetime import datetime
 from typing import Dict
 
@@ -12,6 +13,9 @@ logging.basicConfig(
     format="%(asctime)s %(levelname)s: %(message)s",
     datefmt="%Y-%m-%d %H:%M:%S",
 )
+
+
+logger = logging.getLogger()
 
 
 class Defaults:
@@ -31,13 +35,20 @@ class DotfilePaths:
 
 
 class Build:
-    def __init__(self, python_version: str, logger: logging.Logger) -> None:
+
+    os_utils = osutils.OSUtils()
+
+    def __init__(self, python_version: str) -> None:
 
         self._python_version = python_version
-        self._logger = logger
-        self._osutils = osutils.OSUtils(logger=logger)
 
     def rebuild(self) -> None:
+
+        try:
+            DotfilePaths.root.resolve(strict=True)
+        except FileNotFoundError:
+            raise
+
         self._run_link_dotfiles()
         self._run_source_profile()
         self._run_install_brewfile()
@@ -68,37 +79,34 @@ class Build:
             if not original or not symbolic:
                 continue
 
-            self._osutils.link(original=original, symbolic=symbolic)
+            self.os_utils.link(original=original, symbolic=symbolic)
 
     def _run_source_profile(self) -> None:
 
         path = Defaults.home / ".zshrc"
 
-        self._osutils.run(command=["source", path])
+        self.os_utils.run(command=["source", path])
 
     def _run_install_brewfile(self) -> None:
 
-        self._osutils.run(command=["brew", "bundle"], path=pathlib.Path.home())
+        self.os_utils.run(command=["brew", "bundle"], path=pathlib.Path.home())
 
     def _restore_application_preferences(self) -> None:
 
-        self._logger.info("Restoring iTerm2 preferences...")
+        # TODO: logger.info("Restoring iTerm2 preferences...")
 
-        #
-
-        self._logger.info("Restoring Moom preferences...")
+        logger.info("Restoring Moom preferences...")
 
         moom_source = DotfilePaths.root / "moom" / "com.manytricks.Moom.plist"
         moom_destination = Defaults.home / "Library/Preferences"
 
-        self._osutils.copy(
+        self.os_utils.copy(
             sources=[moom_source], destination=moom_destination,
         )
 
-        #
-        self._logger.info("Installing VSCode Settings Sync extension...")
+        logger.info("Installing VSCode Settings Sync extension...")
 
-        self._osutils.run(
+        self.os_utils.run(
             command=["code", "--install-extension", "Shan.code-settings-sync"]
         )
 
@@ -106,10 +114,10 @@ class Build:
 
         """ At this point `pipx` and `pyenv` have been installed through
         `Homebrew` via the `Brewfile`. """
-        self._osutils.run(command=["pipx", "install", "bpython"])
-        self._osutils.run(command=["pyenv", "install", self._python_version])
-        self._osutils.run(command=["pyenv", "global", self._python_version])
-        self._osutils.run(command=["pip", "install", "psutil"])
+        self.os_utils.run(command=["pipx", "install", "bpython"])
+        self.os_utils.run(command=["pyenv", "install", self._python_version])
+        self.os_utils.run(command=["pyenv", "global", self._python_version])
+        self.os_utils.run(command=["pip", "install", "psutil"])
 
 
 if __name__ == "__main__":
@@ -138,10 +146,14 @@ if __name__ == "__main__":
 
     #
 
-    logger = logging.getLogger()
     logger.setLevel(Defaults.verbose[args.verbose])
 
     #
 
-    rebuild = Build(python_version=args.python_version, logger=logger)
-    rebuild.rebuild()
+    rebuild = Build(python_version=args.python_version)
+
+    try:
+        rebuild.rebuild()
+    except Exception:
+        logger.exception("Exception raised while attempting to rebuild.")
+        sys.exit(-1)

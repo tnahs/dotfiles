@@ -14,7 +14,7 @@ logger = logging.getLogger(__name__)
 
 class OSUtils:
 
-    TRASH = pathlib.Path("~/.Trash")
+    TRASH = pathlib.Path().home() / ".Trash"
 
     def run(
         self,
@@ -93,7 +93,7 @@ class OSUtils:
 
         logger.debug(f"Making `{path}`...")
 
-        if as_file is True:
+        if as_file:
             path.touch(exist_ok=True)
         else:
             path.mkdir(parents=True, exist_ok=True)

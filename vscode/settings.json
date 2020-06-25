@@ -81,7 +81,7 @@
     "files.trimTrailingWhitespace": true,
     "files.trimFinalNewlines": true,
     "window.nativeFullScreen": false,
-    "window.zoomLevel": 1,
+    "window.zoomLevel": 0,
     //
     // Zen Mode
     "zenMode.fullScreen": false,
@@ -114,4 +114,5 @@
         "iconColour": "#77AA00",
         "foreground": "#77AA00",
     },
+    "python.languageServer": "Microsoft",
 }

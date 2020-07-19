@@ -34,12 +34,23 @@ alias p="cd $HOME/Workspace/projects; ls -lah;"
 alias brewski="brew update && brew upgrade && brew cleanup; brew doctor"
 
 
-# bash/dotfiles
-alias editdot="code $HOME/.dotfiles "
-alias editzsh="code $HOME/.dotfiles/zsh"
+# zsh/dotfiles
+alias edit-zshrc="code $HOME/.dotfiles/zsh"
+alias edit-dotfiles="code $HOME/.dotfiles "
+alias reload-zshrc="source $HOME/.dotfiles/zsh/.zshrc"
 
 
-function dlvid {
+function make_executable {
+    chmod u+x "$@"
+}
+
+
+function clear_history {
+    local HISTSIZE=0
+}
+
+
+function rip-videos {
     for url in "$@"; do
         youtube-dl \
             --output "%(uploader)s - %(title)s - %(id)s.%(ext)s" \
@@ -52,3 +63,17 @@ function dlvid {
             "$url"
     done
 }
+
+
+# zsh-completions
+# https://github.com/zsh-users/zsh-completions
+fpath=(path/to/zsh-completions/src $fpath)
+
+# zsh-autosuggestions
+# https://github.com/zsh-users/zsh-autosuggestions
+source "$HOME/.dotfiles/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
+
+# zsh-syntax-highlighting
+# http://github.com/zsh-users/zsh-syntax-highlighting
+# https://coderwall.com/p/qmvfya/syntax-highlighting-for-zsh
+source "$HOME/.dotfiles/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"

@@ -15,12 +15,17 @@ export PATH="$PATH:$HOME/.local/bin"
 # https://code.visualstudio.com/docs/setup/mac#_launching-from-the-command-line
 export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 
-# pyenv
-# https://github.com/pyenv/pyenv#homebrew-on-macos
-eval "$(pyenv init -)"
+# Warning: Homebrew's sbin was not found in your PATH but you have installed
+# formulae that put executables in /usr/local/sbin.
+# Consider setting the PATH for example like so:
+export PATH="/usr/local/sbin:$PATH"
 
 # Don't create Python binary files.
 export PYTHONDONTWRITEBYTECODE=1
+
+# pyenv
+# https://github.com/pyenv/pyenv#homebrew-on-macos
+eval "$(pyenv init -)"
 
 # navigation
 alias ll="ls -lah"
@@ -67,7 +72,7 @@ function rip-videos {
 
 # zsh-completions
 # https://github.com/zsh-users/zsh-completions
-fpath=(path/to/zsh-completions/src $fpath)
+fpath=("$HOME/.dotfiles/zsh/plugins/zsh-completions/src" $fpath)
 
 # zsh-autosuggestions
 # https://github.com/zsh-users/zsh-autosuggestions

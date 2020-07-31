@@ -1,4 +1,4 @@
-# Back-up Workspace
+# Setup Backup
 
 1. Run backup script:
 

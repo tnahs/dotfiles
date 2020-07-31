@@ -1,3 +1,5 @@
+# Sparsebundles
+
 A Sparse Bundle Image will increase in size automatically but will not shrink automatically. Before shrinking the sparse bundle, mount it and empty the trash to get rid of any deleted items from the image.
 
 Unmount the image and follow the commands below.
@@ -18,4 +20,6 @@ hdiutil resize -help (for a list of options)
 
 Mount the image then do a Get Info on the Volume to see the new size.
 
-via. https://vidrih.net/2016/03/15/resize-a-sparse-bundle-image-using-terminal/
+# Resources
+
++ https://vidrih.net/2016/03/15/resize-a-sparse-bundle-image-using-terminal/

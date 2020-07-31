@@ -1,4 +1,4 @@
-# Re-installing macOS
+# Setup Reinstall
 
 ## via Bootable USB
 

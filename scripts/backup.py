@@ -5,7 +5,7 @@ import sys
 from datetime import datetime
 from typing import Dict, List, Tuple
 
-import osutils
+import helpers
 
 
 logging.basicConfig(
@@ -48,9 +48,6 @@ class ArchivePaths:
 
 
 class Backup:
-
-    osutils = osutils.OSUtils()
-
     def __init__(self, choices: List[str]) -> None:
 
         self._choices = choices
@@ -75,7 +72,7 @@ class Backup:
 
         logger.info("Dumping Brewfile...")
 
-        self.osutils.run(
+        helpers.shell.run(
             command=[
                 "brew",
                 "bundle",
@@ -92,7 +89,7 @@ class Backup:
         moom_source = Defaults.home / "Library/Preferences/com.manytricks.Moom.plist"
         moom_destination = DotfilePaths.root / "moom"
 
-        self.osutils.copy(
+        helpers.shell.copy(
             sources=[moom_source], destination=moom_destination,
         )
 
@@ -108,7 +105,7 @@ class Backup:
         ]
         vscode_destination = DotfilePaths.root / "vscode"
 
-        self.osutils.copy(sources=vscode_sources, destination=vscode_destination)
+        helpers.shell.copy(sources=vscode_sources, destination=vscode_destination)
 
         #
 
@@ -116,11 +113,11 @@ class Backup:
 
         vscode_extensions = DotfilePaths.root / "vscode" / "extensions.txt"
 
-        self.osutils.run(command=["code", "--list-extensions", ">", vscode_extensions])
+        helpers.shell.run(command=["code", "--list-extensions", ">", vscode_extensions])
 
     def _run_anki(self) -> None:
 
-        if self.osutils.process_is_running(process_names=["Anki"]):
+        if helpers.shell.process_is_running(process_names=["Anki"]):
             logging.warning("Anki is currently running! Skipping...")
             return
 
@@ -130,12 +127,12 @@ class Backup:
         source = Defaults.home / "Library/Application Support/Anki2/"
         destination = ArchivePaths.anki / f"anki-{Defaults.today}.tar.gz"
 
-        self.osutils.archive(sources=[source], destination=destination)
-        self.osutils.prune(path=ArchivePaths.anki, size=5)
+        helpers.shell.archive(sources=[source], destination=destination)
+        helpers.shell.prune(path=ArchivePaths.anki, size=5)
 
     def _run_applebooks(self) -> None:
 
-        if self.osutils.process_is_running(
+        if helpers.shell.process_is_running(
             process_names=["Books", "iBooks", "Apple Books", "AppleBooks"]
         ):
             logging.warning("Apple Books is currently running! Skipping...")
@@ -148,8 +145,10 @@ class Backup:
         epubs_source = Defaults.home / "Library/Containers/com.apple.BKAgentService/"
         destination = ArchivePaths.applebooks / f"apple-books-{Defaults.today}.tar.gz"
 
-        self.osutils.archive(sources=[db_source, epubs_source], destination=destination)
-        self.osutils.prune(path=ArchivePaths.applebooks, size=5)
+        helpers.shell.archive(
+            sources=[db_source, epubs_source], destination=destination
+        )
+        helpers.shell.prune(path=ArchivePaths.applebooks, size=5)
 
 
 if __name__ == "__main__":

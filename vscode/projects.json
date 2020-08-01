@@ -7,15 +7,22 @@
         "enabled": true
     },
     {
-        "name": "read-stor",
-        "rootPath": "$home/Workspace/projects/read-stor",
+        "name": "easel",
+        "rootPath": "$home/Workspace/projects/easel",
         "paths": [],
         "group": "",
         "enabled": true
     },
     {
-        "name": "pfolio",
-        "rootPath": "$home/Workspace/projects/pfolio/pfolio",
+        "name": "easel-demo",
+        "rootPath": "$home/Workspace/projects/easel-demo",
+        "paths": [],
+        "group": "",
+        "enabled": true
+    },
+    {
+        "name": "read-stor",
+        "rootPath": "$home/Workspace/projects/read-stor",
         "paths": [],
         "group": "",
         "enabled": true

@@ -12,7 +12,7 @@ import psutil
 logger = logging.getLogger(__name__)
 
 
-class OSUtils:
+class Shell:
 
     TRASH = pathlib.Path().home() / ".Trash"
 
@@ -21,7 +21,6 @@ class OSUtils:
         command: List[Union[str, pathlib.Path]],
         path: Optional[pathlib.Path] = None,
     ) -> None:
-        """ Runs a terminal command.
 
         command -- Command to run.
         path -- Path to run the command in.
@@ -49,7 +48,7 @@ class OSUtils:
         command_normalized: List[str] = [str(s) for s in command]
 
         command_string: str = " ".join(command_normalized)
-        logger.debug(f"Running command `{command_string}`...")
+        logger.debug(f"Running command `{command_string}`.")
 
         try:
             subprocess.run(
@@ -57,7 +56,7 @@ class OSUtils:
             )
         except subprocess.CalledProcessError:
             logger.exception(
-                f"Exception raised while attempting to run command: {command_string}."
+                f"Exception raised while attempting to run command: `{command_string}`."
             )
 
     def make(self, path: pathlib.Path, as_file: bool = False) -> None:
@@ -91,14 +90,16 @@ class OSUtils:
 
         https://docs.python.org/3/library/pathlib.html#pathlib.Path.touch """
 
-        logger.debug(f"Making `{path}`...")
+        logger.debug(f"Making `{path}`.")
 
         if as_file:
             path.touch(exist_ok=True)
         else:
             path.mkdir(parents=True, exist_ok=True)
 
-    def move(self, source: pathlib.Path, destination: pathlib.Path, force: bool = True):
+    def move(
+        self, source: pathlib.Path, destination: pathlib.Path, force: bool = True
+    ) -> None:
         """ Move files and/or directories.
 
         source -- Path to file and/or directory to move.
@@ -119,7 +120,7 @@ class OSUtils:
         if force is False:
             flags.append("-i")
 
-        logger.debug(f"Moving `{source}` to `{destination}`...")
+        logger.debug(f"Moving `{source}` to `{destination}`.")
 
         self.run(command=["mv", *flags, source, destination])
 
@@ -145,7 +146,7 @@ class OSUtils:
 
         https://docs.python.org/3/library/pathlib.html#pathlib.Path.unlink """
 
-        logger.debug("Removing `{path}`...")
+        logger.debug(f"Removing `{path}`.")
 
         if path.is_dir():
             shutil.rmtree(path)
@@ -156,7 +157,7 @@ class OSUtils:
     def trash(self, path: pathlib.Path) -> None:
         """ Move an item to the Trash. """
 
-        logger.debug("Moving `{path}` to Trash...")
+        logger.debug("Moving `{path}` to Trash.")
 
         self.move(source=path, destination=self.TRASH)
 
@@ -213,7 +214,7 @@ class OSUtils:
             flags.append("-R")
 
         sources_string = ", ".join([f"`{source}`" for source in sources])
-        logger.debug(f"Copying {sources_string} to `{destination}`")
+        logger.debug(f"Copying {sources_string} to `{destination}`.")
 
         self.run(command=["cp", *flags, *sources, destination])
 
@@ -231,7 +232,7 @@ class OSUtils:
 
         https://docs.python.org/3/library/pathlib.html """
 
-        logger.debug(f"Linking `{original}` to `{symbolic}`...")
+        logger.debug(f"Linking `{original}` to `{symbolic}`.")
 
         try:
             symbolic.symlink_to(original)
@@ -243,7 +244,7 @@ class OSUtils:
                     f"Linking `{original}` to `{symbolic}` skipped! Cannot create "
                     f"a link to an existing item: `{symbolic}`. Or link already "
                     f"exists. If so, run with force=True to refresh link. Use "
-                    f"with caution, this will *remove* `{symbolic}` permanantly!"
+                    f"with caution, this will *remove* `{symbolic}` permanently!"
                 )
                 return
 
@@ -281,7 +282,7 @@ class OSUtils:
             #   ".tgz"   -> [".tgz"]
             destination = destination.with_suffix(".tar.gz")
 
-        logger.debug(f"Creating archive `{destination}`...")
+        logger.debug(f"Creating archive `{destination}`.")
 
         self.run(
             command=["tar", "--create", "--gzip", f"--file={destination}", *sources]
@@ -304,11 +305,11 @@ class OSUtils:
         path -- Path to prune.
         size -- Size to prune down to.
         trash -- Send pruned files to the Trash.
-        ignore_globs -- Igore files/directories that match these glob patterns.
+        ignore_globs -- Ignore files/directories that match these glob patterns.
         ignore_files -- Do not prune files.
         ignore_directories -- Do not prune directories. """
 
-        logger.debug(f"Path `{path}` contains {len(list(path.iterdir()))} items...")
+        logger.debug(f"Path `{path}` contains {len(list(path.iterdir()))} items.")
 
         if ignore_globs is None:
             # Ignore system files be default.
@@ -319,7 +320,7 @@ class OSUtils:
             items: Iterator[pathlib.Path] = path.glob(glob)
             ignoring.update(items)
 
-        prunables: List[pathlib.Path] = []
+        prunable: List[pathlib.Path] = []
         for item in path.iterdir():
 
             if item in ignoring:
@@ -333,31 +334,31 @@ class OSUtils:
                 ignoring.add(item)
                 continue
 
-            prunables.append(item)
+            prunable.append(item)
 
-        logger.debug(f"Ignoring {len(ignoring)} items in `{path}`...")
+        logger.debug(f"Ignoring {len(ignoring)} items in `{path}`.")
 
-        if len(prunables) <= size:
+        if len(prunable) <= size:
             logger.debug(
-                f"Pruning skipped! Number of prunable items is under the size limit."
+                "Pruning skipped! Number of prunable items is under the size limit."
             )
             return
 
-        logger.debug(f"Found {len(prunables)} prunable items in `{path}`...")
+        logger.debug(f"Found {len(prunable)} prunable items in `{path}`.")
 
         # Sort by the time of most recent metadata change on Unix.
         # https://docs.python.org/3/library/os.html#os.stat_result.st_ctime
-        prunables = sorted(prunables, reverse=True, key=lambda p: p.stat().st_ctime)
+        prunable = sorted(prunable, reverse=True, key=lambda p: p.stat().st_ctime)
 
-        logger.info(f"Pruning `{path}` to {size} items...")
+        logger.info(f"Pruning `{path}` to {size} items.")
 
-        for count, path in enumerate(prunables, start=1):
+        for count, path in enumerate(prunable, start=1):
 
             # Ignore the first n-files based on `size`.
             if count <= size:
                 continue
 
-            logger.debug(f"Removing {path.name} from `{path}`...")
+            logger.debug(f"Removing `{path.name}` from `{path}`.")
 
             # This explicit block is more of a safety measure to help prevent
             # un-wanted removal on incorrect use of the API.
@@ -396,7 +397,9 @@ class OSUtils:
 
         return False
 
-    def slugify(self, string: str, delimiter: str = "-", lowercase: bool = True):
+
+class Misc:
+    def slugify(self, string: str, delimiter: str = "-", lowercase: bool = True) -> str:
         """ Returns a normalized string. Converts to ASCII, strips non-word
         characters, lowers case and replaces spaces with `delimeter`.
 
@@ -419,3 +422,7 @@ class OSUtils:
         string = re.sub(fr"[\s{delimiter}]+", delimiter, string)
 
         return string
+
+
+shell = Shell()
+misc = Misc()

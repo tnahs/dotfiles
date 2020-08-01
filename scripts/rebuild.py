@@ -5,7 +5,7 @@ import sys
 from datetime import datetime
 from typing import Dict
 
-import osutils
+import helpers
 
 
 logging.basicConfig(
@@ -34,10 +34,7 @@ class DotfilePaths:
     root = Defaults.home / ".dotfiles"
 
 
-class Build:
-
-    os_utils = osutils.OSUtils()
-
+class Rebuild:
     def __init__(self, python_version: str) -> None:
 
         self._python_version = python_version
@@ -79,45 +76,45 @@ class Build:
             if not original or not symbolic:
                 continue
 
-            self.os_utils.link(original=original, symbolic=symbolic)
+            helpers.shell.link(original=original, symbolic=symbolic)
 
     def _run_source_profile(self) -> None:
 
         path = Defaults.home / ".zshrc"
 
-        self.os_utils.run(command=["source", path])
+        helpers.shell.run(command=["source", path])
 
     def _run_install_brewfile(self) -> None:
 
-        self.os_utils.run(command=["brew", "bundle"], path=pathlib.Path.home())
+        helpers.shell.run(command=["brew", "bundle"], path=pathlib.Path.home())
 
     def _restore_application_preferences(self) -> None:
-
-        # TODO: logger.info("Restoring iTerm2 preferences...")
 
         logger.info("Restoring Moom preferences...")
 
         moom_source = DotfilePaths.root / "moom" / "com.manytricks.Moom.plist"
         moom_destination = Defaults.home / "Library/Preferences"
 
-        self.os_utils.copy(
+        helpers.shell.copy(
             sources=[moom_source], destination=moom_destination,
         )
 
+        #
+
         logger.info("Installing VSCode Settings Sync extension...")
 
-        self.os_utils.run(
+        helpers.shell.run(
             command=["code", "--install-extension", "Shan.code-settings-sync"]
         )
 
     def _install_python_packages(self) -> None:
+        # At this point `pipx` and `pyenv` have been installed through
+        # `Homebrew` via the `Brewfile`.
 
-        """ At this point `pipx` and `pyenv` have been installed through
-        `Homebrew` via the `Brewfile`. """
-        self.os_utils.run(command=["pipx", "install", "bpython"])
-        self.os_utils.run(command=["pyenv", "install", self._python_version])
-        self.os_utils.run(command=["pyenv", "global", self._python_version])
-        self.os_utils.run(command=["pip", "install", "psutil"])
+        helpers.shell.run(command=["pipx", "install", "bpython"])
+        helpers.shell.run(command=["pyenv", "install", self._python_version])
+        helpers.shell.run(command=["pyenv", "global", self._python_version])
+        helpers.shell.run(command=["pip", "install", "psutil"])
 
 
 if __name__ == "__main__":
@@ -150,7 +147,7 @@ if __name__ == "__main__":
 
     #
 
-    rebuild = Build(python_version=args.python_version)
+    rebuild = Rebuild(python_version=args.python_version)
 
     try:
         rebuild.rebuild()

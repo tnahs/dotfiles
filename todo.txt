@@ -1,2 +1,6 @@
-TODO: Sift through `scripts/setup-config.sh` and clean-up.
-TODO: Clean-up items in `/docs`
+HIGH:
+
+MEDIUM:
+  - Sift through `scripts/setup-config.sh` and clean-up.
+
+LOW:

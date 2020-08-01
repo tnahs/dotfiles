@@ -14,7 +14,7 @@
         "tab.activeBorder": "#E57373",
         "notificationLink.foreground": "#E57373"
     },
-    "workbench.colorTheme": "Activate UMBRA protocol",
+    "workbench.colorTheme": "Cyberpunk",
     "workbench.iconTheme": "city-lights-icons-vsc",
     //
     // UI Explorer Sidebar
@@ -58,20 +58,6 @@
     // UI Misc
     "workbench.startupEditor": "newUntitledFile",
     //
-    // Linting/Formatting
-    "python.formatting.provider": "black",
-    "editor.formatOnSave": true,
-    "python.linting.enabled": true,
-    "python.linting.mypyEnabled": true,
-    "python.linting.flake8Enabled": true,
-    "python.linting.pylintEnabled": false,
-    "python.linting.flake8Args": [
-        "--ignore=E501,E128,E711,E131,E126,E241,T499,E231,W503"
-    ],
-    //
-    // Poetry / venv
-    "python.venvPath": "~/Library/Caches/pypoetry/virtualenvs",
-    //
     // Misc
     "editor.wordWrap": "off",
     "editor.wordWrapColumn": 99,
@@ -87,9 +73,50 @@
     "zenMode.fullScreen": false,
     //
     // IntelliCode
-    "python.jediEnabled": false,
     "editor.suggestSelection": "first",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    //
+    // Python -----------------------------------------------------------------
+    //
+    // ---- Pylance
+    "python.languageServer": "Pylance",
+    "python.analysis.diagnosticMode": "workspace",
+    "python.analysis.typeCheckingMode": "basic",
+    // ---- Formatting
+    "[python]": {
+        "editor.formatOnSave": true,
+        "editor.tabSize": 4,
+        "editor.insertSpaces": true,
+        "editor.detectIndentation": false,
+        // "editor.codeActionsOnSave": {
+        //     "source.organizeImports": true
+        // },
+    },
+    "python.sortImports.args": [
+        "--lines-after-imports=2",
+        "--trailing-comma",
+    ],
+    "python.formatting.provider": "black",
+    // ---- Liting
+    "python.linting.enabled": true,
+    "python.linting.flake8Enabled": true,
+    "python.linting.flake8Args": [
+        "--ignore=E501,E231,W503", //E128,E711,E131,E126,E241,T499,E231,W503",
+    ],
+    // ---- venv / Poetry
+    "python.venvPath": "~/Library/Caches/pypoetry/virtualenvs",
+    //
+    // Python -----------------------------------------------------------------
+    //
+    // YAML -------------------------------------------------------------------
+    //
+    "[yaml]": {
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true,
+        "editor.detectIndentation": false
+    },
+    //
+    // YAML -------------------------------------------------------------------
     //
     // Extenstions
     "sync.gist": "d35243a837d404d545cb56144030f4ee",
@@ -97,22 +124,27 @@
     "sync.quietSync": true,
     "gitlens.codeLens.enabled": false,
     "todo-tree.filtering.useBuiltInExcludes": "file and search excludes",
-    "todo-tree.general.tags": [
-        "WIP:",
-        "BUG:",
-        "TEMP:",
-        "TODO:",
-        "NOTE:",
-        "QUESTION:",
-        "TESTING:",
-        "DEBUGGING:",
-        "WARNING:",
-        "FIXME:"
+    "todo-tree.filtering.excludeGlobs": [
+        "**/temp/**",
+        "**/tmp/**",
     ],
+    "todo-tree.general.tags": [
+        "WIP",
+        "BUG",
+        "TEMP",
+        "TODO",
+        "QUESTION",
+        "TESTING",
+        "DEBUGGING",
+        "WARNING",
+        "FIXME",
+    ],
+    // Default TodoTree Regex
     "todo-tree.highlights.defaultHighlight": {
         "icon": "alert",
-        "iconColour": "#77AA00",
-        "foreground": "#77AA00",
     },
-    "python.languageServer": "Microsoft",
+    "cSpell.userWords": [
+        "favicon",
+        "hsla"
+    ]
 }

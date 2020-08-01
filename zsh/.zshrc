@@ -40,9 +40,10 @@ alias brewski="brew update && brew upgrade && brew cleanup; brew doctor"
 
 
 # zsh/dotfiles
-alias edit-zshrc="code $HOME/.dotfiles/zsh"
-alias edit-dotfiles="code $HOME/.dotfiles "
+alias zshrc="code $HOME/.dotfiles/zsh"
 alias reload-zshrc="source $HOME/.dotfiles/zsh/.zshrc"
+alias scripts="cd $HOME/.dotfiles/scripts"
+alias dotfiles="cd $HOME/.dotfiles && code ."
 
 
 function make_executable {

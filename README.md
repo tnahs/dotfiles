@@ -21,14 +21,14 @@
     git clone https://github.com/tnahs/dotfiles ~/.dotfiles
     ```
 
-4. Build **dotfiles**:
+4. Rebuild **dotfiles**:
 
     ``` zsh
-    python ~/.dotfiles/scripts/setup-build.py --verbose
+    python ~/.dotfiles/scripts/rebuild.py --verbose
     ```
 
 5. Configure **macOS**:
 
     ``` zsh
-    zsh ~/.dotfiles/scripts/setup-config.sh
+    zsh ~/.dotfiles/scripts/defaults.sh
     ```

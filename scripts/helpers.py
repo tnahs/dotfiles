@@ -21,6 +21,7 @@ class Shell:
         command: List[Union[str, pathlib.Path]],
         path: Optional[pathlib.Path] = None,
     ) -> None:
+        """ Runs a terminal command.
 
         command -- Command to run.
         path -- Path to run the command in.

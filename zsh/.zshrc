@@ -27,6 +27,7 @@ export PYTHONDONTWRITEBYTECODE=1
 # https://github.com/pyenv/pyenv#homebrew-on-macos
 eval "$(pyenv init -)"
 
+
 # navigation
 alias ll="ls -lah"
 alias k="cd $HOME/Desktop; ls -lah;"
@@ -34,10 +35,8 @@ alias l="cd $HOME/Downloads; ls -lah;"
 alias w="cd $HOME/Workspace; ls -lah;"
 alias p="cd $HOME/Workspace/projects; ls -lah;"
 
-
 # homebrew
 alias brewski="brew update && brew upgrade && brew cleanup; brew doctor"
-
 
 # zsh/dotfiles
 alias zshrc="code $HOME/.dotfiles/zsh"

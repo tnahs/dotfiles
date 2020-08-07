@@ -40,7 +40,7 @@ alias brewski="brew update && brew upgrade && brew cleanup; brew doctor"
 
 # zsh/dotfiles
 alias zshrc="code $HOME/.dotfiles/zsh"
-alias reload-zshrc="source $HOME/.dotfiles/zsh/.zshrc"
+alias reload_zshrc="source $HOME/.dotfiles/zsh/.zshrc"
 alias scripts="cd $HOME/.dotfiles/scripts"
 alias dotfiles="cd $HOME/.dotfiles && code ."
 
@@ -52,6 +52,21 @@ function make_executable {
 
 function clear_history {
     local HISTSIZE=0
+}
+
+
+function set_icons {
+
+    cp "$HOME/.dotfiles/icons/iTerm2-dark-mode.icns" "/Applications/iTerm.app/Contents/Resources/AppIcon.icns"
+    touch "/Applications/iTerm.app"
+
+    cp "$HOME/.dotfiles/icons/Anki.icns" "/Applications/Anki.app/Contents/Resources/anki.icns"
+    touch "/Applications/Anki.app"
+
+    cp "$HOME/.dotfiles/icons/Audacity.icns" "/Applications/Audacity.app/Contents/Resources/Audacity.icns"
+    touch "/Applications/Audacity.app"
+
+    sudo killall Finder && sudo killall Dock
 }
 
 

@@ -46,12 +46,13 @@ class Rebuild:
         except FileNotFoundError:
             raise
 
-        self._run_link_dotfiles()
-        self._run_source_profile()
-        self._run_install_brewfile()
+        self._link_dotfiles()
+        self._source_zshrc()
+        self._install_brewfile()
+        self._install_python_packages()
         self._restore_application_preferences()
 
-    def _run_link_dotfiles(self) -> None:
+    def _link_dotfiles(self) -> None:
 
         paths = [
             {
@@ -78,25 +79,33 @@ class Rebuild:
 
             helpers.shell.link(original=original, symbolic=symbolic)
 
-    def _run_source_profile(self) -> None:
+    def _source_zshrc(self) -> None:
 
         path = Defaults.home / ".zshrc"
 
         helpers.shell.run(command=["source", path])
 
-    def _run_install_brewfile(self) -> None:
+    def _install_brewfile(self) -> None:
 
         helpers.shell.run(command=["brew", "bundle"], path=pathlib.Path.home())
+
+    def _install_python_packages(self) -> None:
+
+        # At this point pipx and pyenv have been installed through Homebrew.
+        helpers.shell.run(command=["pipx", "install", "bpython"])
+        helpers.shell.run(command=["pyenv", "install", self._python_version])
+        helpers.shell.run(command=["pyenv", "global", self._python_version])
+        helpers.shell.run(command=["pip", "install", "psutil"])
 
     def _restore_application_preferences(self) -> None:
 
         logger.info("Restoring Moom preferences...")
 
-        moom_source = DotfilePaths.root / "moom" / "com.manytricks.Moom.plist"
-        moom_destination = Defaults.home / "Library/Preferences"
+        source_moom = DotfilePaths.root / "moom" / "com.manytricks.Moom.plist"
+        destination_moom = Defaults.home / "Library" / "Preferences"
 
         helpers.shell.copy(
-            sources=[moom_source], destination=moom_destination,
+            sources=[source_moom], destination=destination_moom,
         )
 
         #
@@ -106,15 +115,6 @@ class Rebuild:
         helpers.shell.run(
             command=["code", "--install-extension", "Shan.code-settings-sync"]
         )
-
-    def _install_python_packages(self) -> None:
-        # At this point `pipx` and `pyenv` have been installed through
-        # `Homebrew` via the `Brewfile`.
-
-        helpers.shell.run(command=["pipx", "install", "bpython"])
-        helpers.shell.run(command=["pyenv", "install", self._python_version])
-        helpers.shell.run(command=["pyenv", "global", self._python_version])
-        helpers.shell.run(command=["pip", "install", "psutil"])
 
 
 if __name__ == "__main__":

@@ -55,6 +55,12 @@ function clear_history {
 }
 
 
+function restart_tablet {
+    pkill "WacomTabletDriver"
+    open "/Library/Application Support/Tablet/WacomTabletDriver.app"
+}
+
+
 function set_icons {
 
     cp "$HOME/.dotfiles/icons/iTerm2-dark-mode.icns" "/Applications/iTerm.app/Contents/Resources/AppIcon.icns"

@@ -1,0 +1,25 @@
+site_name: dotfiles
+site_author: Shant Ergenian
+
+repo_name: tnahs/dotfiles
+repo_url: https://github.com/tnahs/dotfiles/
+edit_uri: ""
+
+copyright: Copyright &copy; 2020 Shant Ergenian
+
+theme:
+  name: material
+
+markdown_extensions:
+  - markdown.extensions.toc:
+      permalink: true
+      toc_depth: 3
+  - markdown.extensions.admonition
+  - markdown.extensions.smarty
+  - markdown.extensions.def_list
+  - pymdownx.mark
+  - pymdownx.keys
+  - pymdownx.details
+  - pymdownx.snippets
+  - pymdownx.highlight
+  - pymdownx.superfences

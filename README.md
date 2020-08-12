@@ -1,48 +1,42 @@
 # dotfiles
 
-1. Install **Homebrew**:
+## Install Homebrew
 
-    ``` zsh
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-    ```
+``` console
+$ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+```
 
-    via https://brew.sh
+During installation, `Homebrew` should ask to install `Command Line Tools`. If not, run:
 
-2. During installation, **Homebrew** should ask to install **Command Line Tools**. If not, run:
+``` console
+$ xcode-select --install
+```
 
-    ``` zsh
-    xcode-select --install
-    ```
-    or install via https://developer.apple.com/downloads/
+## Clone Repository
 
-3. Clone this repository:
+``` console
+$ git clone https://github.com/tnahs/dotfiles ~/.dotfiles
+```
 
-    ``` zsh
-    git clone https://github.com/tnahs/dotfiles ~/.dotfiles
-    ```
+## Rebuild
 
-4. Rebuild **dotfiles**:
+``` console
+$ python3 ~/.dotfiles/scripts/rebuild.py --verbose
+```
 
-    ``` zsh
-    python ~/.dotfiles/scripts/rebuild.py --verbose
-    ```
+## Configure macOS
 
-5. Configure **macOS**:
+``` console
+$ zsh ~/.dotfiles/scripts/defaults.sh
+```
 
-    ``` zsh
-    zsh ~/.dotfiles/scripts/defaults.sh
-    ```
+## Configure Visual Studio Code
 
-## VSCode
+The [Settings Sync](https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync) extension be installed at this point.
 
-    https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync
+In Visual Studio Code press ++command+shift+p++ to invoke the Command Palette. Type `sync` and select `Sync: Download Settings`.
 
-    Press Shift + Alt + D (macOS: Shift + Option + D)
+## Resources
 
-    Type ">Sync" In Command Palette into order download / upload
-
-    When downloading or uploading for the first time, the welcome page will automatically open, where you can configure the Settings Sync.
-
-    Once you select download, after downloading. Settings Sync will display you Summary containing the list of each files and extension being downloaded.
-
-    New popup will be opened to allow you to restart the code to apply the settings.
+- [Homebrew](https://brew.sh)
+- [Command Line Tools - Apple Developer](https://developer.apple.com/downloads/)

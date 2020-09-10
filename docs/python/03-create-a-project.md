@@ -54,7 +54,7 @@ $ poetry shell
 
 !!! note
 
-    Running `poetry shell` typicall actitvates the current virtual environment hoewever, if one does not exist `Poetry` it will create one.
+    Running `poetry shell` activates a virtual environment if one exists for the current project, otherwise, it creates one.
 
 Upgrade `pip` and `setuptools`.
 

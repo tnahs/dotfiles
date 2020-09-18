@@ -41,7 +41,7 @@ virtualenvs.path = "{cache-dir}/virtualenvs"  # /Users/[user]/Library/Caches/pyp
 Now, publish the package to Test PyPI:
 
 ``` console
-$ poetry publish -repository testpypi
+$ poetry publish --repository testpypi
 
 Publishing project-name (0.1.0) to testpypi
 Username:

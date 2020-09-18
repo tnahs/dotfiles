@@ -1,6 +1,0 @@
-HIGH:
-
-MEDIUM:
-  - Sift through `scripts/setup-config.sh` and clean-up.
-
-LOW:

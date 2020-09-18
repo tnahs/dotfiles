@@ -57,7 +57,7 @@ function clear_history {
 
 function restart_tablet {
     pkill "WacomTabletDriver"
-    open "/Library/Application\ Support/Tablet/WacomTabletDriver.app"
+    open "/Library/Application Support/Tablet/WacomTabletDriver.app"
 }
 
 

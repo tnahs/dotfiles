@@ -31,7 +31,7 @@ class Defaults:
 
 class DotfilePaths:
 
-    root = Defaults.home / ".dotfiles"
+    root: pathlib.Path = Defaults.home / ".dotfiles"
 
 
 class Rebuild:
@@ -91,10 +91,16 @@ class Rebuild:
 
     def _install_python_packages(self) -> None:
 
-        # At this point pipx and pyenv have been installed through Homebrew.
+        # At this point pipx has been installed through Homebrew...
         helpers.shell.run(command=["pipx", "install", "bpython"])
+        helpers.shell.run(command=["pipx", "install", "flake8"])
+        helpers.shell.run(command=["pipx", "install", "black"])
+
+        # ...as well as pyenv.
         helpers.shell.run(command=["pyenv", "install", self._python_version])
         helpers.shell.run(command=["pyenv", "global", self._python_version])
+
+        # It's just good.
         helpers.shell.run(command=["pip", "install", "psutil"])
 
     def _restore_application_preferences(self) -> None:
@@ -105,7 +111,8 @@ class Rebuild:
         destination_moom = Defaults.home / "Library" / "Preferences"
 
         helpers.shell.copy(
-            sources=[source_moom], destination=destination_moom,
+            sources=[source_moom],
+            destination=destination_moom,
         )
 
         #
@@ -130,7 +137,10 @@ if __name__ == "__main__":
         help="Version to install (via pyenv).",
     )
     parser.add_argument(
-        "-v", "--verbose", action="store_true", default=False,
+        "-v",
+        "--verbose",
+        action="store_true",
+        default=False,
     )
     parser.add_argument(
         "-h",

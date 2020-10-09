@@ -47,5 +47,12 @@
         "paths": [],
         "group": "",
         "enabled": true
+    },
+    {
+        "name": "qt-starter",
+        "rootPath": "$home/Workspace/projects/qt-starter",
+        "paths": [],
+        "group": "",
+        "enabled": true
     }
 ]

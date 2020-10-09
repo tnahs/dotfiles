@@ -55,6 +55,29 @@ function clear_history {
 }
 
 
+function bt-start {
+
+    volume="/Volumes/Samsung1TB"
+
+    if mount | grep "$volume" > /dev/null; then
+        transmission-daemon --config-dir "$volume/transmission"
+        echo "http://localhost:9091/"
+    else
+        echo "Volume $volume is not mounted."
+    fi
+
+}
+
+function bt-exit {
+    transmission-remote --exit
+}
+
+function bt-add {
+    transmission-remote --add "$@"
+    local HISTSIZE=0
+}
+
+
 function restart_tablet {
     pkill "WacomTabletDriver"
     open "/Library/Application Support/Tablet/WacomTabletDriver.app"
@@ -79,7 +102,22 @@ function set_icons {
 function rip-videos {
     for url in "$@"; do
         youtube-dl \
-            --output "%(uploader)s - %(title)s - %(id)s.%(ext)s" \
+            --output "%(uploader)s - %(upload_date)s - %(title)s - %(id)s.%(ext)s" \
+            --continue \
+            --add-metadata \
+            --embed-subs \
+            --all-subs \
+            --ignore-errors \
+            --external-downloader aria2c --external-downloader-args "-c -j 3 -x 3 -s 3 -k 1M" \
+            "$url"
+    done
+}
+
+
+function rip-all-videos {
+    for url in "$@"; do
+        youtube-dl \
+            --output "%(uploader)s/%(upload_date)s - %(title)s - %(id)s.%(ext)s" \
             --continue \
             --add-metadata \
             --embed-subs \

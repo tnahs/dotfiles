@@ -22,22 +22,21 @@ Any books that were present should disappear from Apple Books.
 1. Close Apple Books
 2. Navigate to: `~/Library/Containers`
 3. If not after a fresh OS install or with an unwanted/broken library:
+   1. Delete:
+       - `com.apple.BKAgentService`
+       - `com.apple.iBooksX*`
+   2. Restart (Note: If you open Apple Books before a restart you'll see all your books but they will have broken links. But after a restart Apple Books will look like it's just been opened for the first time.)
+   3. Open & Close Apple Books. This creates the `com.apple.BKAgentService` and `com.apple.iBooksX` folders.
 4. Delete:
-    - `com.apple.BKAgentService`
-    - `com.apple.iBooksX*`
-5. Restart (Note: If you open Apple Books before a restart you'll see all your books but they will have broken links. But after a restart Apple Books will look like it's just been opened for the first time.)
-6. Open & Close Apple Books. This creates the `com.apple.BKAgentService` and `com.apple.iBooksX` folders.
-7. Delete:
     - `~/Library/Containers/com.apple.BKAgentService`:
     - `~/Library/Containers/com.apple.iBooksX.*` (Note the `.` after `iBooksX`)
     - `~/Library/Containers/com.apple.iBooksX/Data/Documents/AEAnnotation`:
     - `~/Library/Containers/com.apple.iBooksX/Data/Documents/BKLibrary`:
-
-8. Extract latest archive in `~/Workspace/preferences/apple-books/archives`
-9. Move to `~/Library/Containers`:
+5. Extract latest archive in `~/Workspace/preferences/apple-books/archives`
+6. Move to `~/Library/Containers`:
     - `com.apple.BKAgentService`
-10. Move to `~/Library/Containers/com.apple.iBooksX/Data/Documents`:
+7. Move to `~/Library/Containers/com.apple.iBooksX/Data/Documents`:
     - `com.apple.iBooksX/Data/Documents/AEAnnotation`
     - `com.apple.iBooksX/Data/Documents/BKLibrary`
-11. Restart (Note: If you open Apple books before a restart you'll see all your collections but no books will appear.)
-12. All the books and annotations should be restored!
+8. Restart (Note: If you open Apple books before a restart you'll see all your collections but no books will appear.)
+9. All the books and annotations should be restored!

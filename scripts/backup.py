@@ -26,6 +26,7 @@ class Defaults:
     choices: Tuple[str, ...] = (
         "all",
         "dotfiles",
+        "misc",
         "anki",
         "applebooks",
     )
@@ -47,6 +48,14 @@ class ArchivePaths:
     applebooks = root / "apple-books"
 
 
+class MiscPaths:
+
+    root = Defaults.home / "Workspace" / "misc"
+    fonts = root / "fonts"
+    installers = root / "installers"
+    private = root / "private"
+
+
 class Backup:
     def __init__(self, choices: List[str]) -> None:
 
@@ -65,6 +74,7 @@ class Backup:
 
     def _run_all(self) -> None:
         self._run_dotfiles()
+        self._run_misc()
         self._run_anki()
         self._run_applebooks()
 
@@ -84,13 +94,14 @@ class Backup:
 
         #
 
-        logger.info("Backing up Moom preferences...")
+        logger.info("Backing up Moom misc...")
 
         moom_source = Defaults.home / "Library/Preferences/com.manytricks.Moom.plist"
         moom_destination = DotfilePaths.root / "moom"
 
         helpers.shell.copy(
-            sources=[moom_source], destination=moom_destination,
+            sources=[moom_source],
+            destination=moom_destination,
         )
 
         #
@@ -115,13 +126,34 @@ class Backup:
 
         helpers.shell.run(command=["code", "--list-extensions", ">", vscode_extensions])
 
+    def _run_misc(self) -> None:
+
+        logger.info("Backing up Brave bookmarks...")
+
+        bookmarks_root = (
+            Defaults.home
+            / "Library/Application Support/BraveSoftware/Brave-Browser/Default"
+        )
+
+        bookmarks_sources = [
+            bookmarks_root / "Bookmarks",
+            bookmarks_root / "Bookmarks.bak",
+        ]
+
+        bookmarks_destination = MiscPaths.private
+
+        helpers.shell.copy(
+            sources=bookmarks_sources,
+            destination=bookmarks_destination,
+        )
+
     def _run_anki(self) -> None:
 
         if helpers.shell.process_is_running(process_names=["Anki"]):
             logging.warning("Anki is currently running! Skipping...")
             return
 
-        logger.info(f"Backing up Anki `Application Support` folder...")
+        logger.info("Backing up Anki `Application Support` folder...")
 
         # Anki deck and addons folder
         source = Defaults.home / "Library/Application Support/Anki2/"
@@ -138,7 +170,7 @@ class Backup:
             logging.warning("Apple Books is currently running! Skipping...")
             return
 
-        logger.info(f"Backing up Apple Books...")
+        logger.info("Backing up Apple Books...")
 
         # Apple Books databases / EPUBs
         db_source = Defaults.home / "Library/Containers/com.apple.iBooksX/"
@@ -162,7 +194,10 @@ if __name__ == "__main__":
         help="Thing(s) to backup.",
     )
     parser.add_argument(
-        "-v", "--verbose", action="store_true", default=False,
+        "-v",
+        "--verbose",
+        action="store_true",
+        default=False,
     )
     parser.add_argument(
         "-h",

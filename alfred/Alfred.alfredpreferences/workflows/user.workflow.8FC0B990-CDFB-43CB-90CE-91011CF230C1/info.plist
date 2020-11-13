@@ -93,7 +93,7 @@
 	<key>description</key>
 	<string>Recherche Plusieurs Dictionnaire Français</string>
 	<key>disabled</key>
-	<false/>
+	<true/>
 	<key>name</key>
 	<string>French Multi-Dictionary Search</string>
 	<key>objects</key>

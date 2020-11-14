@@ -54,30 +54,6 @@ function clear_history {
     local HISTSIZE=0
 }
 
-
-function bt-start {
-
-    volume="/Volumes/Samsung1TB"
-
-    if mount | grep "$volume" > /dev/null; then
-        transmission-daemon --config-dir "$volume/apps/transmission"
-        echo "http://localhost:9091/"
-    else
-        echo "Volume $volume is not mounted."
-    fi
-
-}
-
-function bt-exit {
-    transmission-remote --exit
-}
-
-function bt-add {
-    transmission-remote --add "$@"
-    local HISTSIZE=0
-}
-
-
 function restart_tablet {
     pkill "WacomTabletDriver"
     open "/Library/Application Support/Tablet/WacomTabletDriver.app"

@@ -1,5 +1,6 @@
 import argparse
 import logging
+import os
 import pathlib
 import sys
 from datetime import datetime
@@ -128,23 +129,21 @@ class Backup:
 
     def _run_misc(self) -> None:
 
-        logger.info("Backing up Brave bookmarks...")
+        logger.info("Backing up Firefox Profiles...")
 
-        bookmarks_root = (
-            Defaults.home
-            / "Library/Application Support/BraveSoftware/Brave-Browser/Default"
+        firefox_profiles_source = (
+            # Temporary fix to force a trailing slash. By default, pathlib
+            # strips all trailing slashes and provides no way of adding them.
+            str(Defaults.home / "Library/Application Support/Firefox/Profiles")
+            + os.sep
         )
 
-        bookmarks_sources = [
-            bookmarks_root / "Bookmarks",
-            bookmarks_root / "Bookmarks.bak",
-        ]
-
-        bookmarks_destination = MiscPaths.private
+        firefox_profiles_destination = MiscPaths.private / "profiles" / "firefox"
 
         helpers.shell.copy(
-            sources=bookmarks_sources,
-            destination=bookmarks_destination,
+            sources=[firefox_profiles_source],
+            destination=firefox_profiles_destination,
+            recursive=True,
         )
 
     def _run_anki(self) -> None:

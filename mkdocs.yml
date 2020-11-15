@@ -10,6 +10,24 @@ copyright: Copyright &copy; 2020 Shant Ergenian
 theme:
   name: material
 
+nav:
+  - Python:
+    - python/01-install-poetry.md
+    - python/02-install-pyenv.md
+    - python/03-create-a-project.md
+    - python/04-setup-vscode.md
+    # - python/05-testing-and-coverage.md
+    - python/06-publish-to-pypi.md
+  - macOS:
+    # - macos/privacy.md
+    - macos/restore-applebooks.md
+    - macos/export-contacts.md
+    - macos/sparsebundles.md
+    - macos/references.md
+  - Misc:
+    - misc/npm-commands.md
+
+
 markdown_extensions:
   - markdown.extensions.toc:
       permalink: true

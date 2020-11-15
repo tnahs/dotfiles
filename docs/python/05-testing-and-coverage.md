@@ -1,4 +1,4 @@
-# Testing and Coverage (WIP)
+# Testing and Coverage
 
 ``` console
 $ coverage run --source=src/project_name -m pytest

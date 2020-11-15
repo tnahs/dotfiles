@@ -1,4 +1,4 @@
-# npm
+# npm Commands
 
 List installed `npm` pacakges.
 

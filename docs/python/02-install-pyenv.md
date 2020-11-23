@@ -14,7 +14,7 @@ Append to `~/.bash_profile` or `~/.zshrc`.
 
 ``` shell
 # pyenv
-"$(pyenv init -)"
+eval "$(pyenv init -)"
 ```
 
 ## Configuration

@@ -179,7 +179,7 @@
 		</array>
 	</dict>
 	<key>createdby</key>
-	<string></string>
+	<string>Shant Ergenian</string>
 	<key>description</key>
 	<string></string>
 	<key>disabled</key>
@@ -224,6 +224,8 @@
 			<dict>
 				<key>argument</key>
 				<string>{query}</string>
+				<key>passthroughargument</key>
+				<false/>
 				<key>variables</key>
 				<dict>
 					<key>language</key>
@@ -370,6 +372,8 @@ print(query)</string>
 			<dict>
 				<key>argument</key>
 				<string>{query}</string>
+				<key>passthroughargument</key>
+				<false/>
 				<key>variables</key>
 				<dict>
 					<key>language</key>
@@ -411,6 +415,8 @@ print(query)</string>
 				<false/>
 				<key>clipboardtext</key>
 				<string>{query}</string>
+				<key>ignoredynamicplaceholders</key>
+				<false/>
 				<key>transient</key>
 				<false/>
 			</dict>
@@ -419,7 +425,7 @@ print(query)</string>
 			<key>uid</key>
 			<string>D21CC823-7589-4C34-B079-0CACEF8C8CDF</string>
 			<key>version</key>
-			<integer>2</integer>
+			<integer>3</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -530,6 +536,8 @@ print(query)</string>
 			<dict>
 				<key>argument</key>
 				<string>{query}</string>
+				<key>passthroughargument</key>
+				<false/>
 				<key>variables</key>
 				<dict>
 					<key>language</key>

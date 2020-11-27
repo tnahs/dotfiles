@@ -69,7 +69,7 @@
 		</array>
 	</dict>
 	<key>createdby</key>
-	<string></string>
+	<string>Shant Ergenian</string>
 	<key>description</key>
 	<string></string>
 	<key>disabled</key>
@@ -78,6 +78,44 @@
 	<string>Japanese Multi-Dictionary Search</string>
 	<key>objects</key>
 	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>browser</key>
+				<string></string>
+				<key>spaces</key>
+				<string></string>
+				<key>url</key>
+				<string>https://forvo.com/search/{query}/ja/</string>
+				<key>utf8</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>02DCBEC0-D4ED-4DEB-BA53-0FAE1958D2C4</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>browser</key>
+				<string></string>
+				<key>spaces</key>
+				<string></string>
+				<key>url</key>
+				<string>https://jisho.org/search/{query}</string>
+				<key>utf8</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>ACA3BAC7-CCDE-45B3-A5DC-326873438B87</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
@@ -96,25 +134,6 @@
 			<string>alfred.workflow.input.keyword</string>
 			<key>uid</key>
 			<string>6D6F50C8-E6FF-46EC-8F08-3D1C44AADCE5</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>browser</key>
-				<string></string>
-				<key>spaces</key>
-				<string></string>
-				<key>url</key>
-				<string>https://forvo.com/search/{query}/ja/</string>
-				<key>utf8</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.openurl</string>
-			<key>uid</key>
-			<string>02DCBEC0-D4ED-4DEB-BA53-0FAE1958D2C4</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -165,25 +184,6 @@
 				<key>spaces</key>
 				<string></string>
 				<key>url</key>
-				<string>https://jisho.org/search/{query}</string>
-				<key>utf8</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.openurl</string>
-			<key>uid</key>
-			<string>ACA3BAC7-CCDE-45B3-A5DC-326873438B87</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>browser</key>
-				<string></string>
-				<key>spaces</key>
-				<string></string>
-				<key>url</key>
 				<string>https://tangorin.com/words?search={query}</string>
 				<key>utf8</key>
 				<true/>
@@ -219,14 +219,14 @@
 			<key>xpos</key>
 			<integer>430</integer>
 			<key>ypos</key>
-			<integer>170</integer>
+			<integer>290</integer>
 		</dict>
 		<key>6D6F50C8-E6FF-46EC-8F08-3D1C44AADCE5</key>
 		<dict>
 			<key>xpos</key>
 			<integer>230</integer>
 			<key>ypos</key>
-			<integer>140</integer>
+			<integer>260</integer>
 		</dict>
 		<key>ACA3BAC7-CCDE-45B3-A5DC-326873438B87</key>
 		<dict>
@@ -240,7 +240,7 @@
 			<key>xpos</key>
 			<integer>230</integer>
 			<key>ypos</key>
-			<integer>260</integer>
+			<integer>380</integer>
 		</dict>
 	</dict>
 	<key>webaddress</key>

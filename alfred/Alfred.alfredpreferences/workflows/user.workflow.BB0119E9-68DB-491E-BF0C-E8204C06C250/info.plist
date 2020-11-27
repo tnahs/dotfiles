@@ -240,8 +240,6 @@ fi</string>
 			<integer>1</integer>
 		</dict>
 		<dict>
-			<key>config</key>
-			<dict/>
 			<key>type</key>
 			<string>alfred.workflow.utility.junction</string>
 			<key>uid</key>
@@ -377,25 +375,25 @@ Run `coffee` again to manually turn it off.
 		<key>0B01601F-72A7-4C92-8B67-197D677D2A12</key>
 		<dict>
 			<key>xpos</key>
-			<integer>460</integer>
+			<integer>765</integer>
 			<key>ypos</key>
-			<integer>30</integer>
+			<integer>265</integer>
 		</dict>
 		<key>208D10C7-CBD8-47D1-8A1F-66ED2C76BEF4</key>
 		<dict>
 			<key>xpos</key>
-			<integer>370</integer>
+			<integer>675</integer>
 			<key>ypos</key>
-			<integer>120</integer>
+			<integer>355</integer>
 		</dict>
 		<key>6A13300D-DEB5-4476-9E16-693114781152</key>
 		<dict>
 			<key>note</key>
 			<string>Display will not turn off</string>
 			<key>xpos</key>
-			<integer>260</integer>
+			<integer>565</integer>
 			<key>ypos</key>
-			<integer>180</integer>
+			<integer>415</integer>
 		</dict>
 		<key>8BFD2E03-38C3-46B3-8353-99A41F55A0BD</key>
 		<dict>
@@ -404,25 +402,25 @@ Run `coffee` again to manually turn it off.
 			<key>note</key>
 			<string>OneUpdater</string>
 			<key>xpos</key>
-			<integer>460</integer>
+			<integer>765</integer>
 			<key>ypos</key>
-			<integer>150</integer>
+			<integer>385</integer>
 		</dict>
 		<key>94757117-A2E1-4FE7-A171-555588BE76FF</key>
 		<dict>
 			<key>xpos</key>
-			<integer>40</integer>
+			<integer>345</integer>
 			<key>ypos</key>
-			<integer>30</integer>
+			<integer>265</integer>
 		</dict>
 		<key>A5523421-FAE4-48C5-BEDD-9DEF7743DDF6</key>
 		<dict>
 			<key>note</key>
 			<string>Display can turn off</string>
 			<key>xpos</key>
-			<integer>260</integer>
+			<integer>565</integer>
 			<key>ypos</key>
-			<integer>60</integer>
+			<integer>295</integer>
 		</dict>
 	</dict>
 	<key>version</key>

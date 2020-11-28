@@ -13,7 +13,7 @@
         "tab.activeBorder": "#E57373",
         "notificationLink.foreground": "#E57373"
     },
-    "workbench.colorTheme": "Gruvbox Material Dark",
+    "workbench.colorTheme": "Dracula Soft",
     "workbench.iconTheme": "city-lights-icons-vsc",
     //
     // Files
@@ -51,14 +51,14 @@
     "editor.renderLineHighlight": "all",
     "editor.tabCompletion": "on",
     "editor.suggestSelection": "first",
-    "editor.cursorSurroundingLines": 5,
+    "editor.cursorSurroundingLines": 10,
     //
     // UI Minimap
     "editor.minimap.enabled": true,
     "editor.minimap.renderCharacters": false,
     //
     // UI Misc
-    "workbench.editor.enablePreview": false,
+    // "workbench.editor.enablePreview": false,
     "workbench.editor.enablePreviewFromQuickOpen": false,
     "workbench.startupEditor": "newUntitledFile",
     //
@@ -81,10 +81,6 @@
     // ------------------------------------------------------------------------
     // Python
     //
-    // -- Pylance
-    "python.languageServer": "Pylance",
-    "python.analysis.diagnosticMode": "workspace",
-    "python.analysis.typeCheckingMode": "basic",
     // -- Formatting
     "[python]": {
         "editor.formatOnSave": true,
@@ -94,13 +90,23 @@
     },
     "python.formatting.provider": "black",
     "python.formatting.blackPath": "~/.local/bin/black",
-    // -- Linting
+    // -- Linting - Pylance
+    "python.languageServer": "Pylance",
+    "python.analysis.diagnosticMode": "workspace",
+    "python.analysis.typeCheckingMode": "basic",
+    // -- Linting - Flake8
     "python.linting.enabled": true,
     "python.linting.flake8Path": "~/.local/bin/flake8",
     "python.linting.flake8Enabled": true,
     "python.linting.flake8Args": [
         "--ignore=E501,E231,W503,E402,E128,E711,E131,E126,E241,T499"
     ],
+    // -- Linting - mypy
+    // "python.linting.mypyEnabled": true,
+    // "python.linting.mypyPath": "~/.local/bin/mypy",
+    // "python.linting.mypyArgs": [
+    //     "--ignore-missing-imports"
+    // ],
     // -- venv / Poetry
     "python.venvPath": "~/Library/Caches/pypoetry/virtualenvs",
     // ------------------------------------------------------------------------
@@ -108,10 +114,16 @@
     // ------------------------------------------------------------------------
     // JSON
     "[json]": {
-        "editor.defaultFormatter": "vscode.json-language-features"
+        "editor.tabSize": 4,
+        "editor.insertSpaces": true,
+        "editor.detectIndentation": false,
+        "editor.defaultFormatter": "vscode.json-language-features",
     },
     "[jsonc]": {
-        "editor.defaultFormatter": "vscode.json-language-features"
+        "editor.tabSize": 4,
+        "editor.insertSpaces": true,
+        "editor.detectIndentation": false,
+        "editor.defaultFormatter": "vscode.json-language-features",
     },
     // ------------------------------------------------------------------------
     //
@@ -130,6 +142,7 @@
     // Markdown
     "markdownlint.config": {
         "MD014": false,
+        "MD041": false,
         "MD046": {
             "style": "fenced",
         }
@@ -141,7 +154,12 @@
         "editor.codeActionsOnSave": {
             "source.fixAll.markdownlint": true
         },
+        "editor.quickSuggestions": true,
+        "editor.wordBasedSuggestions": false,
+        "editor.suggest.showSnippets": false,
+        "files.trimTrailingWhitespace": false,
     },
+    "vscodeMarkdownNotes.workspaceFilenameConvention": "relativePaths",
     // ------------------------------------------------------------------------
     //
     // ------------------------------------------------------------------------
@@ -194,43 +212,54 @@
         "TODO:HIGH",
         "TODO:MED",
         "TODO:LOW",
-        "WARNING",
         "WIP",
+        "[H]",
+        "[M]",
+        "[L]",
     ],
     "todo-tree.regex.regex": "(?<!\\w)($TAGS)(?!\\w)",
     "todo-tree.ripgrep.ripgrepArgs": "--pcre2",
-    // "todo-tree.highlights.defaultHighlight": {
-        // "icon": "alert",
-        // "iconColour": "gray",
-        // "foreground": "textLink.foreground",
-    // },
-    // "todo-tree.highlights.customHighlight": {
-    //     "DEBUGGING": {
-    //         "hideFromTree": true,
-    //     },
-    //     "FIXME:HIGH": {
-    //         "iconColour": "crimson",
-    //     },
-    //     "FIXME:MED": {
-    //         "iconColour": "darkorange",
-    //     },
-    //     "FIXME:LOW": {
-    //         "iconColour": "gold",
-    //     },
-    //     "NOTE": {
-    //         "hideFromTree": true,
-    //     },
-    //     "QUESTION": {
-    //         "iconColour": "green",
-    //     },
-    //     "TEMP": {
-    //         "iconColour": "lightblue",
-    //     },
-    // },
+    "todo-tree.highlights.defaultHighlight": {
+        "icon": "alert",
+        "iconColour": "gray",
+        "foreground": "textLink.foreground",
+    },
+    "todo-tree.highlights.customHighlight": {
+        "DEBUGGING": {
+            "hideFromTree": true,
+        },
+        "FIXME:HIGH": {
+            "iconColour": "crimson",
+        },
+        "FIXME:MED": {
+            "iconColour": "darkorange",
+        },
+        "FIXME:LOW": {
+            "iconColour": "gold",
+        },
+        "NOTE": {
+            "hideFromTree": true,
+        },
+        "QUESTION": {
+            "iconColour": "green",
+        },
+        "TEMP": {
+            "iconColour": "lightblue",
+        },
+        "[H]": {
+            "foreground": "crimson",
+        },
+        "[M]": {
+            "foreground": "darkorange",
+        },
+        "[L]": {
+            "foreground": "gold",
+        },
+    },
     "cSpell.userWords": [
         "anki",
         "annotation",
-        "annotation objs",
+        "objs",
         "bpython",
         "color",
         "datefmt",
@@ -256,7 +285,7 @@
         "nargs",
         "objs",
         "path",
-        "path slugified",
+        "slugified",
         "pipx",
         "plist",
         "prettierrc",
@@ -268,7 +297,6 @@
         "quickstart",
         "rgba",
         "run",
-        "run isort",
         "slugified",
         "sorolla",
         "strftime",
@@ -281,4 +309,7 @@
         "webm",
         "werkzeug"
     ],
+    "workbench.activityBar.visible": false,
+    "workbench.statusBar.visible": false,
+    "window.zoomLevel": 0,
 }

@@ -96,6 +96,7 @@ class Rebuild:
         helpers.shell.run(command=["pipx", "install", "flake8"])
         helpers.shell.run(command=["pipx", "install", "black"])
         helpers.shell.run(command=["pipx", "install", "mypy"])
+        helpers.shell.run(command=["pipx", "install", "isort"])
 
         # ...as well as pyenv.
         helpers.shell.run(command=["pyenv", "install", self._python_version])

@@ -107,17 +107,26 @@ class Backup:
 
         #
 
-        logger.info("Backing up VSCode `[settings|projects|keybindings].json`...")
+        logger.info("Backing up VSCode `[settings|keybindings].json`...")
 
         vscode_user_root = Defaults.home / "Library/Application Support/Code/User/"
         vscode_sources = [
-            vscode_user_root / "projects.json",
             vscode_user_root / "settings.json",
             vscode_user_root / "keybindings.json",
         ]
         vscode_destination = DotfilePaths.root / "vscode"
 
         helpers.shell.copy(sources=vscode_sources, destination=vscode_destination)
+
+        #
+
+        logger.info("Backing up VSCode snippets...")
+
+        helpers.shell.copy(
+            sources=[(vscode_user_root / "snippets")],
+            destination=vscode_destination,
+            recursive=True,
+        )
 
         #
 

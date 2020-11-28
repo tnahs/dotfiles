@@ -1,8 +1,6 @@
 [
-    {
-        "key": "Cmd+Shift+I",
-        "command": "python.sortImports"
-    },
+    // ------------------------------------------------------------------------
+    // Control
     {
         "key": "cmd+q",
         "command": "-workbench.action.quit"
@@ -10,5 +8,79 @@
     {
         "key": "cmd+q cmd+q",
         "command": "workbench.action.quit"
+    },
+    {
+        "key": "cmd+m p",
+        "command": "editor.action.marker.next",
+        "when": "editorFocus"
+    },
+    {
+        "key": "cmd+m r",
+        "command": "references-view.findReferences",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "cmd+m d",
+        "command": "editor.action.revealDefinition",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "cmd+m n",
+        "command": "editor.action.rename",
+        "when": "editorHasRenameProvider && editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "cmd+m t",
+        "command": "todo-tree.showTagsOnlyView",
+    },
+    // ------------------------------------------------------------------------
+    //
+    // ------------------------------------------------------------------------
+    // Navigation
+    {
+        "key": "cmd+escape",
+        "command": "workbench.action.focusActiveEditorGroup",
+        "when": "sideBarFocus"
+    },
+    {
+        "key": "cmd+escape",
+        "command": "workbench.action.focusSideBar",
+        "when": "!sideBarFocus"
+    },
+    {
+        "key": "cmd+down",
+        "command": "cursorPageDown",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "cmd+shift+down",
+        "command": "cursorPageDownSelect",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "cmd+up",
+        "command": "cursorPageUp",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "cmd+shift+up",
+        "command": "cursorPageUpSelect",
+    },
+    // ------------------------------------------------------------------------
+    //
+    // ------------------------------------------------------------------------
+    // UI
+    {
+        "key": "cmd+m m",
+        "command": "editor.action.toggleMinimap"
+    },
+    // ------------------------------------------------------------------------
+    //
+    // ------------------------------------------------------------------------
+    // Python
+    {
+        "key": "cmd+shift+i",
+        "command": "python.sortImports"
     }
+    // ------------------------------------------------------------------------
 ]

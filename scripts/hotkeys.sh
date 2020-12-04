@@ -1,5 +1,5 @@
 ###############################################################################
-# Sets hotkeys found in 'Sysytem Preferences' > 'Keyboard'
+# Sets hotkeys found in 'Sysytem Preferences' > 'Keyboard'.
 #
 #
 # -- AppleSymbolicHotKeys Structure
@@ -35,9 +35,10 @@
 #    524288 -> Option
 #   1048576 -> Command
 #
-#  Sum integers for key combinations. For example:
+# Sum integers for key combinations. For example:
 #
 #   Command+Shift == 1048576+131072 == 1179648
+#
 #
 # -- References
 #
@@ -51,7 +52,7 @@
 HOTKEYS_PLIST="$HOME/Library/Preferences/com.apple.symbolichotkeys.plist"
 
 
-# Disables all default macOS hotkeys found in 'Sysytem Preferences' > 'Keyboard'
+# Disables all default hotkeys found in 'Sysytem Preferences' > 'Keyboard'.
 for action_id in {0..200}; do
     # Many of the action IDs don't exists there forePlistBuddy will complain
     # 'Set: Entry, [ENTRY], Does Not Exist' and skips executing the command.
@@ -60,13 +61,13 @@ for action_id in {0..200}; do
 done
 
 
-# Move right a space - Command+Shift+Right
+# Move right a space - Command+Shift+D
 /usr/libexec/PlistBuddy -c "Set :AppleSymbolicHotKeys:79:enabled true" $HOTKEYS_PLIST
 /usr/libexec/PlistBuddy -c "Set :AppleSymbolicHotKeys:79:value:parameters:0 97" $HOTKEYS_PLIST
 /usr/libexec/PlistBuddy -c "Set :AppleSymbolicHotKeys:79:value:parameters:1 0" $HOTKEYS_PLIST
 /usr/libexec/PlistBuddy -c "Set :AppleSymbolicHotKeys:79:value:parameters:2 1179648" $HOTKEYS_PLIST
 
-# Move left a space - Command+Shift+Left
+# Move left a space - Command+Shift+A
 /usr/libexec/PlistBuddy -c "Set :AppleSymbolicHotKeys:81:enabled true" $HOTKEYS_PLIST
 /usr/libexec/PlistBuddy -c "Set :AppleSymbolicHotKeys:81:value:parameters:0 100" $HOTKEYS_PLIST
 /usr/libexec/PlistBuddy -c "Set :AppleSymbolicHotKeys:81:value:parameters:1 2" $HOTKEYS_PLIST

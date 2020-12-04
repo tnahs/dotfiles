@@ -72,8 +72,9 @@ class Backup:
             raise
 
         for item in self._run:
-            print(getattr(self, f"_run_{item}"))
-            # getattr(self, f"_run_{item}")()
+            func = getattr(self, f"_run_{item}")
+            logging.debug(f"Running {self.__class__.__name__}.{func.__name__}...")
+            func()
 
     def _run_dotfiles(self) -> None:
 
@@ -203,6 +204,14 @@ if __name__ == "__main__":
         "--run-all",
         action="store_true",
         default=False,
+        help="Run all backups.",
+    )
+    parser.add_argument(
+        "-l",
+        "--list",
+        action="store_true",
+        default=False,
+        help="List all backup choices.",
     )
     parser.add_argument(
         "-v",
@@ -218,6 +227,13 @@ if __name__ == "__main__":
         default=argparse.SUPPRESS,
     )
     args = parser.parse_args()
+
+    #
+
+    if args.list is True:
+        print("Available backup choices are:")
+        print(Backup.RUN_CHOICES)
+        sys.exit()
 
     #
 

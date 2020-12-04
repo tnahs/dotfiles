@@ -44,26 +44,30 @@ alias reload_zshrc="source $HOME/.dotfiles/zsh/.zshrc"
 alias scripts="cd $HOME/.dotfiles/scripts"
 alias dotfiles="cd $HOME/.dotfiles && code ."
 
+# Wiki
+alias wiki="cd $HOME/Workspace/Wiki && code ."
 
-function make_executable {
+
+function make-executable {
     chmod u+x "$@"
 }
 
 
-function clear_history {
+function clear-history {
     local HISTSIZE=0
 }
 
-function restart_tablet {
+
+function restart-tablet {
     pkill "WacomTabletDriver"
     open "/Library/Application Support/Tablet/WacomTabletDriver.app"
 }
 
 
-function set_icons {
+function set-icons {
 
-    cp "$HOME/.dotfiles/icons/iTerm2-dark-mode.icns" "/Applications/iTerm.app/Contents/Resources/AppIcon.icns"
-    touch "/Applications/iTerm.app"
+    # cp "$HOME/.dotfiles/icons/iTerm2-dark-mode.icns" "/Applications/iTerm.app/Contents/Resources/AppIcon.icns"
+    # touch "/Applications/iTerm.app"
 
     cp "$HOME/.dotfiles/icons/Anki.icns" "/Applications/Anki.app/Contents/Resources/anki.icns"
     touch "/Applications/Anki.app"
@@ -75,33 +79,64 @@ function set_icons {
 }
 
 
-function rip-videos {
+function rip {
     for url in "$@"; do
         youtube-dl \
-            --output "%(uploader)s - %(upload_date)s - %(title)s - %(id)s.%(ext)s" \
-            --continue \
-            --add-metadata \
-            --embed-subs \
-            --all-subs \
+            --verbose \
+            --force-ipv4 \
+            --sleep-interval 5 \
+            --max-sleep-interval 30 \
             --ignore-errors \
-            --external-downloader aria2c --external-downloader-args "-c -j 3 -x 3 -s 3 -k 1M" \
+            --no-continue \
+            --no-overwrites \
+            --add-metadata \
+            --all-subs \
+            --sub-format "srt" \
+            --embed-subs \
+            --merge-output-format "mkv" \
+            --output "%(uploader)s - %(upload_date)s - %(title)s [%(id)s].%(ext)s" \
+            --external-downloader aria2c \
+            --external-downloader-args "-c -j 3 -x 3 -s 3 -k 1M" \
             "$url"
     done
 }
 
 
-function rip-all-videos {
+function ripu {
     for url in "$@"; do
         youtube-dl \
-            --output "%(uploader)s/%(upload_date)s - %(title)s - %(id)s.%(ext)s" \
-            --continue \
-            --add-metadata \
-            --embed-subs \
-            --all-subs \
+            --verbose \
+            --force-ipv4 \
+            --sleep-interval 5 \
+            --max-sleep-interval 30 \
             --ignore-errors \
-            --external-downloader aria2c --external-downloader-args "-c -j 3 -x 3 -s 3 -k 1M" \
+            --no-continue \
+            --no-overwrites \
+            --add-metadata \
+            --all-subs \
+            --sub-format "srt" \
+            --embed-subs \
+            --merge-output-format "mkv" \
+            --output "%(uploader)s/%(upload_date)s - %(title)s - [%(id)s].%(ext)s" \
+            --external-downloader aria2c \
+            --external-downloader-args "-c -j 3 -x 3 -s 3 -k 1M" \
             "$url"
     done
+}
+
+
+function clean-dsstore {
+    find . -type f -name '.DS_Store' -ls -delete
+}
+
+
+function spotlight-enable {
+    mdutil -i on "$@"
+}
+
+
+function spotlight-disable {
+    mdutil -i off -d "$@"
 }
 
 

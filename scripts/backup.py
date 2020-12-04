@@ -24,13 +24,6 @@ class Defaults:
     home: pathlib.Path = pathlib.Path().home()
     today: str = datetime.now().strftime("%Y-%m-%d")
 
-    choices: Tuple[str, ...] = (
-        "all",
-        "dotfiles",
-        "misc",
-        "anki",
-        "applebooks",
-    )
     verbose: Dict[bool, int] = {
         True: logging.DEBUG,
         False: logging.INFO,
@@ -58,9 +51,17 @@ class MiscPaths:
 
 
 class Backup:
-    def __init__(self, choices: List[str]) -> None:
 
-        self._choices = choices
+    RUN_CHOICES: Tuple[str, ...] = (
+        "dotfiles",
+        "misc",
+        "anki",
+        "applebooks",
+    )
+
+    def __init__(self, run_all: bool, run: List[str]) -> None:
+
+        self._run = run if run_all is False else self.RUN_CHOICES
 
     def backup(self) -> None:
 
@@ -70,14 +71,9 @@ class Backup:
         except FileNotFoundError:
             raise
 
-        for choice in self._choices:
-            getattr(self, f"_run_{choice}")()
-
-    def _run_all(self) -> None:
-        self._run_dotfiles()
-        self._run_misc()
-        self._run_anki()
-        self._run_applebooks()
+        for item in self._run:
+            print(getattr(self, f"_run_{item}"))
+            # getattr(self, f"_run_{item}")()
 
     def _run_dotfiles(self) -> None:
 
@@ -195,11 +191,18 @@ if __name__ == "__main__":
 
     parser = argparse.ArgumentParser(add_help=False)
     parser.add_argument(
-        "choices",
+        "-r",
+        "--run",
         nargs="+",
-        choices=Defaults.choices,
+        choices=Backup.RUN_CHOICES,
         type=str,
         help="Thing(s) to backup.",
+    )
+    parser.add_argument(
+        "-a",
+        "--run-all",
+        action="store_true",
+        default=False,
     )
     parser.add_argument(
         "-v",
@@ -222,7 +225,7 @@ if __name__ == "__main__":
 
     #
 
-    backup = Backup(choices=args.choices)
+    backup = Backup(run_all=args.run_all, run=args.run)
 
     try:
         backup.backup()

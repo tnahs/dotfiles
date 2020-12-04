@@ -28,13 +28,8 @@ $ python3 ~/.dotfiles/scripts/rebuild.py --verbose
 
 ``` console
 $ zsh ~/.dotfiles/scripts/defaults.sh
+$ zsh ~/.dotfiles/scripts/hotkeys.sh
 ```
-
-## Configure Visual Studio Code
-
-The [Settings Sync](https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync) extension be installed at this point.
-
-In Visual Studio Code press ++command+shift+p++ to invoke the Command Palette. Type `sync` and select `Sync: Download Settings`.
 
 ## Resources
 

@@ -93,6 +93,8 @@ class Rebuild:
 
         # At this point pipx has been installed through Homebrew...
         helpers.shell.run(command=["pipx", "install", "bpython"])
+        helpers.shell.run(command=["pipx", "install", "youtube-dl"])
+        helpers.shell.run(command=["pipx", "install", "gallery-dl"])
         helpers.shell.run(command=["pipx", "install", "flake8"])
         helpers.shell.run(command=["pipx", "install", "black"])
         helpers.shell.run(command=["pipx", "install", "mypy"])
@@ -102,7 +104,7 @@ class Rebuild:
         helpers.shell.run(command=["pyenv", "install", self._python_version])
         helpers.shell.run(command=["pyenv", "global", self._python_version])
 
-        # It's just good.
+        # It's just good. This gets installed to pyenv's active Python version.
         helpers.shell.run(command=["pip", "install", "psutil"])
 
     def _restore_application_preferences(self) -> None:
@@ -117,20 +119,12 @@ class Rebuild:
             destination=destination_moom,
         )
 
-        #
-
-        logger.info("Installing VSCode Settings Sync extension...")
-
-        helpers.shell.run(
-            command=["code", "--install-extension", "Shan.code-settings-sync"]
-        )
-
 
 if __name__ == "__main__":
 
     parser = argparse.ArgumentParser(add_help=False)
     parser.add_argument(
-        "-py",
+        "-p",
         "--python",
         metavar="VERSION",
         dest="python_version",

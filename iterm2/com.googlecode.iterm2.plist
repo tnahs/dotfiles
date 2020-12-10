@@ -1150,6 +1150,8 @@
 			<string>/Users/shant</string>
 		</dict>
 	</array>
+	<key>OnlyWhenMoreTabs</key>
+	<true/>
 	<key>OpenBookmark</key>
 	<false/>
 	<key>PassOnControlClick</key>
@@ -1187,6 +1189,8 @@
 			<string>kNextWindowPointerAction</string>
 		</dict>
 	</dict>
+	<key>PromptOnQuit</key>
+	<false/>
 	<key>ShowFullScreenTabBar</key>
 	<true/>
 	<key>SoundForEsc</key>

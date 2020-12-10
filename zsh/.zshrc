@@ -45,11 +45,31 @@ alias scripts="cd $HOME/.dotfiles/scripts"
 alias dotfiles="cd $HOME/.dotfiles && code ."
 
 # Wiki
-alias wiki="cd $HOME/Workspace/Wiki && code ."
+alias wiki="cd $HOME/Workspace/wiki && code ."
 
 
 function make-executable {
     chmod u+x "$@"
+}
+
+
+function spotlight-enable {
+    mdutil -i on "$@"
+}
+
+
+function spotlight-disable {
+    mdutil -i off -d "$@"
+}
+
+
+function spotlight-rebuild {
+    mdutil -E "$@"
+}
+
+
+function clear-dsstore {
+    find . -type f -name '.DS_Store' -ls -delete
 }
 
 
@@ -117,26 +137,11 @@ function ripu {
             --sub-format "srt" \
             --embed-subs \
             --merge-output-format "mkv" \
-            --output "%(uploader)s/%(upload_date)s - %(title)s - [%(id)s].%(ext)s" \
+            --output "%(uploader)s/%(upload_date)s - %(title)s [%(id)s].%(ext)s" \
             --external-downloader aria2c \
             --external-downloader-args "-c -j 3 -x 3 -s 3 -k 1M" \
             "$url"
     done
-}
-
-
-function clean-dsstore {
-    find . -type f -name '.DS_Store' -ls -delete
-}
-
-
-function spotlight-enable {
-    mdutil -i on "$@"
-}
-
-
-function spotlight-disable {
-    mdutil -i off -d "$@"
 }
 
 

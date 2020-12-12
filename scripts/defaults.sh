@@ -58,7 +58,7 @@ defaults write NSGlobalDomain NSToolbarTitleViewRolloverDelay -float 0
 defaults write NSGlobalDomain com.apple.springing.enabled -bool true
 
 # ✓11.0 Shorten the spring loading delay for directories
-defaults write NSGlobalDomain com.apple.springing.delay -float 0.35
+defaults write NSGlobalDomain com.apple.springing.delay -float 0.5
 
 # ✓11.0 Use list view in all Finder windows by default
 # Possible values: Nlsv, icnv, clmv, Flwv

@@ -24,6 +24,12 @@ nav:
     - macos/export-contacts.md
     - macos/sparsebundles.md
     - macos/references.md
+  - NAS:
+    - nas/01-router.md
+    - nas/02-synology-network.md
+    - nas/03-synology-data.md
+    - nas/04-synology-extras.md
+    - nas/05-how-to.md
   - Misc:
     - misc/npm-commands.md
 
@@ -41,3 +47,7 @@ markdown_extensions:
   - pymdownx.snippets
   - pymdownx.highlight
   - pymdownx.superfences
+  - pymdownx.smartsymbols
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg

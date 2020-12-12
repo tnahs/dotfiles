@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 ###############################################################################
 # Sets hotkeys found in 'Sysytem Preferences' > 'Keyboard'.
 #
@@ -52,14 +54,45 @@
 HOTKEYS_PLIST="$HOME/Library/Preferences/com.apple.symbolichotkeys.plist"
 
 
-# Disables all default hotkeys found in 'Sysytem Preferences' > 'Keyboard'.
-for action_id in {0..200}; do
-    # Many of the action IDs don't exists there forePlistBuddy will complain
+# -----------------------------------------------------------------------------
+# Disable all default hotkeys found in 'Sysytem Preferences' > 'Keyboard'
+# except for those associated with screeshots as defined in 'preserve_ids'.
+
+#  28 - Save picture of screen as a file
+#  30 - Save picture of selected area as a file
+# 184 - Screenshot and recording options
+# preserve_ids=(28 30 184)
+
+for id in {0..200}; do
+
+    # FIXME: This block doesn't seem to work...
+    # Force-enable any 'id' that's in the 'preserve_ids' array.
+    # Phew! https://stackoverflow.com/a/15394738
+    # if [[ ${preserve_ids[(ie)$id]} -le ${#preserve_ids} ]]; then
+    #     /usr/libexec/PlistBuddy -c "Set :AppleSymbolicHotKeys:${id}:enabled true" $HOTKEYS_PLIST
+    # fi
+
+    # Many of the action ids don't exists there forePlistBuddy will complain
     # 'Set: Entry, [ENTRY], Does Not Exist' and skips executing the command.
     # These errors are silenced by '&> /dev/null'.
-    /usr/libexec/PlistBuddy -c "Set :AppleSymbolicHotKeys:${action_id}:enabled false" $HOTKEYS_PLIST &> /dev/null
+    /usr/libexec/PlistBuddy -c "Set :AppleSymbolicHotKeys:${id}:enabled false" $HOTKEYS_PLIST &> /dev/null
+
 done
 
+
+# Screenshots -----------------------------------------------------------------
+
+# Save picture of screen as a file - Command+Shift+3
+/usr/libexec/PlistBuddy -c "Set :AppleSymbolicHotKeys:28:enabled true" $HOTKEYS_PLIST
+
+# Save picture of selected area as a file - Command+Shift+4
+/usr/libexec/PlistBuddy -c "Set :AppleSymbolicHotKeys:30:enabled true" $HOTKEYS_PLIST
+
+# Screenshot and recording options - Command+Shift+5
+/usr/libexec/PlistBuddy -c "Set :AppleSymbolicHotKeys:184:enabled true" $HOTKEYS_PLIST
+
+
+# Spaces ----------------------------------------------------------------------
 
 # Move right a space - Command+Shift+D
 /usr/libexec/PlistBuddy -c "Set :AppleSymbolicHotKeys:79:enabled true" $HOTKEYS_PLIST

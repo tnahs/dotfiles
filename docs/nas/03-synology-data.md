@@ -1,20 +1,22 @@
 # Synology Data
 
-!!! info "Shared Folders"
+## Setup a Data Scrubbing Schedule
 
-    When creating a `Shared Folder` make sure to check `Enable data checksum for advanced data integrity.` 
+Data scrubbing is only supported for `Shared Folders` with `Enable data checksum for advanced data integrity` enabled.
 
-    *To protect a shared folder with CRC32 checksum and copy-on-write strategies, you can enable data checksum for advanced data integrity during the shared folder's creation. CRC32 checksum is applied to checking if the data remain identical to when they were originally written, and the system will automatically use RAID redundancy to fix corrupted data. Copy-on-write helps to improve data consistency upon abnormal system shutdown.*
+!!! quote
 
-    via [Synology | Create a Shared Folder](https://www.synology.com/en-global/knowledgebase/DSM/help/DSM/AdminCenter/file_share_create)
+    To protect a shared folder with CRC32 checksum and copy-on-write strategies, you can enable data checksum for advanced data integrity during the shared folder's creation. CRC32 checksum is applied to checking if the data remain identical to when they were originally written, and the system will automatically use RAID redundancy to fix corrupted data. Copy-on-write helps to improve data consistency upon abnormal system shutdown.
 
-    *This checkbox enables metadata redundancy on BTRFS that will allow you to recover from bit rot. There is no good reason not to enable it. Performance overhead is minimal and not nearly a bottleneck in any meaningful scenario.*
+    [Create a Shared Folder | Synology](https://www.synology.com/en-global/knowledgebase/DSM/help/DSM/AdminCenter/file_share_create)
 
-    *For image data, where single bit flip can ruin the image it’s a must. This feature is in fact one of the benefits of using BTRFS as a filesystem.*
+!!! quote
+
+    [The `Enable data checksum for advanced data integrity`] checkbox enables metadata redundancy on BTRFS that will allow you to recover from bit rot. There is no good reason not to enable it. Performance overhead is minimal and not nearly a bottleneck in any meaningful scenario.
+
+    For image data, where single bit flip can ruin the image it’s a must. This feature is in fact one of the benefits of using BTRFS as a filesystem.
 
     via [r/synology](https://www.reddit.com/r/synology/comments/c600jq/enable_data_checksum_for_advanced_data_integrity/es5b8nw/)
-
-## Setup a Data Scrubbing Schedule
 
 :octicons-location-24: Where
 
@@ -34,6 +36,10 @@
             - Select Storage Pools
 
 ## Snapshots
+
+!!! note "TODO"
+
+## Storage Analyzer
 
 !!! note "TODO"
 
@@ -63,18 +69,32 @@
         2. Under `Retention Policy`
             - Set `Number of days to retain deleted files` to `30`
 
-## Setup a Uninterruptible Power Supply
+## Enable a Uninterruptible Power Supply Support
+
+:octicons-location-24: Where
+
+`Control Panel` • `Hardware & Power`
+
+- In the `UPS` tab
+    - Check `Enable UPS support`
+
+:octicons-question-24: How
+
+## Hyper Backup
 
 !!! note "TODO"
 
-## Local Backups (Hyper Backup)
+## Synology Drive
 
 !!! note "TODO"
 
-## Cloud Backups
+## Time Machine (macOS)
 
 !!! note "TODO"
 
-## User Data Syncing (Synology Drive)
+## rsync
 
 !!! note "TODO"
+
+<!-- <https://www.wundertech.net/how-to-backup-a-linux-pc-to-a-synology-nas-using-rsync/> -->
+<!-- <https://www.wundertech.net/use-ssh-keys-to-automatically-backup-a-linux-pc-to-a-synology-nas/> -->

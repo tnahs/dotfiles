@@ -30,6 +30,7 @@ nav:
     - nas/03-synology-data.md
     - nas/04-synology-extras.md
     - nas/05-how-to.md
+    - nas/06-reference.md
   - Misc:
     - misc/npm-commands.md
 

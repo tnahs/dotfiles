@@ -2,8 +2,6 @@
 
 ## Set a Static IP Address
 
-Harum quasi quisquam quia. Qui ea voluptatem repellat dolore eveniet aspernatur eos. Cumque enim consectetur amet et. Ipsam quia quibusdam ea eos debitis pariatur non. Dolores esse asperiores dolores voluptatem.
-
 !!! info "DHCP Server"
 
     Before proceeding, make sure to have setup your router's [DHCP Server](../01-router/#setup-dhcp-server). Otherwise the assigned IP address could possibly be given out by your router to another device.
@@ -22,8 +20,6 @@ Harum quasi quisquam quia. Qui ea voluptatem repellat dolore eveniet aspernatur 
 
 ## Disable admin/guest Accounts
 
-Tempore repellendus ea et distinctio ad illum dolores. Rerum quisquam vero voluptatibus corporis reprehenderit sit eum. Autem doloribus et modi dolorem quia excepturi. Et ut at necessitatibus molestiae voluptate reprehenderit. Quia nesciunt laborum sunt veniam.
-
 :octicons-location-24: Where
 
 `Control Panel` • `User`
@@ -38,8 +34,6 @@ Tempore repellendus ea et distinctio ad illum dolores. Rerum quisquam vero volup
 
 ## Disable QuickConnect
 
-Accusantium deserunt facilis assumenda optio eligendi rem distinctio. Dolor consectetur dolores ea. Fuga ut voluptatem aut velit possimus deserunt iusto. Eum est et qui. Illum accusantium eum neque explicabo officia fugit et maxime.
-
 :octicons-location-24: Where
 
 `Control Panel` • `QuickConnect`
@@ -50,8 +44,6 @@ Accusantium deserunt facilis assumenda optio eligendi rem distinctio. Dolor cons
     - Uncheck `Enable QuickConnect`
 
 ## Auto-update DSM
-
-Reiciendis aut aut qui voluptate commodi est saepe doloremque. Consectetur officiis consequuntur et nostrum rerum. Minima id aliquid voluptatem saepe facilis harum quas. Rerum aut earum ipsum id laborum rerum cupiditate. Optio aut officia eius voluptatum. Illo nesciunt non voluptate aperiam est alias dolores magni.
 
 :octicons-location-24: Where
 
@@ -66,7 +58,7 @@ Reiciendis aut aut qui voluptate commodi est saepe doloremque. Consectetur offic
 
 ## DSM Ports / HTTPS
 
-Pariatur culpa aliquam recusandae et eveniet magni. Modi ut qui in consequatur ab. Dignissimos at maxime voluptas. Rerum nihil error maxime aut. Omnis veniam accusamus corporis a et. Ut et velit quam quam exercitationem exercitationem omnis.
+!!! note "WIP"
 
 :octicons-location-24: Where
 
@@ -83,8 +75,6 @@ Pariatur culpa aliquam recusandae et eveniet magni. Modi ut qui in consequatur a
 
 ## Enable DoS protection
 
-Aut temporibus eius dolore ipsam quas consequatur qui. Quia voluptatum repellendus maxime. Esse omnis et neque delectus velit est.
-
 :octicons-location-24: Where
 
 `Control Panel` • `Security`
@@ -96,8 +86,6 @@ Aut temporibus eius dolore ipsam quas consequatur qui. Quia voluptatum repellend
     2. Check `Enable DoS protection`
 
 ## Enable Auto Block & Account Protection
-
-Velit itaque non et dicta qui est vitae necessitatibus. Et aliquam et rerum. Vel delectus enim dolorum voluptas dolores eos harum ducimus. Consequatur eum ratione quos quis accusamus temporibus qui. Sit voluptatem facere dolores earum hic. Ratione sequi id cupiditate quae nobis sunt voluptatum.
 
 :octicons-location-24: Where
 
@@ -118,8 +106,6 @@ Velit itaque non et dicta qui est vitae necessitatibus. Et aliquam et rerum. Vel
 
 ## Keep admin Password on Reset
 
-Rerum est et aut vel reiciendis rerum neque deleniti. Aspernatur sunt facilis provident aperiam. Non amet impedit eos qui vel repudiandae.
-
 :octicons-location-24: Where
 
 `Control Panel` • `Update & Restore`
@@ -131,8 +117,6 @@ Rerum est et aut vel reiciendis rerum neque deleniti. Aspernatur sunt facilis pr
         - Check `Keep your admin password unchanged`
 
 ## Enable SMB
-
-Non ut dolorem libero qui rerum saepe vel. Qui quibusdam voluptas accusamus excepturi ut occaecati quis. Voluptatibus beatae veniam quasi molestiae numquam quia totam necessitatibus.
 
 :octicons-location-24: Where
 
@@ -150,9 +134,11 @@ Non ut dolorem libero qui rerum saepe vel. Qui quibusdam voluptas accusamus exce
 
 ## Firewall
 
-!!! note "TODO"
+!!! note "WIP"
 
-Sequi voluptatibus asperiores minima non rerum. Sapiente ea id ipsam laboriosam molestiae suscipit sequi est. Nostrum ducimus asperiores ducimus tenetur pariatur. Minus accusantium cum rerum id dolor.
+!!! warning
+
+    The information below provides a starting point to maintain all basic DSM and SMB functionality. Rules should be updated and customized based on different use cases.
 
 :octicons-location-24: Where
 
@@ -161,12 +147,22 @@ Sequi voluptatibus asperiores minima non rerum. Sapiente ea id ipsam laboriosam 
 :octicons-question-24: How
 
 - In the `Firewall` tab
+    - Under `General`
+        - Check `Enable firewall`
+    - Under `Firewall Profile`
+        - Select `default` and click `Edit Rules`
+
+|       Enabled       |            Ports            |   Protocol   | Source IP |   Action   |
+| :-----------------: | :-------------------------: | :----------: | :-------: | :--------: |
+| :octicons-check-24: | Management UI, File Station |     TCP      |    All    |   Allow    |
+| :octicons-check-24: |     Windows file server     |     All      |    All    |   Allow    |
+| :octicons-check-24: |           Bonjour           |     UDP      |    All    |   Allow    |
+| :octicons-check-24: |    `[Additional Ports]`     | `[Protocol]` |  `[IP]`   | `[Action]` |
+| :octicons-check-24: |             All             |     All      |    All    |    Deny    |
 
 ## SSH
 
 !!! note "TODO"
-
-Qui in voluptate accusantium inventore omnis. In aut accusamus error. Totam enim ad repellendus consequatur. Reprehenderit tempore enim qui impedit ex exercitationem. Similique et numquam veritatis.
 
 :octicons-location-24: Where
 
@@ -178,22 +174,24 @@ Qui in voluptate accusantium inventore omnis. In aut accusamus error. Totam enim
     1. Check `Enable SSH service`
     2. Make sure `Port` is set to `22`
 
+!!! warning
+
+    If Synology's firewall is enabled, make sure to add port `22` or `Encrypted terminal service` to the firewall rules.
+
+|       Enabled       |             Ports             |   Protocol   | Source IP |   Action   |
+| :-----------------: | :---------------------------: | :----------: | :-------: | :--------: |
+| :octicons-check-24: |     `[Additional Ports]`      | `[Protocol]` |  `[IP]`   | `[Action]` |
+| :octicons-check-24: | Encrypted terminal service... |     TCP      |    All    |   Allow    |
+| :octicons-check-24: |     `[Additional Ports]`      | `[Protocol]` |  `[IP]`   | `[Action]` |
+
+<!-- <https://flatpacklinux.com/2020/01/07/configure-the-ssh-server-on-your-synology-nas/> -->
+
 ## SSL Certificate
 
 !!! note "TODO"
-
-Incidunt omnis voluptatem voluptatem. Quia sunt quasi eos voluptatem deserunt omnis itaque. Dicta nesciunt quos autem eligendi. Repellendus rerum vel est.
-
-:octicons-location-24: Where
-
-:octicons-question-24: How
 
 ## VPN
 
 !!! note "TODO"
 
-Eos et architecto dolores pariatur hic dolor adipisci quod. Inventore et quis ullam. Id accusamus non tempora temporibus assumenda eos maiores error. Quo nihil dolores aut vitae quaerat ut eum. Earum sed quod odit ipsum quidem. Doloribus ipsum ipsa repellendus neque autem fugiat velit.
-
-:octicons-location-24: Where
-
-:octicons-question-24: How
+<!-- <https://www.wundertech.net/synology-nas-openvpn-server-setup-configuration/> -->

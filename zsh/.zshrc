@@ -27,7 +27,6 @@ export PYTHONDONTWRITEBYTECODE=1
 # https://github.com/pyenv/pyenv#homebrew-on-macos
 eval "$(pyenv init -)"
 
-
 # navigation
 alias ll="ls -lah"
 alias k="cd $HOME/Desktop; ls -lah;"
@@ -46,6 +45,7 @@ alias dotfiles="cd $HOME/.dotfiles && code ."
 
 # Wiki
 alias wiki="cd $HOME/Workspace/wiki && code ."
+alias wiki-public="cd $HOME/Workspace/wiki-public && code ."
 
 
 function make-executable {
@@ -81,21 +81,6 @@ function clear-history {
 function restart-tablet {
     pkill "WacomTabletDriver"
     open "/Library/Application Support/Tablet/WacomTabletDriver.app"
-}
-
-
-function set-icons {
-
-    # cp "$HOME/.dotfiles/icons/iTerm2-dark-mode.icns" "/Applications/iTerm.app/Contents/Resources/AppIcon.icns"
-    # touch "/Applications/iTerm.app"
-
-    cp "$HOME/.dotfiles/icons/Anki.icns" "/Applications/Anki.app/Contents/Resources/anki.icns"
-    touch "/Applications/Anki.app"
-
-    cp "$HOME/.dotfiles/icons/Audacity.icns" "/Applications/Audacity.app/Contents/Resources/Audacity.icns"
-    touch "/Applications/Audacity.app"
-
-    sudo killall Finder && sudo killall Dock
 }
 
 

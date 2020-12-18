@@ -60,10 +60,6 @@ class Rebuild:
                 "symbolic": Defaults.home / ".zshrc",
             },
             {
-                "original": DotfilePaths.root / ".gitignore",
-                "symbolic": Defaults.home / ".gitignore",
-            },
-            {
                 "original": DotfilePaths.root / "Brewfile",
                 "symbolic": Defaults.home / "Brewfile",
             },

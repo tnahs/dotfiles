@@ -39,13 +39,40 @@ alias brewski="brew update && brew upgrade && brew cleanup; brew doctor"
 
 # zsh/dotfiles
 alias zshrc="code $HOME/.dotfiles/zsh"
-alias reload_zshrc="source $HOME/.dotfiles/zsh/.zshrc"
+alias reload-zshrc="source $HOME/.dotfiles/zsh/.zshrc"
 alias scripts="cd $HOME/.dotfiles/scripts"
 alias dotfiles="cd $HOME/.dotfiles && code ."
+
+# skhd
+# https://github.com/koekeishiya/skhd
+alias reload-skhd="skhd -r"
+
+# yabai
+# https://github.com/koekeishiya/yabai
+alias reload-yabai="launchctl kickstart -k 'gui/${UID}/homebrew.mxcl.yabai'"
 
 # Wiki
 alias wiki="cd $HOME/Workspace/wiki && code ."
 alias wiki-public="cd $HOME/Workspace/wiki-public && code ."
+
+
+function meta-show {
+    exiftool -G -s "$@"
+}
+
+
+function meta-strip-all {
+    for item in "$@"; do
+        exiftool -overwrite_original -all= "$item"
+    done
+}
+
+
+function meta-strip-keywords {
+    for item in "$@"; do
+        exiftool -overwrite_original -Subject= -\*Keywords\*= "$item"
+    done
+}
 
 
 function make-executable {

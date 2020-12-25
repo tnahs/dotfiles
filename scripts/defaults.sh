@@ -52,7 +52,7 @@ defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
 defaults write NSGlobalDomain NSToolbarTitleViewRolloverDelay -float 0
 
 # ✓11.0 Display full POSIX path in Finder window title
-# defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
+defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
 
 # ✓11.0 Enable spring loading for directories
 defaults write NSGlobalDomain com.apple.springing.enabled -bool true

@@ -24,9 +24,10 @@
         "**/node_modules": true
     },
     "files.associations": {
-        "*.coveragerc": "ini",
         "*.toml": "ini",
-        "*.qss": "css"
+        "*.skhdrc": "shellscript",
+        "*.yabairc": "shellscript",
+        "*.coveragerc": "ini",
     },
     //
     // UI Explorer Sidebar
@@ -71,11 +72,13 @@
     "files.trimTrailingWhitespace": true,
     "files.trimFinalNewlines": true,
     "window.nativeFullScreen": false,
+	"window.restoreWindows": "none",
     //
     // Emmet
     "emmet.includeLanguages": {
-        "jinja-html": "html",
+        "markdown": "md",
         "jinja-css": "css",
+        "jinja-html": "html",
     },
     //
     // ------------------------------------------------------------------------
@@ -143,8 +146,13 @@
     "markdownlint.config": {
         "MD014": false,
         "MD041": false,
+        "MD024": false,
+        "MD026": false,
         "MD046": {
-            "style": "fenced",
+            "style":"consistent",
+        },
+        "MD007": {
+            "indent": 4,
         }
     },
     "[markdown]": {
@@ -159,7 +167,6 @@
         "editor.suggest.showSnippets": false,
         "files.trimTrailingWhitespace": false,
     },
-    "vscodeMarkdownNotes.workspaceFilenameConvention": "relativePaths",
     // ------------------------------------------------------------------------
     //
     // ------------------------------------------------------------------------
@@ -259,7 +266,6 @@
     "cSpell.userWords": [
         "anki",
         "annotation",
-        "objs",
         "bpython",
         "color",
         "datefmt",
@@ -284,8 +290,8 @@
         "moom",
         "nargs",
         "objs",
+        "octicons",
         "path",
-        "slugified",
         "pipx",
         "plist",
         "prettierrc",
@@ -296,6 +302,7 @@
         "pytest",
         "quickstart",
         "rgba",
+        "rsync",
         "run",
         "slugified",
         "sorolla",
@@ -310,6 +317,6 @@
         "werkzeug"
     ],
     "workbench.activityBar.visible": false,
-    "workbench.statusBar.visible": false,
+    "workbench.statusBar.visible": true,
     "window.zoomLevel": 0,
 }

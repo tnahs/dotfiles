@@ -21,13 +21,8 @@ logger = logging.getLogger()
 
 class Defaults:
 
-    home: pathlib.Path = pathlib.Path().home()
+    home = pathlib.Path().home()
     today: str = datetime.now().strftime("%Y-%m-%d")
-
-    verbose: Dict[bool, int] = {
-        True: logging.DEBUG,
-        False: logging.INFO,
-    }
 
 
 class DotfilePaths:
@@ -35,19 +30,17 @@ class DotfilePaths:
     root = Defaults.home / ".dotfiles"
 
 
+class MiscPaths:
+
+    root = Defaults.home / "Workspace" / "misc"
+    private = root / "private"
+
+
 class ArchivePaths:
 
     root = Defaults.home / "Workspace" / "archives"
     anki = root / "anki-application-support"
     applebooks = root / "apple-books"
-
-
-class MiscPaths:
-
-    root = Defaults.home / "Workspace" / "misc"
-    fonts = root / "fonts"
-    installers = root / "installers"
-    private = root / "private"
 
 
 class Backup:
@@ -63,13 +56,19 @@ class Backup:
 
         self._run = run if run_all is False else self.RUN_CHOICES
 
-    def backup(self) -> None:
+        paths: List[pathlib.Path] = [
+            ArchivePaths.root,
+            ArchivePaths.applebooks,
+            ArchivePaths.anki,
+            MiscPaths.root,
+            MiscPaths.private,
+        ]
 
-        try:
-            ArchivePaths.anki.resolve(strict=True)
-            ArchivePaths.applebooks.resolve(strict=True)
-        except FileNotFoundError:
-            raise
+        for path in paths:
+            if not path.exists():
+                raise FileNotFoundError(path)
+
+    def backup(self) -> None:
 
         for item in self._run:
             func = getattr(self, f"_run_{item}")
@@ -86,7 +85,7 @@ class Backup:
                 "bundle",
                 "dump",
                 "--force",
-                f"--file={DotfilePaths.root}/Brewfile",
+                f"--file={DotfilePaths.root / 'homebrew' / 'Brewfile'}",
             ],
         )
 
@@ -197,7 +196,6 @@ if __name__ == "__main__":
         nargs="+",
         choices=Backup.RUN_CHOICES,
         type=str,
-        help="Thing(s) to backup.",
     )
     parser.add_argument(
         "-a",
@@ -216,8 +214,10 @@ if __name__ == "__main__":
     parser.add_argument(
         "-v",
         "--verbose",
+        dest="is_verbose",
         action="store_true",
         default=False,
+        help="Set logging to DEBUG.",
     )
     parser.add_argument(
         "-h",
@@ -237,13 +237,17 @@ if __name__ == "__main__":
 
     #
 
-    logger.setLevel(Defaults.verbose[args.verbose])
+    verbosity: Dict[bool, int] = {
+        True: logging.DEBUG,
+        False: logging.INFO,
+    }
+
+    logger.setLevel(verbosity[args.is_verbose])
 
     #
 
-    backup = Backup(run_all=args.run_all, run=args.run)
-
     try:
+        backup = Backup(run_all=args.run_all, run=args.run)
         backup.backup()
     except Exception:
         logger.exception("Exception raised while attempting to backup.")

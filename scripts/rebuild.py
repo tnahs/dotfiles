@@ -3,7 +3,7 @@ import logging
 import pathlib
 import sys
 from datetime import datetime
-from typing import Dict
+from typing import Dict, List, Optional
 
 import helpers
 
@@ -20,18 +20,13 @@ logger = logging.getLogger()
 
 class Defaults:
 
-    home: pathlib.Path = pathlib.Path().home()
+    home = pathlib.Path().home()
     today: str = datetime.now().strftime("%Y-%m-%d")
-
-    verbose: Dict[bool, int] = {
-        True: logging.DEBUG,
-        False: logging.INFO,
-    }
 
 
 class DotfilePaths:
 
-    root: pathlib.Path = Defaults.home / ".dotfiles"
+    root = Defaults.home / ".dotfiles"
 
 
 class Rebuild:
@@ -39,12 +34,10 @@ class Rebuild:
 
         self._python_version = python_version
 
-    def rebuild(self) -> None:
+        if not DotfilePaths.root.exists():
+            raise FileNotFoundError(DotfilePaths)
 
-        try:
-            DotfilePaths.root.resolve(strict=True)
-        except FileNotFoundError:
-            raise
+    def rebuild(self) -> None:
 
         self._link_dotfiles()
         self._source_zshrc()
@@ -54,23 +47,32 @@ class Rebuild:
 
     def _link_dotfiles(self) -> None:
 
-        paths = [
+        paths: List[Dict[str, pathlib.Path]] = [
             {
                 "original": DotfilePaths.root / "zsh" / ".zshrc",
                 "symbolic": Defaults.home / ".zshrc",
             },
             {
-                "original": DotfilePaths.root / "Brewfile",
+                "original": DotfilePaths.root / "homebrew" / "Brewfile",
                 "symbolic": Defaults.home / "Brewfile",
+            },
+            {
+                "original": DotfilePaths.root / "skhd" / ".skhdrc",
+                "symbolic": Defaults.home / ".skhdrc",
+            },
+            {
+                "original": DotfilePaths.root / "yabai" / ".yabairc",
+                "symbolic": Defaults.home / ".yabairc",
             },
         ]
 
         for path in paths:
 
-            original = path.get("original", None)
-            symbolic = path.get("symbolic", None)
+            original: Optional[pathlib.Path] = path.get("original", None)
+            symbolic: Optional[pathlib.Path] = path.get("symbolic", None)
 
             if not original or not symbolic:
+                logging.error(f"Missing path in {path}. Skipping...")
                 continue
 
             helpers.shell.link(original=original, symbolic=symbolic)
@@ -100,7 +102,11 @@ class Rebuild:
         helpers.shell.run(command=["pyenv", "install", self._python_version])
         helpers.shell.run(command=["pyenv", "global", self._python_version])
 
-        # It's just good. This gets installed to pyenv's active Python version.
+        # Update pip for pyenv's active Python version.
+        helpers.shell.run(command=["pip", "install", "--upgrade", "pip"])
+        helpers.shell.run(command=["pip", "install", "--upgrade", "setuptools"])
+
+        # Install packages to pyenv's active Python version.
         helpers.shell.run(command=["pip", "install", "psutil"])
 
     def _restore_application_preferences(self) -> None:
@@ -131,8 +137,10 @@ if __name__ == "__main__":
     parser.add_argument(
         "-v",
         "--verbose",
+        dest="is_verbose",
         action="store_true",
         default=False,
+        help="Set logging to DEBUG.",
     )
     parser.add_argument(
         "-h",
@@ -145,13 +153,17 @@ if __name__ == "__main__":
 
     #
 
-    logger.setLevel(Defaults.verbose[args.verbose])
+    verbosity: Dict[bool, int] = {
+        True: logging.DEBUG,
+        False: logging.INFO,
+    }
+
+    logger.setLevel(verbosity[args.is_verbose])
 
     #
 
-    rebuild = Rebuild(python_version=args.python_version)
-
     try:
+        rebuild = Rebuild(python_version=args.python_version)
         rebuild.rebuild()
     except Exception:
         logger.exception("Exception raised while attempting to rebuild.")

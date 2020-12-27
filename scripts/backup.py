@@ -57,16 +57,13 @@ class Backup:
         self._run = run if run_all is False else self.RUN_CHOICES
 
         paths: List[pathlib.Path] = [
-            ArchivePaths.root,
             ArchivePaths.applebooks,
             ArchivePaths.anki,
-            MiscPaths.root,
             MiscPaths.private,
         ]
 
         for path in paths:
-            if not path.exists():
-                raise FileNotFoundError(path)
+            path.mkdir(parents=True, exist_ok=True)
 
     def backup(self) -> None:
 
@@ -79,19 +76,21 @@ class Backup:
 
         logger.info("Dumping Brewfile...")
 
+        path_brewfile = DotfilePaths.root / "homebrew" / "Brewfile"
+
         helpers.shell.run(
             command=[
                 "brew",
                 "bundle",
                 "dump",
                 "--force",
-                f"--file={DotfilePaths.root / 'homebrew' / 'Brewfile'}",
+                f"--file={path_brewfile}",
             ],
         )
 
         #
 
-        logger.info("Backing up Moom misc...")
+        logger.info("Backing up Moom preferences...")
 
         moom_source = Defaults.home / "Library/Preferences/com.manytricks.Moom.plist"
         moom_destination = DotfilePaths.root / "moom"

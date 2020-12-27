@@ -1,0 +1,87 @@
+function meta-show {
+    exiftool -G -s "$1"
+}
+
+
+function meta-strip-all {
+    for item in "$@"; do
+        exiftool -overwrite_original -all= "$item"
+    done
+}
+
+
+function meta-strip-keywords {
+    for item in "$@"; do
+        exiftool -overwrite_original -Subject= -\*Keywords\*= "$item"
+    done
+}
+
+
+function make-executable {
+    chmod u+x "$@"
+}
+
+
+function spotlight-enable {
+    mdutil -i on "$1"
+}
+
+
+function spotlight-disable {
+    mdutil -i off -d "$1"
+}
+
+
+function spotlight-rebuild {
+    mdutil -E "$1"
+}
+
+
+function clear-dsstore {
+    find . -type f -name '.DS_Store' -ls -delete
+}
+
+
+function clear-history {
+    local HISTSIZE=0
+}
+
+
+function restart-tablet {
+    pkill "WacomTabletDriver"
+    open "/Library/Application Support/Tablet/WacomTabletDriver.app"
+}
+
+
+# https://stackoverflow.com/a/55171807
+function _ytdl_rip {
+    youtube-dl \
+        --verbose \
+        --force-ipv4 \
+        --sleep-interval 5 \
+        --max-sleep-interval 15 \
+        --ignore-errors \
+        --no-continue \
+        --no-overwrites \
+        --add-metadata \
+        --all-subs \
+        --sub-format "srt" \
+        --embed-subs \
+        --merge-output-format "mkv" \
+        --output ${2:?"Missing argument for OUTPUT"} \
+        --external-downloader aria2c \
+        --external-downloader-args "-c -j 3 -x 3 -s 3 -k 1M" \
+        ${1:?"Missing argument for URL"}
+}
+
+function rip {
+    for url in "$@"; do
+        _ytdl_rip $url "%(uploader)s - %(upload_date)s - %(title)s [%(id)s].%(ext)s"
+    done
+}
+
+function ripu {
+    for url in "$@"; do
+        _ytdl_rip $url "%(uploader)s/%(upload_date)s - %(title)s [%(id)s].%(ext)s"
+    done
+}

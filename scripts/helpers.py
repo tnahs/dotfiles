@@ -6,8 +6,6 @@ import subprocess
 import unicodedata
 from typing import Iterator, List, Optional, Set, Union
 
-import psutil
-
 
 logger = logging.getLogger(__name__)
 
@@ -54,14 +52,17 @@ class Shell:
         try:
             subprocess.run(
                 command_normalized,
+                cwd=path,
                 check=True,
                 capture_output=True,
-                cwd=path,
             )
-        except subprocess.CalledProcessError:
-            logger.exception(
-                f"Exception raised while attempting to run command: `{command_string}`."
+        except subprocess.CalledProcessError as error:
+            # TODO: How do we get better errors `error.stderr` / `error.stout`?
+            logger.error(
+                f"Exception raised while attempting to run command: `{error.cmd}`."
+                f"\n{error.output}"
             )
+            raise
 
     def make(self, path: pathlib.Path, as_file: bool = False) -> None:
         """Makes a file or directory. By default directorties are created
@@ -375,6 +376,9 @@ class Shell:
         """Check to see an process is currently running.
 
         process_names -- A list of names process might appear as."""
+
+        # TODO: Document why this is here.
+        import psutil
 
         process_names = [name.lower() for name in process_names]
 

@@ -27,6 +27,8 @@
         "*.toml": "ini",
         "*.skhdrc": "shellscript",
         "*.yabairc": "shellscript",
+        "*.aliases": "shellscript",
+        "*.functions": "shellscript",
         "*.coveragerc": "ini",
     },
     //
@@ -55,7 +57,7 @@
     "editor.cursorSurroundingLines": 10,
     //
     // UI Minimap
-    "editor.minimap.enabled": true,
+    "editor.minimap.enabled": false,
     "editor.minimap.renderCharacters": false,
     //
     // UI Misc
@@ -148,9 +150,7 @@
         "MD041": false,
         "MD024": false,
         "MD026": false,
-        "MD046": {
-            "style":"consistent",
-        },
+        "MD046": false,
         "MD007": {
             "indent": 4,
         }
@@ -304,6 +304,8 @@
         "rgba",
         "rsync",
         "run",
+        "skhd",
+        "skhdrc",
         "slugified",
         "sorolla",
         "strftime",
@@ -314,7 +316,9 @@
         "urlify",
         "venv",
         "webm",
-        "werkzeug"
+        "werkzeug",
+        "yabai",
+        "yabairc"
     ],
     "workbench.activityBar.visible": false,
     "workbench.statusBar.visible": true,

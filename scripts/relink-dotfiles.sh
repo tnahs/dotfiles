@@ -26,12 +26,3 @@ ln -siv "$HOME/.dotfiles/yabai/.yabairc" "$HOME/.yabairc"
 source "$HOME/.zshrc"
 
 # -----------------------------------------------------------------------------
-
-
-# Install Brewfile ------------------------------------------------------------
-
-printf "\nInstalling Brewfile...\n\n"
-
-brew bundle --file="$HOME/Brewfile"
-
-# -----------------------------------------------------------------------------

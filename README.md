@@ -2,39 +2,36 @@
 
 ## Install Homebrew
 
-``` console
+```console
 $ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 ```
 
 During installation, `Homebrew` should ask to install `Command Line Tools`. If not, run:
 
-``` console
+```console
 $ xcode-select --install
 ```
 
 ## Clone Repository
 
-``` console
-$ git clone https://github.com/tnahs/dotfiles ~/.dotfiles
+```console
+$ git clone https://github.com/tnahs/dotfiles $HOME/.dotfiles
 ```
 
-## Rebuild
+## Install
 
-``` console
-$ python3 ~/.dotfiles/scripts/rebuild.py --verbose
+```console
+$ $HOME/.dotfiles/scripts/relink-dotfiles.sh
+$ $HOME/.dotfiles/scripts/reinstall-brewfile.sh
+$ $HOME/.dotfiles/scripts/reinstall-python.sh
 ```
 
-## Configure macOS
+## Config macOS
 
-``` console
-$ zsh ~/.dotfiles/scripts/defaults.sh
-$ zsh ~/.dotfiles/scripts/hotkeys.sh
+```console
+$ $HOME/.dotfiles/scripts/config-macos-defaults.sh
+$ $HOME/.dotfiles/scripts/config-macos-hotkeys.sh
 ```
-
-- `System Preferences` • `Keyboard`
-    - In the `Keyboard` tab
-        - Click `Modifier Keys...`
-            - For every keyboard set `Caps Lock Key` to `Option`
 
 ## Disable SIP (Intel macOS 11.x)
 
@@ -43,9 +40,4 @@ $ zsh ~/.dotfiles/scripts/hotkeys.sh
 3. Run `csrutil disable --with kext --with dtrace --with nvram --with basesystem`
 4. Reboot
 
-[Disabling System Integrity Protection - yabai](https://github.com/koekeishiya/yabai/wiki/Disabling-System-Integrity-Protection#how-do-i-disable-system-integrity-protection)
-
-## Resources
-
-- [Homebrew](https://brew.sh)
-- [Command Line Tools - Apple Developer](https://developer.apple.com/downloads/)
+via [Disabling System Integrity Protection - yabai](https://github.com/koekeishiya/yabai/wiki/Disabling-System-Integrity-Protection#how-do-i-disable-system-integrity-protection)

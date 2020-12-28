@@ -4,19 +4,22 @@ import re
 import shutil
 import subprocess
 import unicodedata
-from typing import Iterator, List, Optional, Set, Union
+from typing import Iterator, Optional, Union
+
+
+import psutil
 
 
 logger = logging.getLogger(__name__)
 
 
-class Shell:
+class _Shell:
 
     TRASH = pathlib.Path().home() / ".Trash"
 
     def run(
         self,
-        command: List[Union[str, pathlib.Path]],
+        command: list[Union[str, pathlib.Path]],
         path: Optional[pathlib.Path] = None,
     ) -> None:
         """Runs a terminal command.
@@ -24,45 +27,29 @@ class Shell:
         command -- Command to run.
         path -- Path to run the command in.
 
-        Note: Shell features such as pipes, wildcards and `~` expansion etc.
-        are *not* supported.
+        TODO:MED Document `Popen`."""
 
-        subprocess.run()
-
-            If `check` is true, and the process exits with a non-zero exit
-            code, a CalledProcessError exception will be raised. Attributes of
-            that exception hold the arguments, the exit code, and stdout and
-            stderr if they were captured.
-
-            If `capture_output` is true, stdout and stderr will be captured.
-
-            If `cwd` is not None, the function changes the working directory to
-            `cwd` before executing the child. `cwd` can be a string, bytes or
-            path-like object. In particular, the function looks for executable
-            (or for the first item in args) relative to `cwd` if the executable
-            path is a relative path.
-
-        https://docs.python.org/3/library/subprocess.html#subprocess.run"""
-
-        command_normalized: List[str] = [str(s) for s in command]
+        command_normalized: list[str] = [str(s) for s in command]
 
         command_string: str = " ".join(command_normalized)
-        logger.debug(f"Running command `{command_string}`.")
 
-        try:
-            subprocess.run(
-                command_normalized,
-                cwd=path,
-                check=True,
-                capture_output=True,
-            )
-        except subprocess.CalledProcessError as error:
-            # TODO: How do we get better errors `error.stderr` / `error.stout`?
-            logger.error(
-                f"Exception raised while attempting to run command: `{error.cmd}`."
-                f"\n{error.output}"
-            )
-            raise
+        # https://stackoverflow.com/a/28319191
+        with subprocess.Popen(
+            command_normalized,
+            cwd=path,
+            bufsize=1,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            universal_newlines=True,
+        ) as process:
+
+            logger.debug(f"Running command `{command_string}`.")
+
+            for line in process.stdout:
+                logger.debug(line.strip("\n"))
+
+        if process.returncode != 0:
+            raise subprocess.CalledProcessError(process.returncode, process.args)
 
     def make(self, path: pathlib.Path, as_file: bool = False) -> None:
         """Makes a file or directory. By default directorties are created
@@ -120,7 +107,7 @@ class Shell:
 
         https://ss64.com/osx/mv.html"""
 
-        flags: List[str] = []
+        flags: list[str] = []
 
         if force is False:
             flags.append("-i")
@@ -168,9 +155,10 @@ class Shell:
 
     def copy(
         self,
-        sources: List[Union[pathlib.Path, str]],
+        sources: list[Union[pathlib.Path, str]],
         destination: pathlib.Path,
         recursive: bool = False,
+        verbose: bool = False,
     ) -> None:
         """Copies a list of files and/or directories.
 
@@ -213,10 +201,13 @@ class Shell:
 
         self.make(path=destination)
 
-        flags: List[str] = ["-p"]
+        flags: list[str] = ["-p"]
 
         if recursive:
             flags.append("-R")
+
+        if verbose:
+            flags.append("-v")
 
         sources_string = ", ".join([f"`{source}`" for source in sources])
         logger.debug(f"Copying {sources_string} to `{destination}`.")
@@ -256,7 +247,13 @@ class Shell:
             self.remove(symbolic)
             symbolic.symlink_to(original)
 
-    def archive(self, sources: List[pathlib.Path], destination: pathlib.Path) -> None:
+    def archive(
+        self,
+        sources: list[pathlib.Path],
+        destination: pathlib.Path,
+        source_root: Optional[pathlib.Path] = None,
+        verbose: bool = False,
+    ) -> None:
         """Writes a `tar` archives from list of files and/or directories.
 
         sources -- Paths to files and/or directories to archive.
@@ -269,8 +266,7 @@ class Shell:
         tar [options] source_files
 
             Create, add files to, or extract files from an archive file in
-            gnutar format, called a tarfile. Tape ARchiver; manipulate "tar"
-            archive files.
+            gnutar format, called a tarfile.
 
             --create
                 Create a new archive containing the specified items.
@@ -278,27 +274,45 @@ class Shell:
             --gzip
                 (create mode only) Compress the resulting archive with gzip(1).
 
+            --directory DIRECTORY
+                [T]his changes the directory before adding the following files.
+
+            --file FILE
+                [W]rite the archive to the specified file.
+
+            --verbose
+                Produce verbose output. In create and extract modes, tar will
+                list each file name as it is read from or written to the
+                archive.
+
         https://ss64.com/osx/tar.html"""
 
+        # TODO:LOW Unexpected results when the filename includes periods.
         # Ensure the destination path has a tar-like file extension.
-        if destination.suffixes not in [[".tar", ".gz"], [".tgz"]]:
-            # Path.suffixes returns a list of the path’s file extensions.
-            #   "tar.gz" -> [".tar", ".gz"]
-            #   ".tgz"   -> [".tgz"]
-            destination = destination.with_suffix(".tar.gz")
+        # if destination.suffixes not in [[".tar", ".gz"], [".tgz"]]:
+        # Path.suffixes returns a list of the path’s file extensions.
+        #   "tar.gz" -> [".tar", ".gz"]
+        #   ".tgz"   -> [".tgz"]
+        # destination = destination.with_suffix(".tar.gz")
 
         logger.debug(f"Creating archive `{destination}`.")
 
-        self.run(
-            command=["tar", "--create", "--gzip", f"--file={destination}", *sources]
-        )
+        flags: list[str] = ["--create", "--gzip"]
+
+        if verbose:
+            flags.append("--verbose")
+
+        if source_root is not None:
+            flags.append(f"--directory={source_root}")
+
+        self.run(command=["tar", *flags, f"--file={destination}", *sources])
 
     def prune(
         self,
         path: pathlib.Path,
         size: int,
         trash: bool = True,
-        ignore_globs: Optional[List[str]] = None,
+        ignore_globs: Optional[list[str]] = None,
         ignore_files: bool = False,
         ignore_directories: bool = False,
     ) -> None:
@@ -320,12 +334,12 @@ class Shell:
             # Ignore system files be default.
             ignore_globs = [".*"]
 
-        ignoring: Set[pathlib.Path] = set()
+        ignoring: set[pathlib.Path] = set()
         for glob in ignore_globs:
             items: Iterator[pathlib.Path] = path.glob(glob)
             ignoring.update(items)
 
-        prunable: List[pathlib.Path] = []
+        prunable: list[pathlib.Path] = []
         for item in path.iterdir():
 
             if item in ignoring:
@@ -372,13 +386,10 @@ class Shell:
             else:
                 self.trash(path=path)
 
-    def process_is_running(self, process_names: List[str]) -> bool:
+    def process_is_running(self, process_names: list[str]) -> bool:
         """Check to see an process is currently running.
 
         process_names -- A list of names process might appear as."""
-
-        # TODO: Document why this is here.
-        import psutil
 
         process_names = [name.lower() for name in process_names]
 
@@ -406,7 +417,7 @@ class Shell:
         return False
 
 
-class Misc:
+class _Misc:
     def slugify(self, string: str, delimiter: str = "-", lowercase: bool = True) -> str:
         """Returns a normalized string. Converts to ASCII, strips non-word
         characters, lowers case and replaces spaces with `delimeter`.
@@ -432,5 +443,5 @@ class Misc:
         return string
 
 
-shell = Shell()
-misc = Misc()
+Shell = _Shell()
+Misc = _Misc()

@@ -1,22 +1,15 @@
-import argparse
 import logging
 import os
 import pathlib
-import sys
 from datetime import datetime
-from typing import Dict, List, Tuple
+from sys import flags
+from typing import Tuple
 
-import helpers
-
-
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s %(levelname)s: %(message)s",
-    datefmt="%Y-%m-%d %H:%M:%S",
-)
+from .helpers import Shell
+from .versions import Version
 
 
-logger = logging.getLogger()
+logger = logging.getLogger(__name__)
 
 
 class Defaults:
@@ -45,6 +38,8 @@ class ArchivePaths:
 
 class Backup:
 
+    NAME = "backup"
+    NAME_PRETTY = "Backup"
     RUN_CHOICES: Tuple[str, ...] = (
         "dotfiles",
         "misc",
@@ -52,11 +47,12 @@ class Backup:
         "applebooks",
     )
 
-    def __init__(self, run_all: bool, run: List[str]) -> None:
+    def __init__(self, run_all: bool, run: list[str], is_verbose: bool = False) -> None:
 
         self._run = run if run_all is False else self.RUN_CHOICES
+        self._is_verbose = is_verbose
 
-        paths: List[pathlib.Path] = [
+        paths: list[pathlib.Path] = [
             ArchivePaths.applebooks,
             ArchivePaths.anki,
             MiscPaths.private,
@@ -78,15 +74,18 @@ class Backup:
 
         path_brewfile = DotfilePaths.root / "homebrew" / "Brewfile"
 
-        helpers.shell.run(
-            command=[
-                "brew",
-                "bundle",
-                "dump",
-                "--force",
-                f"--file={path_brewfile}",
-            ],
-        )
+        command: list[str] = [
+            "brew",
+            "bundle",
+            "dump",
+            "--force",
+            f"--file={path_brewfile}",
+        ]
+
+        if self._is_verbose:
+            command.append("--verbose")
+
+        Shell.run(command=command)
 
         #
 
@@ -95,9 +94,10 @@ class Backup:
         moom_source = Defaults.home / "Library/Preferences/com.manytricks.Moom.plist"
         moom_destination = DotfilePaths.root / "moom"
 
-        helpers.shell.copy(
+        Shell.copy(
             sources=[moom_source],
             destination=moom_destination,
+            verbose=self._is_verbose,
         )
 
         #
@@ -111,16 +111,21 @@ class Backup:
         ]
         vscode_destination = DotfilePaths.root / "vscode"
 
-        helpers.shell.copy(sources=vscode_sources, destination=vscode_destination)
+        Shell.copy(
+            sources=vscode_sources,
+            destination=vscode_destination,
+            verbose=self._is_verbose,
+        )
 
         #
 
         logger.info("Backing up VSCode snippets...")
 
-        helpers.shell.copy(
+        Shell.copy(
             sources=[(vscode_user_root / "snippets")],
             destination=vscode_destination,
             recursive=True,
+            verbose=self._is_verbose,
         )
 
         #
@@ -129,7 +134,7 @@ class Backup:
 
         vscode_extensions = DotfilePaths.root / "vscode" / "extensions.txt"
 
-        helpers.shell.run(command=["code", "--list-extensions", ">", vscode_extensions])
+        Shell.run(command=["code", "--list-extensions", ">", vscode_extensions])
 
     def _run_misc(self) -> None:
 
@@ -144,110 +149,85 @@ class Backup:
 
         firefox_profiles_destination = MiscPaths.private / "profiles" / "firefox"
 
-        helpers.shell.copy(
+        Shell.copy(
             sources=[firefox_profiles_source],
             destination=firefox_profiles_destination,
             recursive=True,
+            verbose=self._is_verbose,
         )
 
     def _run_anki(self) -> None:
 
-        if helpers.shell.process_is_running(process_names=["Anki"]):
+        if Shell.process_is_running(process_names=["Anki"]):
             logging.warning("Anki is currently running! Skipping...")
             return
 
-        logger.info("Backing up Anki `Application Support` folder...")
+        logger.info("Backing up Anki `Application Support` directories...")
 
-        # Anki deck and addons folder
-        source = Defaults.home / "Library/Application Support/Anki2/"
-        destination = ArchivePaths.anki / f"anki-{Defaults.today}.tar.gz"
+        source_root = Defaults.home / "Library" / "Application Support"
 
-        helpers.shell.archive(sources=[source], destination=destination)
-        helpers.shell.prune(path=ArchivePaths.anki, size=5)
+        directories = source_root.glob("Anki*")
+
+        archive_sources: list[pathlib.Path] = list(directories)
+        archive_sources = [s.relative_to(source_root) for s in archive_sources]
+
+        archive_filename: str = (
+            f"{Defaults.today}"
+            f"--anki-v{Version.anki}"
+            f"--macos-v{Version.macOS}.tar.gz"
+        )
+
+        destination = ArchivePaths.anki / archive_filename
+
+        Shell.archive(
+            sources=archive_sources,
+            destination=destination,
+            source_root=source_root,
+            verbose=self._is_verbose,
+        )
+
+        Shell.prune(path=ArchivePaths.anki, size=5)
 
     def _run_applebooks(self) -> None:
 
-        if helpers.shell.process_is_running(
+        if Shell.process_is_running(
             process_names=["Books", "iBooks", "Apple Books", "AppleBooks"]
         ):
             logging.warning("Apple Books is currently running! Skipping...")
             return
 
-        logger.info("Backing up Apple Books...")
+        logger.info("Backing up Apple Books `Containers` directories...")
 
-        # Apple Books databases / EPUBs
-        db_source = Defaults.home / "Library/Containers/com.apple.iBooksX/"
-        epubs_source = Defaults.home / "Library/Containers/com.apple.BKAgentService/"
-        destination = ArchivePaths.applebooks / f"apple-books-{Defaults.today}.tar.gz"
+        source_root = Defaults.home / "Library" / "Containers"
 
-        helpers.shell.archive(
-            sources=[db_source, epubs_source], destination=destination
+        # Globs the directories containing all the EPUBs, PDFs and Audiobooks.
+        # e.g. `~/Library/Containers/com.apple.BKAgentService`
+        directories_bk = source_root.glob("com.apple.BK*")
+
+        # Globs the directories containing the annotation databases.
+        # e.g `~/Library/Containers/com.apple.iBooksX`
+        directories_ibooks = source_root.glob("com.apple.iBooks*")
+
+        archive_sources: list[pathlib.Path] = [
+            *list(directories_bk),
+            *list(directories_ibooks),
+        ]
+
+        archive_sources = [s.relative_to(source_root) for s in archive_sources]
+
+        archive_filename: str = (
+            f"{Defaults.today}"
+            f"--apple-books-v{Version.applebooks}"
+            f"--macos-v{Version.macOS}.tar.gz"
         )
-        helpers.shell.prune(path=ArchivePaths.applebooks, size=5)
 
+        archive_destination = ArchivePaths.applebooks / archive_filename
 
-if __name__ == "__main__":
+        Shell.archive(
+            sources=archive_sources,
+            destination=archive_destination,
+            source_root=source_root,
+            verbose=self._is_verbose,
+        )
 
-    parser = argparse.ArgumentParser(add_help=False)
-    parser.add_argument(
-        "-r",
-        "--run",
-        nargs="+",
-        choices=Backup.RUN_CHOICES,
-        type=str,
-    )
-    parser.add_argument(
-        "-a",
-        "--run-all",
-        action="store_true",
-        default=False,
-        help="Run all backups.",
-    )
-    parser.add_argument(
-        "-l",
-        "--list",
-        action="store_true",
-        default=False,
-        help="List all backup choices.",
-    )
-    parser.add_argument(
-        "-v",
-        "--verbose",
-        dest="is_verbose",
-        action="store_true",
-        default=False,
-        help="Set logging to DEBUG.",
-    )
-    parser.add_argument(
-        "-h",
-        "--help",
-        action="help",
-        help="Show help message.",
-        default=argparse.SUPPRESS,
-    )
-    args = parser.parse_args()
-
-    #
-
-    if args.list is True:
-        print("Available backup choices are:")
-        print(Backup.RUN_CHOICES)
-        sys.exit()
-
-    #
-
-    verbosity: Dict[bool, int] = {
-        True: logging.DEBUG,
-        False: logging.INFO,
-    }
-
-    logger.setLevel(verbosity[args.is_verbose])
-
-    #
-
-    try:
-        backup = Backup(run_all=args.run_all, run=args.run)
-        backup.backup()
-    except Exception:
-        logger.exception("Exception raised while attempting to backup.")
-        sys.exit(-1)
+        Shell.prune(path=ArchivePaths.applebooks, size=5)

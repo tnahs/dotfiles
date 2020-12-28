@@ -79,9 +79,9 @@ defaults write com.apple.finder FXRecentFolders "({})"
 defaults delete com.apple.finder GoToField
 defaults delete com.apple.finder GoToFieldHistory
 
-# ?11.0 Avoid creating .DS_Store files on network or USB volumes
-# defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
-# defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
+# ✓11.0 Avoid creating .DS_Store files on network or USB volumes
+defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
 
 # ✓11.0 Set ~/ as default finder window location.
 # PfDe : Desktop

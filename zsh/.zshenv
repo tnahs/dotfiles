@@ -1,5 +1,6 @@
-# Append ~/.dotfiles/bin.
-export PATH="$PATH:$HOME/bin"
+# Append ~/.dotfiles/scripts
+export PATH="$HOME/.dotfiles/scripts:$PATH"
+export PYTHONPATH="$HOME/.dotfiles/scripts:$PYTHONPATH"
 
 # poetry
 # https://python-poetry.org/docs/#installation

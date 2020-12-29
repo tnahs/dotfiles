@@ -297,6 +297,7 @@ class _Shell:
 
         logger.debug(f"Creating archive `{destination}`.")
 
+        # TODO:MED Test adding --xattrs.
         flags: list[str] = ["--create", "--gzip"]
 
         if verbose:

@@ -21,11 +21,6 @@ logging.basicConfig(
 
 def main(args: argparse.Namespace):
 
-    if args.list is True:
-        print("Available backup choices are:")
-        print(Backup.RUN_CHOICES)
-        sys.exit()
-
     verbosity: Dict[bool, int] = {
         True: logging.DEBUG,
         False: logging.INFO,
@@ -33,15 +28,12 @@ def main(args: argparse.Namespace):
 
     logger.setLevel(verbosity[args.is_verbose])
 
-    #
-
     try:
         backup = Backup(
-            run_all=args.run_all,
             run=args.run,
             is_verbose=args.is_verbose,
         )
         backup.backup()
     except Exception:
         logger.exception("Exception raised while attempting to backup.")
-        sys.exit(-1)
+        return

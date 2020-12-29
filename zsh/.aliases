@@ -11,6 +11,7 @@ alias brewski="brew update && brew upgrade && brew cleanup; brew doctor"
 # zsh/dotfiles
 alias reload-zshrc="source $HOME/.zshrc"
 alias dotfiles="cd $HOME/.dotfiles && code ."
+alias bup="python -m backup"
 
 # skhd
 # https://github.com/koekeishiya/skhd

@@ -2,7 +2,6 @@ import logging
 import os
 import pathlib
 from datetime import datetime
-from sys import flags
 from typing import Tuple
 
 from .helpers import Shell
@@ -38,18 +37,19 @@ class ArchivePaths:
 
 class Backup:
 
-    NAME = "backup"
-    NAME_PRETTY = "Backup"
+    NAME = "bup"
+    NAME_PRETTY = "Bup"
     RUN_CHOICES: Tuple[str, ...] = (
         "dotfiles",
         "misc",
         "anki",
         "applebooks",
     )
+    RUN_CHOICES_LL: str = "".join([f"    {c}\n" for c in RUN_CHOICES]).rstrip()
 
-    def __init__(self, run_all: bool, run: list[str], is_verbose: bool = False) -> None:
+    def __init__(self, run: list[str] = None, is_verbose: bool = False) -> None:
 
-        self._run = run if run_all is False else self.RUN_CHOICES
+        self._run = run if run is not None else self.RUN_CHOICES
         self._is_verbose = is_verbose
 
         paths: list[pathlib.Path] = [
@@ -63,10 +63,25 @@ class Backup:
 
     def backup(self) -> None:
 
+        if self._get_confirmation() is False:
+            return
+
         for item in self._run:
             func = getattr(self, f"_run_{item}")
             logging.debug(f"Running {self.__class__.__name__}.{func.__name__}...")
             func()
+
+    def _get_confirmation(self) -> bool:
+
+        confirm = input(
+            f"{self.NAME_PRETTY} will run: {', '.join(self._run)}. Confirm? [y/N]: "
+        )
+
+        if confirm.lower() not in ["y", "yes"]:
+            print(f"{self.NAME_PRETTY} cancelled. Exiting!")
+            return False
+
+        return True
 
     def _run_dotfiles(self) -> None:
 

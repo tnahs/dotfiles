@@ -1,11 +1,11 @@
-__version__ = "0.1.0"
+__version__ = "0.2.0"
+
 
 import argparse
 import logging
-import sys
 from typing import Dict
 
-from .src.backup import Backup
+from .src.bup import Bup
 
 
 logger = logging.getLogger()
@@ -29,11 +29,12 @@ def main(args: argparse.Namespace):
     logger.setLevel(verbosity[args.is_verbose])
 
     try:
-        backup = Backup(
+        bup = Bup(
             run=args.run,
+            run_all=args.run_all,
             is_verbose=args.is_verbose,
         )
-        backup.backup()
+        bup.backup()
     except Exception:
-        logger.exception("Exception raised while attempting to backup.")
+        logger.exception(f"Exception raised while attempting to run {Bup.NAME_PRETTY}.")
         return

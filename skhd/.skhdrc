@@ -15,9 +15,9 @@ fn + shift - d : code $HOME/.dotfiles
 
 # Screenshots -----------------------------------------------------------------
 
-cmd + alt - 3 : screencapture $HOME/Downloads/screenshot-$(date +%Y-%m-%d@%H%M%S).jpg
-cmd + alt - 4 : screencapture -i $HOME/Downloads/screenshot-$(date +%Y-%m-%d@%H%M%S).jpg
-cmd + alt - 5 : screencapture -iU $HOME/Downloads/screenshot-$(date +%Y-%m-%d@%H%M%S).jpg
+cmd + alt - 3 : screencapture $HOME/Downloads/screenshot-$(date +%Y-%m-%d-%H%M%S).jpg
+cmd + alt - 4 : screencapture -i $HOME/Downloads/screenshot-$(date +%Y-%m-%d-%H%M%S).jpg
+cmd + alt - 5 : screencapture -iU $HOME/Downloads/screenshot-$(date +%Y-%m-%d-%H%M%S).jpg
 
 # Spaces ----------------------------------------------------------------------
 

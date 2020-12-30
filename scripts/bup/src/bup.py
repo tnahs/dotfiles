@@ -35,21 +35,29 @@ class ArchivePaths:
     applebooks = root / "apple-books"
 
 
-class Backup:
+class BupKeys:
+    DOTFILES = "dotfiles"
+    MISC = "misc"
+    ANKI = "anki"
+    APPLEBOOKS = "applebooks"
+
+
+class Bup:
 
     NAME = "bup"
-    NAME_PRETTY = "Bup"
+    NAME_PRETTY = "BUP"
     RUN_CHOICES: Tuple[str, ...] = (
-        "dotfiles",
-        "misc",
-        "anki",
-        "applebooks",
+        BupKeys.DOTFILES,
+        BupKeys.MISC,
+        BupKeys.ANKI,
+        BupKeys.APPLEBOOKS,
     )
-    RUN_CHOICES_LL: str = "".join([f"    {c}\n" for c in RUN_CHOICES]).rstrip()
 
-    def __init__(self, run: list[str] = None, is_verbose: bool = False) -> None:
+    def __init__(
+        self, run: list[str], run_all: bool = False, is_verbose: bool = False
+    ) -> None:
 
-        self._run = run if run is not None else self.RUN_CHOICES
+        self._to_run = run if run_all is False else self.RUN_CHOICES
         self._is_verbose = is_verbose
 
         paths: list[pathlib.Path] = [
@@ -63,27 +71,27 @@ class Backup:
 
     def backup(self) -> None:
 
-        if self._get_confirmation() is False:
+        if self._ask_confirmation() is False:
             return
 
-        for item in self._run:
-            func = getattr(self, f"_run_{item}")
+        for item in self._to_run:
+            func = getattr(self, f"_run__{item}")
             logging.debug(f"Running {self.__class__.__name__}.{func.__name__}...")
-            func()
+            # func()
 
-    def _get_confirmation(self) -> bool:
+    def _ask_confirmation(self) -> bool:
 
         confirm = input(
-            f"{self.NAME_PRETTY} will run: {', '.join(self._run)}. Confirm? [y/N]: "
+            f"{self.NAME_PRETTY} will run: {', '.join(self._to_run)}. Confirm? [y/N]: "
         )
 
-        if confirm.lower() not in ["y", "yes"]:
+        if confirm.lower().strip() not in ["y", "yes"]:
             print(f"{self.NAME_PRETTY} cancelled. Exiting!")
             return False
 
         return True
 
-    def _run_dotfiles(self) -> None:
+    def _run__dotfiles(self) -> None:
 
         logger.info("Dumping Brewfile...")
 
@@ -151,7 +159,7 @@ class Backup:
 
         Shell.run(command=["code", "--list-extensions", ">", vscode_extensions])
 
-    def _run_misc(self) -> None:
+    def _run__misc(self) -> None:
 
         logger.info("Backing up Firefox Profiles...")
 
@@ -171,7 +179,7 @@ class Backup:
             verbose=self._is_verbose,
         )
 
-    def _run_anki(self) -> None:
+    def _run__anki(self) -> None:
 
         if Shell.process_is_running(process_names=["Anki"]):
             logging.warning("Anki is currently running! Skipping...")
@@ -203,7 +211,7 @@ class Backup:
 
         Shell.prune(path=ArchivePaths.anki, size=5)
 
-    def _run_applebooks(self) -> None:
+    def _run__applebooks(self) -> None:
 
         if Shell.process_is_running(
             process_names=["Books", "iBooks", "Apple Books", "AppleBooks"]

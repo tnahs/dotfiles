@@ -5,8 +5,8 @@ from . import __version__, main
 from .src.bup import Bup
 
 
-def format_choices(width: int = 4) -> str:
-    spacing = " " * width
+def format_choices(tab_width: int = 4) -> str:
+    spacing = " " * tab_width
     choices = [f"{spacing}{c}" for c in Bup.RUN_CHOICES]
     return "\n".join(choices).rstrip()
 

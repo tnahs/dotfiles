@@ -18,21 +18,35 @@ $ xcode-select --install
 $ git clone https://github.com/tnahs/dotfiles $HOME/.dotfiles
 ```
 
+## Link dotfiles
+
+```console
+$ $HOME/.dotfiles/scripts/link-dotfiles.sh
+```
+
 ## Install
 
 ```console
-$ $HOME/.dotfiles/scripts/relink-dotfiles.sh
-$ $HOME/.dotfiles/scripts/reinstall-brewfile.sh
-$ $HOME/.dotfiles/scripts/reinstall-python.sh
+$ $HOME/.dotfiles/scripts/install-brewfile.sh
+$ $HOME/.dotfiles/scripts/install-pipx-packages.sh
+$ $HOME/.dotfiles/scripts/install-python.sh [VERSION ...]
 ```
 
 ## Config macOS
 
 ```console
 $ $HOME/.dotfiles/scripts/config-macos-defaults.sh
-$ $HOME/.dotfiles/scripts/config-macos-hotkeys.sh
+$ $HOME/.dotfiles/scripts/disable-macos-hotkeys.sh
 ```
 
+## Restore Applications
+
+```console
+$ $HOME/.dotfiles/scripts/restore-apple-books-library.sh PATH_TO_LIBRARY_ARCHIVE
+$ $HOME/.dotfiles/scripts/restore-anki-collection.sh PATH_TO_COLLECTION_ARCHIVE
+```
+
+<!--
 ## Disable SIP (Intel macOS 11.x)
 
 1. Start up in Recovery Mode by holding down `command ⌘` + `R`.
@@ -41,3 +55,4 @@ $ $HOME/.dotfiles/scripts/config-macos-hotkeys.sh
 4. Reboot
 
 via [Disabling System Integrity Protection - yabai](https://github.com/koekeishiya/yabai/wiki/Disabling-System-Integrity-Protection#how-do-i-disable-system-integrity-protection)
+-->

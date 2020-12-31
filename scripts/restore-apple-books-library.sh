@@ -19,8 +19,8 @@ function extract_archive {
 
 function restore_library {
     echo "Deleting Apple Books library..."
-    rm -rf $HOME/Library/Containers/com.apple.BKAgentService
-    rm -rf $HOME/Library/Containers/com.apple.iBooksX*
+    rm -rf $HOME/Library/Containers/com.apple.BK*
+    rm -rf $HOME/Library/Containers/com.apple.iBooks*
     echo "Retoring Apple Books library..."
     mv $tempdir/com.apple.* $HOME/Library/Containers
 }

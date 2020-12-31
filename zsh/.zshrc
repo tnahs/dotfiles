@@ -1,5 +1,12 @@
 #!/bin/zsh
 
+autoload -U colors && colors
+
+PROMPT=""
+PROMPT+="%n in "
+PROMPT+="%F{blue}%~%f %# "
+
+
 source "$HOME/.dotfiles/zsh/.aliases"
 source "$HOME/.dotfiles/zsh/.functions"
 

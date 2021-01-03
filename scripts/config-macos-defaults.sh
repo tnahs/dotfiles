@@ -11,8 +11,17 @@ osascript -e 'tell application "System Preferences" to quit'
 # Ask for the administrator password upfront
 sudo -v
 
-# Keep-alive: update existing `sudo` time stamp until `.defaults.sh` has finished
+# Keep-alive: update existing `sudo` time stamp until `config-macos-defaults.sh` has finished
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+
+
+# -----------------------------------------------------------------------------
+# plists
+# -----------------------------------------------------------------------------
+
+GLOBAL_PLIST=$HOME/Library/Preferences/.GlobalPreferences.plist
+FINDER_PLIST=$HOME/Library/Preferences/com.apple.finder.plist
+DOCK_PLUST=$HOME/Library/Preferences/com.apple.dock.plist
 
 # -----------------------------------------------------------------------------
 # Finder
@@ -36,6 +45,12 @@ defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
 # ✓11.0 ✓UI : Keep folders on top when sorting by name
 defaults write com.apple.finder _FXSortFoldersFirst -bool true
 
+# ✓11.0 ✓UI : Hide desktop icons
+defaults write com.apple.finder ShowHardDrivesOnDesktop -bool false
+defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool false
+defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool false
+defaults write com.apple.finder ShowMountedServersOnDesktop -bool false
+
 # ✓11.0 ✓UI : Disable the warning when changing a file extension
 defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 
@@ -46,13 +61,16 @@ defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 #   SCsp Use the Previous Search Scope
 defaults write com.apple.finder FXDefaultSearchScope -string SCcf
 
-# ✓11.0 xUI : Use list view in all Finder windows by default
+# ✓11.0 ✓UI : Use list view in all Finder windows by default
 # Possible values:
 #   Nlsv List View
 #   icnv Icon Viwe
 #   clmv Column View
 #   Flwv Gallery View
 defaults write com.apple.finder FXPreferredViewStyle -string Nlsv
+defaults write com.apple.finder FXPreferredSearchViewStyle -string Nlsv
+/usr/libexec/PlistBuddy -c "Set :TrashViewSettings:CustomViewStyle Nlsv" $FINDER_PLIST
+/usr/libexec/PlistBuddy -c "Set :TrashViewSettings:CustomViewStyle Nlsv" $FINDER_PLIST
 
 # ✓11.0 ✓UI : Set ~ as default finder window location
 # Possible values:
@@ -79,18 +97,12 @@ defaults write NSGlobalDomain AppleShowScrollBars -string Always
 # ✓11.0 ✓UI : Click in the scroll bar to jump to the spot that's clicked
 defaults write NSGlobalDomain AppleScrollerPagingBehavior -bool true
 
-# ✓11.0 ✓UI : Hide desktop icons
-defaults write com.apple.finder ShowHardDrivesOnDesktop -bool false
-defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool false
-defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool false
-defaults write com.apple.finder ShowMountedServersOnDesktop -bool false
-
 # TODO Other sidebar items...
 # ~/Library/Application Support/com.apple.sharedfilelist
 defaults write com.apple.finder ShowRecentTags -bool false
 
 # ✓11.0 xUI : Increase window resize speed for applications
-defaults write NSGlobalDomain NSWindowResizeTime -float .15
+defaults write NSGlobalDomain NSWindowResizeTime -float 0.15
 
 # ?11.0 xUI :
 # defaults write NSGlobalDomain NSDisableAutomaticTermination -bool true
@@ -107,9 +119,6 @@ defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
 
-# ?11.0 ?UI : Disable Resume system-wide
-# defaults write com.apple.systempreferences NSQuitAlwaysKeepsWindows -bool false
-
 # ✓11.0 ✓UI : Disable Handoff
 defaults -currentHost write com.apple.coreservices.useractivityd.plist ActivityReceivingAllowed -bool false
 defaults -currentHost write com.apple.coreservices.useractivityd.plist ActivityAdvertisingAllowed -bool false
@@ -125,22 +134,22 @@ sudo chflags nohidden /Volumes
 # Finder Extras
 # -----------------------------------------------------------------------------
 
-# ✓11.0 xUI : Delete recent folders
-# defaults write com.apple.finder FXRecentFolders "({})"
+# ✓11.0 xUI : Clear recent folders
 # defaults delete com.apple.finder FXRecentFolders
+# defaults write com.apple.finder FXRecentFolders "({})"
 
-# ✓11.0 xUI : Delete "Go to folder" history
+# ✓11.0 xUI : Clear "Go to folder" history
 # defaults delete com.apple.finder GoToField
 # defaults delete com.apple.finder GoToFieldHistory
 
-# ✓11.0 xUI : Delete recent places
+# ✓11.0 xUI : Clear recent places
 # defaults delete NSGlobalDomain NSNavRecentPlaces
 
 # ?11.0 ?UI : Disable recent places
 # defaults write NSGlobalDomain NSNavRecentPlacesLimit -int 0
 
 # -----------------------------------------------------------------------------
-# Dock / Mission Control/ Spaces
+# Dock / Mission Control / Spaces
 # -----------------------------------------------------------------------------
 
 # ✓11.0 ✓UI : Set the icon size
@@ -177,12 +186,6 @@ defaults write NSGlobalDomain AppleSpacesSwitchOnActivate -bool false
 # Energy
 # -----------------------------------------------------------------------------
 
-# pmset Documentation
-# https://ss64.com/osx/pmset.html
-
-# Display system-wide power settings
-# pmset -g
-
 # ✓11.0 xUI : Restart automatically on power loss
 sudo pmset -a autorestart 1
 
@@ -195,17 +198,17 @@ sudo pmset -a hibernatemode 0
 # Remove the sleep image file to save disk space
 sudo rm /private/var/vm/sleepimage
 
-# Create a zero-byte file instead…
+# Create a zero-byte file instead...
 sudo touch /private/var/vm/sleepimage
 
-# …and make sure it can't be rewritten
+# ...and make sure it can't be rewritten
 sudo chflags uchg /private/var/vm/sleepimage
 
 # -----------------------------------------------------------------------------
 # Keyboard / Mouse
 # -----------------------------------------------------------------------------
 
-# ✓11.0 ✓UI : Disable “natural” scrolling direction
+# ✓11.0 ✓UI : Disable "natural" scrolling direction
 defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
 
 # ✓11.0 ?UI : Disable press-and-hold for keys in favor of key repeat
@@ -236,16 +239,6 @@ defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 defaults write NSGlobalDomain NSAutomaticTextCompletionEnabled -bool false
 
 # -----------------------------------------------------------------------------
-# Siri
-# -----------------------------------------------------------------------------
-
-# ✓11.0 ✓UI :
-defaults write com.apple.assistant.support.plist "Assistant Enabled" -bool false
-
-# ✓11.0 ✓UI :
-defaults write com.apple.Siri StatusMenuVisible -bool false
-
-# -----------------------------------------------------------------------------
 # Applications
 # -----------------------------------------------------------------------------
 
@@ -259,16 +252,22 @@ defaults write com.apple.TextEdit RichText -int 0
 # defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true
 
 # -----------------------------------------------------------------------------
-# Misc
+# Privacy
 # -----------------------------------------------------------------------------
 
-# ?11.0 ?UI : Increase sound quality for Bluetooth headphones/headsets
-# defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40
+# ✓11.0 ✓UI :
+defaults write com.apple.assistant.support.plist "Assistant Enabled" -bool false
 
-# This might require deleting all .DS_Store files to see changes.
+# ✓11.0 ✓UI :
+defaults write com.apple.Siri StatusMenuVisible -bool false
+
+# ✓11.0 ✓UI :
+defaults write com.apple.AdLib allowApplePersonalizedAdvertising -bool false
+
+# -----------------------------------------------------------------------------
+
+# Delete all .DS_Store files to reset folder view settings
 sudo find /Volumes/Macintosh\ HD -name ".DS_Store" -delete
-
-killall Finder
 
 echo "Configuration Done!"
 echo "Note that some of these changes require a logout/restart to take effect."

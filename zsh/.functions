@@ -38,7 +38,7 @@ function spotlight-rebuild {
 
 
 function clear-dsstore {
-    find . -type f -name '.DS_Store' -ls -delete
+    find . -type f -name ".DS_Store" -ls -delete
 }
 
 

@@ -177,7 +177,7 @@ defaults write com.apple.dock mru-spaces -bool false
 defaults write com.apple.dock expose-group-apps -bool true
 
 # ✓11.0 ✓UI :
-defaults write com.apple.spaces spans-displays -bool true
+defaults write com.apple.spaces spans-displays -bool false
 
 # ✓11.0 ✓UI :
 defaults write NSGlobalDomain AppleSpacesSwitchOnActivate -bool false
@@ -187,29 +187,29 @@ defaults write NSGlobalDomain AppleSpacesSwitchOnActivate -bool false
 # -----------------------------------------------------------------------------
 
 # ✓11.0 xUI : Restart automatically on power loss
-sudo pmset -a autorestart 1
+# sudo pmset -a autorestart 1
 
 # ✓11.0 xUI : Restart automatically if the computer freezes
-sudo systemsetup -setrestartfreeze on
+# sudo systemsetup -setrestartfreeze on
 
 # ✓11.0 xUI : Disable hibernation (speeds up entering sleep mode)
-sudo pmset -a hibernatemode 0
+# sudo pmset -a hibernatemode 0
 
 # Remove the sleep image file to save disk space
-sudo rm /private/var/vm/sleepimage
+# sudo rm /private/var/vm/sleepimage
 
 # Create a zero-byte file instead...
-sudo touch /private/var/vm/sleepimage
+# sudo touch /private/var/vm/sleepimage
 
 # ...and make sure it can't be rewritten
-sudo chflags uchg /private/var/vm/sleepimage
+# sudo chflags uchg /private/var/vm/sleepimage
 
 # -----------------------------------------------------------------------------
 # Keyboard / Mouse
 # -----------------------------------------------------------------------------
 
 # ✓11.0 ✓UI : Disable "natural" scrolling direction
-defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
+defaults write NSGlobalDomain com.apple.swipescrolldirection -bool true
 
 # ✓11.0 ?UI : Disable press-and-hold for keys in favor of key repeat
 defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false

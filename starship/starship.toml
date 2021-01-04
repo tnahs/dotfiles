@@ -1,0 +1,28 @@
+[line_break]
+disabled = true
+
+[character]
+success_symbol = "[\\$](white)"
+error_symbol = "[\\$](red)"
+
+[directory]
+style = "blue"
+
+[git_branch]
+symbol = "↯ "
+style = "yellow"
+
+[git_status]
+style = "yellow"
+
+[package]
+style = "blue"
+symbol = "⬢ "
+
+[python]
+style = "green"
+symbol = "Python "
+
+[nodejs]
+style = "green"
+symbol = "NodeJS "

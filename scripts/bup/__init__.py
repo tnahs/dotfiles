@@ -3,7 +3,6 @@ __version__ = "0.2.0"
 
 import argparse
 import logging
-from typing import Dict
 
 from .src.bup import Bup
 
@@ -21,7 +20,7 @@ logging.basicConfig(
 
 def main(args: argparse.Namespace):
 
-    verbosity: Dict[bool, int] = {
+    verbosity: dict[bool, int] = {
         True: logging.DEBUG,
         False: logging.INFO,
     }

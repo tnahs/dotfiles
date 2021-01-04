@@ -48,13 +48,13 @@ function clear-history {
 
 
 function restart-tablet {
-    pkill "WacomTabletDriver"
-    open "/Library/Application Support/Tablet/WacomTabletDriver.app"
+    pkill WacomTabletDriver
+    open /Library/Application\ Support/Tablet/WacomTabletDriver.app
 }
 
 
 # https://stackoverflow.com/a/55171807
-function _ytdl_rip {
+function _ytdl-rip {
     youtube-dl \
         --verbose \
         --force-ipv4 \
@@ -76,12 +76,12 @@ function _ytdl_rip {
 
 function rip {
     for url in "$@"; do
-        _ytdl_rip $url "%(uploader)s - %(upload_date)s - %(title)s [%(id)s].%(ext)s"
+        _ytdl-rip $url "%(uploader)s - %(upload_date)s - %(title)s [%(id)s].%(ext)s"
     done
 }
 
 function ripu {
     for url in "$@"; do
-        _ytdl_rip $url "%(uploader)s/%(upload_date)s - %(title)s [%(id)s].%(ext)s"
+        _ytdl-rip $url "%(uploader)s/%(upload_date)s - %(title)s [%(id)s].%(ext)s"
     done
 }

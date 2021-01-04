@@ -1,9 +1,5 @@
 #!/bin/zsh
 
-# ~/Library/Preferences/com.apple.finder.plist
-# ~/Library/Preferences/com.apple.dock.plist
-# ~/Library/Preferences/.GlobalPreferences.plist
-
 # Forked from: https://mths.be/macos
 
 osascript -e 'tell application "System Preferences" to quit'
@@ -153,7 +149,7 @@ sudo chflags nohidden /Volumes
 # -----------------------------------------------------------------------------
 
 # ✓11.0 ✓UI : Set the icon size
-defaults write com.apple.dock tilesize -int 128
+defaults write com.apple.dock tilesize -int 96
 
 # ✓11.0 xUI : Remove the auto-hiding delay
 defaults write com.apple.dock autohide-delay -float 0
@@ -218,7 +214,7 @@ defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 defaults write NSGlobalDomain KeyRepeat -int 1
 
 # ✓11.0 xUI : Faster initial keyboard repeat delay (might require restart)
-defaults write NSGlobalDomain InitialKeyRepeat -int 15
+defaults write NSGlobalDomain InitialKeyRepeat -int 13
 
 # ✓11.0 ✓UI : Disable automatic capitalization
 defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false

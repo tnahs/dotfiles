@@ -1,24 +1,28 @@
 #!/bin/zsh
 
 
-function install_python {
+function fix_python_libs() {
+    # https://github.com/pyenv/pyenv/issues/1746#issuecomment-743689017
+
+    path_openssl=$(brew --prefix openssl)
+    path_readline=$(brew --prefix readline)
+    path_xcode=$(xcrun --show-sdk-path)
 
     # 2020-12-26 NOTE: Python builds via pyenv fail on macOS BigSur. Adding the
-    # env variable...
+    # env variables...
 
-    export LDFLAGS='-L /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib/'
+    export CFLAGS="-I${path_readline}/include -I${path_openssl}/include -I${path_xcode}/usr/include -O2"
+    export LDFLAGS="-L${path_readline}/lib -L${path_openssl}/lib -L${path_xcode}/usr/lib"
+    export PYTHON_CONFIGURE_OPTS=--enable-unicode=ucs2
 
     # ...before running pyenv fixed the issue. However older versions of Python
-    # still did not work. Versions 3.8.6 and 3.9.0 confirmed working.
-    #
-    # Run `xcrun --show-sdk-path` to make sure the base-path is correct. Tried
-    # a string interpolated version of the command...
-    #
-    #   export LDFLAGS='-L $(xcrun --show-sdk-path)/usr/lib/'
-    #
-    # ...but this did not work.
-    #
-    # via https://github.com/pyenv/pyenv/issues/1746#issuecomment-739316392
+    # still did not work. Versions 3.8.6, 3.9.0 and 3.9-dev confirmed working.
+}
+
+
+function install_python {
+
+    fix_python_libs
 
     local python_versions=($@)
     local python_packages=(

@@ -13,8 +13,10 @@
         "tab.activeBorder": "#E57373",
         "notificationLink.foreground": "#E57373"
     },
-    "workbench.colorTheme": "Dracula Soft",
+    "workbench.colorTheme": "Material Theme Palenight High Contrast",
     "workbench.iconTheme": "city-lights-icons-vsc",
+    "workbench.statusBar.visible": false,
+    "workbench.activityBar.visible": false,
     //
     // Files
     "files.exclude": {
@@ -25,6 +27,7 @@
     },
     "files.associations": {
         "*.toml": "ini",
+        "*.plist": "xml",
         "*.skhdrc": "shellscript",
         "*.yabairc": "shellscript",
         "*.aliases": "shellscript",
@@ -57,7 +60,7 @@
     "editor.cursorSurroundingLines": 10,
     //
     // UI Minimap
-    "editor.minimap.enabled": false,
+    "editor.minimap.enabled": true,
     "editor.minimap.renderCharacters": false,
     //
     // UI Misc
@@ -74,7 +77,7 @@
     "files.trimTrailingWhitespace": true,
     "files.trimFinalNewlines": true,
     "window.nativeFullScreen": false,
-	"window.restoreWindows": "none",
+    "window.restoreWindows": "none",
     //
     // Emmet
     "emmet.includeLanguages": {
@@ -92,9 +95,17 @@
         "editor.tabSize": 4,
         "editor.insertSpaces": true,
         "editor.detectIndentation": false,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": true
+        }
     },
     "python.formatting.provider": "black",
     "python.formatting.blackPath": "~/.local/bin/black",
+    // "python.sortImports.path": "~/.local/bin/isort",
+    "python.sortImports.args": [
+        "--profile=black",
+        "--lines-after-imports=2"
+    ],
     // -- Linting - Pylance
     "python.languageServer": "Pylance",
     "python.analysis.diagnosticMode": "workspace",
@@ -166,6 +177,7 @@
         "editor.wordBasedSuggestions": false,
         "editor.suggest.showSnippets": false,
         "files.trimTrailingWhitespace": false,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
     },
     // ------------------------------------------------------------------------
     //
@@ -223,6 +235,11 @@
         "[H]",
         "[M]",
         "[L]",
+        "✓11.0",
+        "?11.0",
+        "✓UI",
+        "?UI",
+        "xUI",
     ],
     "todo-tree.regex.regex": "(?<!\\w)($TAGS)(?!\\w)",
     "todo-tree.ripgrep.ripgrepArgs": "--pcre2",
@@ -261,6 +278,21 @@
         },
         "[L]": {
             "foreground": "gold",
+        },
+        "✓11.0": {
+            "foreground": "green"
+        },
+        "?11.0": {
+            "foreground": "orange"
+        },
+        "✓UI": {
+            "foreground": "green"
+        },
+        "?UI": {
+            "foreground": "orange"
+        },
+        "xUI": {
+            "foreground": "gray"
         },
     },
     "cSpell.userWords": [
@@ -318,10 +350,9 @@
         "venv",
         "webm",
         "werkzeug",
+        "xattrs",
         "yabai",
         "yabairc"
     ],
-    "workbench.activityBar.visible": false,
-    "workbench.statusBar.visible": true,
     "window.zoomLevel": 0,
 }

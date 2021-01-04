@@ -77,7 +77,7 @@ class Bup:
         for item in self._to_run:
             func = getattr(self, f"_run__{item}")
             logging.debug(f"Running {self.__class__.__name__}.{func.__name__}...")
-            # func()
+            func()
 
     def _ask_confirmation(self) -> bool:
 

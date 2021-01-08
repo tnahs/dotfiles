@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 
-function fix_python_libs() {
+function fix_libs() {
     # https://github.com/pyenv/pyenv/issues/1746#issuecomment-743689017
 
     path_openssl=$(brew --prefix openssl)
@@ -22,7 +22,7 @@ function fix_python_libs() {
 
 function install_python {
 
-    fix_python_libs
+    fix_libs
 
     local python_versions=($@)
     local python_packages=(

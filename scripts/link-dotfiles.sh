@@ -25,3 +25,6 @@ function main {
     link_dotfiles
     source $HOME/.zshrc
 }
+
+
+main

@@ -56,38 +56,6 @@ function config__finder {
     #   SCsp -> Use the Previous Search Scope
     defaults write com.apple.finder FXDefaultSearchScope -string SCcf
 
-    # ✓11.0 ✓UI : Use list view in all Finder windows by default
-    # Possible values:
-    #   Nlsv -> List View
-    #   icnv -> Icon Viwe
-    #   clmv -> Column View
-    #   Flwv -> Gallery View
-    defaults write com.apple.finder FXPreferredViewStyle -string Nlsv
-    defaults write com.apple.finder FXPreferredSearchViewStyle -string Nlsv
-
-    # ✓11.0 ✓UI : Enable/Disable 'Show icon preview'
-    /usr/libexec/PlistBuddy -c "Set :StandardViewSettings:ListViewSettings:showIconPreview false" $FINDER_PLIST
-    /usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:showIconPreview false" $FINDER_PLIST
-    /usr/libexec/PlistBuddy -c "Set :StandardViewSettings:ExtendedListViewSettingsV2:showIconPreview false" $FINDER_PLIST
-    /usr/libexec/PlistBuddy -c "Set :StandardViewSettings:GalleryViewSettings:showIconPreview true" $FINDER_PLIST
-
-    # ✓11.0 ✓UI : Enable snap-to-grid for icons views
-    /usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:arrangeBy grid" $FINDER_PLIST
-
-    # ✓11.0 ✓UI : Set Finder window sidebar width.
-    /usr/libexec/PlistBuddy -c "Add :SidebarWidth integer 200" $FINDER_PLIST
-    /usr/libexec/PlistBuddy -c "Set :SidebarWidth 200" $FINDER_PLIST
-
-    # NOTE: The following commands output a 'Does Not Exist' error when running
-    # on a fresh com.apple.finer.plist. To make these changes take place the
-    # parent list/dictionary must be created by Finder.
-    # /usr/libexec/PlistBuddy -c "Set :TrashViewSettings:CustomViewStyle Nlsv" $FINDER_PLIST
-    # /usr/libexec/PlistBuddy -c "Set :StandardViewOptions:ColumnViewOptions:ShowIconThumbnails false" $FINDER_PLIST
-    # /usr/libexec/PlistBuddy -c "Set :StandardViewOptions:ColumnViewOptions:ColumnWidth 250" $FINDER_PLIST
-    # /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:showIconPreview true" $FINDER_PLIST
-    # /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:arrangeBy grid" $FINDER_PLIST
-    # /usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:arrangeBy grid" $FINDER_PLIST
-
     # ✓11.0 ✓UI : Set home folder as default Finder window location
     # Possible values:
     #   PfDe -> Desktop
@@ -162,6 +130,63 @@ function config__finder {
     # ?11.0 xUI : Disable recent places
     # defaults write NSGlobalDomain NSNavRecentPlacesLimit -int 0
 }
+
+
+function config__finder_windows {
+
+    echo "--------------------------------------------------------------------"
+    echo " Some of the following commands might output a 'Does Not Exist'"
+    echo " error when running on a fresh 'com.apple.finer.plist'. The Desktop,"
+    echo " Trash and the 'Column View' in a Finder window have their own entry"
+    echo " in the 'com.apple.finer.plist' which are not there by default."
+    echo
+    echo " In order to create these entries into the plist, the 'View Options'"
+    echo " need to be invoked and modified for each item. This will trigger "
+    echo " Finder to add a complete and valid dictionary entry into the plist"
+    echo " for each item. Afterwards the following commands will no longer"
+    echo " output the 'Does Not Exist' error."
+    echo
+    echo " The easiset way to invoke the 'View Options' is to focus the"
+    echo " desired view, (e.g. click on the Desktop) and select 'View' >"
+    echo " 'Show View Options'."
+    echo "--------------------------------------------------------------------"
+
+    # ✓11.0 ✓UI : Use list view in all Finder windows by default
+    # Possible values:
+    #   Nlsv -> List View
+    #   icnv -> Icon Viwe
+    #   clmv -> Column View
+    #   Flwv -> Gallery View
+    defaults write com.apple.finder FXPreferredViewStyle -string Nlsv
+    defaults write com.apple.finder FXPreferredSearchViewStyle -string Nlsv
+    /usr/libexec/PlistBuddy -c "Set :TrashViewSettings:CustomViewStyle Nlsv" $FINDER_PLIST
+
+    # ✓11.0 ✓UI : Enable/Disable 'Show icon preview'
+    /usr/libexec/PlistBuddy -c "Set :StandardViewSettings:ListViewSettings:showIconPreview false" $FINDER_PLIST
+    /usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:showIconPreview false" $FINDER_PLIST
+    /usr/libexec/PlistBuddy -c "Set :StandardViewSettings:ExtendedListViewSettingsV2:showIconPreview false" $FINDER_PLIST
+    /usr/libexec/PlistBuddy -c "Set :StandardViewSettings:GalleryViewSettings:showIconPreview true" $FINDER_PLIST
+    /usr/libexec/PlistBuddy -c "Set :StandardViewOptions:ColumnViewOptions:ShowIconThumbnails false" $FINDER_PLIST
+    /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:showIconPreview true" $FINDER_PLIST
+
+    # ✓11.0 ✓UI : Set column width for column view
+    /usr/libexec/PlistBuddy -c "Set :StandardViewOptions:ColumnViewOptions:ColumnWidth 250" $FINDER_PLIST
+
+    # ✓11.0 ✓UI : Enable snap-to-grid for icons views
+    /usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:arrangeBy grid" $FINDER_PLIST
+    /usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:arrangeBy grid" $FINDER_PLIST
+    /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:arrangeBy grid" $FINDER_PLIST
+
+    # ✓11.0 ✓UI : Set Finder window sidebar width.
+    /usr/libexec/PlistBuddy -c "Add :SidebarWidth integer 200" $FINDER_PLIST
+    /usr/libexec/PlistBuddy -c "Set :SidebarWidth 200" $FINDER_PLIST
+
+    echo "Deleting all .DS_Store files..."
+
+    # Delete all .DS_Store files to reset Finder view settings
+    sudo find /Volumes/Macintosh\ HD -name ".DS_Store" -delete
+}
+
 
 
 function config__dock__mission_control {
@@ -308,8 +333,10 @@ function config__privacy {
 }
 
 
-function main {
+#
 
+
+function run__pre {
     osascript -e 'tell application "System Preferences" to quit'
 
     # Ask for the administrator password upfront
@@ -317,20 +344,49 @@ function main {
 
     # Keep-alive: update existing `sudo` time stamp until `config-macos-defaults.sh` has finished
     while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+}
 
+
+function run__post {
+    echo "Configuration complete!"
+    echo "Please restart for all changes to take effect."
+}
+
+
+function run__config_base {
     config__finder
     config__dock__mission_control
     config__power_management
     config__keyboard__mouse
     config__misc_applications
     config__privacy
-
-    # Delete all .DS_Store files to reset folder view settings
-    # sudo find /Volumes/Macintosh\ HD -name ".DS_Store" -delete
-
-    echo "Configuration complete!"
-    echo "Please restart for all changes to take effect"
 }
 
 
-main
+function run__config_windows {
+    config__finder_windows
+}
+
+
+function main {
+    if [[ $# -lt 1 ]] then;
+        run__pre
+        run__config_base
+        run__post
+    elif [[ "$1" = "--windows" ]] then;
+        run__pre
+        run__config_base
+        run__config_windows
+        run__post
+    elif [[ "$1" = "--windows-only" ]] then;
+        run__pre
+        run__config_windows
+        run__post
+    else
+        echo "Unrecognized flag: ${1}"
+        exit 2
+    fi
+}
+
+
+main "$@"

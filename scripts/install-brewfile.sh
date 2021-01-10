@@ -30,6 +30,8 @@ function init_yabai {
     sudo yabai --load-sa
     brew services start yabai
     echo "--------------------------------------------------------------------"
+    echo " To finalize yabai installation:"
+    echo
     echo " 1. In 'System Preferences' > 'Mission Control' check 'Displays have"
     echo "    separate Spaces'. Or run:"
     echo

@@ -310,8 +310,8 @@ function config__misc_applications {
     # ✓11.0 ✓UI : Use plain text mode for new TextEdit documents
     defaults write com.apple.TextEdit RichText -int 0
 
-    # ?11.0 ?UI : Prevent Time Machine from prompting to use new hard drives as backup volume
-    # defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
+    # ✓11.0 ?UI : Prevent Time Machine from prompting to use new hard drives as backup volume
+    defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 
     # ?11.0 ?UI : Prevent Photos from opening automatically when devices are plugged in
     # defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true

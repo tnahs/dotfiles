@@ -6,6 +6,7 @@
 # https://github.com/koekeishiya/yabai/wiki/Configuration#configuration-file
 # -----------------------------------------------------------------------------
 
+
 # Set `yabai --load-sa` to NOPASSWD in /etc/sudoers
 # [USER] ALL=(ALL) NOPASSWD:/usr/local/bin/yabai --load-sa
 
@@ -14,7 +15,7 @@ yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 
 # Visuals ---------------------------------------------------------------------
 
-yabai -m config window_shadow off
+# yabai -m config window_shadow off
 
 # Spacing ---------------------------------------------------------------------
 
@@ -50,8 +51,8 @@ yabai -m rule --add app="^The Unarchiver$" manage=off
 yabai -m rule --add app="^Archive Utility$" manage=off
 
 # Firefox
-yabai -m rule --add app="^Library $" manage=off
-yabai -m rule --add app="^Opening $" manage=off
+yabai -m rule --add app="^Library$" manage=off
+yabai -m rule --add app="^Opening$" manage=off
 
 # Alfred / Alfred Preferences
 yabai -m rule --add app="^Alfred" manage=off

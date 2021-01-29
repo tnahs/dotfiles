@@ -30,7 +30,7 @@ function init_yabai {
     sudo yabai --load-sa
     brew services start yabai
     echo "--------------------------------------------------------------------"
-    echo " To finalize yabai installation:"
+    echo " Finalize yabai installation:"
     echo
     echo " 1. In 'System Preferences' > 'Mission Control' check 'Displays have"
     echo "    separate Spaces'. Or run:"
@@ -60,11 +60,39 @@ function init_skhd {
 }
 
 
+function zsh_info {
+    echo "--------------------------------------------------------------------"
+    echo " Finalize zsh-completions installation:"
+    echo
+    echo " If you see the following error:"
+    echo
+    echo "     zsh compinit: insecure directories, run compaudit for list."
+    echo
+    echo " Run the following command:"
+    echo
+    echo "     compaudit | xargs chmod g-w"
+    echo
+    echo " See https://stackoverflow.com/a/22753363 for more info."
+    echo "--------------------------------------------------------------------"
+
+    # Error: The following directories are not writable by your user:
+    # /usr/local/share/zsh
+    # /usr/local/share/zsh/site-functions
+    #
+    # You should change the ownership of these directories to your user.
+    #   sudo chown -R $(whoami) /usr/local/share/zsh /usr/local/share/zsh/site-functions
+    #
+    # And make sure that your user has write permission.
+    #   chmod u+w /usr/local/share/zsh /usr/local/share/zsh/site-functions
+}
+
+
 function main {
     ask_confitmation
     install_brewfile
     init_yabai
     init_skhd
+    zsh_info
 }
 
 

@@ -13,9 +13,9 @@
         "tab.activeBorder": "#E57373",
         "notificationLink.foreground": "#E57373"
     },
-    "workbench.colorTheme": "Material Theme Palenight High Contrast",
+    "workbench.colorTheme": "DuoTone Dark Space",
     "workbench.iconTheme": "city-lights-icons-vsc",
-    "workbench.statusBar.visible": false,
+    "workbench.statusBar.visible": true,
     "workbench.activityBar.visible": false,
     //
     // Files
@@ -60,7 +60,7 @@
     "editor.cursorSurroundingLines": 10,
     //
     // UI Minimap
-    "editor.minimap.enabled": true,
+    "editor.minimap.enabled": false,
     "editor.minimap.renderCharacters": false,
     //
     // UI Misc
@@ -299,10 +299,13 @@
         "anki",
         "annotation",
         "bpython",
+        "brewfile",
+        "chmod",
         "color",
         "datefmt",
         "div",
         "divs",
+        "dotfiles",
         "epub",
         "epubcfi",
         "favicon",
@@ -355,4 +358,5 @@
         "yabairc"
     ],
     "window.zoomLevel": 0,
+    "todo-tree.tree.showScanModeButton": false,
 }

@@ -41,6 +41,8 @@ function main {
         extract_archive "$1"
         restore_library
         delete_tempdir
+        echo "Apple Books library restored!"
+        echo "Please restart before running Apple Books."
     fi
 }
 

@@ -1,5 +1,4 @@
 import logging
-import os
 import pathlib
 from datetime import datetime
 from typing import Tuple
@@ -22,24 +21,17 @@ class DotfilePaths:
     root = Defaults.home / ".dotfiles"
 
 
-class MiscPaths:
-
-    root = Defaults.home / "Workspace" / "misc"
-    private = root / "private"
-
-
 class ArchivePaths:
 
-    root = Defaults.home / "Workspace" / "archives"
-    anki = root / "anki-application-support"
+    root = Defaults.home / "Archives"
     applebooks = root / "apple-books"
+    anki = root / "anki"
 
 
 class BupKeys:
     DOTFILES = "dotfiles"
-    MISC = "misc"
-    ANKI = "anki"
     APPLEBOOKS = "applebooks"
+    ANKI = "anki"
 
 
 class Bup:
@@ -48,7 +40,6 @@ class Bup:
     NAME_PRETTY = "BUP"
     RUN_CHOICES: Tuple[str, ...] = (
         BupKeys.DOTFILES,
-        BupKeys.MISC,
         BupKeys.ANKI,
         BupKeys.APPLEBOOKS,
     )
@@ -63,7 +54,6 @@ class Bup:
         paths: list[pathlib.Path] = [
             ArchivePaths.applebooks,
             ArchivePaths.anki,
-            MiscPaths.private,
         ]
 
         for path in paths:
@@ -112,19 +102,6 @@ class Bup:
 
         #
 
-        logger.info("Backing up Moom preferences...")
-
-        moom_source = Defaults.home / "Library/Preferences/com.manytricks.Moom.plist"
-        moom_destination = DotfilePaths.root / "moom"
-
-        Shell.copy(
-            sources=[moom_source],
-            destination=moom_destination,
-            verbose=self._is_verbose,
-        )
-
-        #
-
         logger.info("Backing up VSCode `[settings|keybindings].json`...")
 
         vscode_user_root = Defaults.home / "Library/Application Support/Code/User/"
@@ -159,26 +136,6 @@ class Bup:
 
         Shell.run(command=["code", "--list-extensions", ">", vscode_extensions])
 
-    def _run__misc(self) -> None:
-
-        logger.info("Backing up Firefox Profiles...")
-
-        firefox_profiles_source = (
-            # Temporary fix to force a trailing slash. By default, pathlib
-            # strips all trailing slashes and provides no way of adding them.
-            str(Defaults.home / "Library/Application Support/Firefox/Profiles")
-            + os.sep
-        )
-
-        firefox_profiles_destination = MiscPaths.private / "profiles" / "firefox"
-
-        Shell.copy(
-            sources=[firefox_profiles_source],
-            destination=firefox_profiles_destination,
-            recursive=True,
-            verbose=self._is_verbose,
-        )
-
     def _run__anki(self) -> None:
 
         if Shell.process_is_running(process_names=["Anki"]):
@@ -188,11 +145,7 @@ class Bup:
         logger.info("Backing up Anki `Application Support` directories...")
 
         source_root = Defaults.home / "Library" / "Application Support"
-
-        directories = source_root.glob("Anki*")
-
-        archive_sources: list[pathlib.Path] = list(directories)
-        archive_sources = [s.relative_to(source_root) for s in archive_sources]
+        archive_source = pathlib.Path("Anki2")
 
         archive_filename: str = (
             f"{Defaults.today}"
@@ -200,11 +153,11 @@ class Bup:
             f"--macos-v{Version.macOS}.tar.gz"
         )
 
-        destination = ArchivePaths.anki / archive_filename
+        archive_destination = ArchivePaths.anki / archive_filename
 
         Shell.archive(
-            sources=archive_sources,
-            destination=destination,
+            sources=[archive_source],
+            destination=archive_destination,
             source_root=source_root,
             verbose=self._is_verbose,
         )
@@ -237,6 +190,8 @@ class Bup:
         ]
 
         archive_sources = [s.relative_to(source_root) for s in archive_sources]
+
+        print(archive_sources)
 
         archive_filename: str = (
             f"{Defaults.today}"

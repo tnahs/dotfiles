@@ -11,19 +11,45 @@
 # -----------------------------------------------------------------------------
 
 
+function build_directories {
+    printf "\nBuilding home directories...\n\n"
+    # .config Mainly used for karabiner
+    mkdir $HOME/.config
+    # Workspace
+    mkdir $HOME/Workspace
+    mkdir $HOME/Workspace/repos
+    mkdir $HOME/Workspace/projects
+    # Media
+    mkdir $HOME/Media
+    mkdir $HOME/Media/incoming
+    mkdir $HOME/Media/incoming/images
+    mkdir $HOME/Media/incoming/audio
+    mkdir $HOME/Media/incoming/video
+    mkdir $HOME/Media/books
+    mkdir $HOME/Media/books/pdfs
+    mkdir $HOME/Media/books/epubs
+    mkdir $HOME/Media/books/audiobooks
+    # Archives
+    mkdir $HOME/Archives
+    mkdir $HOME/Archives/apple-books
+    mkdir $HOME/Archives/anki
+}
+
+
 function link_dotfiles {
     printf "\nLinking dotfiles...\n\n"
     ln -siv $HOME/.dotfiles/zsh/.zshrc $HOME/.zshrc
     ln -siv $HOME/.dotfiles/zsh/.zshenv $HOME/.zshenv
     ln -siv $HOME/.dotfiles/homebrew/Brewfile $HOME/Brewfile
-    ln -siv $HOME/.dotfiles/karabiner $HOME/.config
+    ln -siv $HOME/.dotfiles/karabiner $HOME/.config/karabiner
     ln -siv $HOME/.dotfiles/skhd/.skhdrc $HOME/.skhdrc
     ln -siv $HOME/.dotfiles/yabai/.yabairc $HOME/.yabairc
 }
 
+
 function main {
+    build_directories
     link_dotfiles
-    source $HOME/.zshrc
 }
 
 

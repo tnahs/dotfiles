@@ -348,6 +348,7 @@ function run__pre {
 
 
 function run__post {
+    killall Finder Dock
     echo "Configuration complete!"
     echo "Please restart for all changes to take effect."
 }

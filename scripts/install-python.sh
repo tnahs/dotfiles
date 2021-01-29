@@ -22,6 +22,8 @@ function fix_libs() {
 
 function install_python {
 
+    eval "$(pyenv init -)"
+
     fix_libs
 
     local python_versions=($@)

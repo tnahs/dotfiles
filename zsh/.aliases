@@ -4,9 +4,14 @@ alias k="cd $HOME/Desktop; ls -lah;"
 alias l="cd $HOME/Downloads; ls -lah;"
 alias w="cd $HOME/Workspace; ls -lah;"
 alias p="cd $HOME/Workspace/projects; ls -lah;"
+alias r="cd $HOME/Workspace/repos; ls -lah;"
 
 # Homebrew
 alias brewski="brew update && brew upgrade && brew cleanup; brew doctor"
+
+# git
+alias gs="git status"
+alias gd="git diff"
 
 # zsh/dotfiles
 alias reload-zshrc="source $HOME/.zshrc"
@@ -22,5 +27,5 @@ alias reload-skhd="skhd -r"
 alias reload-yabai="launchctl kickstart -k 'gui/${UID}/homebrew.mxcl.yabai'"
 
 # Wiki
-alias wiki="cd $HOME/Workspace/wiki && code ."
-alias wiki-public="cd $HOME/Workspace/wiki-public && code ."
+alias wiki="cd $HOME/Workspace/repos/wiki && code ."
+alias piki="cd $HOME/Workspace/repos/wiki-public && code ."

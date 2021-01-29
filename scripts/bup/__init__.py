@@ -1,4 +1,4 @@
-__version__ = "0.2.0"
+__version__ = "0.2.1"
 
 
 import argparse
@@ -7,8 +7,13 @@ import logging
 from .src.bup import Bup
 
 
-logger = logging.getLogger()
+def _format_choices(tab_width: int = 4) -> str:
+    spacing = " " * tab_width
+    choices = [f"{spacing}{c}" for c in Bup.RUN_CHOICES]
+    return "\n".join(choices).rstrip()
 
+
+logger = logging.getLogger()
 
 logging.basicConfig(
     level=logging.INFO,
@@ -17,15 +22,28 @@ logging.basicConfig(
     style="{",
 )
 
+logging_verbosity: dict[bool, int] = {
+    True: logging.DEBUG,
+    False: logging.INFO,
+}
 
-def main(args: argparse.Namespace):
 
-    verbosity: dict[bool, int] = {
-        True: logging.DEBUG,
-        False: logging.INFO,
-    }
+def main(args: argparse.Namespace) -> int:
 
-    logger.setLevel(verbosity[args.is_verbose])
+    if args.version is True:
+        print(f"{Bup.NAME_PRETTY} v{__version__}")
+        return 0
+
+    if args.list is True:
+        print(
+            f"""
+            \rAvailable {Bup.NAME_PRETTY}s:
+            \r{_format_choices()}
+        """.lstrip()
+        )
+        return 0
+
+    logger.setLevel(logging_verbosity[args.is_verbose])
 
     try:
         bup = Bup(
@@ -36,4 +54,6 @@ def main(args: argparse.Namespace):
         bup.backup()
     except Exception:
         logger.exception(f"Exception raised while attempting to run {Bup.NAME_PRETTY}.")
-        return
+        return 1
+
+    return 0

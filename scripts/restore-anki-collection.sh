@@ -19,9 +19,9 @@ function extract_archive {
 
 function restore_collection {
     echo "Deleting Anki collection..."
-    rm -rf $HOME/Library/Application\ Support/Anki*
+    rm -rf $HOME/Library/Application\ Support/Anki2
     echo "Retoring Anki collection..."
-    mv $tempdir/Anki* $HOME/Library/Application\ Support
+    mv $tempdir/Anki2 $HOME/Library/Application\ Support
 }
 
 
@@ -40,6 +40,8 @@ function main {
         extract_archive "$1"
         restore_collection
         delete_tempdir
+        echo "Anki collection restored!"
+        echo "Please restart before running Anki."
     fi
 }
 

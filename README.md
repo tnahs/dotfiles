@@ -15,36 +15,46 @@ $ xcode-select --install
 ## Clone Repository
 
 ```console
-$ git clone https://github.com/tnahs/dotfiles $HOME/.dotfiles
+$ git clone https://github.com/tnahs/dotfiles ~/.dotfiles
 ```
 
-## Link dotfiles
+## Setup Home
 
 ```console
-$ $HOME/.dotfiles/scripts/link-dotfiles.sh
+$ ~/.dotfiles/scripts/setup-home.sh
 ```
 
-## Install
+## Install Brewfile
 
 ```console
-$ $HOME/.dotfiles/scripts/install-brewfile.sh
-$ $HOME/.dotfiles/scripts/install-pipx-packages.sh
-$ $HOME/.dotfiles/scripts/install-python.sh [VERSION ...]
+$ ~/.dotfiles/scripts/install-brewfile.sh
+```
+
+## Install Python
+
+``` console
+$ ~/.dotfiles/scripts/install-pipx-packages.sh
+$ ~/.dotfiles/scripts/install-python.sh [VERSION ...]
 ```
 
 ## Config macOS
 
 ```console
-$ $HOME/.dotfiles/scripts/config-macos-defaults.sh
-$ $HOME/.dotfiles/scripts/disable-macos-hotkeys.sh
+$ ~/.dotfiles/scripts/config-macos-defaults.sh
 ```
 
 ## Restore Applications
 
 ```console
-$ $HOME/.dotfiles/scripts/restore-apple-books-library.sh PATH_TO_LIBRARY_ARCHIVE
-$ $HOME/.dotfiles/scripts/restore-anki-collection.sh PATH_TO_COLLECTION_ARCHIVE
+$ ~/.dotfiles/scripts/restore-apple-books-library.sh PATH_TO_LIBRARY_ARCHIVE
+$ ~/.dotfiles/scripts/restore-anki-collection.sh PATH_TO_COLLECTION_ARCHIVE
 ```
+
+## Misc Installs
+
+- Eagle
+- Affinity Photo
+- Affinity Designer
 
 <!--
 ## Disable SIP (Intel macOS 11.x)

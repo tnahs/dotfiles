@@ -1,6 +1,5 @@
-# Append ~/.dotfiles/scripts
+# shell
 export PATH=$HOME/.dotfiles/scripts:$PATH
-export PYTHONPATH=$HOME/.dotfiles/scripts:$PYTHONPATH
 
 # poetry
 export PATH=$HOME/.poetry/bin:$PATH

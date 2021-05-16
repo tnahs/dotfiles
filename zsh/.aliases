@@ -11,11 +11,12 @@ alias brewski="brew update && brew upgrade && brew cleanup; brew doctor"
 
 # git
 alias gs="git status"
-alias gd="git diff"
 
-# zsh/dotfiles
-alias reload-zshrc="source $HOME/.zshrc"
+# dotfiles
 alias dotfiles="cd $HOME/.dotfiles && code ."
+
+# bup
+export PYTHONPATH=$HOME/.dotfiles/bup/src:$PYTHONPATH
 alias bup="python -m bup"
 
 # skhd

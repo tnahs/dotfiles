@@ -13,10 +13,9 @@
         "tab.activeBorder": "#E57373",
         "notificationLink.foreground": "#E57373"
     },
-    "workbench.colorTheme": "DuoTone Dark Space",
+    "workbench.colorTheme": "DuoTone Dark Sea",
     "workbench.iconTheme": "city-lights-icons-vsc",
     "workbench.statusBar.visible": true,
-    "workbench.activityBar.visible": false,
     //
     // Files
     "files.exclude": {
@@ -26,7 +25,7 @@
         "**/node_modules": true
     },
     "files.associations": {
-        "*.toml": "ini",
+        // "*.toml": "ini",
         "*.plist": "xml",
         "*.skhdrc": "shellscript",
         "*.yabairc": "shellscript",
@@ -57,10 +56,6 @@
     "editor.renderLineHighlight": "all",
     "editor.tabCompletion": "on",
     "editor.suggestSelection": "first",
-    "editor.cursorSurroundingLines": 10,
-    //
-    // UI Minimap
-    "editor.minimap.enabled": false,
     "editor.minimap.renderCharacters": false,
     //
     // UI Misc
@@ -332,6 +327,7 @@
         "plistlib",
         "prettierrc",
         "psutil",
+        "pydantic",
         "pyenv",
         "pymdownx",
         "pyproject",
@@ -357,6 +353,11 @@
         "yabai",
         "yabairc"
     ],
-    "window.zoomLevel": 0,
     "todo-tree.tree.showScanModeButton": false,
+    "workbench.editorAssociations": [
+        {
+            "viewType": "jupyter.notebook.ipynb",
+            "filenamePattern": "*.ipynb"
+        }
+    ],
 }

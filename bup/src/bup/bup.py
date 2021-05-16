@@ -1,57 +1,58 @@
 import logging
 import pathlib
 from datetime import datetime
-from typing import Tuple
+from enum import Enum
+from typing import Callable, Union
 
-from .helpers import Shell
+from .shell import Shell
 from .versions import Version
 
 
 logger = logging.getLogger(__name__)
 
 
-class Defaults:
-
-    home = pathlib.Path().home()
-    today: str = datetime.now().strftime("%Y-%m-%d")
-
-
-class DotfilePaths:
-
-    root = Defaults.home / ".dotfiles"
-
-
-class ArchivePaths:
-
-    root = Defaults.home / "Archives"
-    applebooks = root / "apple-books"
-    anki = root / "anki"
+class ArgparseEnum(str, Enum):
+    # https://stackoverflow.com/a/55500795
+    @classmethod
+    def argparse(cls, value: str) -> Union["ArgparseEnum", str]:
+        try:
+            return cls[value.upper()]
+        except KeyError:
+            return value
 
 
-class BupKeys:
+class E_BupChoices(ArgparseEnum):
     DOTFILES = "dotfiles"
     APPLEBOOKS = "applebooks"
     ANKI = "anki"
 
 
-class Bup:
-
+class Defaults:
     NAME = "bup"
     NAME_PRETTY = "BUP"
-    RUN_CHOICES: Tuple[str, ...] = (
-        BupKeys.DOTFILES,
-        BupKeys.ANKI,
-        BupKeys.APPLEBOOKS,
-    )
+    HOME = pathlib.Path().home()
+    TODAY = datetime.now().strftime("%Y-%m-%d")
 
+
+class DotfilePaths:
+    root = Defaults.HOME / ".dotfiles"
+
+
+class ArchivePaths:
+    root = Defaults.HOME / "Archives"
+    applebooks = root / "apple-books"
+    anki = root / "anki"
+
+
+class Bup:
     def __init__(
-        self, run: list[str], run_all: bool = False, is_verbose: bool = False
+        self, run: list[E_BupChoices], run_all: bool = False, is_verbose: bool = False
     ) -> None:
 
-        self._to_run = run if run_all is False else self.RUN_CHOICES
+        self._to_run = run if run_all is False else list(E_BupChoices)
         self._is_verbose = is_verbose
 
-        paths: list[pathlib.Path] = [
+        paths = [
             ArchivePaths.applebooks,
             ArchivePaths.anki,
         ]
@@ -61,33 +62,38 @@ class Bup:
 
     def backup(self) -> None:
 
-        if self._ask_confirmation() is False:
+        if self._confirm() is False:
             return
 
-        for item in self._to_run:
-            func = getattr(self, f"_run__{item}")
-            logging.debug(f"Running {self.__class__.__name__}.{func.__name__}...")
+        for choice in self._to_run:
+            func: Callable = getattr(self, f"_run__{choice}")
+            logging.debug(f"Running {type(self).__name__}.{func.__name__}...")
             func()
 
-    def _ask_confirmation(self) -> bool:
+    def _confirm(self) -> bool:
 
         confirm = input(
-            f"{self.NAME_PRETTY} will run: {', '.join(self._to_run)}. Confirm? [y/N]: "
+            f"{Defaults.NAME_PRETTY} will run: "
+            f"{', '.join(self._to_run)}. Confirm? [y/N]: "
         )
 
         if confirm.lower().strip() not in ["y", "yes"]:
-            print(f"{self.NAME_PRETTY} cancelled. Exiting!")
+            print(f"{Defaults.NAME_PRETTY} cancelled.")
             return False
 
         return True
 
     def _run__dotfiles(self) -> None:
+        self._run__dotfiles_brewfile()
+        self._run__dotfile_vscode()
+
+    def _run__dotfiles_brewfile(self) -> None:
 
         logger.info("Dumping Brewfile...")
 
         path_brewfile = DotfilePaths.root / "homebrew" / "Brewfile"
 
-        command: list[str] = [
+        command = [
             "brew",
             "bundle",
             "dump",
@@ -98,13 +104,13 @@ class Bup:
         if self._is_verbose:
             command.append("--verbose")
 
-        Shell.run(command=command)
+        Shell.run(command=command)  # type: ignore
 
-        #
+    def _run__dotfile_vscode(self) -> None:
 
         logger.info("Backing up VSCode `[settings|keybindings].json`...")
 
-        vscode_user_root = Defaults.home / "Library/Application Support/Code/User/"
+        vscode_user_root = Defaults.HOME / "Library/Application Support/Code/User/"
         vscode_sources = [
             vscode_user_root / "settings.json",
             vscode_user_root / "keybindings.json",
@@ -112,7 +118,7 @@ class Bup:
         vscode_destination = DotfilePaths.root / "vscode"
 
         Shell.copy(
-            sources=vscode_sources,
+            sources=vscode_sources,  # type: ignore
             destination=vscode_destination,
             verbose=self._is_verbose,
         )
@@ -144,11 +150,11 @@ class Bup:
 
         logger.info("Backing up Anki `Application Support` directories...")
 
-        source_root = Defaults.home / "Library" / "Application Support"
+        source_root = Defaults.HOME / "Library" / "Application Support"
         archive_source = pathlib.Path("Anki2")
 
-        archive_filename: str = (
-            f"{Defaults.today}"
+        archive_filename = (
+            f"{Defaults.TODAY}"
             f"--anki-v{Version.anki}"
             f"--macos-v{Version.macOS}.tar.gz"
         )
@@ -174,7 +180,7 @@ class Bup:
 
         logger.info("Backing up Apple Books `Containers` directories...")
 
-        source_root = Defaults.home / "Library" / "Containers"
+        source_root = Defaults.HOME / "Library" / "Containers"
 
         # Globs the directories containing all the EPUBs, PDFs and Audiobooks.
         # e.g. `~/Library/Containers/com.apple.BKAgentService`
@@ -191,10 +197,8 @@ class Bup:
 
         archive_sources = [s.relative_to(source_root) for s in archive_sources]
 
-        print(archive_sources)
-
-        archive_filename: str = (
-            f"{Defaults.today}"
+        archive_filename = (
+            f"{Defaults.TODAY}"
             f"--apple-books-v{Version.applebooks}"
             f"--macos-v{Version.macOS}.tar.gz"
         )

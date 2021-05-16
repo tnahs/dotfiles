@@ -1,9 +1,7 @@
 import logging
 import pathlib
-import re
 import shutil
 import subprocess
-import unicodedata
 from typing import Iterator, Optional, Union
 
 import psutil
@@ -146,7 +144,7 @@ class _Shell:
             path.unlink(missing_ok=True)
 
     def trash(self, path: pathlib.Path) -> None:
-        """ Move an item to the Trash. """
+        """Move an item to the Trash."""
 
         logger.debug("Moving `{path}` to Trash.")
 
@@ -287,6 +285,7 @@ class _Shell:
         https://ss64.com/osx/tar.html"""
 
         # TODO:LOW Unexpected results when the filename includes periods.
+        #
         # Ensure the destination path has a tar-like file extension.
         # if destination.suffixes not in [[".tar", ".gz"], [".tgz"]]:
         # Path.suffixes returns a list of the path’s file extensions.
@@ -417,31 +416,4 @@ class _Shell:
         return False
 
 
-class _Misc:
-    def slugify(self, string: str, delimiter: str = "-", lowercase: bool = True) -> str:
-        """Returns a normalized string. Converts to ASCII, strips non-word
-        characters, lowers case and replaces spaces with `delimeter`.
-
-        https://docs.djangoproject.com/en/3.0/_modules/django/utils/text/#slugify
-        """
-
-        string = str(string)
-
-        string = (
-            unicodedata.normalize("NFKD", string)
-            .encode("ascii", "ignore")
-            .decode("ascii")
-        )
-
-        if lowercase:
-            string = string.lower()
-
-        string = string.strip()
-        string = re.sub(fr"[^\w\s{delimiter}]", "", string)
-        string = re.sub(fr"[\s{delimiter}]+", delimiter, string)
-
-        return string
-
-
 Shell = _Shell()
-Misc = _Misc()

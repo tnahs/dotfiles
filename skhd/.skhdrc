@@ -3,7 +3,6 @@
 
 # Reference -------------------------------------------------------------------
 # https://github.com/koekeishiya/dotfiles/blob/master/skhd/skhdrc
-# Grid: `rows:cols:start-x:start-y:width:height`
 # -----------------------------------------------------------------------------
 
 
@@ -73,18 +72,24 @@ alt - s : yabai -m window --focus stack.next
 # Toggle floating window
 cmd + alt - f : yabai -m window --toggle float
 
-# Small window
-cmd + alt - w : yabai -m window --grid 9:16:3:2:10:5
-# Large window
-cmd + alt - e : yabai -m window --grid 10:17:2:1:13:8
+# Grid: 'rows:cols:start-x:start-y:width:height'
 
-# Full-scren window
-cmd + alt - u : yabai -m window --grid 1:1:0:0:1:1
-# Screen-left window
-cmd + alt - h : yabai -m window --grid 1:2:0:0:1:1
-# Screen-bottom window
-cmd + alt - j : yabai -m window --grid 5:1:0:2:1:3
-# Screen-top window
-cmd + alt - k : yabai -m window --grid 5:1:0:0:1:3
-# Screen-right window
-cmd + alt - l : yabai -m window --grid 1:2:1:0:1:1
+# Small wide window                    rr:cc:sx:sy:ww:hh
+cmd + alt - w : yabai -m window --grid 09:16:03:02:10:05
+# Large wide window                    rr:cc:sx:sy:ww:hh
+cmd + alt - e : yabai -m window --grid 10:17:02:01:13:08
+# Large narrow window                  rr:cc:sx:sy:ww:hh
+cmd + alt - r : yabai -m window --grid 10:17:04:00:09:10
+# Small narrow window                  rr:cc:sx:sy:ww:hh
+cmd + alt - t : yabai -m window --grid 12:09:03:01:03:10
+
+# Full-scren window                    rr:cc:sx:sy:ww:hh
+cmd + alt - u : yabai -m window --grid 01:01:00:00:01:01
+# Screen-left window                   rr:cc:sx:sy:ww:hh
+cmd + alt - h : yabai -m window --grid 01:02:00:00:01:01
+# Screen-bottom window                 rr:cc:sx:sy:ww:hh
+cmd + alt - j : yabai -m window --grid 05:01:00:02:01:03
+# Screen-top window                    rr:cc:sx:sy:ww:hh
+cmd + alt - k : yabai -m window --grid 05:01:00:00:01:03
+# Screen-right window                  rr:cc:sx:sy:ww:hh
+cmd + alt - l : yabai -m window --grid 01:02:01:00:01:01

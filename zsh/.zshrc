@@ -3,6 +3,7 @@ source $HOME/.dotfiles/zsh/.functions
 
 # pyenv
 # https://github.com/pyenv/pyenv#homebrew-on-macos
+eval "$(pyenv init --path)"
 eval "$(pyenv init -)"
 
 # zsh-completions

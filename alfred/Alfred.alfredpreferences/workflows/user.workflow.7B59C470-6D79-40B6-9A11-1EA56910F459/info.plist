@@ -21,6 +21,19 @@
 				<false/>
 			</dict>
 		</array>
+		<key>1E4EEC14-2E52-4869-ADCA-CB0DF4165CB6</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>B42AE319-6E85-4FE4-99CF-D2D0E4AF4567</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>23739818-9A93-4CB7-9042-B8356E9982B5</key>
 		<array>
 			<dict>
@@ -138,6 +151,32 @@
 				<false/>
 			</dict>
 		</array>
+		<key>B42AE319-6E85-4FE4-99CF-D2D0E4AF4567</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>9D034232-8AB2-42C6-BD38-1DF767A36C8B</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>DC8939C1-92A1-4BCA-9D84-ACE06214499E</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>B42AE319-6E85-4FE4-99CF-D2D0E4AF4567</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>E2CD2E9F-675E-4A58-9F2C-25F0765C3ECB</key>
 		<array>
 			<dict>
@@ -215,7 +254,7 @@
 			<key>type</key>
 			<string>alfred.workflow.trigger.hotkey</string>
 			<key>uid</key>
-			<string>608D8F87-19FF-4283-9573-BC2483AD438A</string>
+			<string>DC8939C1-92A1-4BCA-9D84-ACE06214499E</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
@@ -229,13 +268,13 @@
 				<key>variables</key>
 				<dict>
 					<key>language</key>
-					<string>eng</string>
+					<string>swe</string>
 				</dict>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.utility.argument</string>
 			<key>uid</key>
-			<string>4370299F-B452-4897-875D-DF9B03E4718C</string>
+			<string>B42AE319-6E85-4FE4-99CF-D2D0E4AF4567</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -245,18 +284,18 @@
 				<key>argumenttype</key>
 				<integer>2</integer>
 				<key>keyword</key>
-				<string>ocren</string>
+				<string>ocrswe</string>
 				<key>subtext</key>
 				<string></string>
 				<key>text</key>
-				<string>OCR Screenshot to English</string>
+				<string>OCR Screenshot to Swedish</string>
 				<key>withspace</key>
 				<false/>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.input.keyword</string>
 			<key>uid</key>
-			<string>FB0B0519-81FB-4B49-83BF-A05088013E30</string>
+			<string>1E4EEC14-2E52-4869-ADCA-CB0DF4165CB6</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -287,7 +326,7 @@
 			<key>type</key>
 			<string>alfred.workflow.trigger.hotkey</string>
 			<key>uid</key>
-			<string>71F4FB9C-9A9B-4035-A36D-C4D66F9EC176</string>
+			<string>608D8F87-19FF-4283-9573-BC2483AD438A</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
@@ -303,7 +342,7 @@
 /usr/sbin/screencapture -i temp-screenshot.png
 
 # Runs OCR on captured bitmap.
-/usr/local/bin/tesseract -l ${language} temp-screenshot.png temp-ocr &gt; /dev/null 2&gt;&amp;1
+/usr/local/bin/tesseract -l ${language}+eng temp-screenshot.png temp-ocr &gt; /dev/null 2&gt;&amp;1
 
 # Store OCR text.
 OCR=$(&lt;temp-ocr.txt)
@@ -377,13 +416,13 @@ print(query)</string>
 				<key>variables</key>
 				<dict>
 					<key>language</key>
-					<string>fra+eng</string>
+					<string>eng</string>
 				</dict>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.utility.argument</string>
 			<key>uid</key>
-			<string>F41FE2FB-3172-459C-8CD7-2B406532934E</string>
+			<string>4370299F-B452-4897-875D-DF9B03E4718C</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -393,18 +432,18 @@ print(query)</string>
 				<key>argumenttype</key>
 				<integer>2</integer>
 				<key>keyword</key>
-				<string>ocrfr</string>
+				<string>ocren</string>
 				<key>subtext</key>
 				<string></string>
 				<key>text</key>
-				<string>OCR Screenshot to French</string>
+				<string>OCR Screenshot to English</string>
 				<key>withspace</key>
 				<false/>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.input.keyword</string>
 			<key>uid</key>
-			<string>23739818-9A93-4CB7-9042-B8356E9982B5</string>
+			<string>FB0B0519-81FB-4B49-83BF-A05088013E30</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -527,6 +566,78 @@ print(query)</string>
 			<key>type</key>
 			<string>alfred.workflow.trigger.hotkey</string>
 			<key>uid</key>
+			<string>71F4FB9C-9A9B-4035-A36D-C4D66F9EC176</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string>{query}</string>
+				<key>passthroughargument</key>
+				<false/>
+				<key>variables</key>
+				<dict>
+					<key>language</key>
+					<string>fra+eng</string>
+				</dict>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.argument</string>
+			<key>uid</key>
+			<string>F41FE2FB-3172-459C-8CD7-2B406532934E</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>ocrfr</string>
+				<key>subtext</key>
+				<string></string>
+				<key>text</key>
+				<string>OCR Screenshot to French</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>23739818-9A93-4CB7-9042-B8356E9982B5</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>action</key>
+				<integer>0</integer>
+				<key>argument</key>
+				<integer>0</integer>
+				<key>focusedappvariable</key>
+				<false/>
+				<key>focusedappvariablename</key>
+				<string></string>
+				<key>hotkey</key>
+				<integer>0</integer>
+				<key>hotmod</key>
+				<integer>0</integer>
+				<key>hotstring</key>
+				<string></string>
+				<key>leftcursor</key>
+				<false/>
+				<key>modsmode</key>
+				<integer>0</integer>
+				<key>relatedAppsMode</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.hotkey</string>
+			<key>uid</key>
 			<string>9BA81736-1357-40EB-B46E-B41FC69844EB</string>
 			<key>version</key>
 			<integer>2</integer>
@@ -580,100 +691,121 @@ print(query)</string>
 		<key>08E1B1E4-92AE-49C8-A30E-93F7B2A7A415</key>
 		<dict>
 			<key>xpos</key>
-			<integer>560</integer>
+			<integer>1060</integer>
 			<key>ypos</key>
-			<integer>580</integer>
+			<integer>540</integer>
+		</dict>
+		<key>1E4EEC14-2E52-4869-ADCA-CB0DF4165CB6</key>
+		<dict>
+			<key>xpos</key>
+			<integer>640</integer>
+			<key>ypos</key>
+			<integer>165</integer>
 		</dict>
 		<key>23739818-9A93-4CB7-9042-B8356E9982B5</key>
 		<dict>
 			<key>xpos</key>
-			<integer>230</integer>
+			<integer>640</integer>
 			<key>ypos</key>
-			<integer>460</integer>
+			<integer>690</integer>
 		</dict>
 		<key>4370299F-B452-4897-875D-DF9B03E4718C</key>
 		<dict>
 			<key>xpos</key>
-			<integer>420</integer>
+			<integer>830</integer>
 			<key>ypos</key>
-			<integer>160</integer>
+			<integer>390</integer>
 		</dict>
 		<key>608D8F87-19FF-4283-9573-BC2483AD438A</key>
 		<dict>
 			<key>xpos</key>
-			<integer>230</integer>
+			<integer>640</integer>
 			<key>ypos</key>
-			<integer>80</integer>
+			<integer>310</integer>
 		</dict>
 		<key>71F4FB9C-9A9B-4035-A36D-C4D66F9EC176</key>
 		<dict>
 			<key>xpos</key>
-			<integer>230</integer>
+			<integer>640</integer>
 			<key>ypos</key>
-			<integer>340</integer>
+			<integer>570</integer>
 		</dict>
 		<key>72C0A93B-CDD7-4137-BB71-B47C4352851E</key>
 		<dict>
 			<key>xpos</key>
-			<integer>230</integer>
+			<integer>640</integer>
 			<key>ypos</key>
-			<integer>720</integer>
+			<integer>950</integer>
 		</dict>
 		<key>820A9184-4960-489C-ADA7-4B263C87786A</key>
 		<dict>
 			<key>xpos</key>
-			<integer>420</integer>
+			<integer>830</integer>
 			<key>ypos</key>
-			<integer>690</integer>
+			<integer>920</integer>
 		</dict>
 		<key>85291720-CA90-44D4-91B2-55375C18D203</key>
 		<dict>
 			<key>xpos</key>
-			<integer>710</integer>
+			<integer>1210</integer>
 			<key>ypos</key>
-			<integer>580</integer>
+			<integer>540</integer>
 		</dict>
 		<key>9BA81736-1357-40EB-B46E-B41FC69844EB</key>
 		<dict>
 			<key>xpos</key>
-			<integer>230</integer>
+			<integer>640</integer>
 			<key>ypos</key>
-			<integer>600</integer>
+			<integer>830</integer>
 		</dict>
 		<key>9D034232-8AB2-42C6-BD38-1DF767A36C8B</key>
 		<dict>
 			<key>xpos</key>
-			<integer>560</integer>
+			<integer>1060</integer>
 			<key>ypos</key>
-			<integer>400</integer>
+			<integer>360</integer>
+		</dict>
+		<key>B42AE319-6E85-4FE4-99CF-D2D0E4AF4567</key>
+		<dict>
+			<key>xpos</key>
+			<integer>830</integer>
+			<key>ypos</key>
+			<integer>125</integer>
 		</dict>
 		<key>D21CC823-7589-4C34-B079-0CACEF8C8CDF</key>
 		<dict>
 			<key>xpos</key>
-			<integer>930</integer>
+			<integer>1430</integer>
 			<key>ypos</key>
-			<integer>490</integer>
+			<integer>450</integer>
+		</dict>
+		<key>DC8939C1-92A1-4BCA-9D84-ACE06214499E</key>
+		<dict>
+			<key>xpos</key>
+			<integer>640</integer>
+			<key>ypos</key>
+			<integer>45</integer>
 		</dict>
 		<key>E2CD2E9F-675E-4A58-9F2C-25F0765C3ECB</key>
 		<dict>
 			<key>xpos</key>
-			<integer>710</integer>
+			<integer>1210</integer>
 			<key>ypos</key>
-			<integer>400</integer>
+			<integer>360</integer>
 		</dict>
 		<key>F41FE2FB-3172-459C-8CD7-2B406532934E</key>
 		<dict>
 			<key>xpos</key>
-			<integer>420</integer>
+			<integer>830</integer>
 			<key>ypos</key>
-			<integer>430</integer>
+			<integer>660</integer>
 		</dict>
 		<key>FB0B0519-81FB-4B49-83BF-A05088013E30</key>
 		<dict>
 			<key>xpos</key>
-			<integer>230</integer>
+			<integer>640</integer>
 			<key>ypos</key>
-			<integer>200</integer>
+			<integer>430</integer>
 		</dict>
 	</dict>
 	<key>webaddress</key>

@@ -1196,7 +1196,7 @@
 	<key>PromptOnQuit</key>
 	<false/>
 	<key>ShowFullScreenTabBar</key>
-	<false/>
+	<true/>
 	<key>Snippets</key>
 	<array/>
 	<key>SoundForEsc</key>

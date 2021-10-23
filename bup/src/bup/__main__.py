@@ -35,9 +35,11 @@ def main() -> int:
                 -h / --help      Show help.
 
             Available {Defaults.NAME_PRETTY}s:
-                {E_BupChoices.DOTFILES}
-                {E_BupChoices.APPLEBOOKS}
                 {E_BupChoices.ANKI}
+                {E_BupChoices.APPLEBOOKS}
+                {E_BupChoices.DOTFILES}
+                {E_BupChoices.MEDIA}
+                {E_BupChoices.WORKSPACE}
         """.rstrip()
         ),
     )
@@ -98,9 +100,11 @@ def main() -> int:
                 {Defaults.NAME_PRETTY}: Backup User Protocol
 
                 Available {Defaults.NAME_PRETTY}s:
-                    {E_BupChoices.DOTFILES}
-                    {E_BupChoices.APPLEBOOKS}
                     {E_BupChoices.ANKI}
+                    {E_BupChoices.APPLEBOOKS}
+                    {E_BupChoices.DOTFILES}
+                    {E_BupChoices.MEDIA}
+                    {E_BupChoices.WORKSPACE}
             """.rstrip()
             )
         )

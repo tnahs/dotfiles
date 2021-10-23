@@ -42,8 +42,9 @@ class _Shell:
 
             logger.debug(f"Running command `{command_string}`.")
 
-            for line in process.stdout:
-                logger.debug(line.strip("\n"))
+            if process.stdout is not None:
+                for line in process.stdout:
+                    logger.debug(line.strip("\n"))
 
         if process.returncode != 0:
             raise subprocess.CalledProcessError(process.returncode, process.args)

@@ -22,9 +22,11 @@ class ArgparseEnum(str, Enum):
 
 
 class E_BupChoices(ArgparseEnum):
-    DOTFILES = "dotfiles"
-    APPLEBOOKS = "applebooks"
     ANKI = "anki"
+    APPLEBOOKS = "applebooks"
+    DOTFILES = "dotfiles"
+    MEDIA = "media"
+    WORKSPACE = "workspace"
 
 
 class Defaults:
@@ -40,8 +42,10 @@ class DotfilePaths:
 
 class ArchivePaths:
     root = Defaults.HOME / "Archives"
-    applebooks = root / "apple-books"
     anki = root / "anki"
+    applebooks = root / "apple-books"
+    media = root / "media"
+    workspace = root / "workspace"
 
 
 class Bup:
@@ -55,6 +59,8 @@ class Bup:
         paths = [
             ArchivePaths.applebooks,
             ArchivePaths.anki,
+            ArchivePaths.media,
+            ArchivePaths.workspace,
         ]
 
         for path in paths:
@@ -82,65 +88,6 @@ class Bup:
             return False
 
         return True
-
-    def _run__dotfiles(self) -> None:
-        self._run__dotfiles_brewfile()
-        self._run__dotfile_vscode()
-
-    def _run__dotfiles_brewfile(self) -> None:
-
-        logger.info("Dumping Brewfile...")
-
-        path_brewfile = DotfilePaths.root / "homebrew" / "Brewfile"
-
-        command = [
-            "brew",
-            "bundle",
-            "dump",
-            "--force",
-            f"--file={path_brewfile}",
-        ]
-
-        if self._is_verbose:
-            command.append("--verbose")
-
-        Shell.run(command=command)  # type: ignore
-
-    def _run__dotfile_vscode(self) -> None:
-
-        logger.info("Backing up VSCode `[settings|keybindings].json`...")
-
-        vscode_user_root = Defaults.HOME / "Library/Application Support/Code/User/"
-        vscode_sources = [
-            vscode_user_root / "settings.json",
-            vscode_user_root / "keybindings.json",
-        ]
-        vscode_destination = DotfilePaths.root / "vscode"
-
-        Shell.copy(
-            sources=vscode_sources,  # type: ignore
-            destination=vscode_destination,
-            verbose=self._is_verbose,
-        )
-
-        #
-
-        logger.info("Backing up VSCode snippets...")
-
-        Shell.copy(
-            sources=[(vscode_user_root / "snippets")],
-            destination=vscode_destination,
-            recursive=True,
-            verbose=self._is_verbose,
-        )
-
-        #
-
-        logger.info("Dumping up VSCode extensions list...")
-
-        vscode_extensions = DotfilePaths.root / "vscode" / "extensions.txt"
-
-        Shell.run(command=["code", "--list-extensions", ">", vscode_extensions])
 
     def _run__anki(self) -> None:
 
@@ -213,3 +160,94 @@ class Bup:
         )
 
         Shell.prune(path=ArchivePaths.applebooks, size=5)
+
+    def _run__dotfiles(self) -> None:
+        self._run__dotfiles_brewfile()
+        self._run__dotfile_vscode()
+
+    def _run__dotfiles_brewfile(self) -> None:
+
+        logger.info("Dumping Brewfile...")
+
+        path_brewfile = DotfilePaths.root / "homebrew" / "Brewfile"
+
+        command = [
+            "brew",
+            "bundle",
+            "dump",
+            "--force",
+            f"--file={path_brewfile}",
+        ]
+
+        if self._is_verbose:
+            command.append("--verbose")
+
+        Shell.run(command=command)  # type: ignore
+
+    def _run__dotfile_vscode(self) -> None:
+
+        logger.info("Backing up VSCode `[settings|keybindings].json`...")
+
+        vscode_user_root = Defaults.HOME / "Library/Application Support/Code/User/"
+        vscode_sources = [
+            vscode_user_root / "settings.json",
+            vscode_user_root / "keybindings.json",
+        ]
+        vscode_destination = DotfilePaths.root / "vscode"
+
+        Shell.copy(
+            sources=vscode_sources,  # type: ignore
+            destination=vscode_destination,
+            verbose=self._is_verbose,
+        )
+
+        #
+
+        logger.info("Backing up VSCode snippets...")
+
+        Shell.copy(
+            sources=[(vscode_user_root / "snippets")],
+            destination=vscode_destination,
+            recursive=True,
+            verbose=self._is_verbose,
+        )
+
+        #
+
+        logger.info("Dumping up VSCode extensions list...")
+
+        vscode_extensions = DotfilePaths.root / "vscode" / "extensions.txt"
+
+        Shell.run(command=["code", "--list-extensions", ">", vscode_extensions])
+
+    def _run__media(self) -> None:
+
+        logger.info("Backing up `Media` directory...")
+
+        media_root = Defaults.HOME
+        media_source = pathlib.Path("Media")
+        media_destination = ArchivePaths.media / f"{Defaults.TODAY}--media.tar.gz"
+
+        Shell.archive(
+            sources=[media_source],
+            destination=media_destination,
+            source_root=media_root,
+            verbose=self._is_verbose,
+        )
+
+    def _run__workspace(self) -> None:
+
+        logger.info("Backing up `Workspace` directory...")
+
+        workspace_root = Defaults.HOME
+        workspace_source = pathlib.Path("Workspace")
+        workspace_destination = (
+            ArchivePaths.workspace / f"{Defaults.TODAY}--workspace.tar.gz"
+        )
+
+        Shell.archive(
+            sources=[workspace_source],
+            destination=workspace_destination,
+            source_root=workspace_root,
+            verbose=self._is_verbose,
+        )

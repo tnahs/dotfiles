@@ -1,27 +1,55 @@
 {
     // UI Theme
+    "editor.find.autoFindInSelection": "multiline",
+    "editor.fontFamily": "JetBrains Mono",
+    "editor.fontLigatures": true,
+    "editor.fontSize": 15,
+    "editor.minimap.enabled": false,
+    "editor.minimap.renderCharacters": false,
+    "editor.minimap.scale": 2,
+    "editor.minimap.showSlider": "always",
+    "editor.renderControlCharacters": false,
+    "editor.renderLineHighlight": "all",
+    "editor.renderWhitespace": "boundary",
+    "editor.rulers": [
+        79,
+        99
+    ],
+    "editor.semanticTokenColorCustomizations": {
+        "enabled": true
+    },
+    "editor.suggestSelection": "first",
+    "editor.tabCompletion": "on",
+    "editor.wordWrap": "off",
+    "editor.wordWrapColumn": 99,
+    "explorer.compactFolders": false,
+    "terminal.integrated.fontFamily": "JetBrains Mono",
+    "terminal.integrated.fontSize": 15,
+    "terminal.integrated.lineHeight": 1.1,
+    "window.nativeFullScreen": false,
+    "window.restoreWindows": "none",
+    "workbench.editor.enablePreviewFromQuickOpen": false,
+    "workbench.list.multiSelectModifier": "alt",
+    "workbench.settings.editor": "json",
+    "workbench.startupEditor": "newUntitledFile",
     "workbench.colorCustomizations": {
         "activityBarBadge.background": "#E57373",
-        "list.activeSelectionForeground": "#E57373",
-        "list.inactiveSelectionForeground": "#E57373",
-        "list.highlightForeground": "#E57373",
-        "scrollbarSlider.activeBackground": "#E5737350",
         "editorSuggestWidget.highlightForeground": "#E57373",
-        "textLink.foreground": "#E57373",
-        "progressBar.background": "#E57373",
+        "list.activeSelectionForeground": "#E57373",
+        "list.highlightForeground": "#E57373",
+        "list.inactiveSelectionForeground": "#E57373",
+        "notificationLink.foreground": "#E57373",
         "pickerGroup.foreground": "#E57373",
+        "progressBar.background": "#E57373",
+        "scrollbarSlider.activeBackground": "#E5737350",
         "tab.activeBorder": "#E57373",
-        "notificationLink.foreground": "#E57373"
+        "textLink.foreground": "#E57373",
     },
+    "workbench.colorTheme": "Ayu Mirage",
+    "workbench.iconTheme": "city-lights-icons-vsc",
     "workbench.statusBar.visible": true,
     //
     // Files
-    "files.exclude": {
-        "**/*.pyc": true,
-        "**/__pycache__": true,
-        "**/.mypy_cache": true,
-        "**/node_modules": true
-    },
     "files.associations": {
         // "*.toml": "ini",
         "*.plist": "xml",
@@ -31,49 +59,14 @@
         "*.functions": "shellscript",
         "*.coveragerc": "ini",
     },
-    //
-    // UI Explorer Sidebar
-    "explorer.compactFolders": false,
-    // UI Editor Window
-    "editor.rulers": [
-        79,
-        99
-    ],
-    //
-    // Editor
-    "terminal.integrated.fontFamily": "JetBrains Mono",
-    "terminal.integrated.lineHeight": 1.1,
-    "terminal.integrated.fontSize": 15,
-    "editor.fontFamily": "JetBrains Mono",
-    "editor.fontSize": 15,
-    "editor.fontLigatures": true,
-    "editor.renderWhitespace": "boundary",
-    "editor.renderControlCharacters": false,
-    "editor.minimap.scale": 2,
-    "editor.minimap.showSlider": "always",
-    "editor.renderLineHighlight": "all",
-    "editor.tabCompletion": "on",
-    "editor.suggestSelection": "first",
-    "editor.minimap.renderCharacters": false,
-    "editor.semanticTokenColorCustomizations": {
-        "enabled": true
+    "files.exclude": {
+        "**/*.pyc": true,
+        "**/__pycache__": true,
+        "**/.mypy_cache": true,
+        "**/node_modules": true
     },
-    //
-    // UI Misc
-    // "workbench.editor.enablePreview": false,
-    "workbench.editor.enablePreviewFromQuickOpen": false,
-    "workbench.startupEditor": "newUntitledFile",
-    //
-    // Misc
-    "editor.wordWrap": "off",
-    "editor.wordWrapColumn": 99,
-    "editor.find.autoFindInSelection": "multiline",
-    "workbench.list.multiSelectModifier": "alt",
-    "workbench.settings.editor": "json",
     "files.trimTrailingWhitespace": true,
     "files.trimFinalNewlines": true,
-    "window.nativeFullScreen": false,
-    "window.restoreWindows": "none",
     //
     // Emmet
     "emmet.includeLanguages": {
@@ -88,99 +81,96 @@
     "[rust]": {
         "editor.formatOnSave": true,
     },
-    "rust.clippy_preference": "on",
-    //
+    "rust-analyzer.checkOnSave.command": "clippy",
+    "rust-analyzer.checkOnSave.enable": true,
+    "rust-analyzer.inlayHints.enable": true,
     // ------------------------------------------------------------------------
     // Python
     //
+    "python.defaultInterpreterPath": "/Users/shant/.pyenv/versions/3.9.6/bin/python",
     // -- Formatting
     "[python]": {
-        "editor.formatOnSave": true,
-        "editor.tabSize": 4,
-        "editor.insertSpaces": true,
-        "editor.detectIndentation": false,
         "editor.codeActionsOnSave": {
             "source.organizeImports": true
-        }
+        },
+        "editor.detectIndentation": false,
+        "editor.formatOnSave": true,
+        "editor.insertSpaces": true,
+        "editor.tabSize": 4,
     },
-    "python.formatting.provider": "black",
     "python.formatting.blackPath": "~/.local/bin/black",
-    // "python.sortImports.path": "~/.local/bin/isort",
+    "python.formatting.provider": "black",
     "python.sortImports.args": [
         "--profile=black",
         "--lines-after-imports=2"
     ],
     // -- Linting - Pylance
-    "python.languageServer": "Pylance",
     "python.analysis.diagnosticMode": "workspace",
     "python.analysis.typeCheckingMode": "basic",
+    "python.languageServer": "Pylance",
     // -- Linting - Flake8
     "python.linting.enabled": true,
-    "python.linting.flake8Path": "~/.local/bin/flake8",
-    "python.linting.flake8Enabled": true,
     "python.linting.flake8Args": [
         "--ignore=E501,E231,W503,E402,E128,E711,E131,E126,E241,T499,E741"
     ],
+    "python.linting.flake8Enabled": true,
+    "python.linting.flake8Path": "~/.local/bin/flake8",
     // -- venv / Poetry
     "python.venvPath": "~/Library/Caches/pypoetry/virtualenvs",
     // ------------------------------------------------------------------------
-    //
-    // ------------------------------------------------------------------------
     // JSON
+    //
     "[json]": {
-        "editor.tabSize": 4,
-        "editor.insertSpaces": true,
-        "editor.detectIndentation": false,
         "editor.defaultFormatter": "vscode.json-language-features",
+        "editor.detectIndentation": false,
+        "editor.insertSpaces": true,
+        "editor.tabSize": 4,
     },
     "[jsonc]": {
-        "editor.tabSize": 4,
-        "editor.insertSpaces": true,
-        "editor.detectIndentation": false,
         "editor.defaultFormatter": "vscode.json-language-features",
+        "editor.detectIndentation": false,
+        "editor.insertSpaces": true,
+        "editor.tabSize": 4,
     },
-    // ------------------------------------------------------------------------
-    //
     // ------------------------------------------------------------------------
     // YAML
     //
     "[yaml]": {
-        "editor.tabSize": 2,
-        "editor.insertSpaces": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
         "editor.detectIndentation": false,
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
+        "editor.insertSpaces": true,
+        "editor.tabSize": 2,
     },
-    // ------------------------------------------------------------------------
-    //
     // ------------------------------------------------------------------------
     // Markdown
+    //
     "markdownlint.config": {
-        "MD014": false,
-        "MD041": false,
-        "MD024": false,
-        "MD026": false,
-        "MD046": false,
         "MD007": {
             "indent": 4,
-        }
+        },
+        "MD014": false,
+        "MD024": false,
+        "MD026": false,
+        "MD033": false,
+        "MD041": false,
+        "MD046": false,
     },
     "[markdown]": {
-        "editor.tabSize": 4,
-        "editor.insertSpaces": true,
-        "editor.detectIndentation": false,
         "editor.codeActionsOnSave": {
             "source.fixAll.markdownlint": true
         },
-        "editor.quickSuggestions": true,
-        "editor.wordBasedSuggestions": false,
-        "editor.suggest.showSnippets": false,
-        "files.trimTrailingWhitespace": false,
         "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.detectIndentation": false,
+        "editor.insertSpaces": true,
+        "editor.quickSuggestions": true,
+        "editor.suggest.showSnippets": false,
+        "editor.tabSize": 4,
+        "editor.wordBasedSuggestions": false,
+        "files.trimTrailingWhitespace": false,
     },
     // ------------------------------------------------------------------------
-    //
-    // ------------------------------------------------------------------------
     // HTML/CSS/Javascript
+    //
     "[html]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
@@ -204,7 +194,6 @@
     },
     // ------------------------------------------------------------------------
     //
-    //
     // Extenstions
     "gitlens.codeLens.enabled": false,
     "todo-tree.filtering.useBuiltInExcludes": "file and search excludes",
@@ -214,30 +203,13 @@
     ],
     "todo-tree.general.tags": [
         "BUG",
-        "BUG:HIGH",
-        "BUG:MED",
-        "BUG:LOW",
         "DEBUGGING",
         "FIXME",
-        "FIXME:HIGH",
-        "FIXME:MED",
-        "FIXME:LOW",
         "NOTE",
         "QUESTION",
         "TEMP",
         "TODO",
-        "TODO:HIGH",
-        "TODO:MED",
-        "TODO:LOW",
         "WIP",
-        "[H]",
-        "[M]",
-        "[L]",
-        "✓11.0",
-        "?11.0",
-        "✓UI",
-        "?UI",
-        "xUI",
     ],
     "todo-tree.regex.regex": "(?<!\\w)($TAGS)(?!\\w)",
     "todo-tree.ripgrep.ripgrepArgs": "--pcre2",
@@ -250,135 +222,13 @@
         "DEBUGGING": {
             "hideFromTree": true,
         },
-        "FIXME:HIGH": {
-            "iconColour": "crimson",
-        },
-        "FIXME:MED": {
-            "iconColour": "darkorange",
-        },
-        "FIXME:LOW": {
-            "iconColour": "gold",
-        },
         "NOTE": {
             "hideFromTree": true,
         },
-        "QUESTION": {
-            "iconColour": "green",
-        },
-        "TEMP": {
-            "iconColour": "lightblue",
-        },
-        "[H]": {
-            "foreground": "crimson",
-        },
-        "[M]": {
-            "foreground": "darkorange",
-        },
-        "[L]": {
-            "foreground": "gold",
-        },
-        "✓11.0": {
-            "foreground": "green"
-        },
-        "?11.0": {
-            "foreground": "orange"
-        },
-        "✓UI": {
-            "foreground": "green"
-        },
-        "?UI": {
-            "foreground": "orange"
-        },
-        "xUI": {
-            "foreground": "gray"
-        },
     },
-    "cSpell.userWords": [
-        "anki",
-        "annotation",
-        "applebooks",
-        "atype",
-        "bpython",
-        "brewfile",
-        "build",
-        "chmod",
-        "color",
-        "datefmt",
-        "div",
-        "divs",
-        "dotfiles",
-        "epub",
-        "epubcfi",
-        "favicon",
-        "field",
-        "flexbox",
-        "gitattributes",
-        "hook",
-        "hsla",
-        "htmlcov",
-        "iglob",
-        "isnumeric",
-        "isort",
-        "kwargs",
-        "liga",
-        "lightbox",
-        "minmax",
-        "mixins",
-        "mkdir",
-        "monospace",
-        "moom",
-        "nargs",
-        "objs",
-        "octicons",
-        "path",
-        "pipx",
-        "plist",
-        "plistlib",
-        "prettierrc",
-        "psutil",
-        "pydantic",
-        "pyenv",
-        "pymdownx",
-        "pyproject",
-        "pytest",
-        "quickstart",
-        "READSTOR",
-        "rgba",
-        "rsync",
-        "run",
-        "rusqlite",
-        "skhd",
-        "skhdrc",
-        "slugified",
-        "sorolla",
-        "strftime",
-        "strptime",
-        "structs",
-        "stylesheet",
-        "theming",
-        "todos",
-        "treeify",
-        "unmark",
-        "unmarker",
-        "urlify",
-        "venv",
-        "webm",
-        "werkzeug",
-        "xattrs",
-        "yabai",
-        "yabairc"
-    ],
-    "workbench.editorAssociations": {
-        "*.ipynb": "jupyter-notebook"
-    },
-    "workbench.iconTheme": "city-lights-icons-vsc",
-    "security.workspace.trust.enabled": false,
-    "notebook.cellToolbarLocation": {
-        "default": "right",
-        "jupyter-notebook": "left"
-    },
-    "python.defaultInterpreterPath": "/Users/shant/.pyenv/versions/3.9.6/bin/python",
     "cSpell.enabled": false,
-    "workbench.colorTheme": "Ayu Mirage",
+    //
+    // Misc
+    "security.workspace.trust.enabled": false,
     "redhat.telemetry.enabled": false,
 }

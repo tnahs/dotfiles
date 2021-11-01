@@ -19,6 +19,13 @@ alias dotfiles="cd $HOME/.dotfiles && code ."
 export PYTHONPATH=$HOME/.dotfiles/bup/src:$PYTHONPATH
 alias bup="python -m bup"
 
+# readstor
+alias rdump=" \
+    readstor \
+    --export \
+    --backup \
+    --output /Users/shant/Workspace/repos/wiki/readstor"
+
 # skhd
 # https://github.com/koekeishiya/skhd
 alias reload-skhd="skhd -r"

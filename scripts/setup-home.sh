@@ -29,10 +29,14 @@ function build_directories {
     mkdir $HOME/Media/books/pdfs
     mkdir $HOME/Media/books/epubs
     mkdir $HOME/Media/books/audiobooks
+    mkdir $HOME/Media/wallpapers
     # Archives
     mkdir $HOME/Archives
-    mkdir $HOME/Archives/apple-books
     mkdir $HOME/Archives/anki
+    mkdir $HOME/Archives/anki-collectionn
+    mkdir $HOME/Archives/apple-books
+    mkdir $HOME/Archives/media
+    mkdir $HOME/Archives/workspace
 }
 
 

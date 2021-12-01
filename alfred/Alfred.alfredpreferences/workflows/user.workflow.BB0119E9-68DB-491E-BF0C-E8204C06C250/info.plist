@@ -131,33 +131,29 @@ if system('pgrep', 'caffeinate', out: File::NULL)
     icon: { path: 'icon_alt.png' }
   )
 else
-  given_timeout = ARGV[0]
+  Given_timeout = ARGV[0]
 
-  if given_timeout.nil? || !given_timeout.match(%r{^\d}) # Any given value must start with a digit
+  if Given_timeout.nil? || !Given_timeout.match(/^\d/) # Any given value must start with a digit
     script_filter_items.push(
       title: 'Turn it on',
       subtitle: 'Prevent your computer from going to sleep indefinitely',
       arg: 'on'
     )
   else
-    # given_timout.match?(regex) is only available from ruby 2.4. Sierra comes with 2.0.
-    if %r{[\d ]s(econds)?} =~ given_timeout
-      timeout = given_timeout.to_i
-    elsif %r{[\d ]m(inutes)?} =~ given_timeout || %r{^[\d\.]+$} =~ given_timeout
-      timeout = (given_timeout.to_f * 60).to_i
-    elsif %r{[\d ]h(ours)?} =~ given_timeout
-      timeout = (given_timeout.to_f * 60 * 60).to_i
-    else
-      abort 'Invalid timeout. It need to be a number '
-    end
+    Timeout_seconds = case Given_timeout
+                      when /s(econds)?/ then Given_timeout.to_i
+                      when /m(inutes)?/ then (Given_timeout.to_f * 60).to_i
+                      when /h(ours)?/ then (Given_timeout.to_f * 60 * 60).to_i
+                      else (Given_timeout.to_f * 60).to_i # Default to minutes
+                      end
 
-    timeout_in_minutes = timeout / 60
-    plurality = timeout_in_minutes == 1 ? 'minute' : 'minutes'
+    Timeout_minutes = Timeout_seconds / 60
+    plurality = Timeout_minutes == 1 ? 'minute' : 'minutes'
 
     script_filter_items.push(
       title: 'Turn it on',
-      subtitle: "Prevent your computer from going to sleep for #{timeout_in_minutes} #{plurality}",
-      arg: timeout
+      subtitle: "Prevent your computer from going to sleep for #{Timeout_minutes} #{plurality}",
+      arg: Timeout_minutes
     )
   end
 end
@@ -240,6 +236,8 @@ fi</string>
 			<integer>1</integer>
 		</dict>
 		<dict>
+			<key>config</key>
+			<dict/>
 			<key>type</key>
 			<string>alfred.workflow.utility.junction</string>
 			<key>uid</key>
@@ -375,25 +373,25 @@ Run `coffee` again to manually turn it off.
 		<key>0B01601F-72A7-4C92-8B67-197D677D2A12</key>
 		<dict>
 			<key>xpos</key>
-			<integer>765</integer>
+			<integer>460</integer>
 			<key>ypos</key>
-			<integer>265</integer>
+			<integer>30</integer>
 		</dict>
 		<key>208D10C7-CBD8-47D1-8A1F-66ED2C76BEF4</key>
 		<dict>
 			<key>xpos</key>
-			<integer>675</integer>
+			<integer>370</integer>
 			<key>ypos</key>
-			<integer>355</integer>
+			<integer>120</integer>
 		</dict>
 		<key>6A13300D-DEB5-4476-9E16-693114781152</key>
 		<dict>
 			<key>note</key>
 			<string>Display will not turn off</string>
 			<key>xpos</key>
-			<integer>565</integer>
+			<integer>260</integer>
 			<key>ypos</key>
-			<integer>415</integer>
+			<integer>180</integer>
 		</dict>
 		<key>8BFD2E03-38C3-46B3-8353-99A41F55A0BD</key>
 		<dict>
@@ -402,29 +400,29 @@ Run `coffee` again to manually turn it off.
 			<key>note</key>
 			<string>OneUpdater</string>
 			<key>xpos</key>
-			<integer>765</integer>
+			<integer>460</integer>
 			<key>ypos</key>
-			<integer>385</integer>
+			<integer>150</integer>
 		</dict>
 		<key>94757117-A2E1-4FE7-A171-555588BE76FF</key>
 		<dict>
 			<key>xpos</key>
-			<integer>345</integer>
+			<integer>40</integer>
 			<key>ypos</key>
-			<integer>265</integer>
+			<integer>30</integer>
 		</dict>
 		<key>A5523421-FAE4-48C5-BEDD-9DEF7743DDF6</key>
 		<dict>
 			<key>note</key>
 			<string>Display can turn off</string>
 			<key>xpos</key>
-			<integer>565</integer>
+			<integer>260</integer>
 			<key>ypos</key>
-			<integer>295</integer>
+			<integer>60</integer>
 		</dict>
 	</dict>
 	<key>version</key>
-	<string>20.2</string>
+	<string>21.1</string>
 	<key>webaddress</key>
 	<string>http://vitorgalvao.com/</string>
 </dict>

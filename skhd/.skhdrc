@@ -19,18 +19,20 @@ cmd + alt - 5 : screencapture -iU $HOME/Downloads/screenshot-$(date +%Y-%m-%d-%H
 
 # Spaces ----------------------------------------------------------------------
 
+# These seem to have stopped working for the time being...
+#
 # Set focus
-alt - a : yabai -m space --focus prev
-alt - d : yabai -m space --focus next
-cmd - 1 : yabai -m space --focus 1
-cmd - 2 : yabai -m space --focus 2
-cmd - 3 : yabai -m space --focus 3
-cmd - 4 : yabai -m space --focus 4
-cmd - 5 : yabai -m space --focus 5
-cmd - 6 : yabai -m space --focus 6
-cmd - 7 : yabai -m space --focus 7
-cmd - 8 : yabai -m space --focus 8
-cmd - 9 : yabai -m space --focus 9
+# alt - a : yabai -m space --focus prev
+# alt - d : yabai -m space --focus next
+# cmd - 1 : yabai -m space --focus 1
+# cmd - 2 : yabai -m space --focus 2
+# cmd - 3 : yabai -m space --focus 3
+# cmd - 4 : yabai -m space --focus 4
+# cmd - 5 : yabai -m space --focus 5
+# cmd - 6 : yabai -m space --focus 6
+# cmd - 7 : yabai -m space --focus 7
+# cmd - 8 : yabai -m space --focus 8
+# cmd - 9 : yabai -m space --focus 9
 
 # Layouts ---------------------------------------------------------------------
 

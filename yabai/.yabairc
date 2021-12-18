@@ -7,37 +7,14 @@
 # -----------------------------------------------------------------------------
 
 
-# Set `yabai --load-sa` to NOPASSWD in /etc/sudoers
-# [USER] ALL=(ALL) NOPASSWD:/usr/local/bin/yabai --load-sa
+# Set `yabai --load-sa` to NOPASSWD in /etc/sudoers.d/yabai e.g.
+#
+# [USER] ALL = (ALL) NOPASSWD: /usr/local/bin/yabai --load-sa
+#
+# And replace [USER] with username e.g `shant`
 
 sudo yabai --load-sa
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
-
-# Visuals ---------------------------------------------------------------------
-
-# yabai -m config window_shadow off
-
-# Spacing ---------------------------------------------------------------------
-
-# Set padding to 20 (default: 0)
-# yabai -m config top_padding 20
-# yabai -m config bottom_padding 20
-# yabai -m config left_padding 20
-# yabai -m config right_padding 20
-
-# Set window gap to 10 (default: 0)
-yabai -m config window_gap 10
-
-# Mouse Control  --------------------------------------------------------------
-
-# Set mouse interaction modifier key (default: fn)
-yabai -m config mouse_modifier fn
-# Set modifier (fn) + left-click drag to move window (default: move)
-yabai -m config mouse_action1 move
-# Set modifier (fn) + right-click drag to resize window (default: resize)
-yabai -m config mouse_action2 resize
-
-yabai -m config mouse_drop_action swap
 
 # Unmanaged Applications  -----------------------------------------------------
 

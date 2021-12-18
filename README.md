@@ -2,8 +2,10 @@
 
 ## Install Homebrew
 
+Check <https://brew.sh/> for latest command.
+
 ```console
-$ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+$ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
 During installation, `Homebrew` should ask to install `Command Line Tools`. If not, run:
@@ -26,8 +28,18 @@ $ ~/.dotfiles/scripts/setup-home.sh
 
 ## Install Brewfile
 
+Before running the following command, make sure the correct path to Homebrew is appended to your `$PATH` in `~/.dotfiles/zsh/.zshenv`. This will depend on on wheter you're running an M1 or an Intel Mac.
+
+Open a fresh shell and run:
+
 ```console
 $ ~/.dotfiles/scripts/install-brewfile.sh
+```
+
+## Config macOS
+
+```console
+$ ~/.dotfiles/scripts/config-macos-defaults.sh
 ```
 
 ## Install Rust
@@ -43,12 +55,6 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ``` console
 $ ~/.dotfiles/scripts/install-pipx-packages.sh
 $ ~/.dotfiles/scripts/install-python.sh [VERSION ...]
-```
-
-## Config macOS
-
-```console
-$ ~/.dotfiles/scripts/config-macos-defaults.sh
 ```
 
 ## Restore Applications

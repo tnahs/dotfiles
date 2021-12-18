@@ -21,6 +21,9 @@ function ask_confitmation {
 function install_brewfile {
     printf "\n\nInstalling Brewfile...\n\n"
     brew bundle --file=$BREWFILE
+
+    # Disable Homebrew analytics
+    brew analytics off
 }
 
 

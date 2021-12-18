@@ -1,8 +1,8 @@
-# shell
-export PATH=$HOME/.dotfiles/scripts:$PATH
+# Homebrew: M1 Macs
+export PATH=/opt/homebrew/bin:$PATH
 
-# Homebrew
-export PATH=/usr/local/sbin:$PATH
+# Homebrew: Intel Macs
+# export PATH=/usr/local/sbin:$PATH
 
 # poetry
 export PATH=$HOME/.poetry/bin:$PATH

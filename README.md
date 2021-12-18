@@ -30,6 +30,14 @@ $ ~/.dotfiles/scripts/setup-home.sh
 $ ~/.dotfiles/scripts/install-brewfile.sh
 ```
 
+## Install Rust
+
+Check <https://www.rust-lang.org/tools/install> for latest command.
+
+```console
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+```
+
 ## Install Python
 
 ``` console
@@ -46,23 +54,6 @@ $ ~/.dotfiles/scripts/config-macos-defaults.sh
 ## Restore Applications
 
 ```console
-$ ~/.dotfiles/scripts/restore-apple-books-library.sh PATH_TO_LIBRARY_ARCHIVE
-$ ~/.dotfiles/scripts/restore-anki-collection.sh PATH_TO_COLLECTION_ARCHIVE
+$ ~/.dotfiles/scripts/restore-apple-books-library.sh [PATH_TO_LIBRARY_ARCHIVE]
+$ ~/.dotfiles/scripts/restore-anki-collection.sh [PATH_TO_COLLECTION_ARCHIVE]
 ```
-
-## Misc Installs
-
-- Eagle
-- Affinity Photo
-- Affinity Designer
-
-<!--
-## Disable SIP (Intel macOS 11.x)
-
-1. Start up in Recovery Mode by holding down `command ⌘` + `R`.
-2. In the menu bar, choose `Utilities`, then `Terminal`.
-3. Run `csrutil disable --with kext --with dtrace --with nvram --with basesystem`
-4. Reboot
-
-via [Disabling System Integrity Protection - yabai](https://github.com/koekeishiya/yabai/wiki/Disabling-System-Integrity-Protection#how-do-i-disable-system-integrity-protection)
--->

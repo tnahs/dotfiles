@@ -25,6 +25,7 @@ class E_BupChoices(ArgparseEnum):
     ANKI = "anki"
     APPLEBOOKS = "applebooks"
     DOTFILES = "dotfiles"
+    DOWNLOADS = "downloads"
     MEDIA = "media"
     WORKSPACE = "workspace"
 
@@ -44,6 +45,7 @@ class ArchivePaths:
     root = Defaults.HOME / "Archives"
     anki = root / "anki"
     applebooks = root / "apple-books"
+    downloads = root / "downloads"
     media = root / "media"
     workspace = root / "workspace"
 
@@ -61,6 +63,7 @@ class Bup:
             ArchivePaths.anki,
             ArchivePaths.media,
             ArchivePaths.workspace,
+            ArchivePaths.downloads,
         ]
 
         for path in paths:
@@ -249,5 +252,22 @@ class Bup:
             sources=[workspace_source],
             destination=workspace_destination,
             source_root=workspace_root,
+            verbose=self._is_verbose,
+        )
+
+    def _run__downloads(self) -> None:
+
+        logger.info("Backing up `Downloads` directory...")
+
+        downloads_root = Defaults.HOME
+        downloads_source = pathlib.Path("Downloads")
+        downloads_destination = (
+            ArchivePaths.downloads / f"{Defaults.TODAY}--downloads.tar.gz"
+        )
+
+        Shell.archive(
+            sources=[downloads_source],
+            destination=downloads_destination,
+            source_root=downloads_root,
             verbose=self._is_verbose,
         )

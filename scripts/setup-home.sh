@@ -35,6 +35,7 @@ function build_directories {
     mkdir $HOME/Archives/anki
     mkdir $HOME/Archives/anki-collectionn
     mkdir $HOME/Archives/apple-books
+    mkdir $HOME/Archives/downloads
     mkdir $HOME/Archives/media
     mkdir $HOME/Archives/workspace
 }

@@ -38,6 +38,7 @@ def main() -> int:
                 {E_BupChoices.ANKI}
                 {E_BupChoices.APPLEBOOKS}
                 {E_BupChoices.DOTFILES}
+                {E_BupChoices.DOWNLOADS}
                 {E_BupChoices.MEDIA}
                 {E_BupChoices.WORKSPACE}
         """.rstrip()
@@ -103,6 +104,7 @@ def main() -> int:
                     {E_BupChoices.ANKI}
                     {E_BupChoices.APPLEBOOKS}
                     {E_BupChoices.DOTFILES}
+                    {E_BupChoices.DOWNLOADS}
                     {E_BupChoices.MEDIA}
                     {E_BupChoices.WORKSPACE}
             """.rstrip()

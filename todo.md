@@ -1,7 +1,0 @@
-# TODOs
-
-## HIGH
-
-## MEDIUM
-
-## LOW

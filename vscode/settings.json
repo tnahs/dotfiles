@@ -4,7 +4,6 @@
     "editor.fontFamily": "JetBrains Mono",
     "editor.fontLigatures": true,
     "editor.fontSize": 15,
-    "editor.minimap.enabled": false,
     "editor.minimap.renderCharacters": false,
     "editor.minimap.scale": 2,
     "editor.minimap.showSlider": "always",
@@ -45,13 +44,12 @@
         "tab.activeBorder": "#E57373",
         "textLink.foreground": "#E57373",
     },
-    "workbench.colorTheme": "Ayu Mirage",
+    "workbench.colorTheme": "DuoTone Dark Forest",
     "workbench.iconTheme": "city-lights-icons-vsc",
     "workbench.statusBar.visible": true,
     //
     // Files
     "files.associations": {
-        // "*.toml": "ini",
         "*.plist": "xml",
         "*.skhdrc": "shellscript",
         "*.yabairc": "shellscript",

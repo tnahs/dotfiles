@@ -28,11 +28,12 @@ alias rdump=" \
 
 # skhd
 # https://github.com/koekeishiya/skhd
-alias reload-skhd="skhd -r"
+alias skhd-reload="skhd -r"
 
 # yabai
 # https://github.com/koekeishiya/yabai
-alias reload-yabai="launchctl kickstart -k 'gui/${UID}/homebrew.mxcl.yabai'"
+alias yabai-reload="launchctl kickstart -k 'gui/${UID}/homebrew.mxcl.yabai'"
+alias yabai-logs="tail -f $(brew --prefix)/var/log/yabai/yabai.err.log"
 
 # Wiki
 alias wiki="cd $HOME/Workspace/repos/wiki && code ."

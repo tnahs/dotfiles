@@ -26,9 +26,21 @@ $ git clone https://github.com/tnahs/dotfiles ~/.dotfiles
 $ ~/.dotfiles/scripts/setup-home.sh
 ```
 
-## Install Brewfile
+## Install `Brewfile`
 
-Before running the following command, make sure the correct path to Homebrew is appended to your `$PATH` in `~/.dotfiles/zsh/.zshenv`. This will depend on on wheter you're running an M1 or an Intel Mac.
+Before installation:
+
+1. Make sure the correct path to Homebrew is appended to your `$PATH`. This will depend on on wheter you're running an M1 or an Intel Mac.
+
+    ```console
+    code ~/.dotfiles/zsh/.zshenv
+    ```
+
+2. Install Rosetta. Some older applications will fail to install without Rosetta.
+
+    ```console
+    sudo softwareupdate --install-rosetta
+    ```
 
 Open a fresh shell and run:
 

@@ -7,14 +7,15 @@
 # -----------------------------------------------------------------------------
 
 
+# NOTE Temporarily disabled as it seems to have issues on M1 Macs...
 # Set `yabai --load-sa` to NOPASSWD in /etc/sudoers.d/yabai e.g.
 #
 # [USER] ALL = (ALL) NOPASSWD: /usr/local/bin/yabai --load-sa
 #
 # And replace [USER] with username e.g `shant`
-
-sudo yabai --load-sa
-yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+#
+# sudo yabai --load-sa
+# yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 
 # Unmanaged Applications  -----------------------------------------------------
 

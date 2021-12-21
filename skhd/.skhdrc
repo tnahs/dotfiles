@@ -8,8 +8,8 @@
 
 # Finder ----------------------------------------------------------------------
 
-fn + shift - n : open $HOME
-fn + shift - d : code $HOME/.dotfiles
+ctrl + shift - n : open $HOME
+ctrl + shift - d : code $HOME/.dotfiles
 
 # Screenshots -----------------------------------------------------------------
 
@@ -36,10 +36,12 @@ cmd + alt - 5 : screencapture -iU $HOME/Downloads/screenshot-$(date +%Y-%m-%d-%H
 
 # Layouts ---------------------------------------------------------------------
 
-# Set layout to (Binary Space Partitioning) BSP
+# Set layout to BSP (Binary Space Partitioning)
 ctrl + alt + cmd - b : yabai -m space --layout bsp
+
 # Set layout to Stacks
 ctrl + alt + cmd - s : yabai -m space --layout stack
+
 # Set layout to Float (default)
 ctrl + alt + cmd - f : yabai -m space --layout float
 
@@ -57,8 +59,10 @@ shift + alt - b : yabai -m space --balance
 
 # Rotate tree 90°
 shift + alt - r : yabai -m space --rotate 90
+
 # Flip the tree horizontally
 shift + alt - h: yabai -m space --mirror x-axis
+
 # Flip the tree vertically
 shift + alt - v : yabai -m space --mirror y-axis
 
@@ -74,24 +78,33 @@ alt - s : yabai -m window --focus stack.next
 # Toggle floating window
 cmd + alt - f : yabai -m window --toggle float
 
-# Grid: 'rows:cols:start-x:start-y:width:height'
+# -- Grid --------------------------------------------------------------------
+
+# rows:cols:start-x:start-y:width:height
 
 # Small wide window                    rr:cc:sx:sy:ww:hh
 cmd + alt - w : yabai -m window --grid 09:16:03:02:10:05
+
 # Large wide window                    rr:cc:sx:sy:ww:hh
 cmd + alt - e : yabai -m window --grid 10:17:02:01:13:08
+
 # Large narrow window                  rr:cc:sx:sy:ww:hh
 cmd + alt - r : yabai -m window --grid 10:17:04:00:09:10
+
 # Small narrow window                  rr:cc:sx:sy:ww:hh
 cmd + alt - t : yabai -m window --grid 12:09:03:01:03:10
 
 # Full-scren window                    rr:cc:sx:sy:ww:hh
 cmd + alt - u : yabai -m window --grid 01:01:00:00:01:01
+
 # Screen-left window                   rr:cc:sx:sy:ww:hh
 cmd + alt - h : yabai -m window --grid 01:02:00:00:01:01
+
 # Screen-bottom window                 rr:cc:sx:sy:ww:hh
 cmd + alt - j : yabai -m window --grid 05:01:00:02:01:03
+
 # Screen-top window                    rr:cc:sx:sy:ww:hh
 cmd + alt - k : yabai -m window --grid 05:01:00:00:01:03
+
 # Screen-right window                  rr:cc:sx:sy:ww:hh
 cmd + alt - l : yabai -m window --grid 01:02:01:00:01:01

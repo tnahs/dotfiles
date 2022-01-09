@@ -44,7 +44,7 @@
         "tab.activeBorder": "#E57373",
         "textLink.foreground": "#E57373",
     },
-    "workbench.colorTheme": "DuoTone Dark Forest",
+    "workbench.colorTheme": "Ayu Mirage",
     "workbench.iconTheme": "city-lights-icons-vsc",
     "workbench.statusBar.visible": true,
     //
@@ -82,10 +82,6 @@
     "rust-analyzer.checkOnSave.command": "clippy",
     "rust-analyzer.checkOnSave.enable": true,
     "rust-analyzer.inlayHints.enable": true,
-    // ------------------------------------------------------------------------
-    // Python
-    //
-    "python.defaultInterpreterPath": "/Users/shant/.pyenv/versions/3.9.6/bin/python",
     // -- Formatting
     "[python]": {
         "editor.codeActionsOnSave": {
@@ -229,4 +225,5 @@
     // Misc
     "security.workspace.trust.enabled": false,
     "redhat.telemetry.enabled": false,
+    "editor.minimap.enabled": false,
 }

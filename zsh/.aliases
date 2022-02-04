@@ -1,5 +1,6 @@
 # Navigation
-alias ll="ls -lah"
+alias ls="exa"
+alias ll="exa -lah"
 alias k="cd $HOME/Desktop; ls -lah;"
 alias l="cd $HOME/Downloads; ls -lah;"
 alias w="cd $HOME/Workspace; ls -lah;"
@@ -20,11 +21,13 @@ export PYTHONPATH=$HOME/.dotfiles/bup/src:$PYTHONPATH
 alias bup="python -m bup"
 
 # readstor
+READSTOR_ROOT="$HOME/Workspace/repos/wiki/readstor"
 alias rdump=" \
-    readstor \
-    --export \
-    --backup \
-    --output /Users/shant/Workspace/repos/wiki/readstor"
+    echo 'Dumping Apple Books' \
+    && readstor export --output $READSTOR_ROOT \
+    && readstor render --output $READSTOR_ROOT \
+    && readstor backup --output $READSTOR_ROOT"
+
 
 # skhd
 # https://github.com/koekeishiya/skhd
@@ -35,6 +38,6 @@ alias skhd-reload="skhd -r"
 alias yabai-reload="launchctl kickstart -k 'gui/${UID}/homebrew.mxcl.yabai'"
 alias yabai-logs="tail -f $(brew --prefix)/var/log/yabai/yabai.err.log"
 
-# Wiki
+# wiki
 alias wiki="cd $HOME/Workspace/repos/wiki && code ."
 alias piki="cd $HOME/Workspace/repos/wiki-public && code ."

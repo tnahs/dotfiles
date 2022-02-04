@@ -55,7 +55,7 @@ function install_python {
 
 function main {
     if [[ $# -lt 1 ]] then;
-        echo "Error: Please provide atleast one version of Python to install."
+        echo "Error: Please provide at least one version of Python to install."
         exit 2
     else
         install_python $@

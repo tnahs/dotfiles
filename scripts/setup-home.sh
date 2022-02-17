@@ -47,8 +47,7 @@ function link_dotfiles {
     ln -siv $HOME/.dotfiles/zsh/.zshenv $HOME/.zshenv
     ln -siv $HOME/.dotfiles/homebrew/Brewfile $HOME/Brewfile
     ln -siv $HOME/.dotfiles/karabiner $HOME/.config/karabiner
-    ln -siv $HOME/.dotfiles/skhd/.skhdrc $HOME/.skhdrc
-    ln -siv $HOME/.dotfiles/yabai/.yabairc $HOME/.yabairc
+    ln -siv $HOME/.dotfiles/hammerspoon $HOME/.hammerspoon
 }
 
 

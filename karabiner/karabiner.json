@@ -16,9 +16,9 @@
                 },
                 "rules": [
                     {
+                        "description": "Caps Lock to Control+Option+Shift",
                         "manipulators": [
                             {
-                                "description": "caps_lock to control+option+shift",
                                 "from": {
                                     "key_code": "caps_lock",
                                     "modifiers": {
@@ -34,6 +34,55 @@
                                             "left_control",
                                             "left_option"
                                         ]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Command+Esc to Grave Accent (`)",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "escape",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "left_command"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "grave_accent_and_tilde",
+                                        "modifiers": [],
+                                        "repeat": true
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Command+Shift+Esc to Tilde (~)",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "escape",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "left_command",
+                                            "left_shift"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "grave_accent_and_tilde",
+                                        "modifiers": [
+                                            "left_shift"
+                                        ],
+                                        "repeat": true
                                     }
                                 ],
                                 "type": "basic"

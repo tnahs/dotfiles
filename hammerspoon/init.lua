@@ -9,6 +9,10 @@ spoon.ReloadConfiguration:start()
 --    w = 1 - (x * 2)
 --    h = 1 - (y * 2)
 
+-- References -----------------------------------------------------------------
+
+-- https://kalis.me/setup-hyper-key-hammerspoon-macos/
+
 -- Hyper ----------------------------------------------------------------------
 
 -- A global variable for Hyper Mode

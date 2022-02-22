@@ -1,9 +1,21 @@
 {
+    // Customize UI
+    "window.titleBarStyle": "native",
+    "customizeUI.titleBar": "frameless",
+    "customizeUI.font.regular": "JetBrains Mono",
+    "customizeUI.stylesheet": {
+        ".editor-actions": "display: none !important",
+        ".title-actions": "display: none !important",
+    },
+    //
     // UI Theme
-    "editor.find.autoFindInSelection": "multiline",
+    "breadcrumbs.enabled": false,
+    "editor.autoClosingBrackets": "never",
+    "editor.find.autoFindInSelection": "never",
     "editor.fontFamily": "JetBrains Mono",
     "editor.fontLigatures": true,
     "editor.fontSize": 15,
+    "editor.formatOnSave": true,
     "editor.minimap.renderCharacters": false,
     "editor.minimap.scale": 2,
     "editor.minimap.showSlider": "always",
@@ -19,40 +31,29 @@
     },
     "editor.suggestSelection": "first",
     "editor.tabCompletion": "on",
-    "editor.wordWrap": "off",
+    "editor.wordWrap": "on",
     "editor.wordWrapColumn": 99,
     "explorer.compactFolders": false,
     "terminal.integrated.fontFamily": "JetBrains Mono",
     "terminal.integrated.fontSize": 15,
     "terminal.integrated.lineHeight": 1.1,
-    "window.nativeFullScreen": false,
     "window.restoreWindows": "none",
+    "workbench.activityBar.visible": false,
     "workbench.editor.enablePreviewFromQuickOpen": false,
+    "workbench.editor.showIcons": false,
+    // "workbench.editor.showTabs": false,
+    "workbench.iconTheme": null,
     "workbench.list.multiSelectModifier": "alt",
     "workbench.settings.editor": "json",
-    "workbench.startupEditor": "newUntitledFile",
+    "workbench.startupEditor": "none",
     "workbench.colorCustomizations": {
-        "activityBarBadge.background": "#E57373",
-        "editorSuggestWidget.highlightForeground": "#E57373",
-        "list.activeSelectionForeground": "#E57373",
-        "list.highlightForeground": "#E57373",
-        "list.inactiveSelectionForeground": "#E57373",
-        "notificationLink.foreground": "#E57373",
-        "pickerGroup.foreground": "#E57373",
-        "progressBar.background": "#E57373",
-        "scrollbarSlider.activeBackground": "#E5737350",
-        "tab.activeBorder": "#E57373",
-        "textLink.foreground": "#E57373",
+        "scrollbar.shadow": "#ffffff00",
+        "widget.shadow": "#ffffff00"
     },
-    "workbench.colorTheme": "Ayu Mirage",
-    "workbench.iconTheme": "city-lights-icons-vsc",
-    "workbench.statusBar.visible": true,
+    "workbench.colorTheme": "Gruvbox Material Dark",
     //
     // Files
     "files.associations": {
-        "*.plist": "xml",
-        "*.skhdrc": "shellscript",
-        "*.yabairc": "shellscript",
         "*.aliases": "shellscript",
         "*.functions": "shellscript",
         "*.coveragerc": "ini",
@@ -66,14 +67,183 @@
     "files.trimTrailingWhitespace": true,
     "files.trimFinalNewlines": true,
     //
-    // Vim
-    "vim.vimrc.enable": true,
     // Emmet
     "emmet.includeLanguages": {
         "markdown": "md",
         "jinja-css": "css",
         "jinja-html": "html",
     },
+    //
+    // Vim
+    //
+    "vim.leader": " ",
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "<leader>",
+                "t"
+            ],
+            "commands": [
+                "workbench.action.toggleSidebarVisibility"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "f"
+            ],
+            "commands": [
+                "revealInExplorer"
+            ],
+        },
+        {
+            "before": [
+                "<leader>",
+                "r",
+                "f"
+            ],
+            "commands": [
+                "renameFile"
+            ]
+        }
+    ],
+    // Disable arrow keys while in training.
+    "vim.insertModeKeyBindings": [
+        {
+            "before": [
+                "Up"
+            ],
+            "after": [
+                "Nop"
+            ]
+        },
+        {
+            "before": [
+                "Down"
+            ],
+            "after": [
+                "Nop"
+            ]
+        },
+        {
+            "before": [
+                "Left"
+            ],
+            "after": [
+                "Nop"
+            ]
+        },
+        {
+            "before": [
+                "Right"
+            ],
+            "after": [
+                "Nop"
+            ]
+        }
+    ],
+    "vim.normalModeKeyBindings": [
+        {
+            "before": [
+                "Up"
+            ],
+            "after": [
+                "Nop"
+            ]
+        },
+        {
+            "before": [
+                "Down"
+            ],
+            "after": [
+                "Nop"
+            ]
+        },
+        {
+            "before": [
+                "Left"
+            ],
+            "after": [
+                "Nop"
+            ]
+        },
+        {
+            "before": [
+                "Right"
+            ],
+            "after": [
+                "Nop"
+            ]
+        }
+    ],
+    "vim.visualModeKeyBindings": [
+        {
+            "before": [
+                "Up"
+            ],
+            "after": [
+                "Nop"
+            ]
+        },
+        {
+            "before": [
+                "Down"
+            ],
+            "after": [
+                "Nop"
+            ]
+        },
+        {
+            "before": [
+                "Left"
+            ],
+            "after": [
+                "Nop"
+            ]
+        },
+        {
+            "before": [
+                "Right"
+            ],
+            "after": [
+                "Nop"
+            ]
+        }
+    ],
+    "vim.operatorPendingModeKeyBindings": [
+        {
+            "before": [
+                "Up"
+            ],
+            "after": [
+                "Nop"
+            ]
+        },
+        {
+            "before": [
+                "Down"
+            ],
+            "after": [
+                "Nop"
+            ]
+        },
+        {
+            "before": [
+                "Left"
+            ],
+            "after": [
+                "Nop"
+            ]
+        },
+        {
+            "before": [
+                "Right"
+            ],
+            "after": [
+                "Nop"
+            ]
+        }
+    ],
     //
     // ------------------------------------------------------------------------
     // Rust
@@ -145,6 +315,7 @@
         "MD007": {
             "indent": 4,
         },
+        "MD018": false,
         "MD014": false,
         "MD024": false,
         "MD026": false,
@@ -174,25 +345,22 @@
     "css.lint.emptyRules": "ignore",
     "[css]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode",
-        "editor.formatOnSave": true,
     },
     "scss.lint.emptyRules": "ignore",
     "[scss]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode",
-        "editor.formatOnSave": true,
     },
     "[javascript]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode",
-        "editor.formatOnSave": true,
     },
     "[typescript]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode",
-        "editor.formatOnSave": true,
     },
     // ------------------------------------------------------------------------
     //
     // Extenstions
     "gitlens.codeLens.enabled": false,
+    "gitlens.menus": false,
     "todo-tree.filtering.useBuiltInExcludes": "file and search excludes",
     "todo-tree.filtering.excludeGlobs": [
         "**/temp/**",

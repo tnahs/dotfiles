@@ -228,34 +228,27 @@ end)
 
 -- Screenshots ----------------------------------------------------------------
 
--- Capture screenshot
-hyper:bind({"command"}, "3", function()
-    hs.execute [[ \
-        "screencapture" \
-        "$HOME/Downloads/screenshot-$(date +%Y-%m-%d-%H%M%S).jpg" \
-        ]]
+local command = "screencapture"
+local path = "$HOME/Downloads/screenshot-$(date +%Y-%m-%d-%H%M%S).png"
+
+-- Capture full screen
+hyper:bind({}, "5", function()
+    hs.execute(command.." "..path)
     hyper.triggered = true
 end)
 
--- Capture screenshot interactively
+-- Capture selection
 -- -i    Capture screen interactively, by selection or window
-hyper:bind({"command"}, "4", function()
-    hs.execute [[\
-        "screencapture" \
-        "-i" \
-        "$HOME/Downloads/screenshot-$(date +%Y-%m-%d-%H%M%S).jpg" \
-        ]]
-    hyper.triggered = true
-end)
+    hyper:bind({}, "6", function()
+        hs.execute(command.." -i "..path)
+        hyper.triggered = true
+    end)
 
--- Capture screenshot with UI
+-- Capture window
 -- -i    Capture screen interactively, by selection or window
--- -U    Show interactive toolbar in interactive mode
-hyper:bind({"command"}, "5", function()
-    hs.execute [[ \
-        "screencapture" \
-        "-iU" \
-        "$HOME/Downloads/screenshot-$(date +%Y-%m-%d-%H%M%S).jpg" \
-        ]]
+-- -W    Start interaction in window selection mode
+-- -o    In window capture mode, do not capture the shadow of the window
+hyper:bind({}, "7", function()
+    hs.execute(command.." -iWo "..path)
     hyper.triggered = true
 end)

@@ -29,10 +29,6 @@
         "command": "editor.action.rename",
         "when": "editorHasRenameProvider && editorTextFocus && !editorReadonly"
     },
-    {
-        "key": "cmd+m t",
-        "command": "todo-tree.showTagsOnlyView",
-    },
     // ------------------------------------------------------------------------
     //
     // ------------------------------------------------------------------------
@@ -111,5 +107,66 @@
         "key": "cmd+m h",
         "command": "rust-analyzer.toggleInlayHints",
     },
-
+    // ------------------------------------------------------------------------
+    // Vim
+    {
+        "key": "ctrl+j",
+        "command": "selectNextSuggestion",
+        "when": "vim.active && suggestWidgetVisible"
+    },
+    {
+        "key": "ctrl+k",
+        "command": "selectPrevSuggestion",
+        "when": "vim.active && suggestWidgetVisible"
+    },
+    {
+        "key": "ctrl+j",
+        "command": "workbench.action.quickOpenSelectNext",
+        "when": "vim.active && inQuickOpen"
+    },
+    {
+        "key": "ctrl+k",
+        "command": "workbench.action.quickOpenSelectPrevious",
+        "when": "vim.active && inQuickOpen"
+    },
+    {
+        "key": "ctrl+h",
+        "command": "workbench.action.focusLeftGroup",
+        "when": "vim.active && vim.mode != 'Insert' && editorTextFocus"
+    },
+    {
+        "key": "ctrl+l",
+        "command": "workbench.action.focusRightGroup",
+        "when": "vim.active && vim.mode != 'Insert' && editorTextFocus"
+    },
+    {
+        "key": "ctrl+k",
+        "command": "workbench.action.focusAboveGroup",
+        "when": "vim.active && vim.mode != 'Insert' && editorTextFocus"
+    },
+    {
+        "key": "ctrl+j",
+        "command": "workbench.action.focusBelowGroup",
+        "when": "vim.active && vim.mode != 'Insert' && editorTextFocus"
+    },
+    {
+        "key": "ctrl+h",
+        "command": "list.collapse",
+        "when": "vim.active && listFocus && !inputFocus"
+    },
+    {
+        "key": "ctrl+l",
+        "command": "list.expand",
+        "when": "vim.active && listFocus && !inputFocus"
+    },
+    {
+        "key": "ctrl+k",
+        "command": "list.focusUp",
+        "when": "vim.active && listFocus && !inputFocus"
+    },
+    {
+        "key": "ctrl+j",
+        "command": "list.focusDown",
+        "when": "vim.active && listFocus && !inputFocus"
+    }
 ]

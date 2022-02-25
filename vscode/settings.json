@@ -7,15 +7,12 @@
         ".editor-actions": "display: none !important",
         ".title-actions": "display: none !important",
     },
-    //
     // UI Theme
     "breadcrumbs.enabled": false,
-    "editor.autoClosingBrackets": "never",
-    "editor.find.autoFindInSelection": "never",
     "editor.fontFamily": "JetBrains Mono",
     "editor.fontLigatures": true,
-    "editor.fontSize": 15,
-    "editor.formatOnSave": true,
+    "editor.fontSize": 14,
+    "editor.lightbulb.enabled": false,
     "editor.minimap.renderCharacters": false,
     "editor.minimap.scale": 2,
     "editor.minimap.showSlider": "always",
@@ -29,28 +26,23 @@
     "editor.semanticTokenColorCustomizations": {
         "enabled": true
     },
-    "editor.suggestSelection": "first",
-    "editor.tabCompletion": "on",
+    "editor.suggestSelection": "recentlyUsedByPrefix",
     "editor.wordWrap": "on",
     "editor.wordWrapColumn": 99,
     "explorer.compactFolders": false,
     "terminal.integrated.fontFamily": "JetBrains Mono",
-    "terminal.integrated.fontSize": 15,
-    "terminal.integrated.lineHeight": 1.1,
+    "terminal.integrated.fontSize": 14,
     "window.restoreWindows": "none",
+    "window.zoomLevel": 1,
     "workbench.activityBar.visible": false,
-    "workbench.editor.enablePreviewFromQuickOpen": false,
-    "workbench.editor.showIcons": false,
-    // "workbench.editor.showTabs": false,
     "workbench.iconTheme": null,
-    "workbench.list.multiSelectModifier": "alt",
     "workbench.settings.editor": "json",
     "workbench.startupEditor": "none",
     "workbench.colorCustomizations": {
         "scrollbar.shadow": "#ffffff00",
-        "widget.shadow": "#ffffff00"
+        "widget.shadow": "#ffffff00",
     },
-    "workbench.colorTheme": "Gruvbox Material Dark",
+    "workbench.colorTheme": "Dracula For Rust Theme",
     //
     // Files
     "files.associations": {
@@ -74,175 +66,175 @@
         "jinja-html": "html",
     },
     //
+    // ------------------------------------------------------------------------
     // Vim
+    // https://github.com/VSCodeVim/Vim
+    // https://vim.rtorr.com/
     //
+    // Movement
+    //
+    // 0           move cursor to the start of the line
+    // ^           move cursor to the first non-blank character of the line
+    // $           move cursor to the end of the line
+    // gg          move cursor to the first line of the document
+    // G           move cursor to the last line of the document
+    // H           move cursor to top of screen
+    // M           move cursor to middle of screen
+    // L           move cursor to bottom of screen
+    // w           move cursor to the start of a word
+    // e           move cursor to the send of a word
+    // b           move cursor to the sthe start of a word
+    // zz          center cursor on screen
+    // ctrl + e    move screen down one line (without moving cursor)
+    // ctrl + y    move screen up one line (without moving cursor)
+    // ctrl + b    move back one full screen
+    // ctrl + f    move forward one full screen
+    // ctrl + d    move forward 1/2 a screen
+    // ctrl + u    move back 1/2 a screen
+    // %           move between matching braces
+    //
+    // Editing
+    //
+    // i           insert before the cursor
+    // I           insert at the beginning of the line
+    // a           insert (append) after the cursor
+    // A           insert (append) at the end of the line
+    // o           append (open) a new line below the current line
+    // O           append (open) a new line above the current line
+    // cc          change (replace) entire line
+    // C           change (replace) to the end of the line
+    // dd          delete (cut) a line
+    // D           delete (cut) to the end of the line
+    // d$          delete (cut) to the end of the line
+    // yy          yank (copy) a line
+    // y$          yank (copy) to end of line
+    // p           paste fter cursor
+    // P           paste before cursor
+    // x           delete (cut) character
+    // r           replace a single character
+    //
+    // Visual Mode
+    //
+    // v           start visual mode
+    // V           start linewise visual mode
+    // o           move to other end of marked area
+    // O           move to other corner of block
+    // y           yank (copy) marked text
+    // d           delete marked text
+    // ~           switch case
+    // u           change marked text to lowercase
+    // U           change marked text to uppercase
+    //
+    // VSCode Bonuses
+    //
+    // gb          add cursor at identical occurances
+    // gd          jump to definition
+    // gq          reflow and wordwrap blocks of text
+    // af          in VISUAL mode - select increasingly large blocks of text
+    // gh          show hover tooltip
+    //
+    // gcc                comment single line
+    // /<query><enter>    search for <query>
+    // n                  move to next match
+    // N                  move to previous match
+    //
+    // Composistion Examples
+    //
+    // vi"           <action> inside <char>      visual select inside "
+    // va"           <action> all with <char>    visual select all with "
+    // vt"           <action> until <char>       visual select until "
+    // vw [...w]                                 visual select word [...word]
+    //
+    // dw       delete (cut) remainder of word (until non-character)
+    // cw       change (replace) remainder of word (until non-character)
+    // viW      select all non-whitespace characters under the cursor
+    // viWS"    surround all non-whitepsace characters under the cursor with "
+    // vg_      visual select from the cursor to the end of the line
+    // vg_S"    surround all characters from the cursor to the end of the line with "
+    //
+    "editor.autoClosingBrackets": "beforeWhitespace",
+    "editor.autoClosingQuotes": "beforeWhitespace",
+    "editor.lineNumbers": "relative",
     "vim.leader": " ",
+    "vim.useSystemClipboard": true,
+    "vim.surround": true,
+    "vim.easymotion": true, // <leader><leader>s
     "vim.normalModeKeyBindingsNonRecursive": [
+        // TODO Can we move this to `keybindings.json`?
+        // Cycle through open tabs with `tab` and `shift+tab`.
         {
             "before": [
-                "<leader>",
-                "t"
+                "<tab>"
             ],
             "commands": [
-                "workbench.action.toggleSidebarVisibility"
+                "workbench.action.nextEditor"
             ]
         },
         {
             "before": [
-                "<leader>",
-                "f"
+                "<S-tab>"
             ],
             "commands": [
-                "revealInExplorer"
-            ],
+                "workbench.action.previousEditor"
+            ]
         },
+        // Add cursors with `ctrl` + `jk`.
         {
             "before": [
-                "<leader>",
-                "r",
-                "f"
+                "<C-j>",
             ],
             "commands": [
-                "renameFile"
-            ]
-        }
-    ],
-    // Disable arrow keys while in training.
-    "vim.insertModeKeyBindings": [
-        {
-            "before": [
-                "Up"
-            ],
-            "after": [
-                "Nop"
+                "editor.action.insertCursorBelow"
             ]
         },
         {
             "before": [
-                "Down"
+                "<C-k>",
             ],
-            "after": [
-                "Nop"
+            "commands": [
+                "editor.action.insertCursorAbove"
             ]
         },
+        // Move screen up 1 lines instead of 1.
         {
             "before": [
-                "Left"
+                "<C-y>"
             ],
             "after": [
-                "Nop"
-            ]
+                "3",
+                "<C-y>"
+            ],
         },
+        // Move screen down 3 lines instead of 1.
         {
             "before": [
-                "Right"
+                "<C-e>"
             ],
             "after": [
-                "Nop"
-            ]
-        }
-    ],
-    "vim.normalModeKeyBindings": [
-        {
-            "before": [
-                "Up"
+                "3",
+                "<C-e>"
             ],
-            "after": [
-                "Nop"
-            ]
         },
-        {
-            "before": [
-                "Down"
-            ],
-            "after": [
-                "Nop"
-            ]
-        },
-        {
-            "before": [
-                "Left"
-            ],
-            "after": [
-                "Nop"
-            ]
-        },
-        {
-            "before": [
-                "Right"
-            ],
-            "after": [
-                "Nop"
-            ]
-        }
     ],
     "vim.visualModeKeyBindings": [
+        // Indent selected block with `tab`.
         {
             "before": [
-                "Up"
+                "<tab>"
             ],
-            "after": [
-                "Nop"
+            "commands": [
+                "tab" // Or: >gv
             ]
         },
+        // Outdent selected block with `shift+tab`.
         {
             "before": [
-                "Down"
+                "<S-tab>"
             ],
-            "after": [
-                "Nop"
+            "commands": [
+                "outdent" // Or: <gv
             ]
         },
-        {
-            "before": [
-                "Left"
-            ],
-            "after": [
-                "Nop"
-            ]
-        },
-        {
-            "before": [
-                "Right"
-            ],
-            "after": [
-                "Nop"
-            ]
-        }
-    ],
-    "vim.operatorPendingModeKeyBindings": [
-        {
-            "before": [
-                "Up"
-            ],
-            "after": [
-                "Nop"
-            ]
-        },
-        {
-            "before": [
-                "Down"
-            ],
-            "after": [
-                "Nop"
-            ]
-        },
-        {
-            "before": [
-                "Left"
-            ],
-            "after": [
-                "Nop"
-            ]
-        },
-        {
-            "before": [
-                "Right"
-            ],
-            "after": [
-                "Nop"
-            ]
-        }
     ],
     //
     // ------------------------------------------------------------------------
@@ -254,7 +246,12 @@
     "rust-analyzer.checkOnSave.command": "clippy",
     "rust-analyzer.checkOnSave.enable": true,
     "rust-analyzer.inlayHints.enable": true,
+    "rust-analyzer.inlayHints.smallerHints": false,
     "rust-analyzer.lens.enable": false,
+    //
+    // ------------------------------------------------------------------------
+    // Python
+    //
     // -- Formatting
     "[python]": {
         "editor.codeActionsOnSave": {
@@ -265,25 +262,24 @@
         "editor.insertSpaces": true,
         "editor.tabSize": 4,
     },
-    "python.formatting.blackPath": "~/.local/bin/black",
+    "python.formatting.blackPath": "/disney/users/.local/bin/black",
     "python.formatting.provider": "black",
     "python.sortImports.args": [
         "--profile=black",
         "--lines-after-imports=2"
     ],
     // -- Linting - Pylance
+    "python.languageServer": "Pylance",
     "python.analysis.diagnosticMode": "workspace",
     "python.analysis.typeCheckingMode": "basic",
-    "python.languageServer": "Pylance",
     // -- Linting - Flake8
     "python.linting.enabled": true,
     "python.linting.flake8Args": [
         "--ignore=E501,E231,W503,E402,E128,E711,E131,E126,E241,T499,E741"
     ],
     "python.linting.flake8Enabled": true,
-    "python.linting.flake8Path": "~/.local/bin/flake8",
-    // -- venv / Poetry
-    "python.venvPath": "~/Library/Caches/pypoetry/virtualenvs",
+    "python.linting.flake8Path": "/disney/users/.local/bin/flake8",
+    //
     // ------------------------------------------------------------------------
     // JSON
     //
@@ -299,6 +295,7 @@
         "editor.insertSpaces": true,
         "editor.tabSize": 4,
     },
+    //
     // ------------------------------------------------------------------------
     // YAML
     //
@@ -308,6 +305,7 @@
         "editor.insertSpaces": true,
         "editor.tabSize": 2,
     },
+    //
     // ------------------------------------------------------------------------
     // Markdown
     //
@@ -336,6 +334,7 @@
         "editor.wordBasedSuggestions": false,
         "files.trimTrailingWhitespace": false,
     },
+    //
     // ------------------------------------------------------------------------
     // HTML/CSS/Javascript
     //
@@ -356,9 +355,10 @@
     "[typescript]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode",
     },
-    // ------------------------------------------------------------------------
     //
+    // ------------------------------------------------------------------------
     // Extenstions
+    "cSpell.enabled": false,
     "gitlens.codeLens.enabled": false,
     "gitlens.menus": false,
     "todo-tree.filtering.useBuiltInExcludes": "file and search excludes",
@@ -414,10 +414,8 @@
             "iconColour": "#6600ff",
         },
     },
-    "cSpell.enabled": false,
     //
+    // ------------------------------------------------------------------------
     // Misc
     "security.workspace.trust.enabled": false,
-    "redhat.telemetry.enabled": false,
-    "window.zoomLevel": 1,
 }

@@ -1,6 +1,7 @@
 [
-    // ------------------------------------------------------------------------
-    // Control
+    // macOS ------------------------------------------------------------------
+    //
+    // Unbind `cmd+q` and rebind to `cmd+q cmd+q` to prevent unwanted quitting.
     {
         "key": "cmd+q",
         "command": "-workbench.action.quit"
@@ -9,164 +10,161 @@
         "key": "cmd+q cmd+q",
         "command": "workbench.action.quit"
     },
-    {
-        "key": "cmd+m p",
-        "command": "editor.action.marker.next",
-        "when": "editorFocus"
-    },
-    {
-        "key": "cmd+m r",
-        "command": "references-view.findReferences",
-        "when": "editorTextFocus"
-    },
-    {
-        "key": "cmd+m d",
-        "command": "editor.action.revealDefinition",
-        "when": "editorTextFocus"
-    },
-    {
-        "key": "cmd+m n",
-        "command": "editor.action.rename",
-        "when": "editorHasRenameProvider && editorTextFocus && !editorReadonly"
-    },
-    // ------------------------------------------------------------------------
     //
-    // ------------------------------------------------------------------------
-    // Navigation
+    // General ----------------------------------------------------------------
+    //
+    // Move focus to the editor.
     {
-        "key": "cmd+escape",
+        "key": "ctrl+escape",
         "command": "workbench.action.focusActiveEditorGroup",
-        "when": "sideBarFocus"
+    },
+    // Toggle sidebar visibility.
+    {
+        "key": "ctrl+b",
+        "command": "workbench.action.toggleSidebarVisibility",
+    },
+    // Open `Quick Open View`.
+    {
+        "key": "ctrl+q",
+        "command": "workbench.action.quickOpenView",
+    },
+    // Show next problem.
+    {
+        "key": "ctrl+p",
+        "command": "editor.action.marker.next",
+    },
+    // Reveal definition.
+    {
+        "key": "ctrl+f",
+        "command": "editor.action.revealDefinition",
+    },
+    // Navigate code suggestions with `tab` and `shift+tab`.
+    {
+        "key": "tab",
+        "command": "selectNextSuggestion",
+        "when": "suggestWidgetVisible"
     },
     {
-        "key": "cmd+escape",
-        "command": "workbench.action.focusSideBar",
-        "when": "!sideBarFocus"
+        "key": "shift+tab",
+        "command": "selectPrevSuggestion",
+        "when": "suggestWidgetVisible"
     },
-    {
-        "key": "cmd+down",
-        "command": "cursorPageDown",
-        "when": "textInputFocus"
-    },
-    {
-        "key": "cmd+shift+down",
-        "command": "cursorPageDownSelect",
-        "when": "textInputFocus"
-    },
-    {
-        "key": "cmd+up",
-        "command": "cursorPageUp",
-        "when": "textInputFocus"
-    },
-    {
-        "key": "cmd+shift+up",
-        "command": "cursorPageUpSelect",
-    },
-    {
-        "key": "ctrl+up",
-        "command": "cursorMove",
-        "args": {
-            "to": "up",
-            "by": "line",
-            "value": 10
-        },
-        "when": "editorTextFocus"
-    },
-    {
-        "key": "ctrl+down",
-        "command": "cursorMove",
-        "args": {
-            "to": "down",
-            "by": "line",
-            "value": 10
-        },
-        "when": "editorTextFocus"
-    },
-    // ------------------------------------------------------------------------
-    //
-    // ------------------------------------------------------------------------
-    // UI
-    {
-        "key": "cmd+m m",
-        "command": "editor.action.toggleMinimap"
-    },
-    // ------------------------------------------------------------------------
-    //
-    // ------------------------------------------------------------------------
-    // Python
-    {
-        "key": "cmd+shift+i",
-        "command": "python.sortImports"
-    },
-    // ------------------------------------------------------------------------
-    // ------------------------------------------------------------------------
-    //
-    // ------------------------------------------------------------------------
-    // Rust
-    {
-        "key": "cmd+m h",
-        "command": "rust-analyzer.toggleInlayHints",
-    },
-    // ------------------------------------------------------------------------
-    // Vim
+    // Navigate code suggestions with `jk`.
     {
         "key": "ctrl+j",
         "command": "selectNextSuggestion",
-        "when": "vim.active && suggestWidgetVisible"
+        "when": "suggestWidgetVisible"
     },
     {
         "key": "ctrl+k",
         "command": "selectPrevSuggestion",
-        "when": "vim.active && suggestWidgetVisible"
+        "when": "suggestWidgetVisible"
     },
+    // Navigate the `Command Palette` and `Quick Open` with `tab` and `shift+tab`.
+    {
+        "key": "tab",
+        "command": "workbench.action.quickOpenSelectNext",
+        "when": "inQuickOpen"
+    },
+    {
+        // Oddly this does not work.
+        "key": "shift+tab",
+        "command": "workbench.action.quickOpenSelectPrevious",
+        "when": "inQuickOpen"
+    },
+    // Navigate the `Command Palette` and `Quick Open` with `ctrl` + `jk`.
     {
         "key": "ctrl+j",
         "command": "workbench.action.quickOpenSelectNext",
-        "when": "vim.active && inQuickOpen"
+        "when": "inQuickOpen"
     },
     {
         "key": "ctrl+k",
         "command": "workbench.action.quickOpenSelectPrevious",
-        "when": "vim.active && inQuickOpen"
+        "when": "inQuickOpen"
     },
-    {
-        "key": "ctrl+h",
-        "command": "workbench.action.focusLeftGroup",
-        "when": "vim.active && vim.mode != 'Insert' && editorTextFocus"
-    },
-    {
-        "key": "ctrl+l",
-        "command": "workbench.action.focusRightGroup",
-        "when": "vim.active && vim.mode != 'Insert' && editorTextFocus"
-    },
-    {
-        "key": "ctrl+k",
-        "command": "workbench.action.focusAboveGroup",
-        "when": "vim.active && vim.mode != 'Insert' && editorTextFocus"
-    },
-    {
-        "key": "ctrl+j",
-        "command": "workbench.action.focusBelowGroup",
-        "when": "vim.active && vim.mode != 'Insert' && editorTextFocus"
-    },
+    // Navigate the `File Explorer` with `hjkl`.
     {
         "key": "ctrl+h",
         "command": "list.collapse",
-        "when": "vim.active && listFocus && !inputFocus"
-    },
-    {
-        "key": "ctrl+l",
-        "command": "list.expand",
-        "when": "vim.active && listFocus && !inputFocus"
-    },
-    {
-        "key": "ctrl+k",
-        "command": "list.focusUp",
-        "when": "vim.active && listFocus && !inputFocus"
+        "when": "listFocus && !inputFocus"
     },
     {
         "key": "ctrl+j",
         "command": "list.focusDown",
-        "when": "vim.active && listFocus && !inputFocus"
-    }
+        "when": "listFocus && !inputFocus"
+    },
+    {
+        "key": "ctrl+k",
+        "command": "list.focusUp",
+        "when": "listFocus && !inputFocus"
+    },
+    {
+        "key": "ctrl+l",
+        "command": "list.expand",
+        "when": "listFocus && !inputFocus"
+    },
+    // Create a new file in `File Explorer`.
+    {
+        "key": "i",
+        "command": "explorer.newFile",
+        "when": "listFocus && !inputFocus"
+    },
+    // Create a new folder in `File Explorer`.
+    {
+        "key": "o",
+        "command": "explorer.newFolder",
+        "when": "listFocus && !inputFocus"
+    },
+    // Rename file/folder in `File Explorer`.
+    {
+        "key": "r",
+        "command": "renameFile",
+        "when": "listFocus && !inputFocus"
+    },
+    // Reveal current file in `File Explorer`.
+    {
+        "key": "ctrl+r",
+        "command": "revealInExplorer",
+    },
+    // Trigger code suggesions.
+    {
+        "key": "ctrl+s",
+        "command": "editor.action.triggerSuggest",
+    },
+    // Navigate groups with `ctrl` + `hl`.
+    {
+        "key": "ctrl+h",
+        "command": "workbench.action.focusLeftGroup",
+    },
+    {
+        "key": "ctrl+l",
+        "command": "workbench.action.focusRightGroup",
+    },
+    // Move tabs between editors with `ctrl+shift` + `hl`.
+    {
+        "key": "ctrl+shift+h",
+        "command": "workbench.action.moveEditorToPreviousGroup",
+    },
+    {
+        "key": "ctrl+shift+l",
+        "command": "workbench.action.moveEditorToNextGroup",
+    },
+    // Split editor to the right.
+    {
+        "key": "ctrl+p",
+        "command": "workbench.action.splitEditorRight",
+    },
+    // Toggle the Minimap.
+    {
+        "key": "ctrl+c m",
+        "command": "editor.action.toggleMinimap"
+    },
+    //
+    // ------------------------------------------------------------------------
+    // Rust
+    {
+        "key": "ctrl+c h",
+        "command": "rust-analyzer.toggleInlayHints"
+    },
 ]

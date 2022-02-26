@@ -1,8 +1,6 @@
 # Homebrew: M1 Macs
 export PATH=/opt/homebrew/bin:$PATH
-
-# Homebrew: Intel Macs
-# export PATH=/usr/local/sbin:$PATH
+export PATH=/opt/homebrew/sbin:$PATH
 
 # poetry
 export PATH=$HOME/.poetry/bin:$PATH

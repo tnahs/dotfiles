@@ -7,8 +7,6 @@
         ".editor-actions": "display: none !important",
         ".title-actions": "display: none !important",
     },
-    // UI Theme
-    "breadcrumbs.enabled": false,
     "editor.fontFamily": "JetBrains Mono",
     "editor.fontLigatures": true,
     "editor.fontSize": 14,
@@ -20,8 +18,8 @@
     "editor.renderLineHighlight": "all",
     "editor.renderWhitespace": "boundary",
     "editor.rulers": [
-        79,
-        99
+        80,
+        100,
     ],
     "editor.semanticTokenColorCustomizations": {
         "enabled": true
@@ -42,7 +40,7 @@
         "scrollbar.shadow": "#ffffff00",
         "widget.shadow": "#ffffff00",
     },
-    "workbench.colorTheme": "Dracula For Rust Theme",
+    "workbench.colorTheme": "Community Material Theme Darker",
     //
     // Files
     "files.associations": {
@@ -95,43 +93,43 @@
     //
     // Editing
     //
-    // i           insert before the cursor
-    // I           insert at the beginning of the line
-    // a           insert (append) after the cursor
-    // A           insert (append) at the end of the line
-    // o           append (open) a new line below the current line
-    // O           append (open) a new line above the current line
-    // cc          change (replace) entire line
-    // C           change (replace) to the end of the line
-    // dd          delete (cut) a line
-    // D           delete (cut) to the end of the line
-    // d$          delete (cut) to the end of the line
-    // yy          yank (copy) a line
-    // y$          yank (copy) to end of line
-    // p           paste fter cursor
-    // P           paste before cursor
-    // x           delete (cut) character
-    // r           replace a single character
+    // i     insert before the cursor
+    // I     insert at the beginning of the line
+    // a     insert (append) after the cursor
+    // A     insert (append) at the end of the line
+    // o     append (open) a new line below the current line
+    // O     append (open) a new line above the current line
+    // cc    change (replace) entire line
+    // C     change (replace) to the end of the line
+    // dd    delete (cut) a line
+    // D     delete (cut) to the end of the line
+    // d$    delete (cut) to the end of the line
+    // yy    yank (copy) a line
+    // y$    yank (copy) to end of line
+    // p     paste fter cursor
+    // P     paste before cursor
+    // x     delete (cut) character
+    // r     replace a single character
     //
     // Visual Mode
     //
-    // v           start visual mode
-    // V           start linewise visual mode
-    // o           move to other end of marked area
-    // O           move to other corner of block
-    // y           yank (copy) marked text
-    // d           delete marked text
-    // ~           switch case
-    // u           change marked text to lowercase
-    // U           change marked text to uppercase
+    // v    start visual mode
+    // V    start linewise visual mode
+    // o    move to other end of marked area
+    // O    move to other corner of block
+    // y    yank (copy) marked text
+    // d    delete marked text
+    // ~    switch case
+    // u    change marked text to lowercase
+    // U    change marked text to uppercase
     //
     // VSCode Bonuses
     //
-    // gb          add cursor at identical occurances
-    // gd          jump to definition
-    // gq          reflow and wordwrap blocks of text
-    // af          in VISUAL mode - select increasingly large blocks of text
-    // gh          show hover tooltip
+    // gb    add cursor at identical occurances
+    // gd    jump to definition
+    // gq    reflow and wordwrap blocks of text
+    // af    in VISUAL mode - select increasingly large blocks of text
+    // gh    show hover tooltip
     //
     // gcc                comment single line
     // /<query><enter>    search for <query>
@@ -157,10 +155,15 @@
     "editor.lineNumbers": "relative",
     "vim.leader": " ",
     "vim.useSystemClipboard": true,
+    "vim.textwidth": 80,
+    "vim.highlightedyank.enable": true,
+    "vim.highlightedyank.color": "#ffffffff",
     "vim.surround": true,
+    "vim.camelCaseMotion.enable": true,
     "vim.easymotion": true, // <leader><leader>s
     "vim.normalModeKeyBindingsNonRecursive": [
         // TODO Can we move this to `keybindings.json`?
+        // TODO This doesnt work with markdown files.
         // Cycle through open tabs with `tab` and `shift+tab`.
         {
             "before": [
@@ -262,7 +265,7 @@
         "editor.insertSpaces": true,
         "editor.tabSize": 4,
     },
-    "python.formatting.blackPath": "/disney/users/.local/bin/black",
+    "python.formatting.blackPath": "~/.local/bin/black",
     "python.formatting.provider": "black",
     "python.sortImports.args": [
         "--profile=black",
@@ -278,7 +281,7 @@
         "--ignore=E501,E231,W503,E402,E128,E711,E131,E126,E241,T499,E741"
     ],
     "python.linting.flake8Enabled": true,
-    "python.linting.flake8Path": "/disney/users/.local/bin/flake8",
+    "python.linting.flake8Path": "~/.local/bin/flake8",
     //
     // ------------------------------------------------------------------------
     // JSON
@@ -355,8 +358,7 @@
     "[typescript]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode",
     },
-    //
-    // ------------------------------------------------------------------------
+    //    // ------------------------------------------------------------------------
     // Extenstions
     "cSpell.enabled": false,
     "gitlens.codeLens.enabled": false,
@@ -418,4 +420,6 @@
     // ------------------------------------------------------------------------
     // Misc
     "security.workspace.trust.enabled": false,
+    "breadcrumbs.enabled": false,
+    "editor.minimap.enabled": false,
 }

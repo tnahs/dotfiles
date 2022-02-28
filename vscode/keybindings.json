@@ -13,10 +13,17 @@
     //
     // General ----------------------------------------------------------------
     //
+    // Move focus to the sidebar.
+    {
+        "key": "ctrl+escape",
+        "command": "workbench.action.focusSideBar",
+        "when": "!sidebarFocus"
+    },
     // Move focus to the editor.
     {
         "key": "ctrl+escape",
         "command": "workbench.action.focusActiveEditorGroup",
+        "when": "!editorFocus"
     },
     // Toggle sidebar visibility.
     {
@@ -35,7 +42,7 @@
     },
     // Reveal definition.
     {
-        "key": "ctrl+f",
+        "key": "ctrl+g",
         "command": "editor.action.revealDefinition",
     },
     // Navigate code suggestions with `tab` and `shift+tab`.
@@ -124,7 +131,7 @@
     },
     // Reveal current file in `File Explorer`.
     {
-        "key": "ctrl+r",
+        "key": "ctrl+x",
         "command": "revealInExplorer",
     },
     // Trigger code suggesions.
@@ -132,6 +139,12 @@
         "key": "ctrl+s",
         "command": "editor.action.triggerSuggest",
     },
+    {
+        "key": "ctrl+a",
+        "command": "editor.action.rename",
+        "when": "editorHasRenameProvider && editorTextFocus && !editorReadonly"
+    },
+    // TODO Add "editor.action.autoFix".
     // Navigate groups with `ctrl` + `hl`.
     {
         "key": "ctrl+h",
@@ -152,7 +165,7 @@
     },
     // Split editor to the right.
     {
-        "key": "ctrl+p",
+        "key": "ctrl+t",
         "command": "workbench.action.splitEditorRight",
     },
     // Toggle the Minimap.

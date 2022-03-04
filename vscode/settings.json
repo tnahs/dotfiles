@@ -40,7 +40,7 @@
         "scrollbar.shadow": "#ffffff00",
         "widget.shadow": "#ffffff00",
     },
-    "workbench.colorTheme": "Community Material Theme Darker",
+    "workbench.colorTheme": "Ayu Mirage",
     //
     // Files
     "files.associations": {
@@ -64,7 +64,7 @@
         "jinja-html": "html",
     },
     //
-    // ------------------------------------------------------------------------
+    // -------------------------------------------------------------------------
     // Vim
     // https://github.com/VSCodeVim/Vim
     // https://vim.rtorr.com/
@@ -162,23 +162,14 @@
     "vim.camelCaseMotion.enable": true,
     "vim.easymotion": true, // <leader><leader>s
     "vim.normalModeKeyBindingsNonRecursive": [
-        // TODO Can we move this to `keybindings.json`?
-        // TODO This doesnt work with markdown files.
-        // Cycle through open tabs with `tab` and `shift+tab`.
+        // Cycle through open tabs.
         {
             "before": [
+                "<leader>",
                 "<tab>"
             ],
             "commands": [
                 "workbench.action.nextEditor"
-            ]
-        },
-        {
-            "before": [
-                "<S-tab>"
-            ],
-            "commands": [
-                "workbench.action.previousEditor"
             ]
         },
         // Add cursors with `ctrl` + `jk`.
@@ -198,28 +189,52 @@
                 "editor.action.insertCursorAbove"
             ]
         },
-        // Move screen up 1 lines instead of 1.
+        // Move screen up 5 lines instead of 1 and center the cursor.
         {
             "before": [
                 "<C-y>"
             ],
             "after": [
-                "3",
-                "<C-y>"
+                "5",
+                "<C-y>",
+                "M"
             ],
         },
-        // Move screen down 3 lines instead of 1.
+        // Move screen down 5 lines instead of 1 and center the cursor.
         {
             "before": [
                 "<C-e>"
             ],
             "after": [
-                "3",
-                "<C-e>"
+                "5",
+                "<C-e>",
+                "M"
             ],
         },
     ],
-    "vim.visualModeKeyBindings": [
+    "vim.visualModeKeyBindingsNonRecursive": [
+        // Move screen up 5 lines instead of 1 and center the cursor.
+        {
+            "before": [
+                "<C-y>"
+            ],
+            "after": [
+                "5",
+                "<C-y>",
+                "M"
+            ],
+        },
+        // Move screen down 5 lines instead of 1 and center the cursor.
+        {
+            "before": [
+                "<C-e>"
+            ],
+            "after": [
+                "5",
+                "<C-e>",
+                "M"
+            ],
+        },
         // Indent selected block with `tab`.
         {
             "before": [
@@ -240,7 +255,7 @@
         },
     ],
     //
-    // ------------------------------------------------------------------------
+    // -------------------------------------------------------------------------
     // Rust
     //
     "[rust]": {
@@ -252,7 +267,7 @@
     "rust-analyzer.inlayHints.smallerHints": false,
     "rust-analyzer.lens.enable": false,
     //
-    // ------------------------------------------------------------------------
+    // -------------------------------------------------------------------------
     // Python
     //
     // -- Formatting
@@ -283,7 +298,7 @@
     "python.linting.flake8Enabled": true,
     "python.linting.flake8Path": "~/.local/bin/flake8",
     //
-    // ------------------------------------------------------------------------
+    // -------------------------------------------------------------------------
     // JSON
     //
     "[json]": {
@@ -299,7 +314,7 @@
         "editor.tabSize": 4,
     },
     //
-    // ------------------------------------------------------------------------
+    // -------------------------------------------------------------------------
     // YAML
     //
     "[yaml]": {
@@ -309,7 +324,7 @@
         "editor.tabSize": 2,
     },
     //
-    // ------------------------------------------------------------------------
+    // -------------------------------------------------------------------------
     // Markdown
     //
     "markdownlint.config": {
@@ -338,7 +353,7 @@
         "files.trimTrailingWhitespace": false,
     },
     //
-    // ------------------------------------------------------------------------
+    // -------------------------------------------------------------------------
     // HTML/CSS/Javascript
     //
     "[html]": {
@@ -358,7 +373,8 @@
     "[typescript]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode",
     },
-    //    // ------------------------------------------------------------------------
+    //
+    // -------------------------------------------------------------------------
     // Extenstions
     "cSpell.enabled": false,
     "gitlens.codeLens.enabled": false,
@@ -417,7 +433,7 @@
         },
     },
     //
-    // ------------------------------------------------------------------------
+    // -------------------------------------------------------------------------
     // Misc
     "security.workspace.trust.enabled": false,
     "breadcrumbs.enabled": false,

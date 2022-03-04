@@ -1,0 +1,2 @@
+-- https://www.schemastore.org/json/
+-- https://github.com/LunarVim/Neovim-from-scratch/blob/master/lua/user/lsp/settings/jsonls.lua

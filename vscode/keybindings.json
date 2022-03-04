@@ -1,5 +1,5 @@
 [
-    // macOS ------------------------------------------------------------------
+    // macOS -------------------------------------------------------------------
     //
     // Unbind `cmd+q` and rebind to `cmd+q cmd+q` to prevent unwanted quitting.
     {
@@ -11,8 +11,124 @@
         "command": "workbench.action.quit"
     },
     //
-    // General ----------------------------------------------------------------
+    // OS Specific -------------------------------------------------------------
+    // Use `cmd` for macOS and `alt` for Linux.
     //
+    // Open the `settings.json` file.
+    {
+        "key": "cmd+,",
+        "command": "workbench.action.openSettings",
+    },
+    // Create a new file.
+    {
+        "key": "cmd+n",
+        "command": "workbench.action.files.newUntitledFile",
+    },
+    // Save the current editor.
+    {
+        "key": "cmd+s",
+        "command": "workbench.action.files.save",
+    },
+    // Close the current editor.
+    {
+        "key": "cmd+w",
+        "command": "workbench.action.closeActiveEditor",
+    },
+    // Re-open the last closed editor.
+    {
+        "key": "cmd+shift+t",
+        "command": "workbench.action.reopenClosedEditor",
+    },
+    // Open the `Command Palette` in command (>) mode.
+    {
+        "key": "cmd+shift+p",
+        "command": "workbench.action.showCommands",
+    },
+    // Open the `Command Palette` in file mode.
+    {
+        "key": "cmd+p",
+        "command": "workbench.action.quickOpen",
+    },
+    // Open the `Command Palette` in symbol (@) mode.
+    {
+        "key": "cmd+p",
+        "command": "workbench.action.quickOpen",
+    },
+    // Add selection to next find match.
+    {
+        "key": "cmd+d",
+        "command": "editor.action.addSelectionToNextFindMatch",
+    },
+    // Move last selection to next find match.
+    {
+        "key": "cmd+m",
+        "command": "editor.action.moveSelectionToNextFindMatch",
+    },
+    // Undo last cursor operation.
+    {
+        "key": "cmd+u",
+        "command": "cursorUndo",
+    },
+    //
+    // `Quick Fix` -------------------------------------------------------------
+    // Install `pascalsenn.keyboard-quickfix` to navigate the `QuickFix` menu.
+    //
+    // Open the `Quick Fix` menu.
+    {
+        "key": "cmd+.",
+        "command": "keyboard-quickfix.openQuickFix",
+    },
+    // Navigate the `Quick Fix` menu with `ctrl` + `jk`.
+    {
+        "key": "ctrl+j",
+        "command": "workbench.action.quickOpenSelectNext",
+        "when": "inQuickOpen"
+    },
+    {
+        "key": "ctrl+k",
+        "command": "workbench.action.quickOpenSelectPrevious",
+        "when": "inQuickOpen"
+    },
+    // Navigate the `Quick Fix` menu with `tab` and `shift+tab`.
+    {
+        "key": "ctrl+j",
+        "command": "workbench.action.quickOpenSelectNext",
+        "when": "inQuickOpen"
+    },
+    {
+        "key": "ctrl+k",
+        "command": "workbench.action.quickOpenSelectPrevious",
+        "when": "inQuickOpen"
+    },
+    //
+    // General -----------------------------------------------------------------
+    //
+    // Reveal definition.
+    {
+        "key": "ctrl+g",
+        "command": "editor.action.revealDefinition",
+    },
+    // Show next problem.
+    {
+        "key": "ctrl+p",
+        "command": "editor.action.marker.next",
+    },
+    // Rename symbol.
+    {
+        "key": "ctrl+a",
+        "command": "editor.action.rename",
+        "when": "editorHasRenameProvider && editorTextFocus && !editorReadonly"
+    },
+    // Toggle the Minimap.
+    {
+        "key": "ctrl+c m",
+        "command": "editor.action.toggleMinimap"
+    },
+    // Toggle the sidebar.
+    {
+        "key": "ctrl+b",
+        "command": "workbench.action.toggleSidebarVisibility",
+    },
     // Move focus to the sidebar.
     {
         "key": "ctrl+escape",
@@ -25,25 +141,61 @@
         "command": "workbench.action.focusActiveEditorGroup",
         "when": "!editorFocus"
     },
-    // Toggle sidebar visibility.
-    {
-        "key": "ctrl+b",
-        "command": "workbench.action.toggleSidebarVisibility",
-    },
     // Open `Quick Open View`.
     {
         "key": "ctrl+q",
         "command": "workbench.action.quickOpenView",
     },
-    // Show next problem.
+    // Navigate the `Command Palette` with `tab` and `shift+tab`.
     {
-        "key": "ctrl+p",
-        "command": "editor.action.marker.next",
+        "key": "tab",
+        "command": "workbench.action.quickOpenSelectNext",
+        "when": "inQuickOpen"
     },
-    // Reveal definition.
     {
-        "key": "ctrl+g",
-        "command": "editor.action.revealDefinition",
+        // Oddly this does not work.
+        "key": "shift+tab",
+        "command": "workbench.action.quickOpenSelectPrevious",
+        "when": "inQuickOpen"
+    },
+    // Navigate the `Command Palette` with `ctrl` + `jk`.
+    {
+        "key": "ctrl+j",
+        "command": "workbench.action.quickOpenSelectNext",
+        "when": "inQuickOpen"
+    },
+    {
+        "key": "ctrl+k",
+        "command": "workbench.action.quickOpenSelectPrevious",
+        "when": "inQuickOpen"
+    },
+    // Split editor to the right.
+    {
+        "key": "ctrl+t",
+        "command": "workbench.action.splitEditorRight",
+    },
+    // Navigate editor groups with `ctrl` + `hl`.
+    {
+        "key": "ctrl+h",
+        "command": "workbench.action.focusLeftGroup",
+    },
+    {
+        "key": "ctrl+l",
+        "command": "workbench.action.focusRightGroup",
+    },
+    // Move editors between editor groups with `ctrl+shift` + `hl`.
+    {
+        "key": "ctrl+shift+h",
+        "command": "workbench.action.moveEditorToPreviousGroup",
+    },
+    {
+        "key": "ctrl+shift+l",
+        "command": "workbench.action.moveEditorToNextGroup",
+    },
+    // Trigger code suggesions.
+    {
+        "key": "ctrl+s",
+        "command": "editor.action.triggerSuggest",
     },
     // Navigate code suggestions with `tab` and `shift+tab`.
     {
@@ -56,7 +208,7 @@
         "command": "selectPrevSuggestion",
         "when": "suggestWidgetVisible"
     },
-    // Navigate code suggestions with `jk`.
+    // Navigate code suggestions with `ctrl` + `jk`.
     {
         "key": "ctrl+j",
         "command": "selectNextSuggestion",
@@ -66,29 +218,6 @@
         "key": "ctrl+k",
         "command": "selectPrevSuggestion",
         "when": "suggestWidgetVisible"
-    },
-    // Navigate the `Command Palette` and `Quick Open` with `tab` and `shift+tab`.
-    {
-        "key": "tab",
-        "command": "workbench.action.quickOpenSelectNext",
-        "when": "inQuickOpen"
-    },
-    {
-        // Oddly this does not work.
-        "key": "shift+tab",
-        "command": "workbench.action.quickOpenSelectPrevious",
-        "when": "inQuickOpen"
-    },
-    // Navigate the `Command Palette` and `Quick Open` with `ctrl` + `jk`.
-    {
-        "key": "ctrl+j",
-        "command": "workbench.action.quickOpenSelectNext",
-        "when": "inQuickOpen"
-    },
-    {
-        "key": "ctrl+k",
-        "command": "workbench.action.quickOpenSelectPrevious",
-        "when": "inQuickOpen"
     },
     // Navigate the `File Explorer` with `hjkl`.
     {
@@ -111,67 +240,28 @@
         "command": "list.expand",
         "when": "listFocus && !inputFocus"
     },
-    // Create a new file in `File Explorer`.
+    // Create a new file in the `File Explorer`.
     {
         "key": "i",
         "command": "explorer.newFile",
         "when": "listFocus && !inputFocus"
     },
-    // Create a new folder in `File Explorer`.
+    // Create a new folder in the `File Explorer`.
     {
         "key": "o",
         "command": "explorer.newFolder",
         "when": "listFocus && !inputFocus"
     },
-    // Rename file/folder in `File Explorer`.
+    // Rename file/folder in the `File Explorer`.
     {
         "key": "r",
         "command": "renameFile",
         "when": "listFocus && !inputFocus"
     },
-    // Reveal current file in `File Explorer`.
+    // Reveal current file in the `File Explorer`.
     {
         "key": "ctrl+x",
         "command": "revealInExplorer",
-    },
-    // Trigger code suggesions.
-    {
-        "key": "ctrl+s",
-        "command": "editor.action.triggerSuggest",
-    },
-    {
-        "key": "ctrl+a",
-        "command": "editor.action.rename",
-        "when": "editorHasRenameProvider && editorTextFocus && !editorReadonly"
-    },
-    // TODO Add "editor.action.autoFix".
-    // Navigate groups with `ctrl` + `hl`.
-    {
-        "key": "ctrl+h",
-        "command": "workbench.action.focusLeftGroup",
-    },
-    {
-        "key": "ctrl+l",
-        "command": "workbench.action.focusRightGroup",
-    },
-    // Move tabs between editors with `ctrl+shift` + `hl`.
-    {
-        "key": "ctrl+shift+h",
-        "command": "workbench.action.moveEditorToPreviousGroup",
-    },
-    {
-        "key": "ctrl+shift+l",
-        "command": "workbench.action.moveEditorToNextGroup",
-    },
-    // Split editor to the right.
-    {
-        "key": "ctrl+t",
-        "command": "workbench.action.splitEditorRight",
-    },
-    // Toggle the Minimap.
-    {
-        "key": "ctrl+c m",
-        "command": "editor.action.toggleMinimap"
     },
     //
     // ------------------------------------------------------------------------

@@ -1,0 +1,34 @@
+# TODO
+
+- [ ] Remove trailing whitespace
+- [x] Fix lua `on_attach` 
+- [ ] Replace tabs with spaces on save
+- [ ] Hide `nvim-tree` icons
+- [ ] Show `nvim-tree` git statu
+- [ ] Format on save
+- [ ] Render whitespace
+- [ ] Close all buffers
+- [ ] Inlay hints
+- [x] Fix lua namespace issue
+- [ ] Rust
+    - [ ] clippy
+    - [x] rust-analyzer
+- [ ] Python
+    - [x] pyright
+    - [x] black
+    - [x] isort
+- [ ] Markdown
+
+- https://github.com/godlygeek/tabular
+- https://github.com/kyazdani42/nvim-tree.lua
+- https://github.com/microsoft/pyright
+- https://github.com/nanotee/nvim-lua-guide
+- https://github.com/neovim/nvim-lspconfig
+- https://github.com/numToStr/Comment.nvim
+- https://github.com/nvim-telescope/telescope.nvim
+- https://github.com/nvim-treesitter/nvim-treesitter
+- https://github.com/p00f/nvim-ts-rainbow
+- https://github.com/preservim/vim-markdown/
+- https://github.com/simrat39/rust-tools.nvim
+- https://github.com/williamboman/nvim-lsp-installers
+- https://github.com/windwp/nvim-autopairs

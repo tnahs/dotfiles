@@ -1,28 +1,46 @@
+-- https://github.com/jose-elias-alvarez/null-ls.nvim
+
+-- Find additional formatters/diagnostics from:
 -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/formatting
 -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/diagnostics
 
 local null_ls = require("null-ls")
 
 null_ls.setup({
-	debug = false,
-	sources = {
+    debug = false,
+    sources = {
         --
         -- Rust
         -- `rustup component add rustfmt`
-		null_ls.builtins.formatting.rustfmt,
+        null_ls.builtins.formatting.rustfmt,
         --
-		-- Python
+        -- Python
         -- `pipx install black`
         -- `pipx install isort`
         -- `pipx install flake8`
-		null_ls.builtins.formatting.black,
-		null_ls.builtins.formatting.isort.with({
-			extra_args = { "--profile=black", "--lines-after-imports=2" },
-		}),
-		null_ls.builtins.diagnostics.flake8,
+        null_ls.builtins.formatting.black,
+        null_ls.builtins.formatting.isort.with({
+            extra_args = { "--profile", "black", "--lines-after-imports", "2" },
+        }),
+        null_ls.builtins.diagnostics.flake8,
         --
-		-- Lua
+        -- Lua
         -- `brew install stylua`
-		null_ls.builtins.formatting.stylua,
-	},
+        null_ls.builtins.formatting.stylua.with({
+            extra_args = { "--indent-type", "Spaces" },
+        }),
+    },
+    --
+    -- Format file on save.
+    -- https://github.com/jose-elias-alvarez/null-ls.nvim#how-do-i-format-files-on-save
+    on_attach = function(client)
+        if client.resolved_capabilities.document_formatting then
+            vim.cmd([[
+                augroup LspFormatting
+                    autocmd! * <buffer>
+                    autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()
+                augroup END
+            ]])
+        end
+    end,
 })

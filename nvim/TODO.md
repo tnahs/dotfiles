@@ -1,34 +1,54 @@
 # TODO
 
-- [ ] Remove trailing whitespace
-- [x] Fix lua `on_attach` 
-- [ ] Replace tabs with spaces on save
-- [ ] Hide `nvim-tree` icons
-- [ ] Show `nvim-tree` git statu
-- [ ] Format on save
-- [ ] Render whitespace
-- [ ] Close all buffers
-- [ ] Inlay hints
-- [x] Fix lua namespace issue
-- [ ] Rust
+- [x] fix lua namespace issue
+- [x] fix lua `on_attach` 
+- [x] format on save
+- [ ] multiple cursors
+- [ ] remove trailing whitespace on save
+- [ ] replace tabs with spaces on save/paste
+- [ ] add blank line above/below
+- [ ] close all buffers
+- [ ] close buffer without closing split/window
+- [ ] terminal integration
+- [ ] render whitespace
+- [ ] rust
     - [ ] clippy
+    - [ ] inlay hints
     - [x] rust-analyzer
-- [ ] Python
+- [ ] python
+    - [ ] venvs
     - [x] pyright
     - [x] black
     - [x] isort
-- [ ] Markdown
+- [ ] markdown
+    - [ ] linting
+    - [ ] formatting
+- [ ] `telescope`
+    - [ ] preview window 80 chars wide
+- [ ] `nvim-tree`
+    - [ ] highlight files with errors
+    - [ ] hide icons
+    - [ ] show git status
+    - [ ] hide statusline
+- [ ] `indent-blankline`
+    - [ ] dimmer indicators
+- [ ] `bufferline`
+    - [ ] remove `bold,italics`
 
-- https://github.com/godlygeek/tabular
-- https://github.com/kyazdani42/nvim-tree.lua
-- https://github.com/microsoft/pyright
-- https://github.com/nanotee/nvim-lua-guide
-- https://github.com/neovim/nvim-lspconfig
-- https://github.com/numToStr/Comment.nvim
-- https://github.com/nvim-telescope/telescope.nvim
-- https://github.com/nvim-treesitter/nvim-treesitter
-- https://github.com/p00f/nvim-ts-rainbow
-- https://github.com/preservim/vim-markdown/
 - https://github.com/simrat39/rust-tools.nvim
-- https://github.com/williamboman/nvim-lsp-installers
-- https://github.com/windwp/nvim-autopairs
+- https://github.com/simrat39/symbols-outline.nvim
+- https://github.com/folke/which-key.nvim
+- https://github.com/lewis6991/impatient.nvim
+- https://github.com/j-hui/fidget.nvim
+- https://github.com/simrat39/symbols-outline.nvim
+- https://github.com/abecodes/tabout.nvim
+- https://github.com/mcauley-penney/tidy.nvim
+- https://github.com/RRethy/vim-illuminate
+- https://github.com/norcalli/nvim-colorizer.lua
+
+- https://github.com/preservim/vim-markdown
+- https://github.com/godlygeek/tabular
+
+- https://github.com/matze/vim-move
+- https://github.com/mg979/vim-visual-multi
+

@@ -9,6 +9,8 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
         "https://github.com/wbthomason/packer.nvim",
         install_path,
     })
+    print("Installing `packer`... Quit and restart Neovim...")
+    vim.cmd([[packadd packer.nvim]])
 end
 
 -- Autocommand that reloads neovim whenever you save the plugins.lua file
@@ -75,6 +77,9 @@ return packer.startup(function(use)
     use("windwp/nvim-autopairs")
     use("tpope/vim-surround") -- vimscript
     use("tpope/vim-repeat") -- vimscript
+
+    -- Rust
+    use("simrat39/rust-tools.nvim")
 
     -- Themes
     use("dracula/vim")

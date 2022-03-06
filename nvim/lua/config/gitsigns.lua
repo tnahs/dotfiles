@@ -1,6 +1,10 @@
 -- https://github.com/lewis6991/gitsigns.nvim
 
-local gitsigns = require("gitsigns")
+local status_ok, gitsigns = pcall(require, "gitsigns")
+if not status_ok then
+    print("Failed to load plugin: `lewis6991/gitsigns.nvim`.")
+    return
+end
 
 gitsigns.setup({
     signs = {

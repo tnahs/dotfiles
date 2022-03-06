@@ -1,6 +1,10 @@
 -- https://github.com/kyazdani42/nvim-tree.lua
 
-local nvim_tree = require("nvim-tree")
+local status_ok, nvim_tree = pcall(require, "nvim-tree")
+if not status_ok then
+    print("Failed to load plugin: `nvim-tree`.")
+    return
+end
 
 nvim_tree.setup({
     view = {

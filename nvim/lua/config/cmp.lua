@@ -1,7 +1,12 @@
 -- https://github.com/hrsh7th/nvim-cmp
 -- https://github.com/L3MON4D3/LuaSnip
 
-local cmp = require("cmp")
+local status_ok, cmp = pcall(require, "cmp")
+if not status_ok then
+    print("Failed to load plugin: `hrsh7th/nvim-cmp`.")
+    return
+end
+
 local luasnip = require("luasnip")
 
 require("luasnip.loaders.from_vscode").lazy_load()
@@ -50,7 +55,7 @@ cmp.setup({
         end, { "i", "s" }),
     },
     sources = {
-        { name = "nvim_lsp" },
+        { name = "nvim_lsp" }, -- https://github.com/hrsh7th/cmp-nvim-lsp
         { name = "nvim_lua" },
         { name = "luasnip" },
         { name = "buffer" },

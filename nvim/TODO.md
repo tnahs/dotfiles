@@ -7,7 +7,7 @@
 - [ ] remove trailing whitespace on save
 - [ ] replace tabs with spaces on save/paste
 - [ ] add blank line above/below
-- [ ] close all buffers
+- [x] close all buffers
 - [ ] close buffer without closing split/window
 - [ ] terminal integration
 - [ ] render whitespace

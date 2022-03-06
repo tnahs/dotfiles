@@ -1,9 +1,11 @@
 -- https://github.com/nvim-telescope/telescope.nvim
 -- `brew install ripgrep`
 
--- TODO Make preview window 80 chars wide.
-
-local telescope = require("telescope")
+local status_ok, telescope = pcall(require, "telescope")
+if not status_ok then
+    print("Failed to load plugin: `nvim-telescope/telescope.nvim`.")
+    return
+end
 
 local actions = require("telescope.actions")
 

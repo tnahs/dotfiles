@@ -18,7 +18,11 @@ vim.api.nvim_set_keymap("n", "<C-e>", "3<C-e>M", opts)
 vim.api.nvim_set_keymap("n", "<C-y>", "3<C-y>M", opts)
 
 -- Save current buffer
-vim.api.nvim_set_keymap("n", "<leader>s", ":w<CR>", opts)
+vim.api.nvim_set_keymap("n", "<leader>w", ":w<CR>", opts)
+
+-- Close all buffers
+vim.api.nvim_set_keymap("n", "<leader>d", ":bdelete<CR>", opts)
+vim.api.nvim_set_keymap("n", "<leader>da", ":%bdelete<CR>", opts)
 
 -- Source current buffer
 vim.api.nvim_set_keymap("n", "<leader>r", ":source %<CR>", opts)

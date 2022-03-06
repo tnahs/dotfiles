@@ -1,4 +1,12 @@
-local lspconfig = require("lspconfig")
+-- https://github.com/neovim/nvim-lspconfig
+-- https://github.com/williamboman/nvim-lsp-installer/
+
+local status_ok, lspconfig = pcall(require, "lspconfig")
+if not status_ok then
+    print("failed to load plugin: `lspconfig`.")
+    return
+end
+
 local lsp_installer = require("nvim-lsp-installer")
 local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
@@ -25,6 +33,15 @@ end
 -- Add additional capabilities supported by `nvim-cmp`
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
+
+-- Auto-install servers on start-up.
+local servers = { "rust_analyzer", "pyright", "sumneko_lua" }
+for _, name in ipairs(servers) do
+    local exists, server = lsp_installer.get_server(name)
+    if exists then
+        server:install()
+    end
+end
 
 lsp_installer.on_server_ready(function(server)
     local server_opts = {

@@ -4,7 +4,11 @@
 -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/formatting
 -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/diagnostics
 
-local null_ls = require("null-ls")
+local status_ok, null_ls = pcall(require, "null-ls")
+if not status_ok then
+    print("Failed to load plugin: `jose-elias-alvarez/null-ls.nvim`.")
+    return
+end
 
 null_ls.setup({
     debug = false,

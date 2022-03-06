@@ -1,6 +1,10 @@
 -- https://github.com/akinsho/bufferline.nvim
 
-local bufferline = require("bufferline")
+local status_ok, bufferline = pcall(require, "bufferline")
+if not status_ok then
+    print("Failed to load plugin: `akinsho/bufferline.nvim`.")
+    return
+end
 
 bufferline.setup({
     options = {

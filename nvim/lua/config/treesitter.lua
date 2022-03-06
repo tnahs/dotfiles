@@ -1,6 +1,10 @@
 -- https://github.com/nvim-treesitter/nvim-treesitter
 
-local treesitter = require("nvim-treesitter.configs")
+local status_ok, treesitter = pcall(require, "nvim-treesitter.configs")
+if not status_ok then
+    print("Failed to load plugin: `nvim-treesitter/nvim-treesitter`.")
+    return
+end
 
 treesitter.setup({
     ensure_installed = "maintained",

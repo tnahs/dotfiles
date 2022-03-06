@@ -11,9 +11,14 @@
 - [ ] close buffer without closing split/window
 - [ ] terminal integration
 - [ ] render whitespace
+- [ ] `nvim-tree`
+    - [ ] highlight files with errors
+    - [ ] hide icons
+    - [ ] show git status
+    - [ ] hide statusline
 - [ ] rust
-    - [ ] clippy
-    - [ ] inlay hints
+    - [x] clippy
+    - [x] inlay hints
     - [x] rust-analyzer
 - [ ] python
     - [ ] venvs
@@ -25,11 +30,6 @@
     - [ ] formatting
 - [ ] `telescope`
     - [ ] preview window 80 chars wide
-- [ ] `nvim-tree`
-    - [ ] highlight files with errors
-    - [ ] hide icons
-    - [ ] show git status
-    - [ ] hide statusline
 - [ ] `indent-blankline`
     - [ ] dimmer indicators
 - [ ] `bufferline`

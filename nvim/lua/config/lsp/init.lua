@@ -50,8 +50,9 @@ lsp_installer.on_server_ready(function(server)
     }
 
     if server.name == "rust_analyzer" then
-        local rust_opts = require("config.lsp.settings.rust_analyzer")
-        server_opts = vim.tbl_deep_extend("force", rust_opts, server_opts)
+        -- Handing off server initilization to `simrat39/rust-tools.nvim`.
+        require("config.lsp.rust-tools").setup(server, server_opts)
+        return
     end
 
     if server.name == "pyright" then

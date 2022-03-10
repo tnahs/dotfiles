@@ -49,6 +49,7 @@ function link_dotfiles {
     ln -siv $HOME/.dotfiles/karabiner $HOME/.config/karabiner
     ln -siv $HOME/.dotfiles/hammerspoon $HOME/.hammerspoon
     ln -siv $HOME/.dotfiles/alacritty/alacritty.yml $HOME/.alacritty.yml
+    ln -siv $HOME/.dotfiles/kitty $HOME/.config/kitty
     ln -siv $HOME/.dotfiles/nvim $HOME/.config/nvim
 }
 
@@ -60,3 +61,4 @@ function main {
 
 
 main
+

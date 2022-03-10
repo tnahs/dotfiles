@@ -1,7 +1,7 @@
 -- https://github.com/nvim-lualine/lualine.nvim
 
-local status_ok, lualine = pcall(require, "lualine")
-if not status_ok then
+local ok, lualine = pcall(require, "lualine")
+if not ok then
     print("Failed to load plugin: `nvim-lualine/lualine.nvim`.")
     return
 end
@@ -11,5 +11,6 @@ lualine.setup({
         icons_enabled = false,
         section_separators = "",
         component_separators = "",
+        disabled_filetypes = { "NvimTree" },
     },
 })

@@ -1,54 +1,59 @@
 # TODO
 
+## Fix/Setup
+
 - [x] fix lua namespace issue
-- [x] fix lua `on_attach` 
+- [x] fix lua `on_attach`
 - [x] format on save
 - [ ] multiple cursors
-- [ ] remove trailing whitespace on save
+- [x] remove trailing whitespace on save
 - [ ] replace tabs with spaces on save/paste
 - [ ] add blank line above/below
 - [x] close all buffers
-- [ ] close buffer without closing split/window
+- [x] close buffer without closing split/window
 - [ ] terminal integration
-- [ ] render whitespace
-- [ ] `nvim-tree`
-    - [ ] highlight files with errors
-    - [ ] hide icons
-    - [ ] show git status
-    - [ ] hide statusline
-- [ ] rust
-    - [x] clippy
-    - [x] inlay hints
-    - [x] rust-analyzer
+- [x] render whitespace
+- [x] `nvim-tree`
+  - [x] highlight files with errors
+  - [x] hide icons
+  - [x] show git status
+  - [x] hide statusline
+- [x] rust
+  - [x] clippy
+  - [x] inlay hints
+  - [x] rust-analyzer
 - [ ] python
-    - [ ] venvs
-    - [x] pyright
-    - [x] black
-    - [x] isort
-- [ ] markdown
-    - [ ] linting
-    - [ ] formatting
-- [ ] `telescope`
-    - [ ] preview window 80 chars wide
-- [ ] `indent-blankline`
-    - [ ] dimmer indicators
-- [ ] `bufferline`
-    - [ ] remove `bold,italics`
+  - [ ] venvs
+  - [x] pyright
+  - [x] black
+  - [x] isort
+- [x] markdown
+  - [x] linting
+  - [x] formatting
+- [x] `telescope`
+  - [x] preview window 80 chars wide
+- [x] `indent-blankline`
+  - [x] dimmer indicators
+- [x] `bufferline`
+  - [x] remove `bold,italics`
+- [x] manually install lsp servers?
 
-- https://github.com/simrat39/rust-tools.nvim
-- https://github.com/simrat39/symbols-outline.nvim
-- https://github.com/folke/which-key.nvim
-- https://github.com/lewis6991/impatient.nvim
-- https://github.com/j-hui/fidget.nvim
-- https://github.com/simrat39/symbols-outline.nvim
-- https://github.com/abecodes/tabout.nvim
-- https://github.com/mcauley-penney/tidy.nvim
-- https://github.com/RRethy/vim-illuminate
-- https://github.com/norcalli/nvim-colorizer.lua
+## Try
 
-- https://github.com/preservim/vim-markdown
-- https://github.com/godlygeek/tabular
+- <https://github.com/rockerBOO/awesome-neovim/>
+- <https://github.com/norcalli/nvim-colorizer.lua>
+- <https://github.com/folke/trouble.nvim>
+- <https://github.com/simrat39/symbols-outline.nvim>
+- <https://github.com/kevinhwang91/nvim-bqf>
 
-- https://github.com/matze/vim-move
-- https://github.com/mg979/vim-visual-multi
+- <https://github.com/b0o/SchemaStore.nvim>
+- <https://github.com/godlygeek/tabular>
+- <https://github.com/preservim/vim-markdown>
 
+- <https://github.com/abecodes/tabout.nvim>
+- <https://github.com/folke/which-key.nvim>
+- <https://github.com/lewis6991/impatient.nvim>
+- <https://github.com/kkoomen/vim-doge>
+
+- <https://github.com/matze/vim-move>
+- <https://github.com/mg979/vim-visual-multi>

@@ -1,7 +1,7 @@
 -- https://github.com/windwp/nvim-autopairs
 
-local status_ok, autopairs = pcall(require, "nvim-autopairs")
-if not status_ok then
+local ok, autopairs = pcall(require, "nvim-autopairs")
+if not ok then
     print("Failed to load plugin: `windwp/nvim-autopairs`.")
     return
 end

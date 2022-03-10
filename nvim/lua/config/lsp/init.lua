@@ -1,69 +1,60 @@
 -- https://github.com/neovim/nvim-lspconfig
--- https://github.com/williamboman/nvim-lsp-installer/
+--
+-- required: brew install rust-analyzer
+-- required: brew install pyright
+-- required: brew install lua-language-server
 
-local status_ok, lspconfig = pcall(require, "lspconfig")
-if not status_ok then
-    print("failed to load plugin: `lspconfig`.")
+local ok, lspconfig = pcall(require, "lspconfig")
+if not ok then
+    print("Failed to load plugin: `neovim/nvim-lspconfig`.")
     return
 end
 
-local lsp_installer = require("nvim-lsp-installer")
 local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
 local opts = { noremap = true, silent = true }
 
-vim.api.nvim_set_keymap("n", "<space>e", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
-vim.api.nvim_set_keymap("n", "<space>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
-vim.api.nvim_set_keymap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
-vim.api.nvim_set_keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
+vim.api.nvim_set_keymap("n", "<leader>e", ":lua vim.diagnostic.open_float()<CR>", opts)
+vim.api.nvim_set_keymap("n", "<leader>q", ":lua vim.diagnostic.setloclist()<CR>", opts)
+vim.api.nvim_set_keymap("n", "[d", ":lua vim.diagnostic.goto_prev()<CR>", opts)
+vim.api.nvim_set_keymap("n", "]d", ":lua vim.diagnostic.goto_next()<CR>", opts)
 
 local on_attach = function(client, bufnr)
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "gh", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "<space>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "<space>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "gd", ":lua vim.lsp.buf.definition()<CR>", opts)
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "gh", ":lua vim.lsp.buf.hover()<CR>", opts)
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "gn", ":lua vim.lsp.buf.rename()<CR>", opts)
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "gf", ":lua vim.lsp.buf.formatting()<CR>", opts)
 
-    -- Using `null-ls` to take care of formatting. See `lua/config/null-ls.lua`.
+    -- Using null-ls` to take care of formatting. See `lua/config/null-ls.lua`.
     client.resolved_capabilities.document_formatting = false
+
+    -- Uses the LSP to automaticallty highlight all occurances of the current
+    -- word under the cursor.
+    require("config.lsp.illuminate").setup(client)
 end
 
--- Add additional capabilities supported by `nvim-cmp`
+-- Add additional capabilities supported by nvim-cmp`.
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
 
--- Auto-install servers on start-up.
-local servers = { "rust_analyzer", "pyright", "sumneko_lua" }
-for _, name in ipairs(servers) do
-    local exists, server = lsp_installer.get_server(name)
-    if exists then
-        server:install()
-    end
+-- Setup language servers.
+
+local servers = { "pyright", "sumneko_lua" }
+local server_default_opts = {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    flags = {
+        -- This will be the default in neovim 0.7+
+        debounce_text_changes = 150,
+    },
+}
+
+for _, server in pairs(servers) do
+    local server_settings = require("config.lsp.settings." .. server)
+    local server_opts = vim.tbl_deep_extend("force", server_settings, server_default_opts)
+
+    lspconfig[server].setup(server_opts)
 end
 
-lsp_installer.on_server_ready(function(server)
-    local server_opts = {
-        on_attach = on_attach,
-        capabilities = capabilities,
-    }
-
-    if server.name == "rust_analyzer" then
-        -- Handing off server initilization to `simrat39/rust-tools.nvim`.
-        require("config.lsp.rust-tools").setup(server, server_opts)
-        return
-    end
-
-    if server.name == "pyright" then
-        local python_opts = require("config.lsp.settings.pyright")
-        server_opts = vim.tbl_deep_extend("force", python_opts, server_opts)
-    end
-
-    if server.name == "sumneko_lua" then
-        local lua_opts = require("config.lsp.settings.sumneko_lua")
-        server_opts = vim.tbl_deep_extend("force", lua_opts, server_opts)
-    end
-
-    server:setup(server_opts)
-end)
+-- required: rust-analyzer is setup using `rust-tools`.
+require("config.lsp.rust-tools").setup(server_default_opts)

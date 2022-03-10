@@ -13,7 +13,7 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
     vim.cmd([[packadd packer.nvim]])
 end
 
--- Autocommand that reloads neovim whenever you save the plugins.lua file
+-- Reloads Neovim's configuration and syncs packer when this file is saved.
 vim.cmd([[
   augroup packer_user_config
     autocmd!
@@ -21,22 +21,21 @@ vim.cmd([[
   augroup end
 ]])
 
--- Use a protected call so we don't error out on first use
+-- Use a protected call so we don't error out on first use.
 local ok, packer = pcall(require, "packer")
 if not ok then
     return
 end
 
 return packer.startup(function(use)
-    -- Utils
+    -- -- Utils
     use("nvim-lua/plenary.nvim")
-
-    -- Packer
+    --
+    -- -- Packer
     use("wbthomason/packer.nvim")
-
+    --
     -- Neovim LSP
     use("neovim/nvim-lspconfig")
-    use("williamboman/nvim-lsp-installer")
     use("jose-elias-alvarez/null-ls.nvim")
 
     -- Completion/Snippets
@@ -59,24 +58,21 @@ return packer.startup(function(use)
     use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
     use("p00f/nvim-ts-rainbow")
 
-    -- NvimTree
-    use("kyazdani42/nvim-tree.lua")
-
-    -- LuaLine
-    use("nvim-lualine/lualine.nvim")
-
-    -- GitSigns
-    use("lewis6991/gitsigns.nvim")
-
-    -- Bufferline
-    use("akinsho/bufferline.nvim")
-
     -- Misc
+    use("kyazdani42/nvim-tree.lua")
+    use("nvim-lualine/lualine.nvim")
+    use("lewis6991/gitsigns.nvim")
+    use("akinsho/bufferline.nvim")
+    use("ThePrimeagen/harpoon")
     use("numToStr/Comment.nvim")
-    use("lukas-reineke/indent-blankline.nvim")
+    use("folke/todo-comments.nvim")
     use("windwp/nvim-autopairs")
     use("tpope/vim-surround") -- vimscript
     use("tpope/vim-repeat") -- vimscript
+    use("j-hui/fidget.nvim")
+    use("famiu/bufdelete.nvim")
+    use("RRethy/vim-illuminate")
+    use("lukas-reineke/indent-blankline.nvim")
 
     -- Rust
     use("simrat39/rust-tools.nvim")
@@ -84,11 +80,7 @@ return packer.startup(function(use)
     -- Themes
     use("dracula/vim")
     use("arcticicestudio/nord-vim")
-    use("haxibami/urara.vim")
-    use("frenzyexists/aquarium-vim")
     use("marko-cerovac/material.nvim")
-    use("bluz71/vim-nightfly-guicolors")
-    use("bluz71/vim-moonfly-colors")
     use("folke/tokyonight.nvim")
     use("sainnhe/gruvbox-material")
 

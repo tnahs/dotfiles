@@ -1,7 +1,7 @@
 -- https://github.com/lewis6991/gitsigns.nvim
 
-local status_ok, gitsigns = pcall(require, "gitsigns")
-if not status_ok then
+local ok, gitsigns = pcall(require, "gitsigns")
+if not ok then
     print("Failed to load plugin: `lewis6991/gitsigns.nvim`.")
     return
 end

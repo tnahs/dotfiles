@@ -27,6 +27,7 @@ local options = {
     mouse = "a",
     number = true,
     pumheight = 15,
+    relativenumber = true,
     scrolloff = 8,
     shiftwidth = 4,
     showmode = false,
@@ -58,20 +59,20 @@ vim.opt.fillchars = {
     eob = " ",
 }
 
--- Disable Vim's default `Todo` and `Error` syntax highlighting.
-vim.cmd([[
-  augroup DisableSyntax
-    autocmd VimEnter * highlight clear Todo
-    autocmd VimEnter * highlight link Todo Comment
-    autocmd VimEnter * highlight clear Error
-    autocmd VimEnter * highlight link Error Comment
-  augroup end
-]])
-
 -- Highlight selection on yank.
 vim.cmd([[
   augroup YankHighlight
     autocmd!
     autocmd TextYankPost * silent! lua vim.highlight.on_yank()
+  augroup end
+]])
+
+-- Disable Vim's default `Todo` and `Error` syntax highlighting.
+vim.cmd([[
+  augroup DisableDefaultHighlights
+    autocmd VimEnter * highlight clear Todo
+    autocmd VimEnter * highlight link Todo Comment
+    autocmd VimEnter * highlight clear Error
+    autocmd VimEnter * highlight link Error Comment
   augroup end
 ]])

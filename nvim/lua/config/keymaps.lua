@@ -27,6 +27,8 @@ vim.api.nvim_set_keymap("n", "<leader>w", ":write<CR>", opts)
 vim.api.nvim_set_keymap("n", "L", ":bnext<CR>", opts)
 vim.api.nvim_set_keymap("n", "H", ":bprevious<CR>", opts)
 
+vim.api.nvim_set_keymap("n", "<A-f>", ":lua print('hi')", opts)
+
 -- Create a window split.
 vim.api.nvim_set_keymap("n", "<C-s>h", ":split<CR>", opts)
 vim.api.nvim_set_keymap("n", "<C-s>v", ":vsplit<CR>", opts)
@@ -52,10 +54,11 @@ vim.api.nvim_set_keymap("n", "<C-j>", "<C-w>j", opts)
 vim.api.nvim_set_keymap("n", "<C-k>", "<C-w>k", opts)
 vim.api.nvim_set_keymap("n", "<C-l>", "<C-w>l", opts)
 
--- TODO: Find good keymappings for these.
--- Cycle through QuickFix list.
--- vim.api.nvim_set_keymap("n", "<C-l>", ":cnext<CR>", opts)
--- vim.api.nvim_set_keymap("n", "<C-L>", ":cprev<CR>", opts)
+-- Cycle through Quickfix and Local list.
+vim.api.nvim_set_keymap("n", "<A-j>", ":cnext<CR>", opts)
+vim.api.nvim_set_keymap("n", "<A-k>", ":cprev<CR>", opts)
+vim.api.nvim_set_keymap("n", "<leader>j", ":lnext<CR>", opts)
+vim.api.nvim_set_keymap("n", "<leader>k", ":lprev<CR>", opts)
 
 -- Insert ----------------------------------------------------------------------
 

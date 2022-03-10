@@ -8,7 +8,7 @@
 - [ ] multiple cursors
 - [x] remove trailing whitespace on save
 - [ ] replace tabs with spaces on save/paste
-- [ ] add blank line above/below
+- [x] add blank line above/below
 - [x] close all buffers
 - [x] close buffer without closing split/window
 - [ ] terminal integration
@@ -40,11 +40,10 @@
 
 ## Try
 
-- <https://github.com/rockerBOO/awesome-neovim/>
-- <https://github.com/norcalli/nvim-colorizer.lua>
+- <https://github.com/rockerBOO/awesome-neovim>
 - <https://github.com/folke/trouble.nvim>
-- <https://github.com/simrat39/symbols-outline.nvim>
 - <https://github.com/kevinhwang91/nvim-bqf>
+- <https://github.com/tpope/vim-abolish>
 
 - <https://github.com/b0o/SchemaStore.nvim>
 - <https://github.com/godlygeek/tabular>

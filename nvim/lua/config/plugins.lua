@@ -1,4 +1,4 @@
--- Automatically install packer
+-- Automatically install `packer`.
 local install_path = vim.fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
     PACKER_BOOTSTRAP = vim.fn.system({
@@ -13,7 +13,7 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
     vim.cmd([[packadd packer.nvim]])
 end
 
--- Reloads Neovim's configuration and syncs packer when this file is saved.
+-- Reloads Neovim's configuration and syncs `packer` when this file is saved.
 vim.cmd([[
   augroup packer_user_config
     autocmd!
@@ -21,17 +21,16 @@ vim.cmd([[
   augroup end
 ]])
 
--- Use a protected call so we don't error out on first use.
 local ok, packer = pcall(require, "packer")
 if not ok then
     return
 end
 
 return packer.startup(function(use)
-    -- -- Utils
+    -- Utils
     use("nvim-lua/plenary.nvim")
     --
-    -- -- Packer
+    -- Packer
     use("wbthomason/packer.nvim")
     --
     -- Neovim LSP
@@ -58,12 +57,16 @@ return packer.startup(function(use)
     use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
     use("p00f/nvim-ts-rainbow")
 
+    -- Rust
+    use("simrat39/rust-tools.nvim")
+
     -- Misc
     use("kyazdani42/nvim-tree.lua")
     use("nvim-lualine/lualine.nvim")
     use("lewis6991/gitsigns.nvim")
     use("akinsho/bufferline.nvim")
     use("ThePrimeagen/harpoon")
+    use("simrat39/symbols-outline.nvim")
     use("numToStr/Comment.nvim")
     use("folke/todo-comments.nvim")
     use("windwp/nvim-autopairs")
@@ -72,17 +75,12 @@ return packer.startup(function(use)
     use("j-hui/fidget.nvim")
     use("famiu/bufdelete.nvim")
     use("RRethy/vim-illuminate")
+    use("norcalli/nvim-colorizer.lua")
     use("lukas-reineke/indent-blankline.nvim")
-
-    -- Rust
-    use("simrat39/rust-tools.nvim")
+    use("fladson/vim-kitty")
 
     -- Themes
-    use("dracula/vim")
-    use("arcticicestudio/nord-vim")
-    use("marko-cerovac/material.nvim")
     use("folke/tokyonight.nvim")
-    use("sainnhe/gruvbox-material")
 
     if PACKER_BOOTSTRAP then
         require("packer").sync()

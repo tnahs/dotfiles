@@ -1,6 +1,6 @@
 -- https://github.com/hrsh7th/nvim-cmp
 
-local ok, cmp = pcall(require, "cmp")
+local ok, nvim_cmp = pcall(require, "cmp")
 if not ok then
     print("Failed to load plugin: `hrsh7th/nvim-cmp`.")
     return
@@ -14,36 +14,36 @@ local has_words_before = function()
     return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 
-cmp.setup({
+nvim_cmp.setup({
     snippet = {
         expand = function(args)
             luasnip.lsp_expand(args.body)
         end,
     },
     mapping = {
-        ["<C-p>"] = cmp.mapping.complete(),
-        ["<C-j>"] = cmp.mapping.select_next_item(),
-        ["<C-k>"] = cmp.mapping.select_prev_item(),
-        ["<C-d>"] = cmp.mapping.scroll_docs(-3),
-        ["<C-f>"] = cmp.mapping.scroll_docs(3),
-        ["<C-e>"] = cmp.mapping.close(),
+        ["<C-p>"] = nvim_cmp.mapping.complete(),
+        ["<C-j>"] = nvim_cmp.mapping.select_next_item(),
+        ["<C-k>"] = nvim_cmp.mapping.select_prev_item(),
+        ["<C-d>"] = nvim_cmp.mapping.scroll_docs(-3),
+        ["<C-f>"] = nvim_cmp.mapping.scroll_docs(3),
+        ["<C-e>"] = nvim_cmp.mapping.close(),
         -- Set `select` to `false` to only confirm explicitly selected items.
-        ["<CR>"] = cmp.mapping.confirm({ select = false }),
+        ["<CR>"] = nvim_cmp.mapping.confirm({ select = false }),
         -- WIP Do we want to use `Tab` here?
-        ["<Tab>"] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-                cmp.select_next_item()
+        ["<Tab>"] = nvim_cmp.mapping(function(fallback)
+            if nvim_cmp.visible() then
+                nvim_cmp.select_next_item()
             elseif luasnip.expand_or_jumpable() then
                 luasnip.expand_or_jump()
             elseif has_words_before() then
-                cmp.complete()
+                nvim_cmp.complete()
             else
                 fallback()
             end
         end, { "i", "s" }),
-        ["<S-Tab>"] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-                cmp.select_prev_item()
+        ["<S-Tab>"] = nvim_cmp.mapping(function(fallback)
+            if nvim_cmp.visible() then
+                nvim_cmp.select_prev_item()
             elseif luasnip.jumpable(-1) then
                 luasnip.jump(-1)
             else

@@ -1,12 +1,12 @@
 -- https://github.com/jose-elias-alvarez/null-ls.nvim
 
--- Find additional formatters/diagnostics from:
+-- Find additional formatters/diagnostics at:
 -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/formatting
 -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/diagnostics
 
 local ok, null_ls = pcall(require, "null-ls")
 if not ok then
-    print("Faileds to load plugin: jose-elias-alvarez/null-ls.nvim`.")
+    print("Faileds to load plugin: `jose-elias-alvarez/null-ls.nvim`.")
     return
 end
 
@@ -38,7 +38,7 @@ null_ls.setup({
         -- markdown/json/yaml/html/css/javascript/typescript
         -- required: brew install prettier
         null_ls.builtins.formatting.prettier.with({
-            -- TODO Should these be file extensions or names?
+            -- TODO: Should these be file extensions or names?
             filetypes = { "md", "json", "yaml", "html", "css", "js", "ts" },
         }),
         --

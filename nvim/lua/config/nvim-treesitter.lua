@@ -2,13 +2,13 @@
 --
 -- required: TSInstall markdown
 
-local ok, treesitter = pcall(require, "nvim-treesitter.configs")
+local ok, nvim_treesitter = pcall(require, "nvim-treesitter.configs")
 if not ok then
     print("Failed to load plugin: `nvim-treesitter/nvim-treesitter`.")
     return
 end
 
-treesitter.setup({
+nvim_treesitter.setup({
     ensure_installed = "maintained",
     highlight = {
         enable = true,

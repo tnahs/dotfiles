@@ -27,7 +27,7 @@ vim.g.nvim_tree_icons = {
 
 local ok, nvim_tree = pcall(require, "nvim-tree")
 if not ok then
-    print("Failed to load plugin: `nvim-tree`.")
+    print("Failed to load plugin: `kyazdani42/nvim-tree.lua`.")
     return
 end
 
@@ -49,7 +49,7 @@ nvim_tree.setup({
     },
 })
 
--- Keymaps --------------------------------------------------------------------
+-- Keymaps ---------------------------------------------------------------------
 
 local opts = { noremap = true, silent = true }
 

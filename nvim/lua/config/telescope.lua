@@ -7,6 +7,7 @@ if not ok then
     print("Failed to load plugin: `nvim-telescope/telescope.nvim`.")
     return
 end
+
 local actions = require("telescope.actions")
 
 telescope.setup({

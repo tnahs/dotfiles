@@ -1,12 +1,12 @@
 -- https://github.com/windwp/nvim-autopairs
 
-local ok, autopairs = pcall(require, "nvim-autopairs")
+local ok, nvim_autopairs = pcall(require, "nvim-autopairs")
 if not ok then
     print("Failed to load plugin: `windwp/nvim-autopairs`.")
     return
 end
 
-autopairs.setup({
+nvim_autopairs.setup({
     check_ts = true,
     fast_wrap = {
         map = "<C-l>",

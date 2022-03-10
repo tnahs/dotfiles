@@ -6,6 +6,8 @@ if not ok then
     return
 end
 
+-- Keymaps ---------------------------------------------------------------------
+
 local opts = { noremap = true, silent = true }
 
 -- Close current buffer.

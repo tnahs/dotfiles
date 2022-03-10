@@ -75,7 +75,7 @@ class Bup:
             return
 
         for choice in self._to_run:
-            func: Callable = getattr(self, f"_run__{choice}")
+            func: Callable[..., None] = getattr(self, f"_run__{choice}")
             logging.debug(f"Running {type(self).__name__}.{func.__name__}...")
             func()
 
@@ -214,14 +214,6 @@ class Bup:
             recursive=True,
             verbose=self._is_verbose,
         )
-
-        #
-
-        logger.info("Dumping up VSCode extensions list...")
-
-        vscode_extensions = DotfilePaths.root / "vscode" / "extensions.txt"
-
-        Shell.run(command=["code", "--list-extensions", ">", vscode_extensions])
 
     def _run__media(self) -> None:
 

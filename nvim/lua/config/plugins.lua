@@ -82,7 +82,9 @@ return packer.startup(function(use)
     use("norcalli/nvim-colorizer.lua")
     use("lukas-reineke/indent-blankline.nvim")
     use({ "mcauley-penney/tidy.nvim", branch = "cfg" })
+    use("kevinhwang91/nvim-bqf")
     use("fladson/vim-kitty")
+    use("akinsho/toggleterm.nvim")
 
     -- Themes
     use("folke/tokyonight.nvim")

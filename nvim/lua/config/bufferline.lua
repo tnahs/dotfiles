@@ -11,7 +11,7 @@ bufferline.setup({
         indicator_icon = " ",
         separator_style = { "", "" },
         show_close_icon = false,
-        tab_size = 24,
+        tab_size = 32,
         left_trunc_marker = "◀",
         right_trunc_marker = "▶",
         diagnostics = "nvim_lsp",
@@ -37,7 +37,7 @@ local opts = { noremap = true, silent = true }
 vim.api.nvim_set_keymap("n", "cc", ":BufferLineCloseLeft<CR> | :BufferLineCloseRight<CR>", opts)
 
 -- Navigate buffers.
-vim.api.nvim_set_keymap("n", "<A-l>", ":BufferLineCycleNext<CR>", opts)
-vim.api.nvim_set_keymap("n", "<A-h>", ":BufferLineCyclePrev<CR>", opts)
+vim.api.nvim_set_keymap("n", "L", ":BufferLineCycleNext<CR>", opts)
+vim.api.nvim_set_keymap("n", "H", ":BufferLineCyclePrev<CR>", opts)
 vim.api.nvim_set_keymap("n", "<A-Tab>", ":BufferLineCycleNext<CR>", opts)
 vim.api.nvim_set_keymap("n", "<A-S-Tab>", ":BufferLineCyclePrev<CR>", opts)

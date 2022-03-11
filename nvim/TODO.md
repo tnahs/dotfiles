@@ -9,7 +9,7 @@
 - [ ] multiple cursors
 - [x] remove trailing whitespace on save
 - [x] replace trailing newlines with a single line
-- [ ] replace tabs with spaces on save/paste
+- [x] replace tabs with spaces on save/paste
 - [x] add blank line above/below
 - [x] close all buffers
 - [x] close buffer without closing split/window
@@ -43,17 +43,17 @@
 ## Try
 
 - <https://github.com/rockerBOO/awesome-neovim>
-- <https://github.com/folke/trouble.nvim>
-- <https://github.com/kevinhwang91/nvim-bqf>
+
 - <https://github.com/folke/which-key.nvim>
-- <https://github.com/abecodes/tabout.nvim>
+- <https://github.com/folke/trouble.nvim>
 
 - <https://github.com/b0o/SchemaStore.nvim>
 - <https://github.com/godlygeek/tabular>
 - <https://github.com/preservim/vim-markdown>
+- <https://github.com/rcarriga/nvim-notify>
 
 - <https://github.com/tpope/vim-abolish>
 - <https://github.com/lewis6991/impatient.nvim>
-- <https://github.com/kkoomen/vim-doge>
 - <https://github.com/matze/vim-move>
 - <https://github.com/mg979/vim-visual-multi>
+- <https://github.com/kkoomen/vim-doge>

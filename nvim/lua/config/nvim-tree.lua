@@ -1,6 +1,6 @@
 -- https://github.com/kyazdani42/nvim-tree.lua
 
--- This needs to be set before the plug-in loads.
+-- This needs to be set before the plugin loads.
 vim.g.nvim_tree_indent_markers = 1
 vim.g.nvim_tree_icons = {
     default = "",
@@ -34,7 +34,7 @@ end
 -- FIX: Opening a file with `<CR>` creates an evenly split tab.
 nvim_tree.setup({
     view = {
-        width = 30,
+        width = 35,
         hide_root_folder = true,
     },
     diagnostics = {
@@ -54,4 +54,4 @@ nvim_tree.setup({
 local opts = { noremap = true, silent = true }
 
 -- Toggle NvimTree.
-vim.api.nvim_set_keymap("n", "B", ":NvimTreeToggle<CR>", opts)
+vim.api.nvim_set_keymap("n", "<C-b>", ":NvimTreeToggle<CR>", opts)

@@ -41,14 +41,14 @@ vim.api.nvim_set_keymap("n", "<A-Up>", ":resize +2<CR>", opts)
 vim.api.nvim_set_keymap("n", "<A-Right>", ":vertical resize +2<CR>", opts)
 
 -- Window navigation using `Control` + `hjkl`.
-vim.api.nvim_set_keymap("n", "H", "<C-w>h", opts)
-vim.api.nvim_set_keymap("n", "J", "<C-w>j", opts)
-vim.api.nvim_set_keymap("n", "K", "<C-w>k", opts)
-vim.api.nvim_set_keymap("n", "L", "<C-w>l", opts)
+vim.api.nvim_set_keymap("n", "<C-h>", "<C-w>h", opts)
+vim.api.nvim_set_keymap("n", "<C-j>", "<C-w>j", opts)
+vim.api.nvim_set_keymap("n", "<C-k>", "<C-w>k", opts)
+vim.api.nvim_set_keymap("n", "<C-l>", "<C-w>l", opts)
 
 -- Cycle through Quickfix and Local list.
-vim.api.nvim_set_keymap("n", "<C-j>", ":cnext<CR>", opts)
-vim.api.nvim_set_keymap("n", "<C-k>", ":cprev<CR>", opts)
+vim.api.nvim_set_keymap("n", "<A-j>", ":cnext<CR>", opts)
+vim.api.nvim_set_keymap("n", "<A-k>", ":cprev<CR>", opts)
 vim.api.nvim_set_keymap("n", "<leader>j", ":lnext<CR>", opts)
 vim.api.nvim_set_keymap("n", "<leader>k", ":lprev<CR>", opts)
 

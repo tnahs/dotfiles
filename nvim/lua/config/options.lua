@@ -10,7 +10,6 @@ local fill_columns = function(start, stop)
 end
 
 local options = {
-    swapfile = false,
     background = "dark",
     clipboard = "unnamedplus",
     cmdheight = 1,
@@ -39,6 +38,7 @@ local options = {
     spellsuggest = { "best", "10" },
     splitbelow = true,
     splitright = true,
+    swapfile = false,
     tabstop = 4,
     termguicolors = true,
     undofile = true,
@@ -53,12 +53,13 @@ end
 -- Treat `-` as part of a word when using `w` e.g. `this-is-one-word`.
 vim.opt.iskeyword:append("-")
 
+-- Suppress completion messages.
 vim.opt.shortmess:append("c")
 
 vim.opt.fillchars = {
     -- Removes pipes | separators on splits.
     vert = "█",
-    -- Removes tildes ~ at the end of files.
+    -- Removes tildes `~` at the end of files.
     eob = " ",
 }
 
@@ -69,6 +70,13 @@ vim.cmd([[
     autocmd TextYankPost * silent! lua vim.highlight.on_yank()
   augroup end
 ]])
+
+-- Normalize tabbing.
+vim.cmd("autocmd BufWritePre * retab")
+
+-- Don't insert comment leader after hitting `o` or `O` in Normal mode.
+-- https://vi.stackexchange.com/a/17739
+vim.cmd("autocmd BufEnter * set formatoptions-=o")
 
 -- Disable Vim's default `Todo` and `Error` syntax highlighting.
 vim.cmd([[

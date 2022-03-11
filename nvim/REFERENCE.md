@@ -10,4 +10,8 @@
 
 ---
 
-- `alt+O` / `alt+o` : Adds a new line above/below cursor while in Insert mode.
+`alt+O` / `alt+o` : Adds a new line above/below cursor while in Insert mode.
+
+---
+
+`lua print(vim.bo.filetype)` to get the current filetype.

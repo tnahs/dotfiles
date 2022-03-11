@@ -54,4 +54,4 @@ nvim_tree.setup({
 local opts = { noremap = true, silent = true }
 
 -- Toggle NvimTree.
-vim.api.nvim_set_keymap("n", "<C-b>", ":NvimTreeToggle<CR>", opts)
+vim.api.nvim_set_keymap("n", "B", ":NvimTreeToggle<CR>", opts)

@@ -28,3 +28,16 @@ bufferline.setup({
         },
     },
 })
+
+-- Keymaps ---------------------------------------------------------------------
+
+local opts = { noremap = true, silent = true }
+
+-- Close all other buffers.
+vim.api.nvim_set_keymap("n", "cc", ":BufferLineCloseLeft<CR> | :BufferLineCloseRight<CR>", opts)
+
+-- Navigate buffers.
+vim.api.nvim_set_keymap("n", "<A-l>", ":BufferLineCycleNext<CR>", opts)
+vim.api.nvim_set_keymap("n", "<A-h>", ":BufferLineCyclePrev<CR>", opts)
+vim.api.nvim_set_keymap("n", "<A-Tab>", ":BufferLineCycleNext<CR>", opts)
+vim.api.nvim_set_keymap("n", "<A-S-Tab>", ":BufferLineCyclePrev<CR>", opts)

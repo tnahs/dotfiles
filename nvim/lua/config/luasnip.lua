@@ -8,7 +8,7 @@ end
 
 local types = require("luasnip.util.types")
 
--- WIP Do we like these extra configs?
+-- WIP: Do we like these extra configs?
 luasnip.config.set_config({
     -- This tells LuaSnip to remember to keep around the last snippet.
     -- You can jump back into it even if you move outside of the selection

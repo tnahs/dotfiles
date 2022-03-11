@@ -1,5 +1,5 @@
 -- Returns a string of comma separated consecutive integers representing column
--- numbers. Used to fill the right half of a buffer with a color block insted
+-- numbers. Used to fill the right half of a buffer with a color block instead
 -- of a single like to represent the preferred column width.
 local fill_columns = function(start, stop)
     local c = {}
@@ -26,6 +26,7 @@ local options = {
     linebreak = true,
     mouse = "a",
     number = true,
+    numberwidth = 4,
     pumheight = 15,
     relativenumber = true,
     scrolloff = 8,
@@ -34,6 +35,8 @@ local options = {
     sidescrolloff = 8,
     smartcase = true,
     smartindent = true,
+    spelllang = { "en_us" },
+    spellsuggest = { "best", "10" },
     splitbelow = true,
     splitright = true,
     tabstop = 4,
@@ -53,9 +56,9 @@ vim.opt.iskeyword:append("-")
 vim.opt.shortmess:append("c")
 
 vim.opt.fillchars = {
-    -- Removes pipes | seperators on splits.
+    -- Removes pipes | separators on splits.
     vert = "█",
-    -- Removes tildas ~ at the end of files.
+    -- Removes tildes ~ at the end of files.
     eob = " ",
 }
 

@@ -54,8 +54,12 @@ return packer.startup(function(use)
     use("nvim-telescope/telescope.nvim")
 
     -- Treesitter
-    use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
+    use({
+        "nvim-treesitter/nvim-treesitter",
+        run = ":TSUpdate",
+    })
     use("p00f/nvim-ts-rainbow")
+    use("lewis6991/spellsitter.nvim")
 
     -- Rust
     use("simrat39/rust-tools.nvim")
@@ -70,13 +74,14 @@ return packer.startup(function(use)
     use("numToStr/Comment.nvim")
     use("folke/todo-comments.nvim")
     use("windwp/nvim-autopairs")
-    use("tpope/vim-surround") -- vimscript
-    use("tpope/vim-repeat") -- vimscript
+    use("tpope/vim-surround")
+    use("tpope/vim-repeat")
     use("j-hui/fidget.nvim")
     use("famiu/bufdelete.nvim")
     use("RRethy/vim-illuminate")
     use("norcalli/nvim-colorizer.lua")
     use("lukas-reineke/indent-blankline.nvim")
+    use({ "mcauley-penney/tidy.nvim", branch = "cfg" })
     use("fladson/vim-kitty")
 
     -- Themes

@@ -2,11 +2,13 @@
 
 ## Fix/Setup
 
+- [x] rebind some commands to `alt`
 - [x] fix lua namespace issue
 - [x] fix lua `on_attach`
 - [x] format on save
 - [ ] multiple cursors
 - [x] remove trailing whitespace on save
+- [x] replace trailing newlines with a single line
 - [ ] replace tabs with spaces on save/paste
 - [x] add blank line above/below
 - [x] close all buffers
@@ -43,16 +45,15 @@
 - <https://github.com/rockerBOO/awesome-neovim>
 - <https://github.com/folke/trouble.nvim>
 - <https://github.com/kevinhwang91/nvim-bqf>
-- <https://github.com/tpope/vim-abolish>
+- <https://github.com/folke/which-key.nvim>
+- <https://github.com/abecodes/tabout.nvim>
 
 - <https://github.com/b0o/SchemaStore.nvim>
 - <https://github.com/godlygeek/tabular>
 - <https://github.com/preservim/vim-markdown>
 
-- <https://github.com/abecodes/tabout.nvim>
-- <https://github.com/folke/which-key.nvim>
+- <https://github.com/tpope/vim-abolish>
 - <https://github.com/lewis6991/impatient.nvim>
 - <https://github.com/kkoomen/vim-doge>
-
 - <https://github.com/matze/vim-move>
 - <https://github.com/mg979/vim-visual-multi>

@@ -21,11 +21,34 @@ null_ls.setup({
         -- python
         -- required: pipx install black
         -- required: pipx install isort
-        -- required: pipx install flake8 null_ls.builtins.formatting.black,
+        -- required: pipx install flake8
+        null_ls.builtins.formatting.black,
         null_ls.builtins.formatting.isort.with({
-            extra_args = { "--profile", "black", "--lines-after-imports", "2" },
+            extra_args = {
+                "--profile",
+                "black",
+                "--lines-after-imports",
+                "2",
+            },
         }),
-        null_ls.builtins.diagnostics.flake8,
+        null_ls.builtins.diagnostics.flake8.with({
+            extra_args = {
+                "--ignore",
+                [[
+                    E126,
+                    E128,
+                    E131,
+                    E231,
+                    E241,
+                    E402,
+                    E501,
+                    E711,
+                    E741,
+                    T499,
+                    W503,
+                ]],
+            },
+        }),
         --
         -- json
         -- required: brew install jsonlint
@@ -44,19 +67,10 @@ null_ls.setup({
         --
         -- lua
         -- required: brew install stylua
-        null_ls.builtins.formatting.stylua.with({
-            extra_args = { "--indent-type", "Spaces" },
-        }),
+        null_ls.builtins.formatting.stylua,
         --
         -- *
-        -- required: npm --global install cspell
-        -- required: npm --global install write-good
-        -- https://github.com/streetsidesoftware/cspell/tree/main/packages/cspell#options
-        -- null_ls.builtins.diagnostics.cspell,
-        -- null_ls.builtins.diagnostics.write_good,
         null_ls.builtins.code_actions.gitsigns,
-        null_ls.builtins.formatting.trim_newlines,
-        null_ls.builtins.formatting.trim_whitespace,
     },
     --
     -- Format file on save.

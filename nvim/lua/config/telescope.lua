@@ -51,6 +51,8 @@ telescope.setup({
     },
 })
 
+telescope.load_extension("harpoon")
+
 -- Keymaps --------------------------------------------------------------------
 
 local opts = { noremap = true, silent = true }

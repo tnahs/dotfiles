@@ -29,7 +29,7 @@ nvim_cmp.setup({
         ["<C-e>"] = nvim_cmp.mapping.close(),
         -- Set `select` to `false` to only confirm explicitly selected items.
         ["<CR>"] = nvim_cmp.mapping.confirm({ select = false }),
-        -- WIP Do we want to use `Tab` here?
+        -- WIP: Do we want to use `Tab` here?
         ["<Tab>"] = nvim_cmp.mapping(function(fallback)
             if nvim_cmp.visible() then
                 nvim_cmp.select_next_item()
@@ -64,6 +64,7 @@ nvim_cmp.setup({
                 nvim_lsp = "[LSP]",
                 nvim_lua = "[LuaAPI]",
                 luasnip = "[Snippet]",
+                spell = "[Spell]",
                 path = "[Path]",
                 buffer = "[Buffer]",
             })[entry.source.name]

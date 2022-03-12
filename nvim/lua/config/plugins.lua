@@ -26,70 +26,76 @@ if not ok then
     return
 end
 
-return packer.startup(function(use)
-    -- Utils
-    use("nvim-lua/plenary.nvim")
-    --
-    -- Packer
-    use("wbthomason/packer.nvim")
-    --
-    -- Neovim LSP
-    use("neovim/nvim-lspconfig")
-    use("jose-elias-alvarez/null-ls.nvim")
+return packer.startup({
+    function(use)
+        -- Utils
+        use("nvim-lua/plenary.nvim")
+        --
+        -- `packer`
+        use("wbthomason/packer.nvim")
+        --
+        -- Neovim LSP
+        use("neovim/nvim-lspconfig")
+        use("jose-elias-alvarez/null-ls.nvim")
 
-    -- Completion/Snippets
-    use("hrsh7th/nvim-cmp")
-    use("hrsh7th/cmp-buffer")
-    use("hrsh7th/cmp-path")
-    use("hrsh7th/cmp-cmdline")
-    use("hrsh7th/cmp-nvim-lsp")
-    use("hrsh7th/cmp-nvim-lua")
-    use("rafamadriz/friendly-snippets")
+        -- Completion/Snippets
+        use("hrsh7th/nvim-cmp")
+        use("hrsh7th/cmp-buffer")
+        use("hrsh7th/cmp-path")
+        use("hrsh7th/cmp-cmdline")
+        use("hrsh7th/cmp-nvim-lsp")
+        use("hrsh7th/cmp-nvim-lua")
+        use("rafamadriz/friendly-snippets")
+        use("L3MON4D3/LuaSnip")
+        use("saadparwaiz1/cmp_luasnip")
 
-    -- Snippet Engine
-    use("L3MON4D3/LuaSnip")
-    use("saadparwaiz1/cmp_luasnip")
+        -- `Telescope`
+        use("nvim-telescope/telescope.nvim")
 
-    -- Telescope
-    use("nvim-telescope/telescope.nvim")
+        -- `Treesitter`
+        use({
+            "nvim-treesitter/nvim-treesitter",
+            run = ":TSUpdate",
+        })
+        use("p00f/nvim-ts-rainbow")
+        use("lewis6991/spellsitter.nvim")
 
-    -- Treesitter
-    use({
-        "nvim-treesitter/nvim-treesitter",
-        run = ":TSUpdate",
-    })
-    use("p00f/nvim-ts-rainbow")
-    use("lewis6991/spellsitter.nvim")
+        -- Misc
+        use("ThePrimeagen/harpoon")
+        use("akinsho/bufferline.nvim")
+        use("akinsho/toggleterm.nvim")
+        use("famiu/bufdelete.nvim")
+        use("fladson/vim-kitty")
+        use("folke/todo-comments.nvim")
+        use("folke/trouble.nvim")
+        use("j-hui/fidget.nvim")
+        use("kyazdani42/nvim-tree.lua")
+        use("lewis6991/gitsigns.nvim")
+        use("lukas-reineke/indent-blankline.nvim")
+        use("norcalli/nvim-colorizer.lua")
+        use("numToStr/Comment.nvim")
+        use("nvim-lualine/lualine.nvim")
+        use("simrat39/rust-tools.nvim")
+        use("simrat39/symbols-outline.nvim")
+        use("tpope/vim-repeat")
+        use("tpope/vim-surround")
+        use("windwp/nvim-autopairs")
 
-    -- Rust
-    use("simrat39/rust-tools.nvim")
+        -- Themes
+        use("folke/tokyonight.nvim")
 
-    -- Misc
-    use("kyazdani42/nvim-tree.lua")
-    use("nvim-lualine/lualine.nvim")
-    use("lewis6991/gitsigns.nvim")
-    use("akinsho/bufferline.nvim")
-    use("ThePrimeagen/harpoon")
-    use("simrat39/symbols-outline.nvim")
-    use("numToStr/Comment.nvim")
-    use("folke/todo-comments.nvim")
-    use("windwp/nvim-autopairs")
-    use("tpope/vim-surround")
-    use("tpope/vim-repeat")
-    use("j-hui/fidget.nvim")
-    use("famiu/bufdelete.nvim")
-    use("RRethy/vim-illuminate")
-    use("norcalli/nvim-colorizer.lua")
-    use("lukas-reineke/indent-blankline.nvim")
-    use({ "mcauley-penney/tidy.nvim", branch = "cfg" })
-    use("kevinhwang91/nvim-bqf")
-    use("fladson/vim-kitty")
-    use("akinsho/toggleterm.nvim")
+        if PACKER_BOOTSTRAP then
+            require("packer").sync()
+        end
+    end,
 
-    -- Themes
-    use("folke/tokyonight.nvim")
-
-    if PACKER_BOOTSTRAP then
-        require("packer").sync()
-    end
-end)
+    config = {
+        -- Use a floating window for `packer`.
+        -- https://github.com/wbthomason/packer.nvim#using-a-floating-window
+        display = {
+            open_fn = function()
+                return require("packer.util").float({ border = "rounded" })
+            end,
+        },
+    },
+})

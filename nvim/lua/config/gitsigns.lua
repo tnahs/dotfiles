@@ -10,23 +10,23 @@ gitsigns.setup({
     signs = {
         add = {
             hl = "GitSignsAdd",
-            text = "┃",
+            text = "▌",
         },
         change = {
             hl = "GitSignsChange",
-            text = "┃",
+            text = "▌",
         },
         delete = {
             hl = "GitSignsDelete",
-            text = "◆",
+            text = "▂",
         },
         topdelete = {
             hl = "GitSignsDelete",
-            text = "◆",
+            text = "▂",
         },
         changedelete = {
             hl = "GitSignsChange",
-            text = "┃",
+            text = "▌",
         },
     },
 })

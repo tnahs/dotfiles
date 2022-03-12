@@ -1,4 +1,5 @@
 -- https://github.com/akinsho/bufferline.nvim
+-- https://github.com/famiu/bufdelete.nvim
 
 local ok, bufferline = pcall(require, "bufferline")
 if not ok then
@@ -10,18 +11,15 @@ bufferline.setup({
     options = {
         indicator_icon = " ",
         separator_style = { "", "" },
+        show_buffer_close_icons = false,
+        modified_icon = "",
         show_close_icon = false,
         tab_size = 32,
         left_trunc_marker = "◀",
         right_trunc_marker = "▶",
         diagnostics = "nvim_lsp",
-        diagnostics_indicator = function(count, level, _, _)
-            -- Returns LEVEL:COUNT
-            -- error       E:#
-            -- warning     W:#
-            -- hint        H:#
-            -- info        I:#
-            return level:sub(1, 1):upper() .. ":" .. count
+        diagnostics_indicator = function(count)
+            return tostring(count)
         end,
         offsets = {
             { filetype = "NvimTree", text = "" },
@@ -33,8 +31,9 @@ bufferline.setup({
 
 local opts = { noremap = true, silent = true }
 
--- Close all other buffers.
-vim.api.nvim_set_keymap("n", "cc", ":BufferLineCloseLeft<CR> | :BufferLineCloseRight<CR>", opts)
+-- Close buffers.
+vim.api.nvim_set_keymap("n", "<leader>x", ":Bdelete<CR>", opts)
+vim.api.nvim_set_keymap("n", "<leader>xo", ":BufferLineCloseLeft<CR> | :BufferLineCloseRight<CR>", opts)
 
 -- Navigate buffers.
 vim.api.nvim_set_keymap("n", "L", ":BufferLineCycleNext<CR>", opts)

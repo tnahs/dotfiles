@@ -10,7 +10,13 @@ return {
                 path = runtime_path,
             },
             diagnostics = {
-                globals = { "vim" },
+                globals = {
+                    -- Neovim
+                    "vim",
+                    -- Hammerspoon
+                    "hs",
+                    "spoon",
+                },
             },
         },
     },

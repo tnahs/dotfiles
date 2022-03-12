@@ -1,3 +1,6 @@
+-- NOTE: Currently disabled. `tidy` ends up muddying the undo history. Keeping
+-- this around in case I'd like to revisit it later on.
+
 -- https://github.com/mcauley-penney/tidy.nvim/tree/cfg
 
 local ok, tidy = pcall(require, "tidy")

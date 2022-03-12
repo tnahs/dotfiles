@@ -2,6 +2,11 @@
 
 ## Fix/Setup
 
+- [ ] add default hotkeys to each plugins config file
+- [ ] custom inlay hint colors
+- [ ] revisit `bufferline`/`NvimTree`
+- [ ] revisit closing buffers et al.
+- [x] test out `barbar`
 - [x] rebind some commands to `alt`
 - [x] fix lua namespace issue
 - [x] fix lua `on_attach`
@@ -13,7 +18,7 @@
 - [x] add blank line above/below
 - [x] close all buffers
 - [x] close buffer without closing split/window
-- [ ] terminal integration
+- [x] terminal integration
 - [x] render whitespace
 - [x] `nvim-tree`
   - [x] highlight files with errors
@@ -43,9 +48,6 @@
 ## Try
 
 - <https://github.com/rockerBOO/awesome-neovim>
-
-- <https://github.com/folke/which-key.nvim>
-- <https://github.com/folke/trouble.nvim>
 
 - <https://github.com/b0o/SchemaStore.nvim>
 - <https://github.com/godlygeek/tabular>

@@ -40,7 +40,7 @@ vim.api.nvim_set_keymap("n", "<leader>yo", ":SymbolsOutline<CR>", opts)
 
 -- Misc ------------------------------------------------------------------------
 
--- BUG: This should be automatically set by `symbols-outline`
+-- BUG: This should be automatically set by `symbols-outline`.
 vim.cmd([[
   augroup DisableSyntax
     autocmd VimEnter * highlight clear FocusedSymbol

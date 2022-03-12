@@ -37,35 +37,60 @@ telescope.setup({
             "--smart-case",
             "--trim", -- This!
         },
-        layout_config = {
+    },
+    -- WIP: Customize each picker.
+    -- BUG: `preview_width` doesn't seem to be working...
+    pickers = {
+        find_files = {
+            theme = "dropdown",
+            previewer = false,
+            prompt_title = false,
+        },
+        buffers = {
             preview_width = 81,
         },
-    },
-    pickers = {
+        live_grep = {
+            preview_width = 81,
+        },
+        diagnostics = {
+            preview_width = 81,
+        },
         lsp_code_actions = {
+            -- TODO: Increate the results count.
             theme = "cursor",
+        },
+        lsp_references = {
+            preview_width = 81,
+        },
+        lsp_implementations = {
+            preview_width = 81,
+        },
+        lsp_document_symbols = {
+            preview_width = 81,
+        },
+        lsp_workspace_symbols = {
+            preview_width = 81,
         },
         colorscheme = {
             theme = "ivy",
+            -- BUG: Disables real-time preview of colorscheme.
+            -- previewer = false,
         },
     },
 })
-
-telescope.load_extension("harpoon")
 
 -- Keymaps --------------------------------------------------------------------
 
 local opts = { noremap = true, silent = true }
 
 vim.api.nvim_set_keymap("n", "<leader>f", ":Telescope find_files<CR>", opts)
-vim.api.nvim_set_keymap("n", "<leader>b", ":Telescope buffers<CR>", opts)
 vim.api.nvim_set_keymap("n", "<leader>g", ":Telescope live_grep<CR>", opts)
-
-vim.api.nvim_set_keymap("n", "<leader>p", ":Telescope diagnostics<CR>", opts)
 vim.api.nvim_set_keymap("n", "<leader>a", ":Telescope lsp_code_actions<CR>", opts)
-vim.api.nvim_set_keymap("n", "<leader>r", ":Telescope lsp_references<CR>", opts)
-vim.api.nvim_set_keymap("n", "<leader>i", ":Telescope lsp_implementations<CR>", opts)
-vim.api.nvim_set_keymap("n", "<leader>yd", ":Telescope lsp_document_symbols<CR>", opts)
-vim.api.nvim_set_keymap("n", "<leader>yw", ":Telescope lsp_workspace_symbols<CR>", opts)
 
-vim.api.nvim_set_keymap("n", "<leader>c", ":Telescope colorscheme enable_preview=true<CR>", opts)
+vim.api.nvim_set_keymap("n", "<leader>tb", ":Telescope buffers<CR>", opts)
+vim.api.nvim_set_keymap("n", "<leader>td", ":Telescope diagnostics<CR>", opts)
+vim.api.nvim_set_keymap("n", "<leader>tr", ":Telescope lsp_references<CR>", opts)
+vim.api.nvim_set_keymap("n", "<leader>ti", ":Telescope lsp_implementations<CR>", opts)
+vim.api.nvim_set_keymap("n", "<leader>td", ":Telescope lsp_document_symbols<CR>", opts)
+vim.api.nvim_set_keymap("n", "<leader>tw", ":Telescope lsp_workspace_symbols<CR>", opts)
+vim.api.nvim_set_keymap("n", "<leader>tc", ":Telescope colorscheme enable_preview=true<CR>", opts)

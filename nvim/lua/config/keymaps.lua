@@ -46,11 +46,11 @@ vim.api.nvim_set_keymap("n", "<C-j>", "<C-w>j", opts)
 vim.api.nvim_set_keymap("n", "<C-k>", "<C-w>k", opts)
 vim.api.nvim_set_keymap("n", "<C-l>", "<C-w>l", opts)
 
--- Cycle through Quickfix and Local list.
-vim.api.nvim_set_keymap("n", "<A-j>", ":cnext<CR>", opts)
-vim.api.nvim_set_keymap("n", "<A-k>", ":cprev<CR>", opts)
-vim.api.nvim_set_keymap("n", "<leader>j", ":lnext<CR>", opts)
-vim.api.nvim_set_keymap("n", "<leader>k", ":lprev<CR>", opts)
+-- Cycle through quickfix and location list.
+-- vim.api.nvim_set_keymap("n", "<A-j>", ":cnext<CR>", opts)
+-- vim.api.nvim_set_keymap("n", "<A-k>", ":cprev<CR>", opts)
+-- vim.api.nvim_set_keymap("n", "<leader>j", ":lnext<CR>", opts)
+-- vim.api.nvim_set_keymap("n", "<leader>k", ":lprev<CR>", opts)
 
 -- Toggle spell checking.
 vim.api.nvim_set_keymap("n", "<C-s>", ":set spell!<CR>", opts)

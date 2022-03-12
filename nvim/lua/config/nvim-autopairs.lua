@@ -6,6 +6,7 @@ if not ok then
     return
 end
 
+-- TODO: Prevent auto-pairs when cursor has text to its right.
 nvim_autopairs.setup({
     check_ts = true,
     fast_wrap = {

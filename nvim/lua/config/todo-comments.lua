@@ -6,47 +6,44 @@ if not ok then
     return
 end
 
+-- BUG: Report. Pressing `O` on a TODO comment directly under a non-commented
+-- line throws and exception. It happens in `lua/config/lsp/init.lua`.
 todo_comments.setup({
     keywords = {
-        -- BUG: comment...
         BUG = {
-            icon = "●",
+            icon = "█",
             color = "warning",
         },
-        -- FIX: comment...
         FIX = {
-            icon = "●",
+            icon = "█",
             color = "error",
             alt = { "FIXME" },
         },
-        -- NOTE: comment...
         NOTE = {
-            icon = "●",
+            icon = "█",
             color = "hint",
             alt = { "INFO" },
         },
-        -- TODO: comment...
         TODO = {
-            icon = "●",
+            icon = "█",
             color = "info",
         },
-        -- WIP: comment...
         WIP = {
-            icon = "●",
+            icon = "█",
             color = "default",
             alt = { "TEMP" },
         },
     },
     -- BUG: Seems like the following settings don't work in `Telescope`.
-    highlight = {
-        keyword = "fg",
-        after = "fg",
-    },
+    -- highlight = {
+    --     keyword = "fg",
+    --     after = "fg",
+    -- },
 })
 
 -- Keymaps ---------------------------------------------------------------------
 
 local opts = { noremap = true, silent = true }
 
--- Open TODOs in Telescope.
-vim.api.nvim_set_keymap("n", "<leader>t", ":TodoTelescope<CR>", opts)
+-- Open TODOs in `Telescope`.
+vim.api.nvim_set_keymap("n", "<leader>tt", ":TodoTelescope<CR>", opts)

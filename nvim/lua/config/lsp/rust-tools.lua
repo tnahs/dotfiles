@@ -13,9 +13,8 @@ M.setup = function(server_default_opts)
             autoSetHints = true,
             hover_with_actions = false,
             inlay_hints = {
-                show_parameter_hints = true,
-                parameter_hints_prefix = "▪ ",
-                other_hints_prefix = "▪ ",
+                show_parameter_hints = false,
+                other_hints_prefix = "• ",
             },
         },
         server = vim.tbl_deep_extend("force", server_default_opts, {

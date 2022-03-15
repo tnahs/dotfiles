@@ -21,9 +21,9 @@ bufferline.setup({
         diagnostics_indicator = function(count)
             return tostring(count)
         end,
-        offsets = {
-            { filetype = "NvimTree", text = "" },
-        },
+        -- offsets = {
+        --     { filetype = "NvimTree", text = "" },
+        -- },
     },
 })
 

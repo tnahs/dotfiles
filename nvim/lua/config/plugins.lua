@@ -62,13 +62,14 @@ return packer.startup({
 
         -- Misc
         use("ThePrimeagen/harpoon")
+        use("kazhala/close-buffers.nvim")
         use("akinsho/bufferline.nvim")
         use("akinsho/toggleterm.nvim")
-        use("famiu/bufdelete.nvim")
         use("fladson/vim-kitty")
         use("folke/todo-comments.nvim")
         use("folke/trouble.nvim")
         use("j-hui/fidget.nvim")
+        use("kdheepak/tabline.nvim")
         use("kyazdani42/nvim-tree.lua")
         use("lewis6991/gitsigns.nvim")
         use("lukas-reineke/indent-blankline.nvim")
@@ -83,6 +84,7 @@ return packer.startup({
 
         -- Themes
         use("folke/tokyonight.nvim")
+        use("gruvbox-community/gruvbox")
 
         if PACKER_BOOTSTRAP then
             require("packer").sync()

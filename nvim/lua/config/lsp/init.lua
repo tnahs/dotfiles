@@ -1,8 +1,9 @@
 -- https://github.com/neovim/nvim-lspconfig
 --
--- required: brew install rust-analyzer
 -- required: brew install pyright
+-- required: brew install rust-analyzer
 -- required: brew install lua-language-server
+-- optional: rustup component add rls rust-analysis rust-src
 
 local ok, lspconfig = pcall(require, "lspconfig")
 if not ok then
@@ -46,12 +47,16 @@ local server_default_opts = {
     on_attach = on_attach,
     capabilities = capabilities,
     flags = {
-        -- This will be the default in neovim 0.7+
+        -- This will be the default in Neovim 0.7+.
         debounce_text_changes = 150,
     },
 }
 
-local servers = { "pyright", "sumneko_lua" }
+local servers = {
+    "pyright",
+    "sumneko_lua",
+    -- "rls", -- `rust-analyzer` alternative. Disable `rust-tools` below.
+}
 
 for _, server in pairs(servers) do
     local server_settings = require("config.lsp.settings." .. server)
@@ -61,7 +66,7 @@ for _, server in pairs(servers) do
 end
 
 -- `rust-analyzer` is setup using `rust-tools`.
-require("config.lsp.rust-tools").setup(server_default_opts)
+-- require("coknfig.lsp.rust-tools").setup(server_default_opts)
 
 -- UI Customizations -----------------------------------------------------------
 -- https://github.com/neovim/nvim-lspconfig/wiki/UI-customization

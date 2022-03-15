@@ -1,5 +1,9 @@
 local opts = { noremap = true, silent = true }
 
+vim.api.nvim_set_keymap("n", "L", ":BufferLineCycleNext<CR>", opts)
+vim.api.nvim_set_keymap("n", "H", ":BufferLineCyclePrev<CR>", opts)
+vim.api.nvim_set_keymap("n", "<A-Tab>", ":BufferLineCycleNext<CR>", opts)
+vim.api.nvim_set_keymap("n", "<A-S-Tab>", ":BufferLineCyclePrev<CR>", opts)
 -- Remap space as leader key.
 vim.g.mapleader = " "
 vim.api.nvim_set_keymap("", "<Space>", "<Nop>", opts)
@@ -22,17 +26,6 @@ vim.api.nvim_set_keymap("n", "<leader>l", ":source %<CR>", opts)
 
 -- Save current buffer.
 vim.api.nvim_set_keymap("n", "<leader>w", ":write<CR>", opts)
-
--- Create a vertical window split.
-vim.api.nvim_set_keymap("n", "<A-v>", ":vsplit<CR>", opts)
-
--- Swap current window with next one.
-vim.api.nvim_set_keymap("n", "<A-x>", "<C-w>x", opts)
-
--- Resize windows to defaults.
-vim.api.nvim_set_keymap("n", "<A-=>", "<C-w>=", opts)
-vim.api.nvim_set_keymap("n", "<A-->", "<C-w>_", opts)
-vim.api.nvim_set_keymap("n", "<A-\\>", "<C-w>|", opts)
 
 -- Resize windows with `Control` + arrows.
 vim.api.nvim_set_keymap("n", "<A-Left>", ":vertical resize -2<CR>", opts)
@@ -81,7 +74,7 @@ vim.api.nvim_set_keymap("v", "p", '"_dP', opts)
 local trim_opts = ":keepjumps keeppatterns "
 
 -- WIP: Trim trailing whitespace.
-vim.api.nvim_set_keymap("n", "<A-t>w", trim_opts .. [[%s/\s\+$//e<CR>]], opts)
+vim.api.nvim_set_keymap("n", "<leader>zw", trim_opts .. [[%s/\s\+$//e<CR>]], opts)
 
 -- WIP: Trim trailing lines.
-vim.api.nvim_set_keymap("n", "<A-t>l", [[:0;/^\%(\n*.\)\@!/ + 0,$d]], opts)
+vim.api.nvim_set_keymap("n", "<leader>zl", [[:0;/^\%(\n*.\)\@!/ + 0,$d<CR>]], opts)

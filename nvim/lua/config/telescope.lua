@@ -10,6 +10,8 @@ end
 
 local actions = require("telescope.actions")
 
+local trouble = require("trouble.providers.telescope")
+
 telescope.setup({
     defaults = {
         mappings = {
@@ -18,12 +20,15 @@ telescope.setup({
             i = {
                 ["<C-j>"] = actions.move_selection_next,
                 ["<C-k>"] = actions.move_selection_previous,
+                -- WIP: Make this dynamically detected.
+                ["<C-q>"] = trouble.open_with_trouble,
             },
             --
             -- Normal Mode
             n = {
                 ["<C-j>"] = actions.move_selection_next,
                 ["<C-k>"] = actions.move_selection_previous,
+                ["<C-q>"] = trouble.open_with_trouble,
             },
         },
         -- NOTE: Redefining to add `--trim`.

@@ -5,7 +5,7 @@
 - [ ] add default hotkeys to each plugins config file
 - [ ] custom inlay hint colors
 - [ ] revisit `bufferline`/`NvimTree`
-- [ ] revisit closing buffers et al.
+- [ ] revisit closing buffers et al
 - [x] test out `barbar`
 - [x] rebind some commands to `alt`
 - [x] fix lua namespace issue

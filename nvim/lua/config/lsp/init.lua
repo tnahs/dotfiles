@@ -66,7 +66,7 @@ for _, server in pairs(servers) do
 end
 
 -- `rust-analyzer` is setup using `rust-tools`.
--- require("coknfig.lsp.rust-tools").setup(server_default_opts)
+require("coknfig.lsp.rust-tools").setup(server_default_opts)
 
 -- UI Customizations -----------------------------------------------------------
 -- https://github.com/neovim/nvim-lspconfig/wiki/UI-customization

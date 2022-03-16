@@ -61,13 +61,27 @@ null_ls.setup({
         -- markdown/json/yaml/html/css/javascript/typescript
         -- required: brew install prettier
         null_ls.builtins.formatting.prettier.with({
-            -- FIX: Should these be file extensions or names?
-            filetypes = { "markdown", "json", "yaml", "html", "css", "js", "ts" },
+            filetypes = {
+                "css",
+                "html",
+                "javascript",
+                "json",
+                "jsonc",
+                "less",
+                "markdown",
+                "scss",
+                "typescript",
+                "yaml",
+            },
         }),
         --
         -- lua
         -- required: brew install stylua
         null_ls.builtins.formatting.stylua,
+        --
+        -- toml
+        -- required: cargo install taplo-cli
+        null_ls.builtins.formatting.taplo,
         --
         -- *
         null_ls.builtins.code_actions.gitsigns,

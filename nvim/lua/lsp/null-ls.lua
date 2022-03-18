@@ -6,7 +6,7 @@
 
 local ok, null_ls = pcall(require, "null-ls")
 if not ok then
-    print("Faileds to load plugin: `jose-elias-alvarez/null-ls.nvim`.")
+    print("Failed to load plugin: `jose-elias-alvarez/null-ls.nvim`.")
     return
 end
 

@@ -3,6 +3,7 @@
 -- required: brew install pyright
 -- required: brew install rust-analyzer
 -- required: brew install lua-language-server
+-- required: npm i -g vscode-langservers-extracted
 -- optional: rustup component add rls rust-analysis rust-src
 
 local ok, lspconfig = pcall(require, "lspconfig")
@@ -55,18 +56,19 @@ local server_default_opts = {
 local servers = {
     "pyright",
     "sumneko_lua",
+    "jsonls",
     -- "rls", -- `rust-analyzer` alternative. Disable `rust-tools` below.
 }
 
 for _, server in pairs(servers) do
-    local server_settings = require("config.lsp.settings." .. server)
+    local server_settings = require("lsp.settings." .. server)
     local server_opts = vim.tbl_deep_extend("force", server_settings, server_default_opts)
 
     lspconfig[server].setup(server_opts)
 end
 
 -- `rust-analyzer` is setup using `rust-tools`.
-require("config.lsp.rust-tools").setup(server_default_opts)
+require("lsp.rust-tools").setup(server_default_opts)
 
 -- UI Customizations -----------------------------------------------------------
 -- https://github.com/neovim/nvim-lspconfig/wiki/UI-customization

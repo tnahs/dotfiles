@@ -12,6 +12,10 @@ local actions = require("telescope.actions")
 
 local trouble = require("trouble.providers.telescope")
 
+local horizontal_layout_config = {
+    preview_width = 81,
+}
+
 telescope.setup({
     defaults = {
         mappings = {
@@ -20,7 +24,6 @@ telescope.setup({
             i = {
                 ["<C-j>"] = actions.move_selection_next,
                 ["<C-k>"] = actions.move_selection_previous,
-                -- WIP: Make this dynamically detected.
                 ["<C-q>"] = trouble.open_with_trouble,
             },
             --
@@ -43,41 +46,55 @@ telescope.setup({
             "--trim", -- This!
         },
     },
-    -- WIP: Customize each picker.
-    -- BUG: `preview_width` doesn't seem to be working...
     pickers = {
         find_files = {
             theme = "dropdown",
             previewer = false,
             prompt_title = false,
+            layout_config = {
+                height = 24,
+            },
         },
         buffers = {
-            preview_width = 81,
+            theme = "dropdown",
+            previewer = false,
+            layout_config = {
+                height = 16,
+            },
         },
         live_grep = {
-            preview_width = 81,
+            layout_config = horizontal_layout_config,
+        },
+        -- NOTE: `todo-comments` uses `grep_string` as its picker.
+        grep_string = {
+            layout_config = horizontal_layout_config,
         },
         diagnostics = {
-            preview_width = 81,
-        },
-        lsp_code_actions = {
-            -- TODO: Increate the results count.
-            theme = "cursor",
+            layout_config = horizontal_layout_config,
         },
         lsp_references = {
-            preview_width = 81,
+            layout_config = horizontal_layout_config,
         },
         lsp_implementations = {
-            preview_width = 81,
+            layout_config = horizontal_layout_config,
         },
         lsp_document_symbols = {
-            preview_width = 81,
+            layout_config = horizontal_layout_config,
         },
         lsp_workspace_symbols = {
-            preview_width = 81,
+            layout_config = horizontal_layout_config,
+        },
+        lsp_code_actions = {
+            theme = "cursor",
+            layout_config = {
+                height = 16,
+            },
         },
         colorscheme = {
             theme = "ivy",
+            layout_config = {
+                height = 16,
+            },
             -- BUG: Disables real-time preview of colorscheme.
             -- previewer = false,
         },

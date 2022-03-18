@@ -32,5 +32,3 @@ Search for a word `/word<CR>`.
 Type `cgn` to change that occurance of the word.
 Type `n` or `N` to move to the next/previous occurance you want to change.
 Type `.` to repeat the change.
-
----

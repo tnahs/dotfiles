@@ -7,7 +7,7 @@ if not ok then
 end
 
 -- BUG: Report. Pressing `O` on a TODO comment directly under a non-commented
--- line throws and exception. It happens in `lua/config/lsp/init.lua`.
+-- line throws and exception. It happens in `lua/lsp/nvim-lspconfig.lua`.
 todo_comments.setup({
     keywords = {
         BUG = {

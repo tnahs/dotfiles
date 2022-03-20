@@ -45,12 +45,12 @@ return packer.startup({
         use("hrsh7th/cmp-cmdline")
         use("hrsh7th/cmp-nvim-lsp")
         use("hrsh7th/cmp-nvim-lua")
-        use("rafamadriz/friendly-snippets")
         use("L3MON4D3/LuaSnip")
         use("saadparwaiz1/cmp_luasnip")
 
         -- `Telescope`
         use("nvim-telescope/telescope.nvim")
+        use("nvim-telescope/telescope-ui-select.nvim")
 
         -- `Treesitter`
         use({

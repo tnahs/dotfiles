@@ -10,11 +10,11 @@ M.setup = function(server_default_opts)
 
     local opts = {
         tools = {
-            autoSetHints = true,
             hover_with_actions = false,
             inlay_hints = {
-                show_parameter_hints = false,
+                parameter_hints_prefix = "• ",
                 other_hints_prefix = "• ",
+                highlight = "Whitespace",
             },
         },
         server = vim.tbl_deep_extend("force", server_default_opts, {
@@ -29,9 +29,6 @@ M.setup = function(server_default_opts)
     }
 
     rust_tools.setup(opts)
-
-    -- Enable if standalone support is needed.
-    -- rust_tools.start_standalone_if_required()
 end
 
 return M

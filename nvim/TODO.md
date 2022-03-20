@@ -3,7 +3,10 @@
 ## Fix/Setup
 
 - [ ] add default hotkeys to each plugins config file
-- [ ] custom inlay hint colors
+- [ ] hide lsp text suggestions
+- [ ] lsp code lens stuff
+- [ ] dap
+- [x] custom inlay hint colors
 - [x] revisit `bufferline`/`NvimTree`
 - [x] revisit closing buffers et al
 - [x] test out `barbar`
@@ -35,6 +38,7 @@
   - [x] black
   - [x] isort
 - [x] markdown
+  - [ ] support/autocomplete
   - [x] linting
   - [x] formatting
 - [x] `telescope`
@@ -49,7 +53,6 @@
 
 - <https://github.com/rockerBOO/awesome-neovim>
 
-- <https://github.com/b0o/SchemaStore.nvim>
 - <https://github.com/godlygeek/tabular>
 - <https://github.com/preservim/vim-markdown>
 - <https://github.com/rcarriga/nvim-notify>

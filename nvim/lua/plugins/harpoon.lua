@@ -8,18 +8,10 @@ end
 
 -- Keymaps ---------------------------------------------------------------------
 
-local command = ":lua require('harpoon.ui').toggle_quick_menu()<CR>"
--- WIP: `Telescope` integration is a bit wonky. Revisit this later.
--- local ok_telescope, telescope = pcall(require, "telescope")
--- if ok_telescope then
---     telescope.load_extension("harpoon")
---     command = ":Telescope harpoon marks<CR>"
--- end
-
 local opts = { noremap = true, silent = true }
 
--- Open `Harpoon` menu.
-vim.api.nvim_set_keymap("n", "<leader>hh", command, opts)
+-- Open `Harpoon` menu with `Telescope`.
+vim.api.nvim_set_keymap("n", "<leader>hh", ":Telescope harpoon marks<CR>", opts)
 
 -- Add current file to `Harpoon`.
 vim.api.nvim_set_keymap("n", "<leader>ha", ":lua require('harpoon.mark').add_file()<CR>", opts)

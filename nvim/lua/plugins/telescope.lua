@@ -8,13 +8,51 @@ if not ok then
     return
 end
 
+-- https://github.com/nvim-telescope/telescope.nvim/blob/master/lua/telescope/themes.lua#L25
+local function build_dropdown(opts)
+    local borderchars = {
+        prompt = { "─", "│", " ", "│", "┌", "┐", "│", "│" },
+        results = { "─", "│", "─", "│", "├", "┤", "┘", "└" },
+        preview = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
+    }
+
+    if opts.prompt_position == "bottom" then
+        borderchars = {
+            prompt = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
+            results = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
+            preview = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
+        }
+    end
+
+    local dropdown_opts = {
+        theme = "dropdown",
+        sorting_strategy = "ascending",
+        layout_strategy = "center",
+        prompt_position = opts.prompt_position,
+        borderchars = borderchars,
+        layout_config = {
+            width = 81,
+            height = opts.height,
+        },
+    }
+
+    -- Only affect the prompt title if one is supplied. This allows for the
+    -- default value for the picker to pass through. This is primarily used for
+    -- the `ui-select` extension.
+    if opts.prompt_title then
+        dropdown_opts.prompt_title = opts.prompt_title
+    end
+
+    -- BUG: This causes a crash when explicitly set to true.
+    if not opts.previewer then
+        dropdown_opts.previewer = opts.previewer
+    end
+
+    return dropdown_opts
+end
+
 local actions = require("telescope.actions")
-
 local trouble = require("trouble.providers.telescope")
-
-local horizontal_layout_config = {
-    preview_width = 81,
-}
 
 telescope.setup({
     defaults = {
@@ -34,6 +72,18 @@ telescope.setup({
                 ["<C-q>"] = trouble.open_with_trouble,
             },
         },
+        borderchars = {
+            prompt = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
+            results = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
+            preview = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
+        },
+        layout_config = {
+            width = 0.8,
+            height = 0.8,
+            flex = { flip_columns = 280 },
+            horizontal = { preview_width = 81 },
+            vertical = { preview_height = 0.25 },
+        },
         -- NOTE: Redefining to add `--trim`.
         vimgrep_arguments = {
             "rg",
@@ -47,59 +97,45 @@ telescope.setup({
         },
     },
     pickers = {
-        find_files = {
-            theme = "dropdown",
+        buffers = build_dropdown({
+            prompt_position = "top",
+            height = 16,
             previewer = false,
-            prompt_title = false,
-            layout_config = {
-                height = 24,
-            },
-        },
-        buffers = {
-            theme = "dropdown",
+            prompt_title = "Buffers",
+        }),
+        find_files = build_dropdown({
+            prompt_position = "top",
+            height = 24,
             previewer = false,
-            layout_config = {
-                height = 16,
-            },
-        },
-        live_grep = {
-            layout_config = horizontal_layout_config,
-        },
-        -- NOTE: `todo-comments` uses `grep_string` as its picker.
-        grep_string = {
-            layout_config = horizontal_layout_config,
-        },
-        diagnostics = {
-            layout_config = horizontal_layout_config,
-        },
-        lsp_references = {
-            layout_config = horizontal_layout_config,
-        },
-        lsp_implementations = {
-            layout_config = horizontal_layout_config,
-        },
-        lsp_document_symbols = {
-            layout_config = horizontal_layout_config,
-        },
-        lsp_workspace_symbols = {
-            layout_config = horizontal_layout_config,
-        },
-        lsp_code_actions = {
-            theme = "cursor",
-            layout_config = {
-                height = 16,
-            },
-        },
-        colorscheme = {
-            theme = "ivy",
-            layout_config = {
-                height = 16,
-            },
-            -- BUG: Disables real-time preview of colorscheme.
-            -- previewer = false,
-        },
+            prompt_title = "Files",
+        }),
+        colorscheme = build_dropdown({
+            prompt_position = "top",
+            height = 16,
+            -- BUG: Setting to false disables real-time previews of colorscheme.
+            previewer = false,
+            prompt_title = "Colorscheme",
+        }),
+        lsp_code_actions = build_dropdown({
+            prompt_position = "top",
+            height = 16,
+            previewer = false,
+            prompt_title = "LSP Code Actions",
+        }),
+    },
+    extensions = {
+        ["ui-select"] = build_dropdown({
+            prompt_position = "top",
+            height = 16,
+            previewer = false,
+        }),
     },
 })
+
+-- Extensions ------------------------------------------------------------------
+
+telescope.load_extension("ui-select")
+telescope.load_extension("harpoon")
 
 -- Keymaps --------------------------------------------------------------------
 

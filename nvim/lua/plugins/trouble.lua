@@ -19,7 +19,7 @@ trouble.setup({
         other = "█",
     },
     action_keys = {
-        -- Matches the LSP hover keymap. See `lua/config/lsp/init.lua`.
+        -- Matches the LSP hover keymap. See `lua/lsp/nvim-lspconfig.lua`.
         hover = "gh",
     },
 })

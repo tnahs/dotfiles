@@ -62,14 +62,14 @@ telescope.setup({
             i = {
                 ["<C-j>"] = actions.move_selection_next,
                 ["<C-k>"] = actions.move_selection_previous,
-                ["<C-q>"] = trouble.open_with_trouble,
+                ["<C-p>"] = trouble.open_with_trouble,
             },
             --
             -- Normal Mode
             n = {
                 ["<C-j>"] = actions.move_selection_next,
                 ["<C-k>"] = actions.move_selection_previous,
-                ["<C-q>"] = trouble.open_with_trouble,
+                ["<C-p>"] = trouble.open_with_trouble,
             },
         },
         borderchars = {
@@ -137,7 +137,7 @@ telescope.setup({
 telescope.load_extension("ui-select")
 telescope.load_extension("harpoon")
 
--- Keymaps --------------------------------------------------------------------
+-- Keymaps ---------------------------------------------------------------------
 
 local opts = { noremap = true, silent = true }
 
@@ -146,7 +146,7 @@ vim.api.nvim_set_keymap("n", "<leader>g", ":Telescope live_grep<CR>", opts)
 vim.api.nvim_set_keymap("n", "<leader>a", ":Telescope lsp_code_actions<CR>", opts)
 
 vim.api.nvim_set_keymap("n", "<leader>tb", ":Telescope buffers<CR>", opts)
-vim.api.nvim_set_keymap("n", "<leader>td", ":Telescope diagnostics<CR>", opts)
+vim.api.nvim_set_keymap("n", "<leader>tp", ":Telescope diagnostics<CR>", opts)
 vim.api.nvim_set_keymap("n", "<leader>tr", ":Telescope lsp_references<CR>", opts)
 vim.api.nvim_set_keymap("n", "<leader>ti", ":Telescope lsp_implementations<CR>", opts)
 vim.api.nvim_set_keymap("n", "<leader>td", ":Telescope lsp_document_symbols<CR>", opts)

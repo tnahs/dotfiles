@@ -1,9 +1,5 @@
 local opts = { noremap = true, silent = true }
 
-vim.api.nvim_set_keymap("n", "L", ":BufferLineCycleNext<CR>", opts)
-vim.api.nvim_set_keymap("n", "H", ":BufferLineCyclePrev<CR>", opts)
-vim.api.nvim_set_keymap("n", "<A-Tab>", ":BufferLineCycleNext<CR>", opts)
-vim.api.nvim_set_keymap("n", "<A-S-Tab>", ":BufferLineCyclePrev<CR>", opts)
 -- Remap space as leader key.
 vim.g.mapleader = " "
 vim.api.nvim_set_keymap("", "<Space>", "<Nop>", opts)
@@ -27,23 +23,26 @@ vim.api.nvim_set_keymap("n", "<leader>l", ":source %<CR>", opts)
 -- Save current buffer.
 vim.api.nvim_set_keymap("n", "<leader>w", ":write<CR>", opts)
 
--- Resize windows with `Control` + arrows.
-vim.api.nvim_set_keymap("n", "<A-Left>", ":vertical resize -2<CR>", opts)
-vim.api.nvim_set_keymap("n", "<A-Down>", ":resize -2<CR>", opts)
-vim.api.nvim_set_keymap("n", "<A-Up>", ":resize +2<CR>", opts)
-vim.api.nvim_set_keymap("n", "<A-Right>", ":vertical resize +2<CR>", opts)
+-- Resize windows.
+vim.api.nvim_set_keymap("n", "<C-Up>", ":resize +2<CR>", opts)
+vim.api.nvim_set_keymap("n", "<C-Down>", ":resize -2<CR>", opts)
+vim.api.nvim_set_keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
+vim.api.nvim_set_keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 
--- Window navigation using `Control` + `hjkl`.
+-- Window navigation.
 vim.api.nvim_set_keymap("n", "<C-h>", "<C-w>h", opts)
 vim.api.nvim_set_keymap("n", "<C-j>", "<C-w>j", opts)
 vim.api.nvim_set_keymap("n", "<C-k>", "<C-w>k", opts)
 vim.api.nvim_set_keymap("n", "<C-l>", "<C-w>l", opts)
 
 -- Cycle through quickfix and location list.
--- vim.api.nvim_set_keymap("n", "<A-j>", ":cnext<CR>", opts)
--- vim.api.nvim_set_keymap("n", "<A-k>", ":cprev<CR>", opts)
+vim.api.nvim_set_keymap("n", "<leader>j", ":cnext<CR>", opts)
+vim.api.nvim_set_keymap("n", "<leader>k", ":cprev<CR>", opts)
 -- vim.api.nvim_set_keymap("n", "<leader>j", ":lnext<CR>", opts)
 -- vim.api.nvim_set_keymap("n", "<leader>k", ":lprev<CR>", opts)
+
+-- Open quickfix list.
+vim.api.nvim_set_keymap("n", "<leader>q", ":copen<CR>", opts)
 
 -- Toggle spell checking.
 vim.api.nvim_set_keymap("n", "<C-s>", ":set spell!<CR>", opts)

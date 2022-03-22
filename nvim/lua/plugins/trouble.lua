@@ -20,7 +20,7 @@ trouble.setup({
     },
     action_keys = {
         -- Matches the LSP hover keymap. See `lua/lsp/nvim-lspconfig.lua`.
-        hover = "gh",
+        hover = "lh",
     },
 })
 

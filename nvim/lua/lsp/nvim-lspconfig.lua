@@ -34,25 +34,27 @@ for _, type in ipairs(signs) do
     vim.fn.sign_define(hl, { text = "█▌", texthl = hl, numhl = hl })
 end
 
--- Customize hover borders
+-- Customize hover borders.
 local border = { "┌", "─", "┐", "│", "┘", "─", "└", "│" }
-local handlers = {
-    ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border }),
-    ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border }),
-}
+local open_floating_preview = vim.lsp.util.open_floating_preview
+function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
+    opts = opts or {}
+    opts.border = opts.border or border
+    return open_floating_preview(contents, syntax, opts, ...)
+end
 
 -- Setup Language Servers ------------------------------------------------------
 
 local on_attach = function(client, bufnr)
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "gh", ":lua vim.lsp.buf.hover()<CR>", opts)
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "gn", ":lua vim.lsp.buf.rename()<CR>", opts)
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "gd", ":lua vim.lsp.buf.definition()<CR>", opts)
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "gr", ":lua vim.lsp.buf.references()<CR>", opts)
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "gi", ":lua vim.lsp.buf.implementation()<CR>", opts)
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "gs", ":lua vim.lsp.buf.signature_help()<CR>", opts)
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "lh", ":lua vim.lsp.buf.hover()<CR>", opts)
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "ln", ":lua vim.lsp.buf.rename()<CR>", opts)
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "ld", ":lua vim.lsp.buf.definition()<CR>", opts)
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "lr", ":lua vim.lsp.buf.references()<CR>", opts)
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "li", ":lua vim.lsp.buf.implementation()<CR>", opts)
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "ls", ":lua vim.lsp.buf.signature_help()<CR>", opts)
 
     if client.resolved_capabilities.document_range_formatting then
-        vim.api.nvim_buf_set_keymap("n", "gf", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
+        vim.api.nvim_buf_set_keymap("n", "lf", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
     end
 
     -- Using `null-ls` to take care of formatting. See `lua/lsp/null-ls.lua`.
@@ -78,7 +80,6 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 
 local server_default_opts = {
-    handlers = handlers,
     on_attach = on_attach,
     capabilities = capabilities,
     flags = {
@@ -105,7 +106,7 @@ require("lsp.rust-tools").setup(server_default_opts)
 
 -- Keymaps ---------------------------------------------------------------------
 
-vim.api.nvim_set_keymap("n", "ge", ":lua vim.diagnostic.open_float()<CR>", opts)
+vim.api.nvim_set_keymap("n", "le", ":lua vim.diagnostic.open_float()<CR>", opts)
 -- vim.api.nvim_set_keymap("n", "<leader>q", ":lua vim.diagnostic.setloclist()<CR>", opts)
 -- vim.api.nvim_set_keymap("n", "[d", ":lua vim.diagnostic.goto_prev()<CR>", opts)
 -- vim.api.nvim_set_keymap("n", "]d", ":lua vim.diagnostic.goto_next()<CR>", opts)

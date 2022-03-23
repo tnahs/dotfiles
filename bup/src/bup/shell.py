@@ -24,7 +24,7 @@ class _Shell:
         command -- Command to run.
         path -- Path to run the command in.
 
-        TODO:MED Document `Popen`."""
+        TODO: Document `Popen`."""
 
         command_normalized: list[str] = [str(s) for s in command]
 
@@ -285,7 +285,7 @@ class _Shell:
 
         https://ss64.com/osx/tar.html"""
 
-        # TODO:LOW Unexpected results when the filename includes periods.
+        # TODO: Unexpected results when the filename includes periods.
         #
         # Ensure the destination path has a tar-like file extension.
         # if destination.suffixes not in [[".tar", ".gz"], [".tgz"]]:
@@ -296,7 +296,7 @@ class _Shell:
 
         logger.debug(f"Creating archive `{destination}`.")
 
-        # TODO:MED Test adding --xattrs.
+        # TODO: Test adding --xattrs.
         flags: list[str] = ["--create", "--gzip"]
 
         if verbose:

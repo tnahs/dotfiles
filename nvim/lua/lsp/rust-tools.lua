@@ -1,4 +1,5 @@
 -- https://github.com/simrat39/rust-tools.nvim
+-- required: brew install rust-analyzer
 
 M = {}
 M.setup = function(server_default_opts)

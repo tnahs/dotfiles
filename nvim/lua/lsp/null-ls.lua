@@ -20,9 +20,8 @@ null_ls.setup({
         --
         -- python
         -- required: pipx install black
-        -- required: pipx install isort
-        -- required: pipx install flake8
         null_ls.builtins.formatting.black,
+        -- required: pipx install isort
         null_ls.builtins.formatting.isort.with({
             extra_args = {
                 "--profile",
@@ -31,6 +30,7 @@ null_ls.setup({
                 "2",
             },
         }),
+        -- required: pipx install flake8
         null_ls.builtins.diagnostics.flake8.with({
             extra_args = {
                 "--ignore",
@@ -56,7 +56,20 @@ null_ls.setup({
         --
         -- markdown
         -- required: brew install markdownlint-cli
-        null_ls.builtins.diagnostics.markdownlint,
+        null_ls.builtins.diagnostics.markdownlint.with({
+            extra_args = {
+                "--rules",
+                [[
+                    ~MD014,
+                    ~MD018,
+                    ~MD024,
+                    ~MD026,
+                    ~MD033,
+                    ~MD041,
+                    ~MD046,
+                ]],
+            },
+        }),
         --
         -- markdown/json/yaml/html/css/javascript/typescript
         -- required: brew install prettier

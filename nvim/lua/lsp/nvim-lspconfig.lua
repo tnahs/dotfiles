@@ -1,9 +1,4 @@
 -- https://github.com/neovim/nvim-lspconfig
---
--- required: brew install pyright
--- required: brew install rust-analyzer
--- required: brew install lua-language-server
--- required: npm i -g vscode-langservers-extracted
 
 local ok, lspconfig = pcall(require, "lspconfig")
 if not ok then

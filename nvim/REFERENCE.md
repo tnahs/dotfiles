@@ -24,7 +24,7 @@
 
 ---
 
-`lua print(vim.bo.filetype)` to get the current filetype.
+`echo &ft` or `lua print(vim.bo.filetype)` to get the current filetype.
 
 ---
 

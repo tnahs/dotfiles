@@ -34,7 +34,7 @@ Before installation:
    will depend on on wheter you're running an M1 or an Intel Mac.
 
    ```console
-   code ~/.dotfiles/zsh/.zshenv
+   vim ~/.dotfiles/zsh/.zshenv
    ```
 
 2. Install Rosetta. Some older applications will fail to install without Rosetta.

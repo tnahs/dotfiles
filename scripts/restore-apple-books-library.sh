@@ -6,7 +6,7 @@ function quit_applebooks {
     osascript -e 'tell application "Books" to quit'
 }
 
-# NOTE This spits out an error when extracting:
+# NOTE: This spits out an error when extracting:
 #
 #    tar: Special header too large
 #    tar: Error exit delayed from previous errors.

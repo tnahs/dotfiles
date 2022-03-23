@@ -271,7 +271,7 @@ function config__keyboard__mouse {
 
     echo "Configuring keyboard and mouse settings..."
 
-    # TODO Set tap to click
+    # TODO: Set tap to click.
 
     # ✓11.0 ✓UI : Disable "natural" scrolling direction
     defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
@@ -312,7 +312,7 @@ function config__misc_applications {
     # ✓11.0 ✓UI : Use plain text mode for new TextEdit documents
     defaults write com.apple.TextEdit RichText -int 0
 
-    # TODO Set default font and size: JetBrains Mono Regular 18
+    # TODO: Set default font and size: JetBrains Mono Regular 18.
 
     # ✓11.0 ?UI : Prevent Time Machine from prompting to use new hard drives as backup volume
     defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true

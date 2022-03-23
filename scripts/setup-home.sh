@@ -13,7 +13,6 @@
 
 function build_directories {
     printf "\nBuilding home directories...\n\n"
-    # .config Mainly used for karabiner
     mkdir $HOME/.config
     # Workspace
     mkdir $HOME/Workspace
@@ -22,13 +21,7 @@ function build_directories {
     # Media
     mkdir $HOME/Media
     mkdir $HOME/Media/incoming
-    mkdir $HOME/Media/incoming/images
-    mkdir $HOME/Media/incoming/audio
-    mkdir $HOME/Media/incoming/video
-    mkdir $HOME/Media/books
-    mkdir $HOME/Media/books/pdfs
-    mkdir $HOME/Media/books/epubs
-    mkdir $HOME/Media/books/audiobooks
+    mkdir $HOME/Media/pdfs
     mkdir $HOME/Media/wallpapers
     # Archives
     mkdir $HOME/Archives
@@ -46,11 +39,13 @@ function link_dotfiles {
     ln -siv $HOME/.dotfiles/zsh/.zshrc $HOME/.zshrc
     ln -siv $HOME/.dotfiles/zsh/.zshenv $HOME/.zshenv
     ln -siv $HOME/.dotfiles/homebrew/Brewfile $HOME/Brewfile
-    ln -siv $HOME/.dotfiles/karabiner $HOME/.config/karabiner
     ln -siv $HOME/.dotfiles/hammerspoon $HOME/.hammerspoon
+    ln -siv $HOME/.dotfiles/karabiner $HOME/.config/karabiner
     ln -siv $HOME/.dotfiles/alacritty/ $HOME/.config/alacritty
     ln -siv $HOME/.dotfiles/kitty $HOME/.config/kitty
     ln -siv $HOME/.dotfiles/nvim $HOME/.config/nvim
+    ln -siv $HOME/.dotfiles/helix $HOME/.config/helix
+    ln -siv $HOME/.dotfiles/gitui $HOME/.config/gitui
 }
 
 

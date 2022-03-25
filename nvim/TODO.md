@@ -53,6 +53,7 @@
 
 - <https://github.com/rockerBOO/awesome-neovim>
 
+- <https://github.com/simeji/winresizer>
 - <https://github.com/godlygeek/tabular>
 - <https://github.com/preservim/vim-markdown>
 - <https://github.com/rcarriga/nvim-notify>

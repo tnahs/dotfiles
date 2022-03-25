@@ -1,19 +1,21 @@
 -- Returns a string of comma separated consecutive integers representing column
 -- numbers. Used to fill the right half of a buffer with a color block instead
 -- of a single like to represent the preferred column width.
-local fill_columns = function(start, stop)
-    local c = {}
-    for i = start, stop do
-        table.insert(c, i)
+--
+-- Note this uses the current `textwidth` for staring column value.
+local fill_colorcolumn = function()
+    local columns = {}
+    for c = 1, 99 do
+        table.insert(columns, "+" .. c)
     end
-    return table.concat(c, ",")
+    return table.concat(columns, ",")
 end
 
 local options = {
     background = "dark",
     clipboard = "unnamedplus",
-    cmdheight = 1,
-    colorcolumn = fill_columns(81, 999),
+    cmdheight = 2,
+    colorcolumn = fill_colorcolumn(),
     completeopt = {
         "menuone",
         "noselect",
@@ -63,6 +65,7 @@ local options = {
     swapfile = false,
     tabstop = 4,
     termguicolors = true,
+    textwidth = 80,
     undofile = true,
     updatetime = 250,
     wrap = false,
@@ -85,15 +88,6 @@ vim.cmd([[
     autocmd TextYankPost * silent! lua vim.highlight.on_yank()
   augroup end
 ]])
-
--- Normalize tabbing.
--- BUG: This muddies the undo history.
--- vim.cmd([[
---   augroup Retab
---     autocmd!
---     autocmd BufWritePre * retab
---   augroup end
--- ]])
 
 -- Don't insert the comment leader after hitting `o` or `O` in Normal mode.
 -- https://vi.stackexchange.com/a/17739

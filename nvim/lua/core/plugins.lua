@@ -15,7 +15,7 @@ end
 
 -- Reloads Neovim's configuration and syncs `packer` when this file is saved.
 vim.cmd([[
-  augroup packer_user_config
+  augroup PackerAutoSourceNSync
     autocmd!
     autocmd BufWritePost plugins.lua source <afile> | PackerSync
   augroup end
@@ -50,7 +50,6 @@ return packer.startup({
 
         -- `Telescope`
         use("nvim-telescope/telescope.nvim")
-        use("nvim-telescope/telescope-ui-select.nvim")
 
         -- `Treesitter`
         use({
@@ -62,7 +61,6 @@ return packer.startup({
 
         -- Misc
         use("ThePrimeagen/harpoon")
-        use("akinsho/bufferline.nvim")
         use("akinsho/toggleterm.nvim")
         use("b0o/schemastore.nvim")
         use("fladson/vim-kitty")
@@ -71,7 +69,6 @@ return packer.startup({
         use("j-hui/fidget.nvim")
         use("kazhala/close-buffers.nvim")
         use("kdheepak/tabline.nvim")
-        use("kyazdani42/nvim-tree.lua")
         use("lewis6991/gitsigns.nvim")
         use("lukas-reineke/indent-blankline.nvim")
         use("norcalli/nvim-colorizer.lua")
@@ -79,13 +76,21 @@ return packer.startup({
         use("nvim-lualine/lualine.nvim")
         use("simrat39/rust-tools.nvim")
         use("simrat39/symbols-outline.nvim")
+        use("stevearc/dressing.nvim")
         use("tpope/vim-repeat")
         use("tpope/vim-surround")
         use("windwp/nvim-autopairs")
+        use({
+            "nvim-neo-tree/neo-tree.nvim",
+            requires = {
+                "MunifTanjim/nui.nvim",
+            },
+        })
 
         -- Themes
         use("folke/tokyonight.nvim")
-        use("gruvbox-community/gruvbox")
+        use({ "dracula/vim", as = "dracula" })
+        use({ "embark-theme/vim", as = "embark" })
 
         if PACKER_BOOTSTRAP then
             require("packer").sync()
@@ -97,8 +102,14 @@ return packer.startup({
         -- https://github.com/wbthomason/packer.nvim#using-a-floating-window
         display = {
             open_fn = function()
-                return require("packer.util").float({ border = "rounded" })
+                return require("packer.util").float({ border = "single" })
             end,
+            -- keybindings = {
+            --     quit = "q",
+            --     toggle_info = "<CR>",
+            --     diff = "d",
+            --     prompt_revert = "r",
+            -- },
         },
     },
 })

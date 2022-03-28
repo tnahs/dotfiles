@@ -18,6 +18,7 @@ local options = {
     colorcolumn = fill_colorcolumn(),
     completeopt = {
         "menuone",
+        "preview",
         "noselect",
     },
     cursorline = true,
@@ -83,7 +84,7 @@ vim.opt.shortmess:append("c")
 
 -- Highlight selection on yank.
 vim.cmd([[
-  augroup YankHighlight
+  augroup HighlighYankedText
     autocmd!
     autocmd TextYankPost * silent! lua vim.highlight.on_yank()
   augroup end
@@ -98,11 +99,12 @@ vim.cmd([[
   augroup end
 ]])
 
+-- TODO: Choose a better color for this.
 -- Set the column count indicator color.
 vim.cmd([[
   augroup LinkColorColumn
     autocmd!
-    autocmd ColorScheme * highlight! link ColorColumn Cursorline
+    autocmd VimEnter,ColorScheme * highlight! link ColorColumn Cursorline
   augroup end
 ]])
 

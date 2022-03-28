@@ -9,8 +9,8 @@ end
 lualine.setup({
     options = {
         icons_enabled = false,
-        component_separators = { "", "" },
-        section_separators = { "", "" },
-        disabled_filetypes = { "NvimTree" },
+        section_separators = "",
+        component_separators = "",
+        disabled_filetypes = { "neo-tree" },
     },
 })

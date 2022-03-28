@@ -6,8 +6,6 @@ if not ok then
     return
 end
 
-local opts = { noremap = true, silent = true }
-
 -- UI Customizations -----------------------------------------------------------
 -- https://github.com/neovim/nvim-lspconfig/wiki/UI-customization
 
@@ -40,16 +38,18 @@ end
 
 -- Setup Language Servers ------------------------------------------------------
 
+local opts = { noremap = true, silent = true }
+
 local on_attach = function(client, bufnr)
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "lh", ":lua vim.lsp.buf.hover()<CR>", opts)
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "ln", ":lua vim.lsp.buf.rename()<CR>", opts)
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "ld", ":lua vim.lsp.buf.definition()<CR>", opts)
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "lr", ":lua vim.lsp.buf.references()<CR>", opts)
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "li", ":lua vim.lsp.buf.implementation()<CR>", opts)
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "ls", ":lua vim.lsp.buf.signature_help()<CR>", opts)
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lh", ":lua vim.lsp.buf.hover()<CR>", opts)
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>ln", ":lua vim.lsp.buf.rename()<CR>", opts)
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>ld", ":lua vim.lsp.buf.definition()<CR>", opts)
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lr", ":lua vim.lsp.buf.references()<CR>", opts)
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>li", ":lua vim.lsp.buf.implementation()<CR>", opts)
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>ls", ":lua vim.lsp.buf.signature_help()<CR>", opts)
 
     if client.resolved_capabilities.document_range_formatting then
-        vim.api.nvim_buf_set_keymap("n", "lf", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
+        vim.api.nvim_buf_set_keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
     end
 
     -- Using `null-ls` to take care of formatting. See `lua/lsp/null-ls.lua`.
@@ -101,7 +101,7 @@ require("lsp.rust-tools").setup(server_default_opts)
 
 -- Keymaps ---------------------------------------------------------------------
 
-vim.api.nvim_set_keymap("n", "le", ":lua vim.diagnostic.open_float()<CR>", opts)
+vim.api.nvim_set_keymap("n", "<leader>le", ":lua vim.diagnostic.open_float()<CR>", opts)
+vim.api.nvim_set_keymap("n", "<leader>l[", ":lua vim.diagnostic.goto_next()<CR>", opts)
+vim.api.nvim_set_keymap("n", "<leader>l]", ":lua vim.diagnostic.goto_prev()<CR>", opts)
 -- vim.api.nvim_set_keymap("n", "<leader>q", ":lua vim.diagnostic.setloclist()<CR>", opts)
--- vim.api.nvim_set_keymap("n", "[d", ":lua vim.diagnostic.goto_prev()<CR>", opts)
--- vim.api.nvim_set_keymap("n", "]d", ":lua vim.diagnostic.goto_next()<CR>", opts)

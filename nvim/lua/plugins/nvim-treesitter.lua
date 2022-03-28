@@ -19,8 +19,8 @@ nvim_treesitter.setup({
         "todotxt",
     },
     -- https://github.com/p00f/nvim-ts-rainbow
-    rainbow = {
-        enable = true,
-        extended_mode = true,
-    },
+    -- rainbow = {
+    --     enable = true,
+    --     extended_mode = true,
+    -- },
 })

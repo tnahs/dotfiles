@@ -20,7 +20,23 @@ trouble.setup({
     },
     action_keys = {
         -- Matches the LSP hover keymap. See `lua/lsp/nvim-lspconfig.lua`.
-        hover = "lh",
+        hover = "<leader>lh",
+        -- cancel = "<Esc>",
+        -- close = "q",
+        -- close_folds = { "zM", "zm" },
+        -- jump = { "<CR>", "<Tab>" },
+        -- jump_close = { "o" },
+        -- next = "j",
+        -- open_folds = { "zR", "zr" },
+        -- open_split = { "<C-x>" },
+        -- open_tab = { "<C-t>" },
+        -- open_vsplit = { "<C-v>" },
+        -- preview = "p",
+        -- previous = "k",
+        -- refresh = "r",
+        -- toggle_fold = { "zA", "za" },
+        -- toggle_mode = "m",
+        -- toggle_preview = "P",
     },
 })
 

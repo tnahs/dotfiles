@@ -7,6 +7,7 @@ if not ok then
 end
 
 gitsigns.setup({
+    current_line_blame = true,
     signs = {
         add = {
             hl = "GitSignsAdd",
@@ -30,3 +31,11 @@ gitsigns.setup({
         },
     },
 })
+
+-- Set the current line blame to a dimmer color.
+vim.cmd([[
+  augroup DimmerCurrentLineBlame
+    autocmd!
+    autocmd VimEnter,ColorScheme * highlight! link GitSignsCurrentLineBlame Whitespace
+  augroup end
+]])

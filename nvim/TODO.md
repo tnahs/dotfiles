@@ -3,7 +3,7 @@
 ## Fix/Setup
 
 - [ ] add default hotkeys to each plugins config file
-- [ ] hide lsp text suggestions
+- [x] hide lsp `[Buffer]` suggestions
 - [ ] lsp code lens stuff
 - [ ] dap
 - [x] custom inlay hint colors
@@ -57,6 +57,7 @@
 - <https://github.com/godlygeek/tabular>
 - <https://github.com/preservim/vim-markdown>
 - <https://github.com/rcarriga/nvim-notify>
+- <https://github.com/noib3/nvim-compleet>
 
 - <https://github.com/tpope/vim-abolish>
 - <https://github.com/lewis6991/impatient.nvim>

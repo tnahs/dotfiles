@@ -8,6 +8,7 @@ end
 
 nvim_colorizer.setup({
     "*",
+    "!packer",
 }, {
     -- Disable colorizing CSS names.
     names = false,

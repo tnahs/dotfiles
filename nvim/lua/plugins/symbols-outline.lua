@@ -32,6 +32,15 @@ vim.g.symbols_outline = {
         TypeParameter = { icon = "" },
         Variable = { icon = "" },
     },
+    keymaps = {
+        -- close = { "<Esc>", "q" },
+        -- code_actions = "a",
+        -- focus_location = "o",
+        -- goto_location = "<CR>",
+        -- hover_symbol = "<C-Space>",
+        -- rename_symbol = "r",
+        -- toggle_preview = "K",
+    },
 }
 
 -- Keymaps ---------------------------------------------------------------------
@@ -44,8 +53,7 @@ vim.api.nvim_set_keymap("n", "<leader>yo", ":SymbolsOutline<CR>", opts)
 
 -- BUG: This should be automatically set by `symbols-outline`.
 vim.cmd([[
-  augroup DisableSyntax
-    autocmd VimEnter * highlight clear FocusedSymbol
-    autocmd VimEnter * highlight link FocusedSymbol Search
+  augroup BetterFocusedSymbolColor
+    autocmd VimEnter,ColorScheme * highlight! link FocusedSymbol IncSearch
   augroup end
 ]])

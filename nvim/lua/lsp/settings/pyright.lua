@@ -5,9 +5,7 @@ return {
     settings = {
         python = {
             analysis = {
-                typeCheckingMode = "strict",
-                diagnosticMode = "workspace",
-                autoSearchPaths = true,
+                typeCheckingMode = "basic",
                 useLibraryCodeForTypes = true,
             },
         },

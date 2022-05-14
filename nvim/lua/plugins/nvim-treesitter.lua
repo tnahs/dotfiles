@@ -9,7 +9,7 @@ if not ok then
 end
 
 nvim_treesitter.setup({
-    ensure_installed = "maintained",
+    ensure_installed = "all",
     highlight = {
         enable = true,
     },
@@ -17,10 +17,6 @@ nvim_treesitter.setup({
     ignore_install = {
         "comment",
         "todotxt",
+        "phpdoc",
     },
-    -- https://github.com/p00f/nvim-ts-rainbow
-    -- rainbow = {
-    --     enable = true,
-    --     extended_mode = true,
-    -- },
 })

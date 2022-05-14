@@ -9,15 +9,15 @@ end
 -- TODO: Prevent auto-pairs when cursor has text to its right.
 nvim_autopairs.setup({
     check_ts = true,
-    fast_wrap = {
-        map = "<C-l>",
-        chars = { "{", "[", "(", '"', "'" },
-        pattern = string.gsub([[ [%'%"%)%>%]%)%}%,] ]], "%s+", ""),
-        offset = -1,
-        end_key = "$",
-        keys = "qwertyuiopzxcvbnmasdfghjkl",
-        check_comma = true,
-        highlight = "Search",
-        highlight_grey = "Comment",
-    },
+    -- fast_wrap = {
+    --     map = "<C-l>",
+    --     chars = { "{", "[", "(", '"', "'" },
+    --     pattern = string.gsub([[ [%'%"%)%>%]%)%}%,] ]], "%s+", ""),
+    --     offset = -1,
+    --     end_key = "$",
+    --     keys = "qwertyuiopzxcvbnmasdfghjkl",
+    --     check_comma = true,
+    --     highlight = "Search",
+    --     highlight_grey = "Comment",
+    -- },
 })

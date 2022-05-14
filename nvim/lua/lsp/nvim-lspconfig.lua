@@ -49,7 +49,7 @@ local on_attach = function(client, bufnr)
     vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>ls", ":lua vim.lsp.buf.signature_help()<CR>", opts)
 
     if client.resolved_capabilities.document_range_formatting then
-        vim.api.nvim_buf_set_keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
+        vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lf", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
     end
 
     -- Using `null-ls` to take care of formatting. See `lua/lsp/null-ls.lua`.

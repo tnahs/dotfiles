@@ -18,7 +18,7 @@ local opts = { noremap = true, silent = true }
 vim.api.nvim_set_keymap("n", "<leader>hh", ":Telescope harpoon marks<CR>", opts)
 
 -- Add current file to `Harpoon`.
-vim.api.nvim_set_keymap("n", "<leader>ha", "lua require('harpoon.mark').add_file()", opts)
+vim.api.nvim_set_keymap("n", "<leader>ha", ":lua require('harpoon.mark').add_file()<CR>", opts)
 
 -- Navigate marks.
 vim.api.nvim_set_keymap("n", "<A-1>", ":lua require('harpoon.ui').nav_file(1)<CR>", opts)

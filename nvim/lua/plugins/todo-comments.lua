@@ -7,12 +7,13 @@ if not ok then
 end
 
 -- BUG: Report. Pressing `O` on a TODO comment directly under a non-commented
--- line throws and exception. It happens in `lua/lsp/nvim-lspconfig.lua`.
+-- line causes the parser to bug out.
 todo_comments.setup({
     keywords = {
         BUG = {
             icon = "█",
             color = "warning",
+            alt = { "WARNING" },
         },
         FIX = {
             icon = "█",
@@ -34,11 +35,7 @@ todo_comments.setup({
             alt = { "TEMP" },
         },
     },
-    -- BUG: Seems like the following settings don't work in `Telescope`.
-    -- highlight = {
-    --     keyword = "fg",
-    --     after = "fg",
-    -- },
+    merge_keywords = false,
 })
 
 -- Keymaps ---------------------------------------------------------------------

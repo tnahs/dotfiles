@@ -56,7 +56,6 @@ return packer.startup({
             "nvim-treesitter/nvim-treesitter",
             run = ":TSUpdate",
         })
-        use("p00f/nvim-ts-rainbow")
         use("lewis6991/spellsitter.nvim")
 
         -- Misc

@@ -49,13 +49,11 @@ local render_name = function(config, node, state)
     }
 end
 
--- BUG: This seems to create two empty buffers at startup when using `nvim .`.
 neo_tree.setup({
     -- Using `stevearc/dressing.nvim` to style all the popups/ui elements.
     use_popups_for_input = false,
     popup_border_style = "single",
     default_component_configs = {
-        -- BUG: The last item in the tree renders and extra indent line.
         indent = {
             highlight = "Whitespace",
         },

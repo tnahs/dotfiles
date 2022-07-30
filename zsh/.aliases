@@ -14,7 +14,7 @@ alias brewski="brew update && brew upgrade && brew cleanup; brew doctor"
 alias gs="git status"
 
 # dotfiles
-alias dotfiles="cd $HOME/.dotfiles && code ."
+alias dotfiles="cd $HOME/.dotfiles && nvim ."
 
 # bup
 export PYTHONPATH=$HOME/.dotfiles/bup/src:$PYTHONPATH
@@ -29,5 +29,5 @@ alias rdump=" \
     && readstor backup --output $READSTOR_ROOT"
 
 # wiki
-alias wiki="cd $HOME/Workspace/repos/wiki && code ."
-alias piki="cd $HOME/Workspace/repos/wiki-public && code ."
+alias wiki="cd $HOME/Workspace/repos/wiki && nvim ."
+alias piki="cd $HOME/Workspace/repos/wiki-public && nvim ."

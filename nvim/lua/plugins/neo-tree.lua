@@ -1,4 +1,4 @@
---https://github.com/nvim-neo-tree/neo-tree.nvim
+-- https://github.com/nvim-neo-tree/neo-tree.nvim
 
 local ok, neo_tree = pcall(require, "neo-tree")
 if not ok then
@@ -64,6 +64,7 @@ neo_tree.setup({
         },
     },
     window = {
+        width = 35,
         mappings = {
             ["<Tab>"] = "open",
             ["<space>"] = false,
@@ -86,9 +87,9 @@ neo_tree.setup({
             -- ["x"] = "cut_to_clipboard",
             -- ["y"] = "copy_to_clipboard",
             -- ["z"] = "close_all_nodes",
+            -- ["<C-x>"] = "clear_filter",
             -- BUG: `fuzzy_finder` and `filter_on_submit` don't work.
             -- BUG: `fuzzy_finder` and `filter_on_submit` aren't using the `vim.input` api...
-            -- ["<C-x>"] = "clear_filter",
             -- ["/"] = "fuzzy_finder",
             -- ["f"] = "filter_on_submit",
         },
@@ -135,7 +136,5 @@ vim.cmd([[
 
 -- Keymaps ---------------------------------------------------------------------
 
-local opts = { noremap = true, silent = true }
-
 -- Toggle `Neotree`.
-vim.api.nvim_set_keymap("n", "<C-b>", ":Neotree show toggle<CR>", opts)
+vim.keymap.set("n", "<C-b>", ":Neotree show toggle<CR>")

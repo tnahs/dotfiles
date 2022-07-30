@@ -47,6 +47,7 @@ local on_attach = function(client, bufnr)
     vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lr", ":lua vim.lsp.buf.references()<CR>", opts)
     vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>li", ":lua vim.lsp.buf.implementation()<CR>", opts)
     vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>ls", ":lua vim.lsp.buf.signature_help()<CR>", opts)
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>la", ":lua vim.lsp.buf.code_action()<CR>", opts)
 
     if client.resolved_capabilities.document_range_formatting then
         vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lf", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
@@ -101,7 +102,7 @@ require("lsp.rust-tools").setup(server_default_opts)
 
 -- Keymaps ---------------------------------------------------------------------
 
-vim.api.nvim_set_keymap("n", "<leader>le", ":lua vim.diagnostic.open_float()<CR>", opts)
-vim.api.nvim_set_keymap("n", "<leader>l[", ":lua vim.diagnostic.goto_next()<CR>", opts)
-vim.api.nvim_set_keymap("n", "<leader>l]", ":lua vim.diagnostic.goto_prev()<CR>", opts)
--- vim.api.nvim_set_keymap("n", "<leader>q", ":lua vim.diagnostic.setloclist()<CR>", opts)
+vim.keymap.set("n", "<leader>le", ":lua vim.diagnostic.open_float()<CR>")
+vim.keymap.set("n", "<leader>l[", ":lua vim.diagnostic.goto_next()<CR>")
+vim.keymap.set("n", "<leader>l]", ":lua vim.diagnostic.goto_prev()<CR>")
+-- vim.keymap.set("n", "<leader>q", ":lua vim.diagnostic.setloclist()<CR>")

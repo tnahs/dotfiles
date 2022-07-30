@@ -118,7 +118,7 @@ telescope.setup({
             preview = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
         },
         layout_config = {
-            width = 0.8,
+            width = 0.9,
             height = 0.8,
             flex = { flip_columns = 280 },
             horizontal = { preview_width = 81 },
@@ -171,16 +171,13 @@ telescope.load_extension("harpoon")
 
 -- Keymaps ---------------------------------------------------------------------
 
-local opts = { noremap = true, silent = true }
+vim.keymap.set("n", "<leader>f", ":Telescope find_files<CR>")
+vim.keymap.set("n", "<leader>g", ":Telescope live_grep<CR>")
 
-vim.api.nvim_set_keymap("n", "<leader>f", ":Telescope find_files<CR>", opts)
-vim.api.nvim_set_keymap("n", "<leader>g", ":Telescope live_grep<CR>", opts)
-vim.api.nvim_set_keymap("n", "<leader>a", ":Telescope lsp_code_actions<CR>", opts)
-
-vim.api.nvim_set_keymap("n", "<leader>tb", ":Telescope buffers<CR>", opts)
-vim.api.nvim_set_keymap("n", "<leader>tp", ":Telescope diagnostics<CR>", opts)
-vim.api.nvim_set_keymap("n", "<leader>tr", ":Telescope lsp_references<CR>", opts)
-vim.api.nvim_set_keymap("n", "<leader>ti", ":Telescope lsp_implementations<CR>", opts)
-vim.api.nvim_set_keymap("n", "<leader>td", ":Telescope lsp_document_symbols<CR>", opts)
-vim.api.nvim_set_keymap("n", "<leader>tw", ":Telescope lsp_workspace_symbols<CR>", opts)
-vim.api.nvim_set_keymap("n", "<leader>tc", ":Telescope colorscheme enable_preview=true<CR>", opts)
+vim.keymap.set("n", "<leader>tb", ":Telescope buffers<CR>")
+vim.keymap.set("n", "<leader>tp", ":Telescope diagnostics<CR>")
+vim.keymap.set("n", "<leader>tr", ":Telescope lsp_references<CR>")
+vim.keymap.set("n", "<leader>ti", ":Telescope lsp_implementations<CR>")
+vim.keymap.set("n", "<leader>td", ":Telescope lsp_document_symbols<CR>")
+vim.keymap.set("n", "<leader>tw", ":Telescope lsp_workspace_symbols<CR>")
+vim.keymap.set("n", "<leader>tc", ":Telescope colorscheme enable_preview=true<CR>")

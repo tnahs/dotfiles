@@ -12,17 +12,15 @@ end
 -- <C-p> Move mark up
 -- <C-n> Move mark down
 
-local opts = { noremap = true, silent = true }
-
 -- Open `Harpoon` menu with `Telescope`.
-vim.api.nvim_set_keymap("n", "<leader>hh", ":Telescope harpoon marks<CR>", opts)
+vim.keymap.set("n", "<leader>hh", ":Telescope harpoon marks<CR>")
 
 -- Add current file to `Harpoon`.
-vim.api.nvim_set_keymap("n", "<leader>ha", ":lua require('harpoon.mark').add_file()<CR>", opts)
+vim.keymap.set("n", "<leader>ha", ":lua require('harpoon.mark').add_file()<CR>")
 
 -- Navigate marks.
-vim.api.nvim_set_keymap("n", "<A-1>", ":lua require('harpoon.ui').nav_file(1)<CR>", opts)
-vim.api.nvim_set_keymap("n", "<A-2>", ":lua require('harpoon.ui').nav_file(2)<CR>", opts)
-vim.api.nvim_set_keymap("n", "<A-3>", ":lua require('harpoon.ui').nav_file(3)<CR>", opts)
-vim.api.nvim_set_keymap("n", "<A-4>", ":lua require('harpoon.ui').nav_file(4)<CR>", opts)
-vim.api.nvim_set_keymap("n", "<A-5>", ":lua require('harpoon.ui').nav_file(5)<CR>", opts)
+vim.keymap.set("n", "<A-1>", ":lua require('harpoon.ui').nav_file(1)<CR>")
+vim.keymap.set("n", "<A-2>", ":lua require('harpoon.ui').nav_file(2)<CR>")
+vim.keymap.set("n", "<A-3>", ":lua require('harpoon.ui').nav_file(3)<CR>")
+vim.keymap.set("n", "<A-4>", ":lua require('harpoon.ui').nav_file(4)<CR>")
+vim.keymap.set("n", "<A-5>", ":lua require('harpoon.ui').nav_file(5)<CR>")

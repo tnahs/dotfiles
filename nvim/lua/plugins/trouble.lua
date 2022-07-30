@@ -42,11 +42,9 @@ trouble.setup({
 
 -- Keymaps ---------------------------------------------------------------------
 
-local opts = { noremap = true, silent = true }
-
-vim.api.nvim_set_keymap("n", "<leader>pp", ":TroubleToggle<CR>", opts)
-vim.api.nvim_set_keymap("n", "<leader>pl", ":Trouble loclist<CR>", opts)
-vim.api.nvim_set_keymap("n", "<leader>pq", ":Trouble quickfix<CR>", opts)
-vim.api.nvim_set_keymap("n", "<leader>pw", ":Trouble workspace_diagnostics<CR>", opts)
-vim.api.nvim_set_keymap("n", "<leader>pd", ":Trouble document_diagnostics<CR>", opts)
-vim.api.nvim_set_keymap("n", "<leader>pr", ":Trouble lsp_references<CR>", opts)
+vim.keymap.set("n", "<leader>pp", ":TroubleToggle<CR>")
+vim.keymap.set("n", "<leader>pl", ":Trouble loclist<CR>")
+vim.keymap.set("n", "<leader>pq", ":Trouble quickfix<CR>")
+vim.keymap.set("n", "<leader>pw", ":Trouble workspace_diagnostics<CR>")
+vim.keymap.set("n", "<leader>pd", ":Trouble document_diagnostics<CR>")
+vim.keymap.set("n", "<leader>pr", ":Trouble lsp_references<CR>")

@@ -19,9 +19,7 @@ tabline.setup({
 
 -- Keymaps ---------------------------------------------------------------------
 
-local opts = { noremap = true, silent = true }
-
-vim.api.nvim_set_keymap("n", "L", ":TablineBufferNext<CR>", opts)
-vim.api.nvim_set_keymap("n", "H", ":TablineBufferPrevious<CR>", opts)
-vim.api.nvim_set_keymap("n", "<A-Tab>", ":TablineBufferNext<CR>", opts)
-vim.api.nvim_set_keymap("n", "<A-S-Tab>", ":TablineBufferPrevious<CR>", opts)
+vim.keymap.set("n", "L", ":TablineBufferNext<CR>")
+vim.keymap.set("n", "H", ":TablineBufferPrevious<CR>")
+vim.keymap.set("n", "<A-Tab>", ":TablineBufferNext<CR>")
+vim.keymap.set("n", "<A-S-Tab>", ":TablineBufferPrevious<CR>")

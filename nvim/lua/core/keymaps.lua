@@ -1,79 +1,77 @@
-local opts = { noremap = true, silent = true }
-
 -- Remap space as leader key.
 vim.g.mapleader = " "
-vim.api.nvim_set_keymap("", "<Space>", "<Nop>", opts)
+vim.keymap.set("", "<Space>", "<Nop>")
 
 -- Normal ----------------------------------------------------------------------
 
 -- Scroll faster and center cursor to screen.
-vim.api.nvim_set_keymap("n", "<C-e>", "3<C-e>M", opts)
-vim.api.nvim_set_keymap("n", "<C-y>", "3<C-y>M", opts)
+vim.keymap.set("n", "<C-e>", "3<C-e>M")
+vim.keymap.set("n", "<C-y>", "3<C-y>M")
 
 -- Keep cursor centered when cycling matches.
-vim.api.nvim_set_keymap("n", "n", "nzzzv", opts)
-vim.api.nvim_set_keymap("n", "N", "Nzzzv", opts)
+vim.keymap.set("n", "n", "nzzzv")
+vim.keymap.set("n", "N", "Nzzzv")
 
 -- Maintain cursor position when joining lines.
-vim.api.nvim_set_keymap("n", "J", "mzJ`z", opts)
+vim.keymap.set("n", "J", "mzJ`z")
 
 -- Source current buffer.
-vim.api.nvim_set_keymap("n", "<leader>l", ":source %<CR>", opts)
+vim.keymap.set("n", "<leader>l", ":source %<CR>")
 
 -- Save current buffer.
-vim.api.nvim_set_keymap("n", "<leader>w", ":write<CR>", opts)
+vim.keymap.set("n", "<leader>w", ":write<CR>")
 
 -- Resize windows.
-vim.api.nvim_set_keymap("n", "<C-Up>", ":resize +2<CR>", opts)
-vim.api.nvim_set_keymap("n", "<C-Down>", ":resize -2<CR>", opts)
-vim.api.nvim_set_keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
-vim.api.nvim_set_keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
+vim.keymap.set("n", "<C-Up>", ":resize +2<CR>")
+vim.keymap.set("n", "<C-Down>", ":resize -2<CR>")
+vim.keymap.set("n", "<C-Left>", ":vertical resize -2<CR>")
+vim.keymap.set("n", "<C-Right>", ":vertical resize +2<CR>")
 
 -- Window navigation.
-vim.api.nvim_set_keymap("n", "<C-h>", "<C-w>h", opts)
-vim.api.nvim_set_keymap("n", "<C-j>", "<C-w>j", opts)
-vim.api.nvim_set_keymap("n", "<C-k>", "<C-w>k", opts)
-vim.api.nvim_set_keymap("n", "<C-l>", "<C-w>l", opts)
+vim.keymap.set("n", "<C-h>", "<C-w>h")
+vim.keymap.set("n", "<C-j>", "<C-w>j")
+vim.keymap.set("n", "<C-k>", "<C-w>k")
+vim.keymap.set("n", "<C-l>", "<C-w>l")
 
 -- Cycle through quickfix and location list.
-vim.api.nvim_set_keymap("n", "<leader>j", ":cnext<CR>", opts)
-vim.api.nvim_set_keymap("n", "<leader>k", ":cprev<CR>", opts)
--- vim.api.nvim_set_keymap("n", "<leader>j", ":lnext<CR>", opts)
--- vim.api.nvim_set_keymap("n", "<leader>k", ":lprev<CR>", opts)
+vim.keymap.set("n", "<leader>j", ":cnext<CR>")
+vim.keymap.set("n", "<leader>k", ":cprev<CR>")
+-- vim.keymap.set("n", "<leader>j", ":lnext<CR>")
+-- vim.keymap.set("n", "<leader>k", ":lprev<CR>")
 
 -- Open quickfix list.
-vim.api.nvim_set_keymap("n", "<leader>q", ":copen<CR>", opts)
+vim.keymap.set("n", "<leader>q", ":copen<CR>")
 
 -- Toggle spell checking.
-vim.api.nvim_set_keymap("n", "<C-s>", ":set spell!<CR>", opts)
+vim.keymap.set("n", "<C-s>", ":set spell!<CR>")
 
 -- Insert ----------------------------------------------------------------------
 
 -- Add an undo breakpoint at each character.
 local chars = { ".", ",", "(", "[", "{", "!", "?" }
 for _, char in ipairs(chars) do
-    vim.api.nvim_set_keymap("i", char, char .. "<C-g>u", opts)
+    vim.keymap.set("i", char, char .. "<C-g>u")
 end
 
 -- Visual ----------------------------------------------------------------------
 
 -- Indent selected text.
-vim.api.nvim_set_keymap("v", ">", ">gv", opts)
-vim.api.nvim_set_keymap("v", "<", "<gv", opts)
+vim.keymap.set("v", ">", ">gv")
+vim.keymap.set("v", "<", "<gv")
 
 -- Move selected text up and down.
-vim.api.nvim_set_keymap("v", "K", ":m '<-2<CR>gv=gv", opts)
-vim.api.nvim_set_keymap("v", "J", ":m '>+1<CR>gv=gv", opts)
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 
 -- Retain yanked text on paste.
-vim.api.nvim_set_keymap("v", "p", '"_dP', opts)
+vim.keymap.set("v", "p", '"_dP')
 
 -- Misc ------------------------------------------------------------------------
 
 local trim_opts = ":keepjumps keeppatterns "
 
 -- WIP: Trim trailing whitespace.
-vim.api.nvim_set_keymap("n", "<leader>zw", trim_opts .. [[%s/\s\+$//e<CR>]], opts)
+vim.keymap.set("n", "<leader>zw", trim_opts .. [[%s/\s\+$//e<CR>]])
 
 -- WIP: Trim trailing lines.
-vim.api.nvim_set_keymap("n", "<leader>zl", [[:0;/^\%(\n*.\)\@!/ + 0,$d<CR>]], opts)
+vim.keymap.set("n", "<leader>zl", [[:0;/^\%(\n*.\)\@!/ + 0,$d<CR>]])

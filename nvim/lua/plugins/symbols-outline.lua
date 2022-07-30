@@ -45,9 +45,7 @@ vim.g.symbols_outline = {
 
 -- Keymaps ---------------------------------------------------------------------
 
-local opts = { noremap = true, silent = true }
-
-vim.api.nvim_set_keymap("n", "<leader>yo", ":SymbolsOutline<CR>", opts)
+vim.keymap.set("n", "<leader>yo", ":SymbolsOutline<CR>")
 
 -- Misc ------------------------------------------------------------------------
 

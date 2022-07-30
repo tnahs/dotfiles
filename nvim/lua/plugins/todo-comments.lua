@@ -40,7 +40,5 @@ todo_comments.setup({
 
 -- Keymaps ---------------------------------------------------------------------
 
-local opts = { noremap = true, silent = true }
-
 -- Open TODOs in `Telescope`.
-vim.api.nvim_set_keymap("n", "<leader>tt", ":TodoTelescope<CR>", opts)
+vim.keymap.set("n", "<leader>tt", ":TodoTelescope<CR>")

@@ -4,7 +4,7 @@ import sys
 import textwrap
 
 from . import __version__
-from .bup import Bup, Defaults, E_BupChoices
+from .bup import Bup, BupChoices, Defaults
 
 
 logger = logging.getLogger()
@@ -35,12 +35,12 @@ def main() -> int:
                 -h / --help      Show help.
 
             Available {Defaults.NAME_PRETTY}s:
-                {E_BupChoices.ANKI}
-                {E_BupChoices.APPLEBOOKS}
-                {E_BupChoices.DOTFILES}
-                {E_BupChoices.DOWNLOADS}
-                {E_BupChoices.MEDIA}
-                {E_BupChoices.WORKSPACE}
+                {BupChoices.ANKI}
+                {BupChoices.APPLEBOOKS}
+                {BupChoices.BREWFILE}
+                {BupChoices.DOWNLOADS}
+                {BupChoices.MEDIA}
+                {BupChoices.WORKSPACE}
         """.rstrip()
         ),
     )
@@ -48,12 +48,12 @@ def main() -> int:
     parser.add_argument(
         "run",
         nargs="*",
-        type=E_BupChoices.argparse,
+        type=BupChoices.argparse,
         choices=[
             # TODO: Hack to allow choices to be empty. There might be a better
             # way to do this using argparse.
             [],
-            *[choice.value for choice in E_BupChoices],
+            *[choice.value for choice in BupChoices],
         ],
         help=argparse.SUPPRESS,
     )
@@ -101,12 +101,12 @@ def main() -> int:
                 {Defaults.NAME_PRETTY}: Backup User Protocol
 
                 Available {Defaults.NAME_PRETTY}s:
-                    {E_BupChoices.ANKI}
-                    {E_BupChoices.APPLEBOOKS}
-                    {E_BupChoices.DOTFILES}
-                    {E_BupChoices.DOWNLOADS}
-                    {E_BupChoices.MEDIA}
-                    {E_BupChoices.WORKSPACE}
+                    {BupChoices.ANKI}
+                    {BupChoices.APPLEBOOKS}
+                    {BupChoices.BREWFILE}
+                    {BupChoices.DOWNLOADS}
+                    {BupChoices.MEDIA}
+                    {BupChoices.WORKSPACE}
             """.rstrip()
             )
         )
@@ -138,6 +138,8 @@ def main() -> int:
             f"Exception raised while attempting to run {Defaults.NAME_PRETTY}."
         )
         return 1
+
+    logger.info("BUP Complete!")
 
     return 0
 

@@ -2,14 +2,19 @@ import logging
 import pathlib
 import plistlib
 import subprocess
-from typing import Union
 
 
 logger = logging.getLogger(__name__)
 
 
 class _Versions:
-    def _get_via_app_bundle(self, path: Union[pathlib.Path, str]) -> str:
+    def _get_via_app_bundle(self, path: pathlib.Path | str) -> str:
+        """
+        Parses and returns an application's version based on its 'Info.plist'.
+
+        Args:
+            path:
+        """
 
         path = pathlib.Path(path) / "Contents" / "Info.plist"
 
@@ -32,20 +37,22 @@ class _Versions:
 
     @property
     def macOS(self) -> str:
+        """Returns the current macOS version."""
 
-        result = subprocess.run(
-            ["sw_vers", "-productVersion"],
-            stdout=subprocess.PIPE,
-        )
+        result = subprocess.run(["sw_vers", "-productVersion"], stdout=subprocess.PIPE)
 
         return result.stdout.decode("utf-8").strip()
 
     @property
     def applebooks(self) -> str:
+        """Returns the current Apple Books verion."""
+
         return self._get_via_app_bundle(path="/System/Applications/Books.app")
 
     @property
     def anki(self) -> str:
+        """Returns the current Anki version."""
+
         return self._get_via_app_bundle(path="/Applications/Anki.app")
 
 

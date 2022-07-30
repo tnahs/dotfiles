@@ -8,8 +8,14 @@ logger = logging.getLogger(__name__)
 
 class _Helpers:
     def slugify(self, string: str, delimiter: str = "-", lowercase: bool = True) -> str:
-        """Returns a normalized string. Converts to ASCII, strips non-word
-        characters, lowers case and replaces spaces with `delimeter`.
+        """
+        Returns a normalized string. Converts to ASCII, strips non-word
+        characters, lowers case and replaces spaces with 'delimeter'.
+
+        Args:
+            string: String to slugify.
+            delimeter: String used to replace spaces.
+            lowercase: Makes the resulting string lowecase.
 
         https://docs.djangoproject.com/en/3.0/_modules/django/utils/text/#slugify
         """
@@ -26,8 +32,8 @@ class _Helpers:
             string = string.lower()
 
         string = string.strip()
-        string = re.sub(fr"[^\w\s{delimiter}]", "", string)
-        string = re.sub(fr"[\s{delimiter}]+", delimiter, string)
+        string = re.sub(rf"[^\w\s{delimiter}]", "", string)
+        string = re.sub(rf"[\s{delimiter}]+", delimiter, string)
 
         return string
 

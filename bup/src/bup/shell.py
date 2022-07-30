@@ -2,7 +2,7 @@ import logging
 import pathlib
 import shutil
 import subprocess
-from typing import Iterator, Optional, Union
+from typing import Iterator
 
 import psutil
 
@@ -16,15 +16,16 @@ class _Shell:
 
     def run(
         self,
-        command: list[Union[str, pathlib.Path]],
-        path: Optional[pathlib.Path] = None,
+        command: list[str | pathlib.Path],
+        path: pathlib.Path | None = None,
     ) -> None:
-        """Runs a terminal command.
+        """
+        Runs a terminal command.
 
-        command -- Command to run.
-        path -- Path to run the command in.
-
-        TODO: Document `Popen`."""
+        Args:
+            command: Command to run.
+            path: Path to run the command in.
+        """
 
         command_normalized: list[str] = [str(s) for s in command]
 
@@ -40,7 +41,7 @@ class _Shell:
             universal_newlines=True,
         ) as process:
 
-            logger.debug(f"Running command `{command_string}`.")
+            logger.debug(f"Running command '{command_string}'.")
 
             if process.stdout is not None:
                 for line in process.stdout:
@@ -50,12 +51,16 @@ class _Shell:
             raise subprocess.CalledProcessError(process.returncode, process.args)
 
     def make(self, path: pathlib.Path, as_file: bool = False) -> None:
-        """Makes a file or directory. By default directorties are created
-        unless `as_file=True`. Does not raise an Exception if the file or
-        directory exists.
+        """
+        Makes a file/directory. By default directorties are created unless
+        `as_file=True`. Does not raise an Exception if the file or directory
+        exists.
 
-        path -- Path to a file or directory.
-        as_file -- Make a file instead.
+        Args:
+            path: Path to a file/directory.
+            as_file: Make a file instead.
+
+        ---
 
         Path.mkdir()
 
@@ -78,9 +83,10 @@ class _Shell:
             is updated to the current time), otherwise FileExistsError is
             raised.
 
-        https://docs.python.org/3/library/pathlib.html#pathlib.Path.touch"""
+        https://docs.python.org/3/library/pathlib.html#pathlib.Path.touch
+        """
 
-        logger.debug(f"Making `{path}`.")
+        logger.debug(f"Making '{path}'.")
 
         if as_file:
             path.touch(exist_ok=True)
@@ -88,12 +94,20 @@ class _Shell:
             path.mkdir(parents=True, exist_ok=True)
 
     def move(
-        self, source: pathlib.Path, destination: pathlib.Path, force: bool = True
+        self,
+        source: pathlib.Path,
+        destination: pathlib.Path,
+        force: bool = True,
     ) -> None:
-        """Move files and/or directories.
+        """
+        Move files and/or directories.
 
-        source -- Path to file and/or directory to move.
-        destination -- Path to move to.
+        Args:
+            source: Path to file and/or directory to move.
+            destination: Path to move to.
+            force: Overwrite existing files without prompting for confirmation.
+
+        ---
 
         mv [options] source target
 
@@ -101,23 +115,28 @@ class _Shell:
 
             -i
                 Prompt before moving a file that would overwrite an existing
-                file. A response of `y` or `Y`, will allow the move to proceed.
+                file. A response of 'y' or 'Y', will allow the move to proceed.
 
-        https://ss64.com/osx/mv.html"""
+        https://ss64.com/osx/mv.html
+        """
 
         flags: list[str] = []
 
         if force is False:
             flags.append("-i")
 
-        logger.debug(f"Moving `{source}` to `{destination}`.")
+        logger.debug(f"Moving '{source}' to '{destination}'.")
 
         self.run(command=["mv", *flags, source, destination])
 
     def remove(self, path: pathlib.Path) -> None:
-        """Removes a file or directory.
+        """
+        Deletes a file/directory.
 
-        path -- Path to file or directory to remove.
+        Args:
+            path: Path to file/directory to remove.
+
+        ---
 
         shutil.rmtree(path)
 
@@ -134,9 +153,10 @@ class _Shell:
             If missing_ok is true, FileNotFoundError exceptions will be ignored
             (same behavior as the POSIX rm -f command).
 
-        https://docs.python.org/3/library/pathlib.html#pathlib.Path.unlink"""
+        https://docs.python.org/3/library/pathlib.html#pathlib.Path.unlink
+        """
 
-        logger.debug(f"Removing `{path}`.")
+        logger.debug(f"Removing '{path}'.")
 
         if path.is_dir():
             shutil.rmtree(path)
@@ -145,26 +165,35 @@ class _Shell:
             path.unlink(missing_ok=True)
 
     def trash(self, path: pathlib.Path) -> None:
-        """Move an item to the Trash."""
+        """
+        Moves a file/directory to the Trash.
 
-        logger.debug("Moving `{path}` to Trash.")
+        Args:
+            path: Path to the file/directory.
+        """
+
+        logger.debug("Moving '{path}' to Trash.")
 
         self.move(source=path, destination=self.TRASH)
 
     def copy(
         self,
-        sources: list[Union[pathlib.Path, str]],
+        sources: list[pathlib.Path | str],
         destination: pathlib.Path,
         recursive: bool = False,
         verbose: bool = False,
     ) -> None:
-        """Copies a list of files and/or directories.
+        """
+        Copies a list of files and/or directories.
 
-        sources -- Paths to files and/or directories to copy.
-        destination -- Path to place copies.
-        recursive -- Copy directories recursively.
+        Args:
+            sources: Paths to files and/or directories to copy.
+            destination: Path to place copies.
+            recursive: Copy directories recursively.
 
-        Why `cp`? It's fast, it can handle recursion easily and most
+        ---
+
+        Why 'cp'? It's fast, it can handle recursion easily and most
         importantly it can preserves file attributes.
 
         cp [options] source_file(s) target_folder
@@ -193,7 +222,7 @@ class _Shell:
                 Created directories have the same mode as the corresponding
                 source directory, unmodified by the process' umask.
 
-            -v   Verbose - show files as they are copied.
+            -v  Verbose - show files as they are copied.
 
         https://ss64.com/osx/cp.html"""
 
@@ -207,26 +236,35 @@ class _Shell:
         if verbose:
             flags.append("-v")
 
-        sources_string = ", ".join([f"`{source}`" for source in sources])
-        logger.debug(f"Copying {sources_string} to `{destination}`.")
+        sources_string = ", ".join([f"'{source}'" for source in sources])
+        logger.debug(f"Copying {sources_string} to '{destination}'.")
 
         self.run(command=["cp", *flags, *sources, destination])
 
     def link(
-        self, original: pathlib.Path, symbolic: pathlib.Path, force: bool = False
+        self,
+        original: pathlib.Path,
+        symbolic: pathlib.Path,
+        force: bool = False,
     ) -> None:
-        """Makes a symlink.
+        """
+        Creates a symlink.
 
-        original -- Path to original file.
-        symbolic -- Path to where the symlink will reside.
+        Args:
+            original: Path to original file.
+            symbolic: Path to where the symlink will reside.
+            force: Create symlink even if it already exists.
+
+        ---
 
         Path.symlink_to(target)
 
             Make this path a symbolic link to target.
 
-        https://docs.python.org/3/library/pathlib.html"""
+        https://docs.python.org/3/library/pathlib.html
+        """
 
-        logger.debug(f"Linking `{original}` to `{symbolic}`.")
+        logger.debug(f"Linking '{original}' to '{symbolic}'.")
 
         try:
             symbolic.symlink_to(original)
@@ -235,31 +273,76 @@ class _Shell:
 
             if force is not True:
                 logger.warning(
-                    f"Linking `{original}` to `{symbolic}` skipped! Cannot create "
-                    f"a link to an existing item: `{symbolic}`. Or link already "
+                    f"Linking '{original}' to '{symbolic}' skipped! Cannot create "
+                    f"a link to an existing item: '{symbolic}'. Or link already "
                     f"exists. If so, run with force=True to refresh link. Use "
-                    f"with caution, this will *remove* `{symbolic}` permanently!"
+                    f"with caution, this will *remove* '{symbolic}' permanently!"
                 )
                 return
 
             self.remove(symbolic)
             symbolic.symlink_to(original)
 
+    def rsync(
+        self,
+        sources: list[pathlib.Path],
+        destination: pathlib.Path,
+        verbose: bool = False,
+    ) -> None:
+        """
+        Copies files/direcories in an archival fashion using 'rsync'.
+
+        Args:
+            sources: Paths to files and/or directories to archive.
+            destination: Path to place the archive.
+            verbose: Print verbose output.
+
+        ---
+
+        rsync [OPTION]... SRC [SRC]... DEST
+
+            --archive
+                This is equivalent to -rlptgoD. It is a quick way of saying you
+                want recursion and want to preserve almost everything.
+
+            --extended-attributes
+                Apple specific option to copy extended attributes, resource
+                forks, and ACLs.
+
+            --progress
+                This option tells rsync to print information showing the
+                progress of the transfer. This gives a bored user something to
+                watch. Implies --verbose if it wasn't already specified.
+        """
+
+        flags: list[str] = ["--archive", "--extended-attributes"]
+
+        if verbose:
+            flags.append("--progress")
+
+        self.run(command=["rsync", *flags, *sources, destination])
+
     def archive(
         self,
         sources: list[pathlib.Path],
         destination: pathlib.Path,
-        source_root: Optional[pathlib.Path] = None,
+        source_root: pathlib.Path | None = None,
         verbose: bool = False,
     ) -> None:
-        """Writes a `tar` archives from list of files and/or directories.
+        """
+        Writes a 'tar' archive from list of files/directories.
 
-        sources -- Paths to files and/or directories to archive.
-        destination -- Path, with filename and extension, of archive.
+        Args:
+            sources: Paths to files and/or directories to archive.
+            destination: Path, with filename and extension, of archive.
+            source_root: Create the archive realtive to this path.
+            verbose: Print verbose output.
 
-        Why `tar`? After some research, it was the only way to archive a
+        ---
+
+        Why 'tar'? After some research, it was the only way to archive a
         full directory while preserving symlinks. All other methods broke
-        symlinks. Tried `zipfile`, `tarfile` and `shutil.make_archive()`.
+        symlinks. Tried 'zipfile', 'tarfile' and 'shutil.make_archive()'.
 
         tar [options] source_files
 
@@ -283,7 +366,8 @@ class _Shell:
                 list each file name as it is read from or written to the
                 archive.
 
-        https://ss64.com/osx/tar.html"""
+        https://ss64.com/osx/tar.html
+        """
 
         # TODO: Unexpected results when the filename includes periods.
         #
@@ -294,7 +378,7 @@ class _Shell:
         #   ".tgz"   -> [".tgz"]
         # destination = destination.with_suffix(".tar.gz")
 
-        logger.debug(f"Creating archive `{destination}`.")
+        logger.debug(f"Creating archive '{destination}'.")
 
         # TODO: Test adding --xattrs.
         flags: list[str] = ["--create", "--gzip"]
@@ -312,23 +396,26 @@ class _Shell:
         path: pathlib.Path,
         size: int,
         trash: bool = True,
-        ignore_globs: Optional[list[str]] = None,
+        ignore_globs: list[str] | None = None,
         ignore_files: bool = False,
         ignore_directories: bool = False,
     ) -> None:
-        """Removes items from a directory based on a size limit, preserving
+        """
+        Removes items from a directory based on a size limit, preserving
         the newest files based on metadata changes.
 
         Only runs if prunable contents are *greater than* `size`.
 
-        path -- Path to prune.
-        size -- Size to prune down to.
-        trash -- Send pruned files to the Trash.
-        ignore_globs -- Ignore files/directories that match these glob patterns.
-        ignore_files -- Do not prune files.
-        ignore_directories -- Do not prune directories."""
+        Args:
+            path: Path to prune.
+            size: Size to prune down to.
+            trash: Move pruned files to the Trash.
+            ignore_globs: A list of globs to to ignore files/directories.
+            ignore_files: Ignore all files.
+            ignore_directories: Ignore all directories.
+        """
 
-        logger.debug(f"Path `{path}` contains {len(list(path.iterdir()))} items.")
+        logger.debug(f"Path '{path}' contains {len(list(path.iterdir()))} items.")
 
         if ignore_globs is None:
             # Ignore system files be default.
@@ -355,7 +442,7 @@ class _Shell:
 
             prunable.append(item)
 
-        logger.debug(f"Ignoring {len(ignoring)} items in `{path}`.")
+        logger.debug(f"Ignoring {len(ignoring)} items in '{path}'.")
 
         if len(prunable) <= size:
             logger.debug(
@@ -363,13 +450,13 @@ class _Shell:
             )
             return
 
-        logger.debug(f"Found {len(prunable)} prunable items in `{path}`.")
+        logger.debug(f"Found {len(prunable)} prunable items in '{path}'.")
 
         # Sort by the time of most recent metadata change on Unix.
         # https://docs.python.org/3/library/os.html#os.stat_result.st_ctime
         prunable = sorted(prunable, reverse=True, key=lambda p: p.stat().st_ctime)
 
-        logger.info(f"Pruning `{path}` to {size} items.")
+        logger.info(f"Pruning '{path}' to {size} items.")
 
         for count, path in enumerate(prunable, start=1):
 
@@ -377,7 +464,7 @@ class _Shell:
             if count <= size:
                 continue
 
-            logger.debug(f"Removing `{path.name}` from `{path}`.")
+            logger.debug(f"Removing '{path.name}' from '{path}'.")
 
             # This explicit block is more of a safety measure to help prevent
             # un-wanted removal on incorrect use of the API.
@@ -387,9 +474,12 @@ class _Shell:
                 self.trash(path=path)
 
     def process_is_running(self, process_names: list[str]) -> bool:
-        """Check to see an process is currently running.
+        """
+        Checks to see if a process is currently running.
 
-        process_names -- A list of names process might appear as."""
+        Args:
+            process_names: A list of names target process might appear as.
+        """
 
         process_names = [name.lower() for name in process_names]
 
@@ -406,10 +496,10 @@ class _Shell:
             process_name = process_info["name"].lower()
 
             if process_name in process_names:
-                logger.debug(f"Process `{process_name}` currently running.")
+                logger.debug(f"Process '{process_name}' currently running.")
                 return True
 
-        process_names_string = ", ".join([f"`{name}`" for name in process_names])
+        process_names_string = ", ".join([f"'{name}'" for name in process_names])
         logger.debug(
             f"No process with name(s) {process_names_string} currently running."
         )

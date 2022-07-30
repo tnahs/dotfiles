@@ -1,10 +1,23 @@
-theme = "dracula"
+theme = "tokyonight_storm"
 
 [editor]
-line-number = "relative"
+line-number = "absolute"
+rulers = [80, 120]
 mouse = true
+scrolloff = 8
 
 [editor.cursor-shape]
 insert = "bar"
 normal = "block"
 select = "underline"
+
+[editor.whitespace.render]
+space = "all"
+tab = "none"
+newline = "none"
+
+[editor.whitespace.characters]
+space = "·"
+
+[editor.lsp]
+display-messages = true

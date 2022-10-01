@@ -5,25 +5,26 @@
 Check <https://brew.sh/> for latest command.
 
 ```console
-$ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
-During installation, `Homebrew` should ask to install `Command Line Tools`. If not, run:
+During installation, `Homebrew` should ask to install `Command Line Tools`. If
+not, run:
 
 ```console
-$ xcode-select --install
+xcode-select --install
 ```
 
 ## Clone Repository
 
 ```console
-$ git clone https://github.com/tnahs/dotfiles ~/.dotfiles
+git clone https://github.com/tnahs/dotfiles ~/.dotfiles
 ```
 
 ## Setup Home
 
 ```console
-$ ~/.dotfiles/scripts/setup-home.sh
+~/.dotfiles/scripts/setup-home.sh
 ```
 
 ## Install `Brewfile`
@@ -46,13 +47,13 @@ Before installation:
 Open a fresh shell and run:
 
 ```console
-$ ~/.dotfiles/scripts/install-brewfile.sh
+~/.dotfiles/scripts/install-brewfile.sh
 ```
 
 ## Config macOS
 
 ```console
-$ ~/.dotfiles/scripts/config-macos-defaults.sh
+~/.dotfiles/scripts/config-macos-defaults.sh
 ```
 
 ## Install Rust
@@ -66,13 +67,13 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ## Install Python
 
 ```console
-$ ~/.dotfiles/scripts/install-pipx-packages.sh
-$ ~/.dotfiles/scripts/install-python.sh [VERSION ...]
+~/.dotfiles/scripts/install-pipx-packages.sh
+~/.dotfiles/scripts/install-python.sh [VERSION ...]
 ```
 
 ## Restore Applications
 
 ```console
-$ ~/.dotfiles/scripts/restore-apple-books-library.sh [PATH_TO_LIBRARY_ARCHIVE]
-$ ~/.dotfiles/scripts/restore-anki-collection.sh [PATH_TO_COLLECTION_ARCHIVE]
+~/.dotfiles/scripts/restore-apple-books-library.sh [PATH_TO_LIBRARY_ARCHIVE]
+~/.dotfiles/scripts/restore-anki-collection.sh [PATH_TO_COLLECTION_ARCHIVE]
 ```

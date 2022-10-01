@@ -15,13 +15,10 @@ null_ls.setup({
     sources = {
         --
         -- rust
-        -- required: rustup component add rustfmt
         null_ls.builtins.formatting.rustfmt,
         --
         -- python
-        -- required: pipx install black
         null_ls.builtins.formatting.black,
-        -- required: pipx install isort
         null_ls.builtins.formatting.isort.with({
             extra_args = {
                 "--profile",
@@ -30,7 +27,6 @@ null_ls.setup({
                 "2",
             },
         }),
-        -- required: pipx install flake8
         null_ls.builtins.diagnostics.flake8.with({
             extra_args = {
                 "--ignore",
@@ -55,24 +51,9 @@ null_ls.setup({
         null_ls.builtins.diagnostics.jsonlint,
         --
         -- markdown
-        -- required: brew install markdownlint-cli
-        null_ls.builtins.diagnostics.markdownlint.with({
-            extra_args = {
-                "--rules",
-                [[
-                    ~MD014,
-                    ~MD018,
-                    ~MD024,
-                    ~MD026,
-                    ~MD033,
-                    ~MD041,
-                    ~MD046,
-                ]],
-            },
-        }),
+        null_ls.builtins.diagnostics.markdownlint,
         --
-        -- markdown/json/yaml/html/css/javascript/typescript
-        -- required: brew install prettier
+        -- various
         null_ls.builtins.formatting.prettier.with({
             filetypes = {
                 "css",
@@ -89,11 +70,9 @@ null_ls.setup({
         }),
         --
         -- lua
-        -- required: brew install stylua
         null_ls.builtins.formatting.stylua,
         --
         -- toml
-        -- required: cargo install taplo-cli
         null_ls.builtins.formatting.taplo,
         --
         -- *

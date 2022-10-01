@@ -48,10 +48,8 @@ local on_attach = function(client, bufnr)
     vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>li", ":lua vim.lsp.buf.implementation()<CR>", opts)
     vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>ls", ":lua vim.lsp.buf.signature_help()<CR>", opts)
     vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>la", ":lua vim.lsp.buf.code_action()<CR>", opts)
-
-    if client.resolved_capabilities.document_range_formatting then
-        vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lf", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
-    end
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>la", ":lua vim.lsp.buf.code_action()<CR>", opts)
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lf", ":lua vim.lsp.buf.formatting_sync()<CR>", opts)
 
     -- Using `null-ls` to take care of formatting. See `lua/lsp/null-ls.lua`.
     client.resolved_capabilities.document_formatting = false
@@ -87,7 +85,7 @@ local server_default_opts = {
 local servers = {
     "pyright",
     "sumneko_lua",
-    "jsonls",
+    "cssls",
 }
 
 for _, server in pairs(servers) do

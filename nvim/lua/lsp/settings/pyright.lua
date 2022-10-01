@@ -1,5 +1,5 @@
 -- https://github.com/microsoft/pyright
--- required: brew install pyright
+-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#pyright
 
 return {
     settings = {

@@ -1,7 +1,13 @@
 -- https://github.com/simrat39/symbols-outline.nvim
 
-vim.g.symbols_outline = {
-    width = 20,
+local ok, symbols_outline = pcall(require, "symbols-outline")
+if not ok then
+    print("Failed to load plugin: `simrat39/symbols-outline.nvim`.")
+    return
+end
+
+symbols_outline.setup({
+    width = 25,
     auto_preview = false,
     show_symbol_details = false,
     symbols = {
@@ -41,17 +47,8 @@ vim.g.symbols_outline = {
         -- rename_symbol = "r",
         -- toggle_preview = "K",
     },
-}
+})
 
 -- Keymaps ---------------------------------------------------------------------
 
 vim.keymap.set("n", "<leader>yo", ":SymbolsOutline<CR>")
-
--- Misc ------------------------------------------------------------------------
-
--- BUG: This should be automatically set by `symbols-outline`.
-vim.cmd([[
-  augroup BetterFocusedSymbolColor
-    autocmd VimEnter,ColorScheme * highlight! link FocusedSymbol IncSearch
-  augroup end
-]])

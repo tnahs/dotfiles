@@ -64,7 +64,7 @@ neo_tree.setup({
         },
     },
     window = {
-        width = 35,
+        width = 30,
         mappings = {
             ["<Tab>"] = "open",
             ["<space>"] = false,

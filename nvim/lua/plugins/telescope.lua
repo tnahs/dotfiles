@@ -153,7 +153,10 @@ telescope.setup({
             prompt_position = "top",
             height = 16,
             -- BUG: Setting to false disables real-time previews of colorscheme.
-            previewer = false,
+            -- BUG: Now no preview shows up no matter what. Calling the command:
+            -- ":Telescope colorscheme enable_preview=true<CR>" explicitly works
+            -- but not when bound to a key.
+            previewer = true,
             prompt_title = "Colorscheme",
         }),
         lsp_code_actions = build_dropdown({

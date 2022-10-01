@@ -2,6 +2,8 @@
 
 ## Fix/Setup
 
+- [ ] jsonlint
+- [ ] css-lsp
 - [ ] add default hotkeys to each plugins config file
 - [x] hide lsp `[Buffer]` suggestions
 - [ ] lsp code lens stuff

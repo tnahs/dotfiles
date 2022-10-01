@@ -37,6 +37,7 @@ return packer.startup({
         -- Neovim LSP
         use("neovim/nvim-lspconfig")
         use("jose-elias-alvarez/null-ls.nvim")
+        use("williamboman/mason.nvim")
 
         -- Completion/Snippets
         use("hrsh7th/nvim-cmp")
@@ -79,13 +80,19 @@ return packer.startup({
         use("tpope/vim-repeat")
         use("tpope/vim-surround")
         use("windwp/nvim-autopairs")
+        use("Glench/Vim-Jinja2-Syntax")
         use({
             "nvim-neo-tree/neo-tree.nvim",
             requires = {
                 "MunifTanjim/nui.nvim",
             },
         })
-
+        use({
+            "iamcco/markdown-preview.nvim",
+            run = {
+                "cd app && npm install",
+            },
+        })
         -- Themes
         use("folke/tokyonight.nvim")
         use({ "dracula/vim", as = "dracula" })

@@ -1,23 +1,126 @@
-theme = "tokyonight_storm"
+theme = "catppuccin_macchiato"
 
 [editor]
-line-number = "absolute"
-rulers = [80, 120]
+line-number = "relative"
+rulers = [81, 121]
 mouse = true
 scrolloff = 8
+cursorline = true
+color-modes = true
+
+[editor.file-picker]
+hidden = false
 
 [editor.cursor-shape]
 insert = "bar"
 normal = "block"
-select = "underline"
+select = "block"
 
 [editor.whitespace.render]
-space = "all"
-tab = "none"
-newline = "none"
+# space = "all"
 
 [editor.whitespace.characters]
-space = "·"
+# space = "·"
+
+[editor.indent-guides]
+render = true
+character = "┆"
+
+[editor.statusline]
+left = [
+  "mode",
+  "file-name",
+  "spacer",
+  "diagnostics",
+]
+right = [
+  "file-encoding",
+  "spacer",
+  "position-percentage",
+  "spacer",
+  "position",
+  "spacer",
+  "spinner",
+]
 
 [editor.lsp]
 display-messages = true
+
+# Keymaps Normal ---------------------------------------------------------------
+
+[keys.normal]
+
+backspace = { r = ":config-reload", o = ":config-open" }
+
+C-h = "jump_view_left"
+C-l = "jump_view_right"
+
+# Remap from C
+C-j = "copy_selection_on_next_line"
+
+# Remap from A-c
+C-k = "copy_selection_on_prev_line"
+
+
+# Delete from cursor to end of the line and enter NORMAL mode.
+D = ["kill_to_line_end"]
+
+# Change from cursor to end of the line and enter INSERT mode.
+C = ["kill_to_line_end", "insert_mode"]
+
+# Yank from cursor to end of the line.
+Y = ["extend_to_line_end", "yank", "flip_selections", "collapse_selection"]
+
+# Select from cursor to end of the line.
+V = ["extend_to_line_end"]
+
+
+# Ovwerwrites "delete_selection_noyank".
+# Delete word under cursor without yanking.
+A-d = [
+  "move_next_word_start",
+  "move_prev_word_start",
+  "delete_selection_noyank",
+]
+
+# Overwrites "change_selection_noyank".
+# Change word under cursor without yanking.
+A-c = [
+  "move_next_word_end",
+  "move_prev_word_start",
+  "change_selection_noyank",
+]
+
+# Yank word under cursor.
+A-y = [
+  "move_next_word_end",
+  "move_prev_word_start",
+  "yank",
+  "collapse_selection",
+]
+
+# Reflow current paragraph.
+A-r = ["expand_selection", ":reflow", "collapse_selection"]
+
+# Keymaps Select ---------------------------------------------------------------
+
+[keys.select]
+
+# Remap from C
+C-j = "copy_selection_on_next_line"
+
+# Remap from A-c
+C-k = "copy_selection_on_prev_line"
+
+
+# Delete from cursor to end of the line and end in NORMAL mode.
+D = ["kill_to_line_end"]
+
+# Change from cursor to end of the line and end in INSERT mode.
+C = ["kill_to_line_end", "insert_mode"]
+
+# Yank from cursor to end of the line.
+Y = ["extend_to_line_end", "yank", "flip_selections", "collapse_selection"]
+
+# Select from cursor to end of the line.
+V = ["extend_to_line_end"]

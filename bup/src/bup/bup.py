@@ -143,7 +143,7 @@ class Bup:
         source = Defaults.HOME / "Library" / "Application Support" / "Anki2"
 
         destination_name = (
-            f"{Defaults.TODAY}" f"--anki-v{Version.anki}" f"--macos-v{Version.macOS}"
+            f"{Defaults.TODAY}--anki-v{Version.anki}--macos-v{Version.macOS}"
         )
 
         destination = ArchivePaths.anki / destination_name

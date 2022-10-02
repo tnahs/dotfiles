@@ -46,20 +46,17 @@ right = [
 [editor.lsp]
 display-messages = true
 
-# Keymaps Normal ---------------------------------------------------------------
+# Normal Mode Keymaps ----------------------------------------------------------
 
 [keys.normal]
 
 backspace = { r = ":config-reload", o = ":config-open" }
 
-C-h = "jump_view_left"
-C-l = "jump_view_right"
-
-# Remap from C
-C-j = "copy_selection_on_next_line"
-
-# Remap from A-c
-C-k = "copy_selection_on_prev_line"
+# Navigate splits with Alt-hjkl.
+A-k = "jump_view_up"
+A-j = "jump_view_down"
+A-h = "jump_view_left"
+A-l = "jump_view_right"
 
 
 # Delete from cursor to end of the line and enter NORMAL mode.
@@ -102,16 +99,23 @@ A-y = [
 # Reflow current paragraph.
 A-r = ["expand_selection", ":reflow", "collapse_selection"]
 
-# Keymaps Select ---------------------------------------------------------------
-
-[keys.select]
+# Normal Mode Remaps ---
 
 # Remap from C
 C-j = "copy_selection_on_next_line"
 
-# Remap from A-c
-C-k = "copy_selection_on_prev_line"
+# Remap from A-C
+C-k = "copy_selection_on_prev_line" 
 
+# Remap from A-d
+# C-d = "delete_selection_noyank"
+
+# Remap from A-c
+# C-c = "change_selection_noyank"
+
+# Select Mode Keymaps ----------------------------------------------------------
+
+[keys.select]
 
 # Delete from cursor to end of the line and end in NORMAL mode.
 D = ["kill_to_line_end"]
@@ -124,3 +128,17 @@ Y = ["extend_to_line_end", "yank", "flip_selections", "collapse_selection"]
 
 # Select from cursor to end of the line.
 V = ["extend_to_line_end"]
+
+# Select Mode Remaps ---
+
+# Remap from C
+C-j = "copy_selection_on_next_line"
+
+# Remap from A-C
+C-k = "copy_selection_on_prev_line" 
+
+# Remap from A-d
+# C-d = "delete_selection_noyank"
+
+# Remap from A-c
+# C-c = "change_selection_noyank"

@@ -16,7 +16,7 @@
 [[language]]
 name = "rust"
 
-[languiage.config]
+[language.config]
 checkOnSave.command = "clippy"
 
 # Lua --------------------------------------------------------------------------

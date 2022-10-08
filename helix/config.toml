@@ -53,10 +53,10 @@ display-messages = true
 backspace = { r = ":config-reload", o = ":config-open" }
 
 # Navigate splits with Alt-hjkl.
-A-k = "jump_view_up"
-A-j = "jump_view_down"
-A-h = "jump_view_left"
-A-l = "jump_view_right"
+C-k = "jump_view_up"
+C-j = "jump_view_down"
+C-h = "jump_view_left"
+C-l = "jump_view_right"
 
 
 # Delete from cursor to end of the line and enter NORMAL mode.
@@ -102,10 +102,10 @@ A-r = ["expand_selection", ":reflow", "collapse_selection"]
 # Normal Mode Remaps ---
 
 # Remap from C
-C-j = "copy_selection_on_next_line"
+A-j = "copy_selection_on_next_line"
 
 # Remap from A-C
-C-k = "copy_selection_on_prev_line" 
+A-k = "copy_selection_on_prev_line" 
 
 # Remap from A-d
 # C-d = "delete_selection_noyank"
@@ -117,10 +117,10 @@ C-k = "copy_selection_on_prev_line"
 
 [keys.select]
 
-# Delete from cursor to end of the line and end in NORMAL mode.
+# Delete from cursor to end of the line and enter NORMAL mode.
 D = ["kill_to_line_end"]
 
-# Change from cursor to end of the line and end in INSERT mode.
+# Change from cursor to end of the line and enter INSERT mode.
 C = ["kill_to_line_end", "insert_mode"]
 
 # Yank from cursor to end of the line.
@@ -132,10 +132,10 @@ V = ["extend_to_line_end"]
 # Select Mode Remaps ---
 
 # Remap from C
-C-j = "copy_selection_on_next_line"
+A-j = "copy_selection_on_next_line"
 
 # Remap from A-C
-C-k = "copy_selection_on_prev_line" 
+A-k = "copy_selection_on_prev_line" 
 
 # Remap from A-d
 # C-d = "delete_selection_noyank"

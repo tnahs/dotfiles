@@ -9,6 +9,7 @@
 #   cargo install taplo-cli --locked --features lsp
 #   pipx install 'python-lsp-server[all]'
 #   npm i -g vscode-langservers-extracted
+#   npm i -g bash-language-server
 #   https://github.com/artempyanykh/marksman
 
 # Rust -------------------------------------------------------------------------

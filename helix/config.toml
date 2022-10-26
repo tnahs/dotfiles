@@ -27,12 +27,7 @@ render = true
 character = "┆"
 
 [editor.statusline]
-left = [
-  "mode",
-  "file-name",
-  "spacer",
-  "diagnostics",
-]
+left = ["mode", "file-name", "spacer", "diagnostics"]
 right = [
   "file-encoding",
   "spacer",
@@ -60,19 +55,35 @@ C-l = "jump_view_right"
 
 
 # Delete from cursor to end of the line and enter NORMAL mode.
-D = ["kill_to_line_end"]
+D = [
+  "extend_to_line_end",
+  "yank",
+  "yank_main_selection_to_clipboard",
+  "delete_selection",
+]
 
 # Change from cursor to end of the line and enter INSERT mode.
-C = ["kill_to_line_end", "insert_mode"]
+C = [
+  "extend_to_line_end",
+  "yank",
+  "yank_main_selection_to_clipboard",
+  "change_selection",
+]
 
 # Yank from cursor to end of the line.
-Y = ["extend_to_line_end", "yank", "flip_selections", "collapse_selection"]
+Y = [
+  "extend_to_line_end",
+  "yank",
+  "yank_main_selection_to_clipboard",
+  "flip_selections",
+  "collapse_selection",
+]
 
 # Select from cursor to end of the line.
 V = ["extend_to_line_end"]
 
 
-# Ovwerwrites "delete_selection_noyank".
+# Overwrites "delete_selection_noyank".
 # Delete word under cursor without yanking.
 A-d = [
   "move_next_word_start",
@@ -82,17 +93,14 @@ A-d = [
 
 # Overwrites "change_selection_noyank".
 # Change word under cursor without yanking.
-A-c = [
-  "move_next_word_end",
-  "move_prev_word_start",
-  "change_selection_noyank",
-]
+A-c = ["move_next_word_end", "move_prev_word_start", "change_selection_noyank"]
 
 # Yank word under cursor.
 A-y = [
   "move_next_word_end",
   "move_prev_word_start",
   "yank",
+  "yank_main_selection_to_clipboard",
   "collapse_selection",
 ]
 
@@ -105,7 +113,7 @@ A-r = ["expand_selection", ":reflow", "collapse_selection"]
 A-j = "copy_selection_on_next_line"
 
 # Remap from A-C
-A-k = "copy_selection_on_prev_line" 
+A-k = "copy_selection_on_prev_line"
 
 # Remap from A-d
 # C-d = "delete_selection_noyank"
@@ -118,13 +126,29 @@ A-k = "copy_selection_on_prev_line"
 [keys.select]
 
 # Delete from cursor to end of the line and enter NORMAL mode.
-D = ["kill_to_line_end"]
+D = [
+  "extend_to_line_end",
+  "yank",
+  "yank_main_selection_to_clipboard",
+  "delete_selection",
+]
 
 # Change from cursor to end of the line and enter INSERT mode.
-C = ["kill_to_line_end", "insert_mode"]
+C = [
+  "extend_to_line_end",
+  "yank",
+  "yank_main_selection_to_clipboard",
+  "change_selection",
+]
 
 # Yank from cursor to end of the line.
-Y = ["extend_to_line_end", "yank", "flip_selections", "collapse_selection"]
+Y = [
+  "extend_to_line_end",
+  "yank",
+  "yank_main_selection_to_clipboard",
+  "flip_selections",
+  "collapse_selection",
+]
 
 # Select from cursor to end of the line.
 V = ["extend_to_line_end"]
@@ -135,7 +159,7 @@ V = ["extend_to_line_end"]
 A-j = "copy_selection_on_next_line"
 
 # Remap from A-C
-A-k = "copy_selection_on_prev_line" 
+A-k = "copy_selection_on_prev_line"
 
 # Remap from A-d
 # C-d = "delete_selection_noyank"

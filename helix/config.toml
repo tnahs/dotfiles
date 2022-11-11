@@ -53,6 +53,9 @@ C-j = "jump_view_down"
 C-h = "jump_view_left"
 C-l = "jump_view_right"
 
+# Scroll page up and down.
+C-A-k = ["scroll_up", "scroll_up"]
+C-A-j = ["scroll_down", "scroll_down"]
 
 # Delete from cursor to end of the line and enter NORMAL mode.
 D = [

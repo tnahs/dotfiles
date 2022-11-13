@@ -28,6 +28,7 @@ spoon.ReloadConfiguration:start()
 
 AppIds = {
     firefox = "org.mozilla.firefox",
+    orion = "com.kagi.kagimacOS",
     kitty = "net.kovidgoyal.kitty",
     screenshot = "com.apple.screenshot.launcher",
 }

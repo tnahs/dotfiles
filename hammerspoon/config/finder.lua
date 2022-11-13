@@ -2,29 +2,27 @@
 
 -- These map to shortcuts in `System Preferences` > `Keyboard` > `Shortcuts`.
 
-local modifiers = { "command", "option", "shift", "ctrl" }
-
 -- Show Mission Control
 H:bind({}, "3", function()
-    hs.eventtap.keyStroke(modifiers, "3")
+    hs.eventtap.keyStroke(H.modifiers, "3")
     H.triggered = true
 end)
 
 -- Show application windows
 H:bind({}, "4", function()
-    hs.eventtap.keyStroke(modifiers, "4")
+    hs.eventtap.keyStroke(H.modifiers, "4")
     H.triggered = true
 end)
 
 -- Move left a space
 H:bind({}, "A", function()
-    hs.eventtap.keyStroke(modifiers, "A")
+    hs.eventtap.keyStroke(H.modifiers, "A")
     H.triggered = true
 end)
 
 -- Move right a space
 H:bind({}, "D", function()
-    hs.eventtap.keyStroke(modifiers, "D")
+    hs.eventtap.keyStroke(H.modifiers, "D")
     H.triggered = true
 end)
 

@@ -1,6 +1,9 @@
 -- A global variable for Hyper Mode
 local M = hs.hotkey.modal.new({}, nil)
 
+-- Default Hyper modifiers
+M.modifiers = { "command", "option", "shift", "ctrl" }
+
 -- Enter Hyper Mode when F20 (Hyper/Capslock) is pressed
 local function enter_hyper_mode()
     M.triggered = false

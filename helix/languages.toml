@@ -6,6 +6,7 @@
 #   brew install rust-analyzer
 #   brew install lua-language-server
 #   brew install yaml-language-server
+#   brew install ltex-ls
 #   cargo install taplo-cli --locked --features lsp
 #   pipx install 'python-lsp-server[all]'
 #   npm i -g vscode-langservers-extracted
@@ -24,6 +25,8 @@ checkOnSave.command = "clippy"
 
 [[language]]
 name = "lua"
+auto-format = true
+indent = { tab-width = 4, unit = " " }
 
 [language.config]
 Lua.runtime.version = "LuaJIT"
@@ -40,10 +43,9 @@ Lua.diagnostics.globals = [
 [[language]]
 name = "markdown"
 auto-format = true
-# TEMP: Remove when `master` is released.
-# Copied from https://github.com/helix-editor/helix/blob/master/languages.toml
-roots = [".marksman.toml"]
-language-server = { command = "marksman", args = ["server"] }
+language-server = { command = "ltex-ls" }
+# language-server = { command = "marksman", args = ["server"] }
+# roots = [".marksman.toml"]
 
 [language.formatter]
 command = "prettier"
@@ -61,7 +63,6 @@ args = ["--config", ".prettierrc", "--parser", "css"]
 
 # JSON -------------------------------------------------------------------------
 
-# BUG: Oddly this makes all json indent with tabs rather than spaces.
 [[language]]
 name = "json"
 auto-format = true

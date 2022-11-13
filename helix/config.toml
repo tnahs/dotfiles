@@ -1,7 +1,6 @@
 theme = "catppuccin_macchiato"
 
 [editor]
-line-number = "relative"
 rulers = [81, 121]
 mouse = true
 scrolloff = 8
@@ -16,10 +15,10 @@ insert = "bar"
 normal = "block"
 select = "block"
 
-[editor.whitespace.render]
+# [editor.whitespace.render]
 # space = "all"
 
-[editor.whitespace.characters]
+# [editor.whitespace.characters]
 # space = "·"
 
 [editor.indent-guides]
@@ -27,6 +26,9 @@ render = true
 character = "┆"
 
 [editor.statusline]
+# mode.normal = "NORMAL"
+# mode.insert = "INSERT"
+# mode.select = "SELECT"
 left = ["mode", "file-name", "spacer", "diagnostics"]
 right = [
   "file-encoding",
@@ -45,7 +47,8 @@ display-messages = true
 
 [keys.normal]
 
-backspace = { r = ":config-reload", o = ":config-open" }
+backspace.r = ":config-reload"
+backspace.o = ":config-open"
 
 # Navigate splits with Alt-hjkl.
 C-k = "jump_view_up"

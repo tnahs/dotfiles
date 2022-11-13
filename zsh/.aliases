@@ -10,13 +10,11 @@ alias r="cd $HOME/Workspace/repos; ls -lah;"
 # Homebrew
 alias brewski="brew update && brew upgrade && brew cleanup; brew doctor"
 
-# nvim
-alias v="nvim ."
-alias vi="nvim"
-alias vim="nvim"
-
 # helix
 alias h="hx ."
+
+# gitui
+alias g="gitui"
 
 # dotfiles
 alias dotfiles="cd $HOME/.dotfiles && hx ."

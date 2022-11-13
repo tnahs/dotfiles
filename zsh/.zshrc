@@ -25,3 +25,6 @@ source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 # starship
 # https://github.com/starship/starship
 eval "$(starship init zsh)"
+
+# broot
+source $HOME/.config/broot/launcher/bash/br

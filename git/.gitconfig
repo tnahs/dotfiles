@@ -1,0 +1,21 @@
+[user]
+	name = Shant Ergenian
+	email = shaaant@pm.me
+
+[core]
+	excludesFile = ~/.gitignore
+	editor = hx
+
+[init]
+	defaultBranch = main
+
+[alias]
+	st = status
+	one = log --pretty=oneline
+	graph = log --pretty=format:'%h %s' --graph
+
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true

@@ -38,6 +38,8 @@ function link_dotfiles {
     printf "\nLinking dotfiles...\n\n"
     ln -siv $HOME/.dotfiles/zsh/.zshrc $HOME/.zshrc
     ln -siv $HOME/.dotfiles/zsh/.zshenv $HOME/.zshenv
+    ln -siv $HOME/.dotfiles/git/.gitconfig $HOME/.gitconfig
+    ln -siv $HOME/.dotfiles/git/.gitignore $HOME/.gitignore
     ln -siv $HOME/.dotfiles/homebrew/Brewfile $HOME/Brewfile
     ln -siv $HOME/.dotfiles/hammerspoon $HOME/.hammerspoon
     ln -siv $HOME/.dotfiles/karabiner $HOME/.config/karabiner

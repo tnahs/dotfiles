@@ -6,7 +6,7 @@ function install_pipx_packages {
     printf "\nInstalling pipx packages...\n\n"
 
     pipx_packages=(
-        "bpython"
+        'python-lsp-server[all]'
     )
 
     for package in $pipx_packages; do

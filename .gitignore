@@ -198,3 +198,4 @@ pip-selfcheck.json
 
 /tmp
 nvim/plugin
+helix/runtime

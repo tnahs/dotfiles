@@ -1,0 +1,4 @@
+cargo-edit
+cargo-markdown
+mdbook
+mdbook-toc

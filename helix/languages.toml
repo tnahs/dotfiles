@@ -21,6 +21,16 @@ name = "rust"
 [language.config]
 checkOnSave.command = "clippy"
 
+# Python -----------------------------------------------------------------------
+
+[[language]]
+name = "python"
+auto-format = true
+
+[language.formatter]
+command = "black"
+args = ["-"]
+
 # Lua --------------------------------------------------------------------------
 
 [[language]]

@@ -196,6 +196,7 @@ pip-selfcheck.json
 
 # End of https://www.toptal.com/developers/gitignore/api/venv,macos,python,visualstudiocode
 
-/tmp
+tmp/
 nvim/plugin
 helix/runtime
+karabiner/automatic_backups

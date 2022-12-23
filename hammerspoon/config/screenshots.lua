@@ -27,6 +27,6 @@ end)
 
 -- Open Screenshots app
 H:bind({}, "8", function()
-    hs.application.open(AppIds.screenshot)
+    hs.application.open(Apps.screenshot)
     H.triggered = true
 end)

@@ -37,12 +37,12 @@ end)
 
 -- Open new Finder window
 H:bind({ "command" }, "F", function()
-    hs.execute("open --new $HOME")
+    hs.execute("open $HOME")
     H.triggered = true
 end)
 
 -- Open Downloads folder
 H:bind({ "command" }, "D", function()
-    hs.execute("open --new $HOME/Downloads")
+    hs.execute("open $HOME/Downloads")
     H.triggered = true
 end)

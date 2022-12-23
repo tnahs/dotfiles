@@ -24,11 +24,17 @@ require("config.windows")
 hs.loadSpoon("ReloadConfiguration")
 spoon.ReloadConfiguration:start()
 
--- Application Bundle IDs -----------------------------------------------------
+-- Application & Bundle IDs -----------------------------------------------------
 
-AppIds = {
+AppBundleIds = {
     firefox = "org.mozilla.firefox",
-    orion = "com.kagi.kagimacOS",
+    kagi = "com.kagi.kagimacOS",
     kitty = "net.kovidgoyal.kitty",
     screenshot = "com.apple.screenshot.launcher",
+}
+
+Apps = {
+    browser = AppBundleIds.firefox,
+    terminal = AppBundleIds.kitty,
+    screenshot = AppBundleIds.screenshot,
 }

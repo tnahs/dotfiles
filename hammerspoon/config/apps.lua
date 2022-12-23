@@ -2,16 +2,16 @@
 
 -- Focus terminal
 H:bind({}, "T", function()
-    local app = hs.application.open(AppIds.kitty)
+    local app = hs.application.open(Apps.terminal)
     app:activate()
     H.triggered = true
 end)
 
 -- Open a new terminal window
 H:bind({ "command" }, "T", function()
-    local app = hs.application.open(AppIds.kitty)
+    local app = hs.application.open(Apps.terminal)
     app:activate()
-    app:selectMenuItem({ "Shell", "New OS Window" })
+    hs.eventtap.keyStroke({ "command" }, "N")
     H.triggered = true
 end)
 
@@ -19,16 +19,16 @@ end)
 
 -- Focus browser
 H:bind({}, "B", function()
-    local app = hs.application.open(AppIds.orion)
+    local app = hs.application.open(Apps.browser)
     app:activate()
     H.triggered = true
 end)
 
 -- Open a new browser window
 H:bind({ "command" }, "B", function()
-    local app = hs.application.open(AppIds.orion)
+    local app = hs.application.open(Apps.browser)
     app:activate()
-    app:selectMenuItem({ "File", "New Window" })
+    hs.eventtap.keyStroke({ "command" }, "N")
     H.triggered = true
 end)
 

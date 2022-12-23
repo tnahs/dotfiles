@@ -7,7 +7,6 @@ scrolloff = 8
 cursorline = true
 color-modes = true
 bufferline = "always"
-auto-info = false
 
 [editor.file-picker]
 hidden = false
@@ -40,6 +39,7 @@ right = [
 ]
 
 [editor.lsp]
+auto-signature-help = false
 display-messages = true
 
 # Normal Mode Keymaps ----------------------------------------------------------
@@ -47,7 +47,8 @@ display-messages = true
 [keys.normal]
 
 backspace.r = ":config-reload"
-backspace.o = ":config-open"
+# Use explicit path so LSP and git-gutter work.
+backspace.o = ":open ~/.dotfiles/helix/config.toml"
 
 # Navigate splits with Alt-hjkl.
 C-k = "jump_view_up"

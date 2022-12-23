@@ -7,7 +7,7 @@
 #   brew install lua-language-server
 #   brew install yaml-language-server
 #   brew install ltex-ls
-#   cargo install taplo-cli --locked --features lsp
+#   brew install pyright
 #   pipx install 'python-lsp-server[all]'
 #   npm i -g vscode-langservers-extracted
 #   npm i -g bash-language-server
@@ -23,13 +23,26 @@ checkOnSave.command = "clippy"
 
 # Python -----------------------------------------------------------------------
 
+# https://github.com/helix-editor/helix/issues/2293#issuecomment-1110730331
 [[language]]
 name = "python"
+roots = ["pyproject.toml"]
 auto-format = true
+max-line-length = 88
+
+[language.language-server]
+command = "pyright-langserver"
+args = ["--stdio"]
+
+# Pyright config
+[language.config.analysis]
+autoSearchPaths = true
+diagnosticMode = "workspace"
+useLibraryCodeForTypes = true
 
 [language.formatter]
 command = "black"
-args = ["-"]
+args = ["-", "--quiet"]
 
 # Lua --------------------------------------------------------------------------
 
@@ -53,9 +66,13 @@ Lua.diagnostics.globals = [
 [[language]]
 name = "markdown"
 auto-format = true
-language-server = { command = "ltex-ls" }
-# language-server = { command = "marksman", args = ["server"] }
-# roots = [".marksman.toml"]
+roots = [".marksman.toml"]
+
+[language.language-server]
+command = "ltex-ls"
+# Marksman
+# command = "marksman"
+# args = ["server"] 
 
 [language.formatter]
 command = "prettier"

@@ -1,11 +1,13 @@
-theme = "catppuccin_macchiato"
+theme = "@catppuccin_macchiato"
 
 [editor]
-rulers = [81, 121]
+rulers = [81, 88, 121]
 mouse = true
 scrolloff = 8
 cursorline = true
 color-modes = true
+bufferline = "always"
+auto-info = false
 
 [editor.file-picker]
 hidden = false
@@ -15,20 +17,17 @@ insert = "bar"
 normal = "block"
 select = "block"
 
-# [editor.whitespace.render]
-# space = "all"
-
-# [editor.whitespace.characters]
-# space = "·"
+[editor.whitespace]
+render = { space = "all" }
+characters = { space = "·" }
 
 [editor.indent-guides]
 render = true
-character = "┆"
 
 [editor.statusline]
-# mode.normal = "NORMAL"
-# mode.insert = "INSERT"
-# mode.select = "SELECT"
+mode.normal = "NORMAL"
+mode.insert = "INSERT"
+mode.select = "SELECT"
 left = ["mode", "file-name", "spacer", "diagnostics"]
 right = [
   "file-encoding",

@@ -16,8 +16,12 @@ alias h="hx ."
 # gitui
 alias g="gitui"
 
+# python
+alias venv-new="python -m venv .venv && pip install --upgrade pip"
+alias venv-activate="source .venv/bin/activate"
+
 # dotfiles
-alias dotfiles="cd $HOME/.dotfiles && hx ."
+alias dot="cd $HOME/.dotfiles && hx ."
 
 # bup
 export PYTHONPATH=$HOME/.dotfiles/bup/src:$PYTHONPATH

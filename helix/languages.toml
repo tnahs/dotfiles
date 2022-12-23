@@ -77,7 +77,7 @@ roots = [".marksman.toml"]
 [language.language-server]
 command = "ltex-ls" # Good for spell check
 # command = "marksman" # Good Markdown LSP
-# args = ["server"] 
+# args = ["server"]
 
 [language.formatter]
 command = "prettier"

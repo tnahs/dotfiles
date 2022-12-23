@@ -1,8 +1,8 @@
-#!/usr/bin/env zsh
+#!/bin/zsh
 
 
 CRATES_JSON=$HOME/.cargo/.crates2.json
-CRATES_TXT=$HOME/.dotfiles/cargo/crates.txt   
+CRATES_TXT=$HOME/.dotfiles/cargo/crates.txt
 
 
 # Dump crates installed from crates.io.

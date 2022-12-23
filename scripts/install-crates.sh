@@ -1,7 +1,7 @@
-#!/usr/bin/env zsh
+#!/bin/zsh
 
 
-CRATES_TXT=$HOME/.dotfiles/cargo/crates.txt   
+CRATES_TXT=$HOME/.dotfiles/cargo/crates.txt
 
 
 # Installs crates listed in a text file.

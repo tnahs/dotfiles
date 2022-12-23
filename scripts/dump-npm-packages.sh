@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!/bin/zsh
 
 
 NPM_PACKAGES_TXT=$HOME/.dotfiles/npm/packages.txt

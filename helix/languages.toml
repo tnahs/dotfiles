@@ -49,7 +49,7 @@ args = ["-", "--quiet"]
 [[language]]
 name = "lua"
 auto-format = true
-indent = { tab-width = 4, unit = " " }
+indent = { tab-width = 4, unit = "    " }
 
 [language.config]
 Lua.runtime.version = "LuaJIT"
@@ -61,6 +61,12 @@ Lua.diagnostics.globals = [
   "spoon",
 ]
 
+# Bash -------------------------------------------------------------------------
+
+[[language]]
+name = "bash"
+indent = { tab-width = 4, unit = "    " }
+
 # Markdown ---------------------------------------------------------------------
 
 [[language]]
@@ -69,14 +75,13 @@ auto-format = true
 roots = [".marksman.toml"]
 
 [language.language-server]
-command = "ltex-ls"
-# Marksman
-# command = "marksman"
+command = "ltex-ls" # Good for spell check
+# command = "marksman" # Good Markdown LSP
 # args = ["server"] 
 
 [language.formatter]
 command = "prettier"
-args = ["--config", ".prettierrc", "--parser", "markdown"]
+args = ["--parser", "markdown"]
 
 # CSS --------------------------------------------------------------------------
 
@@ -86,14 +91,14 @@ auto-format = true
 
 [language.formatter]
 command = "prettier"
-args = ["--config", ".prettierrc", "--parser", "css"]
+args = ["--parser", "css"]
 
 # JSON -------------------------------------------------------------------------
 
 [[language]]
 name = "json"
 auto-format = true
-indent = { tab-width = 4, unit = " " }
+indent = { tab-width = 4, unit = "  " }
 
 # TOML -------------------------------------------------------------------------
 
@@ -106,4 +111,4 @@ auto-format = true
 [[language]]
 name = "yaml"
 auto-format = true
-indent = { tab-width = 2, unit = " " }
+indent = { tab-width = 2, unit = "  " }

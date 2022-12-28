@@ -26,15 +26,3 @@ alias dot="cd $HOME/.dotfiles && hx ."
 # bup
 export PYTHONPATH=$HOME/.dotfiles/bup/src:$PYTHONPATH
 alias bup="python -m bup"
-
-# readstor
-READSTOR_ROOT="$HOME/Workspace/repos/wiki/readstor"
-alias rdump=" \
-    echo 'Dumping Apple Books' \
-    && readstor export --output $READSTOR_ROOT \
-    && readstor render --output $READSTOR_ROOT \
-    && readstor backup --output $READSTOR_ROOT"
-
-# wiki
-alias wiki="cd $HOME/Workspace/repos/wiki && nvim ."
-alias piki="cd $HOME/Workspace/repos/wiki-public && nvim ."

@@ -6,7 +6,6 @@ export PATH=$HOME/.poetry/bin:$PATH
 
 # rust/cargo
 export PATH=$HOME/.cargo/bin:$PATH
-# . "$HOME/.cargo/env"
 
 # starship
 export STARSHIP_CONFIG=$HOME/.dotfiles/starship/starship.toml

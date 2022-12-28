@@ -1,6 +1,9 @@
 source $HOME/.dotfiles/zsh/.aliases
 source $HOME/.dotfiles/zsh/.functions
 
+# wiki
+export WIKI="$HOME/Workspace/repos/wiki"
+
 # Homebrew
 export HOMEBREW_PREFIX="/opt/homebrew"
 export HOMEBREW_CELLAR="/opt/homebrew/Cellar"

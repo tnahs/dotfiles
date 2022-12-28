@@ -3,37 +3,35 @@ function restart-tablet {
     open /Library/Application\ Support/Tablet/WacomTabletDriver.app
 }
 
-
-# https://stackoverflow.com/a/55171807
-function _yt-dlp-rip {
-    yt-dlp \
-     --format "bestvideo[height<=1080]+bestaudio/best" \
-     --verbose \
-     --force-ipv4 \
-     --sleep-requests 1 \
-     --sleep-interval 5 \
-     --max-sleep-interval 10 \
-     --ignore-errors \
-     --no-continue \
-     --no-overwrites \
-     --add-metadata \
-     --parse-metadata "%(title)s:%(meta_title)s" \
-     --parse-metadata "%(uploader)s:%(meta_artist)s" \
-     --write-annotations \
-     --embed-thumbnail \
-     --all-subs \
-     --embed-subs \
-     --check-formats \
-     --concurrent-fragments 5 \
-     --output ${2:?"Missing argument for OUTPUT"} \
-     --merge-output-format "mp4" \
-     --throttled-rate 100K \
-     ${1:?"Missing argument for URL"}
-}
-
-
 function rip {
     for url in "$@"; do
-        _yt-dlp-rip $url "%(uploader)s--%(upload_date>%Y-%m-%d)s--%(title)s--%(id)s.%(ext)s"
+        _yt-dlp $url "%(uploader)s--%(upload_date>%Y-%m-%d)s--%(title)s--%(id)s.%(ext)s"
     done
+}
+
+# https://stackoverflow.com/a/55171807
+function _yt-dlp {
+    yt-dlp                                             \
+     --format "bestvideo[height<=1080]+bestaudio/best" \
+     --verbose                                         \
+     --force-ipv4                                      \
+     --sleep-requests 1                                \
+     --sleep-interval 5                                \
+     --max-sleep-interval 10                           \
+     --ignore-errors                                   \
+     --no-continue                                     \
+     --no-overwrites                                   \
+     --add-metadata                                    \
+     --parse-metadata "%(title)s:%(meta_title)s"       \
+     --parse-metadata "%(uploader)s:%(meta_artist)s"   \
+     --write-annotations                               \
+     --embed-thumbnail                                 \
+     --all-subs                                        \
+     --embed-subs                                      \
+     --check-formats                                   \
+     --concurrent-fragments 5                          \
+     --output ${2:?"Missing argument for OUTPUT"}      \
+     --merge-output-format "mp4"                       \
+     --throttled-rate 100K                             \
+     ${1:?"Missing argument for URL"}
 }

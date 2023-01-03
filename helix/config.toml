@@ -46,6 +46,7 @@ display-messages = true
 
 [keys.normal]
 
+
 backspace.r = ":config-reload"
 # Use explicit path so LSP and git-gutter work.
 backspace.o = ":open ~/.dotfiles/helix/config.toml"
@@ -89,17 +90,14 @@ Y = [
 V = ["extend_to_line_end"]
 
 
-# Overwrites "delete_selection_noyank".
-# Delete word under cursor without yanking.
-A-d = [
+# Select and search word under cursor.
+# Use 'n' and 'N' to select other instances.
+A-s = [
   "move_next_word_start",
   "move_prev_word_start",
-  "delete_selection_noyank",
+  "search_selection",
+  "select_mode",
 ]
-
-# Overwrites "change_selection_noyank".
-# Change word under cursor without yanking.
-A-c = ["move_next_word_end", "move_prev_word_start", "change_selection_noyank"]
 
 # Yank word under cursor.
 A-y = [
@@ -120,12 +118,6 @@ A-j = "copy_selection_on_next_line"
 
 # Remap from A-C
 A-k = "copy_selection_on_prev_line"
-
-# Remap from A-d
-# C-d = "delete_selection_noyank"
-
-# Remap from A-c
-# C-c = "change_selection_noyank"
 
 # Select Mode Keymaps ----------------------------------------------------------
 
@@ -166,9 +158,3 @@ A-j = "copy_selection_on_next_line"
 
 # Remap from A-C
 A-k = "copy_selection_on_prev_line"
-
-# Remap from A-d
-# C-d = "delete_selection_noyank"
-
-# Remap from A-c
-# C-c = "change_selection_noyank"

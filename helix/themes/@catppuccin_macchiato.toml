@@ -3,7 +3,10 @@ inherits = "catppuccin_macchiato"
 "ui.virtual.ruler" = { bg = "#272a3f" }
 "ui.virtual.whitespace" = "surface0"
 
-"diagnostic.error" = { underline = { style = "curl", color = "red" } }
-"diagnostic.warning" = { underline = { style = "curl", color = "yellow" } }
-"diagnostic.info" = { underline = { style = "curl", color = "sky" } }
-"diagnostic.hint" = { underline = { style = "curl", color = "teal" } }
+# https://colors.dopely.top/color-blender/
+# https://colors.dopely.top/color-converter/
+# Default diagnostic colors blended with bg color and saturated by 10%.
+"diagnostic.error" = { bg = "#593654" }   # red
+"diagnostic.warning" = { bg = "#594554" } # yellow
+"diagnostic.info" = { bg = "#2b3555" }    # teal
+"diagnostic.hint" = { bg = "#2a3d51" }    # sky

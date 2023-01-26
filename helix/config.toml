@@ -48,8 +48,9 @@ display-messages = true
 
 
 backspace.r = ":config-reload"
-# Use explicit path so LSP and git-gutter work.
-backspace.o = ":open ~/.dotfiles/helix/config.toml"
+# Use explicit paths so LSP and git-gutter work.
+backspace.c = ":open ~/.dotfiles/helix/config.toml"
+backspace.l = ":open ~/.dotfiles/helix/languages.toml"
 
 # Navigate splits with Alt-hjkl.
 C-k = "jump_view_up"
@@ -93,8 +94,8 @@ V = ["extend_to_line_end"]
 # Select and search word under cursor.
 # Use 'n' and 'N' to select other instances.
 A-s = [
-  "move_next_word_start",
   "move_prev_word_start",
+  "move_next_word_end",
   "search_selection",
   "select_mode",
 ]

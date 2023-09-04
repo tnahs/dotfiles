@@ -55,7 +55,6 @@ class Bup:
     def __init__(
         self, run: list[BupChoices], run_all: bool = False, is_verbose: bool = False
     ) -> None:
-
         self._to_run = run if run_all is False else list(BupChoices)
         self._is_verbose = is_verbose
 
@@ -71,17 +70,15 @@ class Bup:
             path.mkdir(parents=True, exist_ok=True)
 
     def backup(self) -> None:
-
         if self._confirm() is False:
             return
 
         for choice in self._to_run:
-            func: Callable[..., None] = getattr(self, f"_run__{choice}")
+            func: Callable[..., None] = getattr(self, f"_run__{choice.value}")
             logging.debug(f"Running {type(self).__name__}.{func.__name__}...")
             func()
 
     def _confirm(self) -> bool:
-
         confirm = input(
             f"{Defaults.NAME_PRETTY} will run: "
             f"{', '.join(self._to_run)}. Confirm? [y/N]: "
@@ -94,7 +91,6 @@ class Bup:
         return True
 
     def _run__workspace(self) -> None:
-
         logger.info("Backing up 'Workspace' directory...")
 
         source = Defaults.HOME / "Workspace"
@@ -107,7 +103,6 @@ class Bup:
         )
 
     def _run__media(self) -> None:
-
         logger.info("Backing up 'Media' directory...")
 
         source = Defaults.HOME / "Media"
@@ -120,7 +115,6 @@ class Bup:
         )
 
     def _run__downloads(self) -> None:
-
         logger.info("Backing up 'Downloads' directory...")
 
         source = Defaults.HOME / "Downloads"
@@ -133,7 +127,6 @@ class Bup:
         )
 
     def _run__anki(self) -> None:
-
         if Shell.process_is_running(process_names=["Anki"]):
             logging.warning("Anki is currently running! Skipping...")
             return
@@ -157,7 +150,6 @@ class Bup:
         Shell.prune(path=ArchivePaths.anki, size=5)
 
     def _run__applebooks(self) -> None:
-
         if Shell.process_is_running(
             process_names=["Books", "iBooks", "Apple Books", "AppleBooks"]
         ):
@@ -195,10 +187,9 @@ class Bup:
         Shell.prune(path=ArchivePaths.applebooks, size=5)
 
     def _run__brewfile(self) -> None:
-
         logger.info("Dumping Brewfile...")
 
-        path_brewfile = DotfilePaths.root / "homebrew" / "Brewfile"
+        path_brewfile = DotfilePaths.root / "homebrew" / "Brewfile-dump"
 
         command = [
             "brew",

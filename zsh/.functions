@@ -1,6 +1,6 @@
 function restart-tablet {
-    pkill WacomTabletDriver
-    open /Library/Application\ Support/Tablet/WacomTabletDriver.app
+    launchctl unload /Library/LaunchAgents/com.wacom.*
+    launchctl load /Library/LaunchAgents/com.wacom.*
 }
 
 function rip {
@@ -59,7 +59,7 @@ function _yt-dlp {
      --force-ipv4                                      \
      --sleep-requests 1                                \
      --sleep-interval 5                                \
-     --max-sleep-interval 10                           \
+     --max-sleep-interval 5                            \
      --ignore-errors                                   \
      --no-continue                                     \
      --no-overwrites                                   \
@@ -75,5 +75,6 @@ function _yt-dlp {
      --output ${2:?"Missing argument for OUTPUT"}      \
      --merge-output-format "mp4"                       \
      --throttled-rate 100K                             \
+     --no-check-certificate                            \
      ${1:?"Missing argument for URL"}
 }

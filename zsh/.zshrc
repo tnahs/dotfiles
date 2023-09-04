@@ -1,6 +1,3 @@
-source $HOME/.dotfiles/zsh/.aliases
-source $HOME/.dotfiles/zsh/.functions
-
 # wiki
 export WIKI="$HOME/Workspace/repos/wiki"
 
@@ -39,5 +36,6 @@ source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 # https://github.com/starship/starship
 eval "$(starship init zsh)"
 
-# broot
-source $HOME/.config/broot/launcher/bash/br
+# aliases/functions
+source $HOME/.dotfiles/zsh/.aliases
+source $HOME/.dotfiles/zsh/.functions

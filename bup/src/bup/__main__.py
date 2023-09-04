@@ -11,7 +11,6 @@ logger = logging.getLogger()
 
 
 def main() -> int:
-
     parser = argparse.ArgumentParser(
         add_help=False,
         prog=Defaults.NAME,
@@ -35,12 +34,12 @@ def main() -> int:
                 -h / --help      Show help.
 
             Available {Defaults.NAME_PRETTY}s:
-                {BupChoices.ANKI}
-                {BupChoices.APPLEBOOKS}
-                {BupChoices.BREWFILE}
-                {BupChoices.DOWNLOADS}
-                {BupChoices.MEDIA}
-                {BupChoices.WORKSPACE}
+                {BupChoices.ANKI.value}
+                {BupChoices.APPLEBOOKS.value}
+                {BupChoices.BREWFILE.value}
+                {BupChoices.DOWNLOADS.value}
+                {BupChoices.MEDIA.value}
+                {BupChoices.WORKSPACE.value}
         """.rstrip()
         ),
     )

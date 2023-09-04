@@ -1,12 +1,15 @@
 theme = "@catppuccin_macchiato"
 
 [editor]
-rulers = [80, 88, 120]
+rulers = [89, 101]
 mouse = true
 scrolloff = 8
 cursorline = true
 color-modes = true
 bufferline = "always"
+idle-timeout = 100
+completion-replace = false
+completion-trigger-len = 1
 
 [editor.file-picker]
 hidden = false
@@ -22,12 +25,21 @@ characters = { space = "·" }
 
 [editor.indent-guides]
 render = true
+skip-levels = 1
 
 [editor.statusline]
 mode.normal = "NORMAL"
 mode.insert = "INSERT"
 mode.select = "SELECT"
-left = ["mode", "file-name", "spacer", "diagnostics"]
+left = [
+  "mode",
+  "file-name",
+  "spacer",
+  "version-control",
+  "spacer",
+  "spacer",
+  "workspace-diagnostics",
+]
 right = [
   "file-encoding",
   "spacer",
@@ -46,11 +58,14 @@ display-messages = true
 
 [keys.normal]
 
-
 backspace.r = ":config-reload"
 # Use explicit paths so LSP and git-gutter work.
 backspace.c = ":open ~/.dotfiles/helix/config.toml"
 backspace.l = ":open ~/.dotfiles/helix/languages.toml"
+backspace.t = ":open todo.md"
+
+space.z = ":toggle soft-wrap.enable"
+space.i = ":toggle lsp.display-inlay-hints"
 
 # Navigate splits with Alt-hjkl.
 C-k = "jump_view_up"
@@ -62,55 +77,52 @@ C-l = "jump_view_right"
 C-A-k = ["scroll_up", "scroll_up"]
 C-A-j = ["scroll_down", "scroll_down"]
 
+# Clear all extra cursors.
+C-esc = "keep_primary_selection"
+
 # Delete from cursor to end of the line and enter NORMAL mode.
-D = [
-  "extend_to_line_end",
-  "yank",
-  "yank_main_selection_to_clipboard",
-  "delete_selection",
-]
+D = ["extend_to_line_end", "yank", "delete_selection"]
 
 # Change from cursor to end of the line and enter INSERT mode.
-C = [
-  "extend_to_line_end",
-  "yank",
-  "yank_main_selection_to_clipboard",
-  "change_selection",
-]
+C = ["extend_to_line_end", "yank", "change_selection"]
 
 # Yank from cursor to end of the line.
-Y = [
-  "extend_to_line_end",
-  "yank",
-  "yank_main_selection_to_clipboard",
-  "flip_selections",
-  "collapse_selection",
-]
+Y = ["extend_to_line_end", "yank", "flip_selections", "collapse_selection"]
 
 # Select from cursor to end of the line.
 V = ["extend_to_line_end"]
 
 
+# search word under cursor.
+# Use 'n' and 'N' to select other instances.
+A-d = [
+  "collapse_selection",
+  "move_prev_word_start",
+  "move_next_word_end",
+  "search_selection",
+]
+
 # Select and search word under cursor.
 # Use 'n' and 'N' to select other instances.
 A-s = [
+  "collapse_selection",
   "move_prev_word_start",
   "move_next_word_end",
   "search_selection",
   "select_mode",
 ]
 
+
 # Yank word under cursor.
 A-y = [
   "move_next_word_end",
   "move_prev_word_start",
   "yank",
-  "yank_main_selection_to_clipboard",
   "collapse_selection",
 ]
 
-# Reflow current paragraph.
-A-r = ["expand_selection", ":reflow", "collapse_selection"]
+# Reflow current selection.
+A-r = [":reflow", "goto_line_start"]
 
 # Normal Mode Remaps ---
 
@@ -125,29 +137,13 @@ A-k = "copy_selection_on_prev_line"
 [keys.select]
 
 # Delete from cursor to end of the line and enter NORMAL mode.
-D = [
-  "extend_to_line_end",
-  "yank",
-  "yank_main_selection_to_clipboard",
-  "delete_selection",
-]
+D = ["extend_to_line_end", "yank", "delete_selection"]
 
 # Change from cursor to end of the line and enter INSERT mode.
-C = [
-  "extend_to_line_end",
-  "yank",
-  "yank_main_selection_to_clipboard",
-  "change_selection",
-]
+C = ["extend_to_line_end", "yank", "change_selection"]
 
 # Yank from cursor to end of the line.
-Y = [
-  "extend_to_line_end",
-  "yank",
-  "yank_main_selection_to_clipboard",
-  "flip_selections",
-  "collapse_selection",
-]
+Y = ["extend_to_line_end", "yank", "flip_selections", "collapse_selection"]
 
 # Select from cursor to end of the line.
 V = ["extend_to_line_end"]

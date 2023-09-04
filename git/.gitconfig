@@ -5,17 +5,33 @@
 [core]
 	excludesFile = ~/.gitignore
 	editor = hx
+	pager = delta
 
 [init]
 	defaultBranch = main
 
-[alias]
-	st = status
-	one = log --pretty=oneline
-	graph = log --pretty=format:'%h %s' --graph
+[interactive]
+	diffFilter = delta --color-only
+
+[merge]
+	conflictstyle = diff3
+
+[diff]
+	colorMoved = default
 
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+
+[alias]
+	one = log --pretty=oneline
+	graph = log --pretty=format:'%h %s' --graph
+	isolate = stash push --keep-index --include-untracked
+	pr = "!f() { git fetch origin pull/$1/head:$2 && git checkout $2; }; f"
+
+[delta]
+	light = false
+	navigate = true
+	side-by-side = true

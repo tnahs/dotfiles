@@ -1,6 +1,6 @@
 # https://github.com/helix-editor/helix/blob/master/languages.toml
 #
-# Install LSPs:
+# Install Language Servers:
 #   brew install taplo
 #   brew install prettier
 #   brew install rust-analyzer
@@ -8,37 +8,28 @@
 #   brew install yaml-language-server
 #   brew install ltex-ls
 #   brew install pyright
-#   pipx install 'python-lsp-server[all]'
+#   pipx install ruff-lsp
+#   pipx install python-lsp-server
 #   npm i -g vscode-langservers-extracted
 #   npm i -g bash-language-server
 #   https://github.com/artempyanykh/marksman
 
 # Rust -------------------------------------------------------------------------
 
+
 [[language]]
 name = "rust"
+text-width = 100
 
 [language.config]
 checkOnSave.command = "clippy"
 
 # Python -----------------------------------------------------------------------
 
-# https://github.com/helix-editor/helix/issues/2293#issuecomment-1110730331
 [[language]]
 name = "python"
-roots = ["pyproject.toml"]
 auto-format = true
-max-line-length = 88
-
-[language.language-server]
-command = "pyright-langserver"
-args = ["--stdio"]
-
-# Pyright config
-[language.config.analysis]
-autoSearchPaths = true
-diagnosticMode = "workspace"
-useLibraryCodeForTypes = true
+text-width = 88
 
 [language.formatter]
 command = "black"
@@ -51,37 +42,72 @@ name = "lua"
 auto-format = true
 indent = { tab-width = 4, unit = "    " }
 
-[language.config]
-Lua.runtime.version = "LuaJIT"
-Lua.diagnostics.globals = [
-  # Neovim
-  "vim",
-  # Hammerspoon
-  "hs",
-  "spoon",
-]
+# [language-server.config]
+# Lua.runtime.version = "LuaJIT"
+# Lua.diagnostics.globals = [
+#   # Hammerspoon
+#   "hs",
+#   "spoon",
+# ]
 
 # Bash -------------------------------------------------------------------------
 
+# https://github.com/helix-editor/helix/issues/6896
 [[language]]
 name = "bash"
 indent = { tab-width = 4, unit = "    " }
+file-types = [
+  "sh",
+  "bash",
+  "zsh",
+  ".bash_login",
+  ".bash_logout",
+  ".bash_profile",
+  ".bashrc",
+  ".profile",
+  ".zshenv",
+  ".zlogin",
+  ".zlogout",
+  ".zprofile",
+  ".zshrc",
+  "APKBUILD",
+  "PKGBUILD",
+  "eclass",
+  "ebuild",
+  "bazelrc",
+  ".bash_aliases",
+  # Additions
+  ".aliases",
+  ".functions",
+]
 
 # Markdown ---------------------------------------------------------------------
 
 [[language]]
 name = "markdown"
 auto-format = true
-roots = [".marksman.toml"]
+indent = { tab-width = 2, unit = "  " }
 
-[language.language-server]
-command = "ltex-ls" # Good for spell check
-# command = "marksman" # Good Markdown LSP
-# args = ["server"]
+# Good Markdown LS (Default)
+# [language.language-server]
+# command = "marksman"
+
+# Good for spell check
+# [language.language-server]
+# command = "ltex-ls"
+# args = []
 
 [language.formatter]
 command = "prettier"
 args = ["--parser", "markdown"]
+
+[language.auto-pairs]
+'(' = ')'
+'{' = '}'
+'[' = ']'
+'"' = '"'
+'_' = '_'
+'<' = '>'
 
 # CSS --------------------------------------------------------------------------
 
@@ -98,7 +124,7 @@ args = ["--parser", "css"]
 [[language]]
 name = "json"
 auto-format = true
-indent = { tab-width = 4, unit = "  " }
+indent = { tab-width = 4, unit = "    " }
 
 # TOML -------------------------------------------------------------------------
 
@@ -111,4 +137,37 @@ auto-format = true
 [[language]]
 name = "yaml"
 auto-format = true
+indent = { tab-width = 2, unit = "  " }
+
+# Ruby -------------------------------------------------------------------------
+
+[[language]]
+name = "ruby"
+file-types = [
+  "rb",
+  "rake",
+  "rakefile",
+  "irb",
+  "gemfile",
+  "gemspec",
+  "Rakefile",
+  "Gemfile",
+  "rabl",
+  "jbuilder",
+  "jb",
+  "Podfile",
+  "podspec",
+  # Additions
+  "Brewfile",
+  "Brewfile-dump",
+]
+
+# Text -------------------------------------------------------------------------
+
+[[language]]
+name = "text"
+scope = "source.txt"
+injection-regex = "txt"
+file-types = ["txt"]
+roots = []
 indent = { tab-width = 2, unit = "  " }

@@ -1,11 +1,18 @@
+# eza
+if hash eza 2>/dev/null; then
+    alias ls="eza --all --color=always --git --group-directories-first --ignore-glob=.git"
+    alias ll="ls --long"
+    alias lt="ls --long --tree --git-ignore"
+else
+    alias ll="ls -alh"
+fi
+
 # Navigation
-alias ls="exa"
-alias ll="exa -lah"
-alias k="cd $HOME/Desktop; ls -lah;"
-alias l="cd $HOME/Downloads; ls -lah;"
-alias w="cd $HOME/Workspace; ls -lah;"
-alias p="cd $HOME/Workspace/projects; ls -lah;"
-alias r="cd $HOME/Workspace/repos; ls -lah;"
+alias k="cd $HOME/Desktop && ll"
+alias l="cd $HOME/Downloads && ll"
+alias w="cd $HOME/Workspace && ll"
+alias p="cd $HOME/Workspace/projects && ll"
+alias r="cd $HOME/Workspace/repos && ll"
 
 # Homebrew
 alias brewski="brew update && brew upgrade && brew cleanup; brew doctor"
@@ -16,13 +23,25 @@ alias h="hx ."
 # gitui
 alias g="gitui"
 
+# bat
+alias cat="bat"
+alias less="bat"
+alias more="bat"
+
 # python
 alias venv-new="python -m venv .venv && pip install --upgrade pip"
 alias venv-activate="source .venv/bin/activate"
 
 # dotfiles
-alias dot="cd $HOME/.dotfiles && hx ."
+alias d="cd $HOME/.dotfiles && hx ."
 
 # bup
 export PYTHONPATH=$HOME/.dotfiles/bup/src:$PYTHONPATH
 alias bup="python -m bup"
+
+# rust
+alias cr="cargo run"
+alias cb="cargo build"
+alias cc="cargo check"
+alias cl="cargo lint"
+alias ct="cargo test"

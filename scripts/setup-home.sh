@@ -21,8 +21,6 @@ function build_directories {
     # Media
     mkdir $HOME/Media
     mkdir $HOME/Media/incoming
-    mkdir $HOME/Media/pdfs
-    mkdir $HOME/Media/wallpapers
     # Archives
     mkdir $HOME/Archives
     mkdir $HOME/Archives/anki
@@ -43,9 +41,7 @@ function link_dotfiles {
     ln -siv $HOME/.dotfiles/homebrew/Brewfile $HOME/Brewfile
     ln -siv $HOME/.dotfiles/hammerspoon $HOME/.hammerspoon
     ln -siv $HOME/.dotfiles/karabiner $HOME/.config/karabiner
-    ln -siv $HOME/.dotfiles/alacritty/ $HOME/.config/alacritty
     ln -siv $HOME/.dotfiles/kitty $HOME/.config/kitty
-    ln -siv $HOME/.dotfiles/nvim $HOME/.config/nvim
     ln -siv $HOME/.dotfiles/helix $HOME/.config/helix
     ln -siv $HOME/.dotfiles/gitui $HOME/.config/gitui
 }

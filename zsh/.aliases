@@ -33,7 +33,7 @@ alias venv-new="python -m venv .venv && pip install --upgrade pip"
 alias venv-activate="source .venv/bin/activate"
 
 # dotfiles
-alias d="cd $HOME/.dotfiles && hx ."
+alias d="cd $HOME/.dotfiles"
 
 # bup
 export PYTHONPATH=$HOME/.dotfiles/bup/src:$PYTHONPATH

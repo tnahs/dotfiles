@@ -11,7 +11,7 @@ function rip {
 
 function dump-books {
 
-    root=$WIKI
+    root="$HOME/Workspace/wiki"
 
     data="$root/data"
     templates="$data/templates"

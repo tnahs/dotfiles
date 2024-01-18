@@ -11,7 +11,6 @@ logger = logging.getLogger(__name__)
 
 
 class _Shell:
-
     TRASH = pathlib.Path().home() / ".Trash"
 
     def run(
@@ -40,7 +39,6 @@ class _Shell:
             stderr=subprocess.STDOUT,
             universal_newlines=True,
         ) as process:
-
             logger.debug(f"Running command '{command_string}'.")
 
             if process.stdout is not None:
@@ -270,7 +268,6 @@ class _Shell:
             symbolic.symlink_to(original)
 
         except FileExistsError:
-
             if force is not True:
                 logger.warning(
                     f"Linking '{original}' to '{symbolic}' skipped! Cannot create "
@@ -428,7 +425,6 @@ class _Shell:
 
         prunable: list[pathlib.Path] = []
         for item in path.iterdir():
-
             if item in ignoring:
                 continue
 
@@ -459,7 +455,6 @@ class _Shell:
         logger.info(f"Pruning '{path}' to {size} items.")
 
         for count, path in enumerate(prunable, start=1):
-
             # Ignore the first n-files based on `size`.
             if count <= size:
                 continue
@@ -484,7 +479,6 @@ class _Shell:
         process_names = [name.lower() for name in process_names]
 
         for process in psutil.process_iter():
-
             try:
                 process_info = process.as_dict(attrs=["name"])
             except psutil.NoSuchProcess:

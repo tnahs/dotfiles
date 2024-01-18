@@ -54,6 +54,11 @@ right = [
 auto-signature-help = false
 display-messages = true
 
+[editor.soft-wrap]
+enable = false
+wrap-indicator = ""
+wrap-at-text-width = true
+
 # Normal Mode Keymaps ----------------------------------------------------------
 
 [keys.normal]
@@ -64,8 +69,9 @@ backspace.c = ":open ~/.dotfiles/helix/config.toml"
 backspace.l = ":open ~/.dotfiles/helix/languages.toml"
 backspace.t = ":open todo.md"
 
-space.z = ":toggle soft-wrap.enable"
-space.i = ":toggle lsp.display-inlay-hints"
+minus.z = ":toggle soft-wrap.enable"
+minus.i = ":toggle lsp.display-inlay-hints"
+minus.t = ":set-language text"
 
 # Navigate splits with Alt-hjkl.
 C-k = "jump_view_up"
@@ -74,8 +80,8 @@ C-h = "jump_view_left"
 C-l = "jump_view_right"
 
 # Scroll page up and down.
-C-A-k = ["scroll_up", "scroll_up"]
-C-A-j = ["scroll_down", "scroll_down"]
+C-A-k = ["scroll_up", "scroll_up", "scroll_up", "scroll_up"]
+C-A-j = ["scroll_down", "scroll_down", "scroll_down", "scroll_down"]
 
 # Clear all extra cursors.
 C-esc = "keep_primary_selection"
@@ -92,8 +98,16 @@ Y = ["extend_to_line_end", "yank", "flip_selections", "collapse_selection"]
 # Select from cursor to end of the line.
 V = ["extend_to_line_end"]
 
+# Wrap word under cursor.
+A-w = [
+  "collapse_selection",
+  "move_prev_word_start",
+  "move_next_word_end",
+  "surround_add",
+]
 
-# search word under cursor.
+
+# Search word under cursor.
 # Use 'n' and 'N' to select other instances.
 A-d = [
   "collapse_selection",

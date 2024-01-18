@@ -6,13 +6,12 @@
 #   brew install rust-analyzer
 #   brew install lua-language-server
 #   brew install yaml-language-server
+#   brew install marksman
 #   brew install ltex-ls
 #   brew install pyright
 #   pipx install ruff-lsp
-#   pipx install python-lsp-server
 #   npm i -g vscode-langservers-extracted
 #   npm i -g bash-language-server
-#   https://github.com/artempyanykh/marksman
 
 # Rust -------------------------------------------------------------------------
 
@@ -21,7 +20,7 @@
 name = "rust"
 text-width = 100
 
-[language.config]
+[language-server.rust-analyzer.config]
 checkOnSave.command = "clippy"
 
 # Python -----------------------------------------------------------------------
@@ -31,9 +30,46 @@ name = "python"
 auto-format = true
 text-width = 88
 
+[[language]]
+name = "python"
+language-servers = ["pyright", "ruff"]
+
+[language-server.pyright.config.python.analysis]
+typeCheckingMode = "standard"
+
+[language-server.ruff]
+command = "ruff-lsp"
+
+[language-server.ruff.config.settings]
+args = ["--ignore", "E501"]
+# TODO: Configure these.
+# ruff.select = [
+#   "E",   # pycodestyle: error
+#   "W",   # pycodestyle: warning
+#   "F",   # Pyflakes
+#   "B",   # flake8-bugbear
+#   "UP",  # pyupgrade
+#   "A",   # flake8-builtins
+#   "C4",  # flake8-comprehensions
+#   "EM",  # flake8-errmsg
+#   "EXE", # flake8-executable
+#   "ISC", # flake8-implicit-str-concat
+#   "Q",   # flake8-quotes
+#   "RET", # flake8-return
+#   "SLF", # flake8-self
+#   "SIM", # flake8-simplify
+#   "ARG", # flake8-unused-arguments
+#   "PTH", # flake8-use-pathlib
+#   "PL",  # Pylint
+# ]
+# ruff.ignore = [
+#   "E501", # line-too-long
+# ]
+
 [language.formatter]
 command = "black"
-args = ["-", "--quiet"]
+args = ["--quiet", "-"]
+
 
 # Lua --------------------------------------------------------------------------
 
@@ -42,13 +78,13 @@ name = "lua"
 auto-format = true
 indent = { tab-width = 4, unit = "    " }
 
-# [language-server.config]
-# Lua.runtime.version = "LuaJIT"
-# Lua.diagnostics.globals = [
-#   # Hammerspoon
-#   "hs",
-#   "spoon",
-# ]
+[language-server.lua-language-server.config.Lua]
+runtime.version = "LuaJIT"
+diagnostics.globals = [
+  # Hammerspoon
+  "hs",
+  "spoon",
+]
 
 # Bash -------------------------------------------------------------------------
 

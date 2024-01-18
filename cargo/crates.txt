@@ -1,4 +1,8 @@
-cargo-edit
+cargo-bloat
 cargo-markdown
+cargo-outdated
+eza
+flip-link
+git-graph
 mdbook
-mdbook-toc
+probe-rs

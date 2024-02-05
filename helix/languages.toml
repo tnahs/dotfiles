@@ -15,7 +15,6 @@
 
 # Rust -------------------------------------------------------------------------
 
-
 [[language]]
 name = "rust"
 text-width = 100
@@ -29,9 +28,6 @@ checkOnSave.command = "clippy"
 name = "python"
 auto-format = true
 text-width = 88
-
-[[language]]
-name = "python"
 language-servers = ["pyright", "ruff"]
 
 [language-server.pyright.config.python.analysis]
@@ -41,35 +37,30 @@ typeCheckingMode = "standard"
 command = "ruff-lsp"
 
 [language-server.ruff.config.settings]
-args = ["--ignore", "E501"]
-# TODO: Configure these.
-# ruff.select = [
-#   "E",   # pycodestyle: error
-#   "W",   # pycodestyle: warning
-#   "F",   # Pyflakes
-#   "B",   # flake8-bugbear
-#   "UP",  # pyupgrade
-#   "A",   # flake8-builtins
-#   "C4",  # flake8-comprehensions
-#   "EM",  # flake8-errmsg
-#   "EXE", # flake8-executable
-#   "ISC", # flake8-implicit-str-concat
-#   "Q",   # flake8-quotes
-#   "RET", # flake8-return
-#   "SLF", # flake8-self
-#   "SIM", # flake8-simplify
-#   "ARG", # flake8-unused-arguments
-#   "PTH", # flake8-use-pathlib
-#   "PL",  # Pylint
-# ]
-# ruff.ignore = [
-#   "E501", # line-too-long
-# ]
+lint.args = [
+  "--extend-select=E",    # pycodestyle: error
+  "--extend-select=W",    # pycodestyle: warning
+  "--extend-select=F",    # Pyflakes
+  "--extend-select=B",    # flake8-bugbear
+  "--extend-select=UP",   # pyupgrade
+  "--extend-select=A",    # flake8-builtins
+  "--extend-select=C4",   # flake8-comprehensions
+  "--extend-select=EM",   # flake8-errmsg
+  "--extend-select=EXE",  # flake8-executable
+  "--extend-select=ISC",  # flake8-implicit-str-concat
+  "--extend-select=Q",    # flake8-quotes
+  "--extend-select=RET",  # flake8-return
+  "--extend-select=SLF",  # flake8-self
+  "--extend-select=SIM",  # flake8-simplify
+  "--extend-select=ARG",  # flake8-unused-arguments
+  "--extend-select=PTH",  # flake8-use-pathlib
+  "--extend-select=PL",   # Pylint
+  "--extend-ignore=E501", # line-too-long
+]
 
 [language.formatter]
 command = "black"
 args = ["--quiet", "-"]
-
 
 # Lua --------------------------------------------------------------------------
 
@@ -123,15 +114,15 @@ file-types = [
 name = "markdown"
 auto-format = true
 indent = { tab-width = 2, unit = "  " }
+language-servers = ["marksman", "ltex-ls"]
 
-# Good Markdown LS (Default)
-# [language.language-server]
-# command = "marksman"
+# Markdown LS
+[language-server.marksman]
+command = "marksman"
 
 # Good for spell check
-# [language.language-server]
-# command = "ltex-ls"
-# args = []
+[language-server.ltex-ls]
+command = "ltex-ls"
 
 [language.formatter]
 command = "prettier"

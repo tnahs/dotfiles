@@ -1,7 +1,6 @@
 cargo-bloat
 cargo-markdown
 cargo-outdated
-eza
 flip-link
 git-graph
 mdbook

@@ -4,7 +4,7 @@
 NPM_PACKAGES_TXT=$HOME/.dotfiles/npm/packages.txt
 
 
-# https://stackoverflow.com/a/41199625
+# Installs packages listed in a text file.
 function install_npm_packages {
     while read package; do
         npm install --global $package

@@ -98,15 +98,6 @@ Y = ["extend_to_line_end", "yank", "flip_selections", "collapse_selection"]
 # Select from cursor to end of the line.
 V = ["extend_to_line_end"]
 
-# Wrap word under cursor.
-A-w = [
-  "collapse_selection",
-  "move_prev_word_start",
-  "move_next_word_end",
-  "surround_add",
-]
-
-
 # Search word under cursor.
 # Use 'n' and 'N' to select other instances.
 A-d = [
@@ -126,7 +117,6 @@ A-s = [
   "select_mode",
 ]
 
-
 # Yank word under cursor.
 A-y = [
   "move_next_word_end",
@@ -135,15 +125,23 @@ A-y = [
   "collapse_selection",
 ]
 
+# Wrap word under cursor.
+A-w = [
+  "collapse_selection",
+  "move_prev_word_start",
+  "move_next_word_end",
+  "surround_add",
+]
+
 # Reflow current selection.
 A-r = [":reflow", "goto_line_start"]
 
 # Normal Mode Remaps ---
 
-# Remap from C
+# Remap from: C
 A-j = "copy_selection_on_next_line"
 
-# Remap from A-C
+# Remap from: A-C
 A-k = "copy_selection_on_prev_line"
 
 # Select Mode Keymaps ----------------------------------------------------------

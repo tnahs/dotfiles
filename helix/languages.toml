@@ -9,7 +9,7 @@
 #   brew install marksman
 #   brew install ltex-ls
 #   brew install pyright
-#   pipx install ruff-lsp
+#   brew install ruff-lsp
 #   npm i -g vscode-langservers-extracted
 #   npm i -g bash-language-server
 
@@ -41,8 +41,8 @@ lint.args = [
   "--extend-select=E",    # pycodestyle: error
   "--extend-select=W",    # pycodestyle: warning
   "--extend-select=F",    # Pyflakes
-  "--extend-select=B",    # flake8-bugbear
   "--extend-select=UP",   # pyupgrade
+  "--extend-select=B",    # flake8-bugbear
   "--extend-select=A",    # flake8-builtins
   "--extend-select=C4",   # flake8-comprehensions
   "--extend-select=EM",   # flake8-errmsg
@@ -83,30 +83,6 @@ diagnostics.globals = [
 [[language]]
 name = "bash"
 indent = { tab-width = 4, unit = "    " }
-file-types = [
-  "sh",
-  "bash",
-  "zsh",
-  ".bash_login",
-  ".bash_logout",
-  ".bash_profile",
-  ".bashrc",
-  ".profile",
-  ".zshenv",
-  ".zlogin",
-  ".zlogout",
-  ".zprofile",
-  ".zshrc",
-  "APKBUILD",
-  "PKGBUILD",
-  "eclass",
-  "ebuild",
-  "bazelrc",
-  ".bash_aliases",
-  # Additions
-  ".aliases",
-  ".functions",
-]
 
 # Markdown ---------------------------------------------------------------------
 
@@ -198,3 +174,34 @@ injection-regex = "txt"
 file-types = ["txt"]
 roots = []
 indent = { tab-width = 2, unit = "  " }
+
+# INI --------------------------------------------------------------------------
+
+[[language]]
+name = "ini"
+file-types = [
+  "ini",
+  # Systemd unit files
+  "service",
+  "automount",
+  "device",
+  "mount",
+  "path",
+  "service",
+  "slice",
+  "socket",
+  "swap",
+  "target",
+  "timer",
+  # Podman quadlets
+  "container",
+  "volume",
+  "kube",
+  "network",
+  ".editorconfig",
+  "properties",
+  "cfg",
+  "directory",
+  # Additions
+  "conf",
+]

@@ -70,18 +70,27 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ### Install Python
 
 ```shell
-~/.dotfiles/scripts/install-python.sh [VERSION ...]
+pyenv install [VERSION]
 ```
 
-### Install Packages Globally with `pipx`
+## Applications
+
+### KiKit for KiCad
+
+Check <https://yaqwsx.github.io/KiKit/upstream/installation/macos/> for latest command.
 
 ```shell
-~/.dotfiles/scripts/install-pipx-packages.sh
+curl -sSf https://raw.githubusercontent.com/yaqwsx/KiKit/master/scripts/installMacOS.bash | sudo bash
 ```
 
-## Restore Applications
+### Apple Books
 
 ```shell
 ~/.dotfiles/scripts/restore-apple-books-library.sh [PATH_TO_LIBRARY_ARCHIVE]
+```
+
+### Anki
+
+```shell
 ~/.dotfiles/scripts/restore-anki-collection.sh [PATH_TO_COLLECTION_ARCHIVE]
 ```

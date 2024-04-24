@@ -3,7 +3,9 @@ repos:
   rev: v4.4.0
   hooks:
   - id: trailing-whitespace
+    exclude: ^(kicad)
   - id: end-of-file-fixer
+    exclude: ^(kicad)
   - id: check-toml
   - id: check-json
   - id: check-yaml

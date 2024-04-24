@@ -1,4 +1,4 @@
-# Homebrew
+# homebrew
 export HOMEBREW_PREFIX="/opt/homebrew"
 export HOMEBREW_CELLAR="/opt/homebrew/Cellar"
 export HOMEBREW_REPOSITORY="/opt/homebrew"
@@ -34,5 +34,5 @@ source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 eval "$(starship init zsh)"
 
 # aliases/functions
-source $HOME/.dotfiles/zsh/.aliases
-source $HOME/.dotfiles/zsh/.functions
+source $HOME/.dotfiles/zsh/aliases.sh
+source $HOME/.dotfiles/zsh/aunctions.sh

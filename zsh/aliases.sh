@@ -13,6 +13,7 @@ alias l="cd $HOME/Downloads && ll"
 alias w="cd $HOME/Workspace && ll"
 alias p="cd $HOME/Workspace/projects && ll"
 alias r="cd $HOME/Workspace/repos && ll"
+alias d="cd $HOME/.dotfiles"
 
 # Homebrew
 alias brewski="brew update && brew upgrade && brew cleanup; brew doctor"
@@ -24,16 +25,15 @@ alias h="hx ."
 alias g="gitui"
 
 # bat
-alias cat="bat"
-alias less="bat"
-alias more="bat"
+if command -v bat &> /dev/null; then
+    alias cat="bat"
+    alias less="bat"
+    alias more="bat"
+fi
 
 # python
-alias venv-new="python -m venv .venv && pip install --upgrade pip"
-alias venv-activate="source .venv/bin/activate"
-
-# dotfiles
-alias d="cd $HOME/.dotfiles"
+alias vn="python -m venv .venv && pip install --upgrade pip"
+alias va="source .venv/bin/activate"
 
 # bup
 export PYTHONPATH=$HOME/.dotfiles/bup/src:$PYTHONPATH

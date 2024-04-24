@@ -1,11 +1,6 @@
-function restart-tablet {
-    launchctl unload /Library/LaunchAgents/com.wacom.*
-    launchctl load /Library/LaunchAgents/com.wacom.*
-}
-
-function rip {
+function rip-video {
     for url in "$@"; do
-        _yt-dlp $url "%(uploader)s--%(upload_date>%Y-%m-%d)s--%(title)s--%(id)s.%(ext)s"
+        _rip-video $url "%(uploader)s--%(upload_date>%Y-%m-%d)s--%(title)s--%(id)s.%(ext)s"
     done
 }
 
@@ -52,7 +47,7 @@ function dump-books {
 }
 
 # https://stackoverflow.com/a/55171807
-function _yt-dlp {
+function _rip-video {
     yt-dlp                                             \
      --format "bestvideo[height<=1080]+bestaudio/best" \
      --verbose                                         \

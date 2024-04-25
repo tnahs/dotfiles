@@ -35,4 +35,4 @@ eval "$(starship init zsh)"
 
 # aliases/functions
 source $HOME/.dotfiles/zsh/aliases.sh
-source $HOME/.dotfiles/zsh/aunctions.sh
+source $HOME/.dotfiles/zsh/functions.sh

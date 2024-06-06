@@ -23,6 +23,7 @@ alias h="hx ."
 
 # gitui
 alias g="gitui"
+alias gg="git-graph"
 
 # bat
 if command -v bat &> /dev/null; then

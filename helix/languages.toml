@@ -45,7 +45,6 @@ lint.args = [
   "--extend-select=B",    # flake8-bugbear
   "--extend-select=A",    # flake8-builtins
   "--extend-select=C4",   # flake8-comprehensions
-  "--extend-select=EM",   # flake8-errmsg
   "--extend-select=EXE",  # flake8-executable
   "--extend-select=ISC",  # flake8-implicit-str-concat
   "--extend-select=Q",    # flake8-quotes

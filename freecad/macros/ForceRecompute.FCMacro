@@ -1,0 +1,4 @@
+import FreeCAD
+for obj in FreeCAD.ActiveDocument.Objects:
+ obj.touch()
+FreeCAD.ActiveDocument.recompute()

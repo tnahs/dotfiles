@@ -1,3 +1,5 @@
+export EDITOR=hx
+
 # homebrew
 export HOMEBREW_PREFIX="/opt/homebrew"
 export HOMEBREW_CELLAR="/opt/homebrew/Cellar"

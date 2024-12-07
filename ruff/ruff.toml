@@ -1,0 +1,51 @@
+[lint]
+preview = true
+
+select = [
+  "ANN", # flake8-annotations
+  "B",   # flake8-bugbear
+  "A",   # flake8-builtins
+  "C4",  # flake8-comprehensions
+  "EXE", # flake8-executable
+  "FIX", # flake8-fixme
+  "ISC", # flake8-implicit-str-concat
+  "Q",   # flake8-quotes
+  "RET", # flake8-return
+  "SLF", # flake8-self
+  "SIM", # flake8-simplify
+  "ARG", # flake8-unused-arguments
+  "PTH", # flake8-use-pathlib
+  "I",   # isort
+  "N",   # pep8-naming
+  "E",   # pycodestyle: error
+  "W",   # pycodestyle: warning
+  "F",   # pyflakes
+  "PL",  # pylint
+  "UP",  # pyupgrade
+  "RUF", # Ruff-specific rules
+  # "S",   # flake8-bandit
+  # "D",   # pydocstyle
+]
+
+ignore = [
+  # line-too-long
+  "E501",
+
+  # any-type
+  "ANN401",
+
+  # no-blank-line-after-function
+  "D202",
+
+  # Ruff warned that ISC001 might cause errors during formatting.
+  # single-line-implicit-string-concatenation
+  "ISC001",
+]
+
+fixable = [
+  # unsorted-imports
+  "I001",
+]
+
+[lint.isort]
+lines-after-imports = 2

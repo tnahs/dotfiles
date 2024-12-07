@@ -1,14 +1,5 @@
 inherits = "catppuccin_macchiato"
 
-"ui.virtual.ruler" = { bg = "#272a3f" }
-"ui.virtual.whitespace" = { fg = "surface0" }
-"ui.virtual.inlay-hint" = { fg = "surface1" }
-
-"ui.bufferline" = { fg = "surface2", bg = "mantle" }
-"ui.bufferline.active" = { fg = "red", bg = "base" }
-
-"ui.cursor.insert" = { fg = "base", bg = "red" }
-
 # https://colors.dopely.top/color-blender/
 # https://colors.dopely.top/color-converter/
 #
@@ -18,9 +9,25 @@ inherits = "catppuccin_macchiato"
 # bg = "#24273a"
 # red = "#ed8796"
 # yellow = "#eed49f"
-# teal = "#8bd5ca"
 # sky = "#91d7e3"
+# teal = "#8bd5ca"
+
+"ui.virtual.ruler" = { bg = "#272a3f" }
+"ui.virtual.whitespace" = { fg = "surface0" }
+"ui.virtual.inlay-hint" = { fg = "surface1" }
+
+"ui.bufferline" = { fg = "surface2", bg = "mantle" }
+"ui.bufferline.active" = { fg = "pink", bg = "base" }
+
+"ui.cursor.normal" = { fg = "base", bg = "green" }
+"ui.cursor.insert" = { fg = "base", bg = "pink" }
+"ui.cursor.select" = { fg = "base", bg = "green" }
+
+"ui.cursor.primary.normal" = { fg = "base", bg = "pink" }
+"ui.cursor.primary.insert" = { fg = "base", bg = "green" }
+"ui.cursor.primary.select" = { fg = "base", bg = "red" }
+
 "diagnostic.error" = { bg = "#512F43" }   # red
 "diagnostic.warning" = { bg = "#3F3C3E" } # yellow
-"diagnostic.info" = { bg = "#273544" }    # teal
-"diagnostic.hint" = { bg = "#29324C" }    # sky
+"diagnostic.hint" = { bg = "#273544" }    # sky
+"diagnostic.info" = { bg = "#29324C" }    # teal

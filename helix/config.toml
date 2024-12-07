@@ -8,6 +8,7 @@ cursorline = true
 color-modes = true
 bufferline = "always"
 idle-timeout = 100
+line-number = "relative"
 completion-replace = false
 completion-trigger-len = 1
 
@@ -59,25 +60,57 @@ enable = false
 wrap-indicator = ""
 wrap-at-text-width = true
 
+
+# Normal Mode Custom Space Keymaps -----------------------------------------------------
+
+# Space-Q -- Misc
+[keys.normal.space.q]
+
+# Search for any TODO-like strings.
+t = "@<space>/ (TODO|FIXME|WIP|HACK):"
+
+# Search for any NOTE-like strings.
+n = "@<space>/ (NOTE|QUESTION|MARK):"
+
+# Blindly open a todo file if it exists.
+T = ":open todo.md"
+
+# Rename the current file.
+m = "@:sh mv <C-r>% <C-r>%<C-w>"
+
+# Reflow current selection.
+r = ":reflow"
+
+# Space-T -- Toggles
+[keys.normal.space.t]
+h = ":toggle file-picker.hidden"
+i = ":toggle lsp.display-inlay-hints"
+w = ":toggle soft-wrap.enable"
+f = ":toggle auto-format"
+
+
+# Space-C -- Config
+[keys.normal.space.c]
+c = ":config-open"
+l = ":open ~/.dotfiles/helix/languages.toml"
+r = ":config-reload"
+t = ":lsp-restart"
+
+
 # Normal Mode Keymaps ----------------------------------------------------------
 
 [keys.normal]
 
-backspace.r = ":config-reload"
-# Use explicit paths so LSP and git-gutter work.
-backspace.c = ":open ~/.dotfiles/helix/config.toml"
-backspace.l = ":open ~/.dotfiles/helix/languages.toml"
-backspace.t = ":open todo.md"
-
-minus.z = ":toggle soft-wrap.enable"
-minus.i = ":toggle lsp.display-inlay-hints"
-minus.t = ":set-language text"
-
-# Navigate splits with Alt-hjkl.
+# Navigate splits with Control-hjkl.
 C-k = "jump_view_up"
 C-j = "jump_view_down"
 C-h = "jump_view_left"
 C-l = "jump_view_right"
+
+# Go to next change
+C-n = "@]g"
+# Go to prev change
+C-p = "@[g"
 
 # Scroll page up and down.
 C-A-k = ["scroll_up", "scroll_up", "scroll_up", "scroll_up"]
@@ -96,26 +129,31 @@ C = ["extend_to_line_end", "yank", "change_selection"]
 Y = ["extend_to_line_end", "yank", "flip_selections", "collapse_selection"]
 
 # Select from cursor to end of the line.
-V = ["extend_to_line_end"]
+S-l = ["extend_to_line_end"]
 
+# Select from cursor to start of the line.
+S-h = ["extend_to_line_start"]
+
+# TODO: Remap this.
 # Search word under cursor.
 # Use 'n' and 'N' to select other instances.
-A-d = [
-  "collapse_selection",
-  "move_prev_word_start",
-  "move_next_word_end",
-  "search_selection",
-]
+# A-d = [
+#   "collapse_selection",
+#   "move_prev_word_start",
+#   "move_next_word_end",
+#   "search_selection",
+# ]
 
-# Select and search word under cursor.
+# TODO: Remap this.
+# Search and select word under cursor.
 # Use 'n' and 'N' to select other instances.
-A-s = [
-  "collapse_selection",
-  "move_prev_word_start",
-  "move_next_word_end",
-  "search_selection",
-  "select_mode",
-]
+# A-s = [
+#   "collapse_selection",
+#   "move_prev_word_start",
+#   "move_next_word_end",
+#   "search_selection",
+#   "select_mode",
+# ]
 
 # Yank word under cursor.
 A-y = [
@@ -133,8 +171,6 @@ A-w = [
   "surround_add",
 ]
 
-# Reflow current selection.
-A-r = [":reflow", "goto_line_start"]
 
 # Normal Mode Remaps ---
 
@@ -158,12 +194,10 @@ C = ["extend_to_line_end", "yank", "change_selection"]
 Y = ["extend_to_line_end", "yank", "flip_selections", "collapse_selection"]
 
 # Select from cursor to end of the line.
-V = ["extend_to_line_end"]
+S-l = ["extend_to_line_end"]
 
-# Select Mode Remaps ---
+# Select from cursor to start of the line.
+S-h = ["extend_to_line_start"]
 
-# Remap from C
-A-j = "copy_selection_on_next_line"
-
-# Remap from A-C
-A-k = "copy_selection_on_prev_line"
+# Wrap selection.
+A-w = ["surround_add"]

@@ -18,23 +18,23 @@ eval "$(pyenv init -)"
 # zsh-completions
 # https://github.com/zsh-users/zsh-completions
 if type brew &>/dev/null; then
-    FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+    FPATH="$(brew --prefix)/share/zsh-completions:$FPATH"
     autoload -Uz compinit
     compinit
 fi
 
 # zsh-syntax-highlighting
 # http://github.com/zsh-users/zsh-syntax-highlighting
-source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source "$(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
 # zsh-autosuggestions
 # https://github.com/zsh-users/zsh-autosuggestions
-source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source "$(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 
 # starship
 # https://github.com/starship/starship
 eval "$(starship init zsh)"
 
 # aliases/functions
-source $HOME/.dotfiles/zsh/aliases.sh
-source $HOME/.dotfiles/zsh/functions.sh
+source "$HOME/.dotfiles/zsh/aliases.sh"
+source "$HOME/.dotfiles/zsh/functions.sh"

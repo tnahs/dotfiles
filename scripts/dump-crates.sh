@@ -1,8 +1,8 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 
-CRATES_JSON=$HOME/.cargo/.crates2.json
-CRATES_TXT=$HOME/.dotfiles/cargo/crates.txt
+CRATES_JSON="$HOME/.cargo/.crates2.json"
+CRATES_TXT="$HOME/.dotfiles/cargo/crates.txt"
 
 
 # Dump crates installed from crates.io.
@@ -27,7 +27,7 @@ function dump_crates {
     jq_command='.installs | keys[]  | select( . | contains("registry+https://")) | split(" ")[0]'
 
     # Dump the results from the above command into a text file.
-    cat $CRATES_JSON | jq -r $jq_command > $CRATES_TXT
+    cat "$CRATES_JSON" | jq -r "$jq_command" > "$CRATES_TXT"
 }
 
 

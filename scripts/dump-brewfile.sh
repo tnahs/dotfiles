@@ -1,7 +1,7 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 
-BREWFILE=$HOME/.dotfiles/homebrew/Brewfile-dump
+BREWFILE="$HOME/.dotfiles/homebrew/Brewfile-dump"
 
 
 function dump_brewfile {

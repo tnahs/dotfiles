@@ -1,4 +1,5 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
+
 # https://mths.be/macos
 
 
@@ -374,22 +375,23 @@ function run__config_windows {
 
 
 function main {
-    if [[ $# -lt 1 ]] then;
+    if [[ $# -lt 1 ]]; then
         run__pre
         run__config_base
         run__post
-    elif [[ "$1" = "--windows" ]] then;
+    elif [[ "$1" = "--windows" ]]; then
         run__pre
         run__config_base
         run__config_windows
         run__post
-    elif [[ "$1" = "--windows-only" ]] then;
+    elif [[ "$1" = "--windows-only" ]]; then
         run__pre
         run__config_windows
         run__post
     else
-        echo "Unrecognized flag: ${1}"
-        exit 2
+        echo "Error: Invalid flag '$1'"
+        echo
+        exit 1
     fi
 }
 

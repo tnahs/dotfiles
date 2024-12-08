@@ -10,9 +10,7 @@ fi
 # Navigation
 alias k="cd $HOME/Desktop && ll"
 alias l="cd $HOME/Downloads && ll"
-alias w="cd $HOME/Workspace && ll"
-alias p="cd $HOME/Workspace/projects && ll"
-alias r="cd $HOME/Workspace/repos && ll"
+alias p="cd $HOME/Projects && ll"
 alias d="cd $HOME/.dotfiles"
 
 # Homebrew

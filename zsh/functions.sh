@@ -1,12 +1,12 @@
 function rip-video {
     for url in "$@"; do
-        _rip-video $url "%(uploader)s--%(upload_date>%Y-%m-%d)s--%(title)s--%(id)s.%(ext)s"
+        _rip-video "$url" "%(uploader)s--%(upload_date>%Y-%m-%d)s--%(title)s--%(id)s.%(ext)s"
     done
 }
 
 function dump-books {
 
-    root="$HOME/Workspace/wiki"
+    root="$HOME/Projects/wiki"
 
     data="$root/data"
     templates="$data/templates"
@@ -14,14 +14,14 @@ function dump-books {
     databases="$data/databases"
     reading="$root/vault/reading"
 
-    mkdir -p $root
-    mkdir -p $data
-    mkdir -p $templates
-    mkdir -p $export
-    mkdir -p $databases
-    mkdir -p $reading
+    mkdir -p "$root"
+    mkdir -p "$data"
+    mkdir -p "$templates"
+    mkdir -p "$export"
+    mkdir -p "$databases"
+    mkdir -p "$reading"
 
-    printf " ◆ Rendering templates...\n"
+    echo " Rendering templates..."
     readstor                               \
         --output-directory "$reading"      \
         render                             \
@@ -33,17 +33,17 @@ function dump-books {
         --trim-blocks                      \
         --wrap-text 100
 
-    printf "\n ◆ Exporting data...\n"
+    echo " ◆ Exporting data..."
     readstor                               \
         --output-directory "$export"       \
         export
 
-    printf "\n ◆ Backing-up databases...\n"
+    echo " ◆ Backing-up databases..."
     readstor                               \
         --output-directory "$databases"    \
         backup
 
-    printf "\n ◆ Complete! Saved to: $root\n"
+    echo " ◆ Complete! Saved to: $root"
 }
 
 # https://stackoverflow.com/a/55171807
@@ -67,9 +67,9 @@ function _rip-video {
      --embed-subs                                      \
      --check-formats                                   \
      --concurrent-fragments 5                          \
-     --output ${2:?"Missing argument for OUTPUT"}      \
+     --output "${2 : ? 'Missing argument for OUTPUT'}" \
      --merge-output-format "mp4"                       \
      --throttled-rate 100K                             \
      --no-check-certificate                            \
-     ${1:?"Missing argument for URL"}
+     "${1 : ? 'Missing argument for URL'}"
 }

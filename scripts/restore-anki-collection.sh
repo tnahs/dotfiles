@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 
 function quit_anki {
@@ -9,32 +9,33 @@ function quit_anki {
 
 function extract_archive {
     tempdir=$(mktemp -d 2> /dev/null)
-    echo "Extracting Anki collection archive to ${tempdir}..."
+    echo "Extracting Anki collection archive to $tempdir..."
     tar \
         --extract \
         --file="$1" \
-        --directory=$tempdir
+        --directory="$tempdir"
 }
 
 
 function restore_collection {
     echo "Deleting Anki collection..."
-    rm -rf $HOME/Library/Application\ Support/Anki2
+    rm -rf "$HOME/Library/Application\ Support/Anki2"
     echo "Retoring Anki collection..."
-    mv $tempdir/Anki2 $HOME/Library/Application\ Support
+    mv "$tempdir/Anki2" "$HOME/Library/Application\ Support"
 }
 
 
 function delete_tempdir {
-    echo "Deleting ${tempdir}..."
-    rm -rf $tempdir
+    echo "Deleting $tempdir..."
+    rm -rf "$tempdir"
 }
 
 
 function main {
-    if [[ $# -ne 1 ]] then;
-        echo "Error: Please provide a single path to an Anki collection archive."
-        exit 2
+    if [[ $# -ne 1 ]]; then
+        echo "Error: Please provide a single path to an Anki collection archive"
+        echo
+        exit 1
     else
         quit_anki
         extract_archive "$1"

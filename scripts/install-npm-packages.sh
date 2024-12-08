@@ -1,14 +1,14 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 
-NPM_PACKAGES_TXT=$HOME/.dotfiles/npm/packages.txt
+NPM_PACKAGES_TXT="$HOME/.dotfiles/npm/packages.txt"
 
 
 # Installs packages listed in a text file.
 function install_npm_packages {
-    while read package; do
-        npm install --global $package
-    done < $NPM_PACKAGES_TXT
+    while read -r package; do
+        npm install --global "$package"
+    done < "$NPM_PACKAGES_TXT"
 }
 
 

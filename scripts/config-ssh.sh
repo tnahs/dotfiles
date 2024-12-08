@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 
 # ------------------------------------------------------------------------------
@@ -7,10 +7,10 @@
 
 
 function config_ssh {
-    mkdir -p $HOME/.ssh
-    chmod 700 $HOME/.ssh
-    chmod 600 $HOME/.ssh/id_rsa
-    chmod 644 $HOME/.ssh/id_rsa.pub
+    mkdir -p "$HOME/.ssh"
+    chmod 700 "$HOME/.ssh"
+    chmod 600 "$HOME/.ssh/id_rsa"
+    chmod 644 "$HOME/.ssh/id_rsa.pub"
 }
 
 

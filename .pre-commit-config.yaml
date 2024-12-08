@@ -1,15 +1,15 @@
 repos:
 - repo: https://github.com/pre-commit/pre-commit-hooks
-  rev: v4.4.0
+  rev: v5.0.0
   hooks:
-  - id: trailing-whitespace
-    exclude: ^(kicad|freecad|prusa)
-  - id: end-of-file-fixer
-    exclude: ^(kicad|freecad|prusa)
-  - id: check-toml
-  - id: check-json
-  - id: check-yaml
-  - id: check-shebang-scripts-are-executable
-  - id: check-executables-have-shebangs
   - id: check-added-large-files
     exclude: ^(imgs)
+  - id: check-executables-have-shebangs
+  - id: check-json
+  - id: check-shebang-scripts-are-executable
+  - id: check-toml
+  - id: check-yaml
+  - id: end-of-file-fixer
+    exclude: ^(kicad|freecad|prusa)
+  - id: trailing-whitespace
+    exclude: ^(kicad|freecad|prusa)

@@ -73,7 +73,7 @@ t = "@<space>/ (TODO|FIXME|WIP|HACK):"
 n = "@<space>/ (NOTE|QUESTION|MARK):"
 
 # Blindly open a todo file if it exists.
-T = ":open todo.md"
+d = ":open todo.md"
 
 # Rename the current file.
 m = "@:sh mv <C-r>% <C-r>%<C-w>"

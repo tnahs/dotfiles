@@ -26,9 +26,30 @@
 	required = true
 
 [alias]
+	# Shows a one-line summary of each commit in the log.
 	one = log --pretty=oneline
+
+	# Displays the log as a graphical representation of commit history.
+	#
+	# `%h` = abbreviated commit hash
+	# `%s` = commit subject
 	graph = log --pretty=format:'%h %s' --graph
+
+	# Stashes changes, keeping the current index intact, and includes untracked
+	# files in the stash. Useful for isolating changes while leaving the working
+	# directory clean.
 	isolate = stash push --keep-index --include-untracked
+
+	# Fetches a pull request by its number and checks it out to a local branch.
+	#
+	# `$1` = PR number
+	# `$2` = local branch name
+	#
+	# For example...
+	#
+	#   `git pr 123 feature-branch`
+	#
+	# ...fetches PR #123 and checks it out as `feature-branch`.
 	pr = "!f() { git fetch origin pull/$1/head:$2 && git checkout $2; }; f"
 
 [delta]

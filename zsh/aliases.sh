@@ -11,6 +11,7 @@ fi
 alias k="cd $HOME/Desktop && ll"
 alias l="cd $HOME/Downloads && ll"
 alias p="cd $HOME/Projects && ll"
+alias a="cd $HOME/Projects/10-active && ll"
 alias d="cd $HOME/.dotfiles"
 
 # Homebrew

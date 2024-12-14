@@ -1,4 +1,4 @@
-# bin (used by pipx too)
+# bin
 export PATH="$PATH:$HOME/.local/bin"
 
 # rust/cargo

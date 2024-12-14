@@ -72,6 +72,9 @@ function link_application_dotfiles {
     ln -sihv "$HOME/.dotfiles/syntax-highlight/styles"  "$APPLICATION_SUPPORT/Syntax Highlight/Styles"
     ln -sihv "$HOME/.dotfiles/syntax-highlight/themes"  "$APPLICATION_SUPPORT/Syntax Highlight/Themes"
 
+    mkdir -p "$HOME/.pqr"
+    ln -sihv "$HOME/.dotfiles/pqr/config.toml"   "$HOME/.pqr/config.toml"
+
     # VSCode
     ln -sihv "$HOME/.dotfiles/vscode/settings.json" "$APPLICATION_SUPPORT/Code/User/settings.json"
 

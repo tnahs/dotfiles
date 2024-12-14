@@ -1,3 +1,6 @@
+[include]
+	path = ~/.dotfiles/delta/themes/catppuccin.gitconfig
+
 [user]
 	name = Shant Ergenian
 	email = shaaant@pm.me
@@ -25,6 +28,12 @@
 	process = git-lfs filter-process
 	required = true
 
+[delta]
+	dark = true
+	navigate = true
+	side-by-side = true
+	features = catppuccin-macchiato
+
 [alias]
 	# Shows a one-line summary of each commit in the log.
 	one = log --pretty=oneline
@@ -51,8 +60,3 @@
 	#
 	# ...fetches PR #123 and checks it out as `feature-branch`.
 	pr = "!f() { git fetch origin pull/$1/head:$2 && git checkout $2; }; f"
-
-[delta]
-	light = false
-	navigate = true
-	side-by-side = true

@@ -59,6 +59,7 @@ function link_dotfiles {
     ln -sihv "$HOME/.dotfiles/kitty"             "$HOME/.config/kitty"
     ln -sihv "$HOME/.dotfiles/helix"             "$HOME/.config/helix"
     ln -sihv "$HOME/.dotfiles/gitui"             "$HOME/.config/gitui"
+    ln -sihv "$HOME/.dotfiles/bat"               "$HOME/.config/bat"
     ln -sihv "$HOME/.dotfiles/ruff/ruff.toml"    "$HOME/.ruff.toml"
     ln -sihv "$HOME/.dotfiles/tridactyl"         "$HOME/.config/tridactyl"
 }
@@ -66,6 +67,10 @@ function link_dotfiles {
 
 function link_application_dotfiles {
     echo "Linking application dotfiles..."
+
+    # Syntax-Highlight - https://github.com/sbarex/SourceCodeSyntaxHighlight
+    ln -sihv "$HOME/.dotfiles/syntax-highlight/styles"  "$APPLICATION_SUPPORT/Syntax Highlight/Styles"
+    ln -sihv "$HOME/.dotfiles/syntax-highlight/themes"  "$APPLICATION_SUPPORT/Syntax Highlight/Themes"
 
     # VSCode
     ln -sihv "$HOME/.dotfiles/vscode/settings.json" "$APPLICATION_SUPPORT/Code/User/settings.json"

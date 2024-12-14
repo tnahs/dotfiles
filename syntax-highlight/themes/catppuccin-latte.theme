@@ -1,0 +1,43 @@
+Description="Catppuccin Latte"
+
+Categories = {"light"}
+
+Default = { Colour="#4c4f69" }
+Canvas = { Colour="#eff1f5" }
+Number = { Colour="#fe640b" }
+String = { Colour="#40a02b" }
+Escape = { Colour="#ea76cb" }
+PreProcessor = { Colour="#df8e1d" }
+StringPreProc = { Colour="#ff0000" }
+BlockComment = { Colour="#9ca0b0" }
+LineComment = { Colour="#9ca0b0" }
+LineNum = { Colour="#5c5f77" }
+Operator = { Colour="#7c7f93" }
+Interpolation = { Colour="#4c4f69" }
+Hover = { Colour="", Custom = { { Format = "html", Style = "cursor:help;", Override = false } } }
+Error = { Colour="#ff0000" }
+ErrorMessage = { Colour="#ff0000", Custom = { { Format = "html", Style = "border:solid 1px red; margin-left: 3em;", Override = false } } }
+
+Keywords = {
+	{ Colour="#8839ef" },
+	{ Colour="#1e66f5" },
+	{ Colour="#1e66f5" },
+	{ Colour="#1e66f5" },
+	{ Colour="#ff0000" },
+	{ Colour="#ea76cb" }
+}
+
+
+SemanticTokenTypes = {
+	{ Type = 'keyword', Style = { Colour="#8839ef" } },
+	{ Type = 'type', Style = { Colour="#1e66f5" } },
+	{ Type = 'function', Style = { Colour="#1e66f5" } },
+	{ Type = 'method', Style = { Colour="#1e66f5" } },
+	{ Type = 'class', Style = { Colour="#8839ef" } },
+	{ Type = 'struct', Style = { Colour="#1e66f5" } },
+	{ Type = 'parameter', Style = { Colour="#ea76cb" } },
+	{ Type = 'variable', Style = { Colour="#4c4f69" } },
+	{ Type = 'number', Style = { Colour="#fe640b" } },
+	{ Type = 'regexp', Style = { Colour="#ea76cb" } },
+	{ Type = 'operator', Style = { Colour="#7c7f93" } },
+}

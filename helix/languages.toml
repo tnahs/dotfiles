@@ -43,8 +43,9 @@ language-servers = ["ruff", "basedpyright"]
 command = "ruff"
 args = ["server", "--preview"]
 
-[language-server.ruff.config]
-configuration = "~/.ruff.toml"
+# FIXME: This doens't work.
+# [language-server.ruff.config]
+# configuration = "~/.ruff.toml"
 
 # basedpyright ---
 

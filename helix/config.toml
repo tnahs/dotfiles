@@ -63,7 +63,7 @@ wrap-at-text-width = true
 
 # Normal Mode Custom Space Keymaps -----------------------------------------------------
 
-# Space-Q -- Misc
+# Space-Q -- Custom
 [keys.normal.space.q]
 
 # Search for any TODO-like strings.
@@ -81,7 +81,8 @@ m = "@:sh mv <C-r>% <C-r>%<C-w>"
 # Reflow current selection.
 r = ":reflow"
 
-# Space-T -- Toggles
+
+# Space-T -- Toggle
 [keys.normal.space.t]
 h = ":toggle file-picker.hidden"
 i = ":toggle lsp.display-inlay-hints"
@@ -91,10 +92,16 @@ f = ":toggle auto-format"
 
 # Space-C -- Config
 [keys.normal.space.c]
-c = ":config-open"
+c = ":open ~/.dotfiles/helix/config.toml"
 l = ":open ~/.dotfiles/helix/languages.toml"
 r = ":config-reload"
 t = ":lsp-restart"
+
+
+# Space
+[keys.normal.space]
+e = "file_browser"
+E = "file_browser_in_current_directory"
 
 
 # Normal Mode Keymaps ----------------------------------------------------------

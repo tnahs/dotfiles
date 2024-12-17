@@ -46,3 +46,9 @@ H:bind({ "command" }, "D", function()
     hs.execute("open $HOME/Downloads")
     H.triggered = true
 end)
+
+-- Open Projects folder
+H:bind({}, "P", function()
+    hs.execute("open $HOME/Projects/active")
+    H.triggered = true
+end)

@@ -38,6 +38,9 @@
 	# Shows a one-line summary of each commit in the log.
 	one = log --pretty=oneline
 
+	# Diffs the current changes against HEAD.
+	changes = git diff HEAD
+
 	# Displays the log as a graphical representation of commit history.
 	#
 	# `%h` = abbreviated commit hash

@@ -1,4 +1,4 @@
-# ~/.pqr/config.toml
+# ./.pqr/pqr.toml
 #
 # ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
 # ┃                                                                                                ┃
@@ -7,6 +7,7 @@
 # ┃     Docs: https://tnahs.github.io/PrintQR                                                      ┃
 # ┃                                                                                                ┃
 # ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
 
 
 # ┌─ Options ──────────────────────────────────────────────────────────────────────────────────────┐
@@ -62,7 +63,7 @@ add-date = false
 # │                                                                                                │
 # │   Template strings for generating dates, filenames and image captions.                         │
 # │                                                                                                │
-# │   Use the `print` command to see all available fields and date formatting syntax.              │
+# │   Use the `info` command to see all available fields and date formatting syntax.               │
 # │                                                                                                │
 # └────────────────────────────────────────────────────────────────────────────────────────────────┘
 
@@ -87,6 +88,23 @@ date = "%Y-%m-%d"
 #   default:   "{filament-material}_{filament-brand}_{filament-name}"
 #
 filename = "{filament-material}_{filament-brand}_{filament-name}"
+
+# Apply a list of string transformations to all generated filenames. The
+# transformations are applied in the order they are declared.
+#
+#   Available options:
+#     "to-ascii"              - Convert all text to ASCII.
+#     "to-lowercase"          - Lowercase all text.
+#     "remove-spaces"         - Remove all spaces.
+#     "spaces-to-dashes"      - Replace all spaces with dashes.
+#     "spaces-to-underscores" - Replace all spaces with underscores.
+#
+#   cli:       true
+#   unit:      -
+#   type:      list[str]
+#   default:   []
+#
+filename-transformations = []
 
 # Template used to generate the caption - line one.
 #
@@ -236,7 +254,7 @@ error-correction = "medium"
 #   type:      str
 #   default:   ""
 #
-executable = ""
+executable = "/Applications/PrusaSlicer.app/Contents/MacOS/PrusaSlicer"
 
 
 # ┌─ Print Settings ───────────────────────────────────────────────────────────────────────────────┐
@@ -321,7 +339,7 @@ name = "PrusaSlicer"
 #   type:      str
 #   default:   ""
 #
-setting-preset = ""
+setting-preset = "P0-25ST-MK4S-HF4"
 
 # The filament preset e.g. "Prusament PLA"
 #
@@ -357,7 +375,7 @@ max-volumetric-speed = 0
 #   type:      float
 #   default:   0.0
 #
-layer-height = 0.0
+layer-height = 0.25
 
 # The nozzle temperature.
 #

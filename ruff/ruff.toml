@@ -38,8 +38,12 @@ ignore = [
   "D202",
 
   # Ruff warned that ISC001 might cause errors during formatting.
+  #
   # single-line-implicit-string-concatenation
   "ISC001",
+
+  # unnecessary-assign
+  "RET504",
 ]
 
 fixable = [

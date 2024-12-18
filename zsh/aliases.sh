@@ -7,22 +7,30 @@ else
     alias ll="ls -alh"
 fi
 
-# Navigation
+# shell
+alias reload="source ~/.dotfiles/zsh/.zshrc"
+alias rr=reload
+
+# navigation
 alias k="cd $HOME/Desktop && ll"
 alias l="cd $HOME/Downloads && ll"
 alias p="cd $HOME/Projects && ll"
 alias a="cd $HOME/Projects/10-active && ll"
 alias d="cd $HOME/.dotfiles"
 
-# Homebrew
-alias brewski="brew update && brew upgrade && brew cleanup; brew doctor"
-
-# helix
-alias h="hx ."
+# git
+alias m="list-modified-files"
 
 # gitui
 alias g="gitui"
 alias gg="git-graph"
+
+# homebrew
+alias brewski="brew update && brew upgrade && brew cleanup; brew doctor"
+
+# helix
+alias h="hx ."
+alias hm="list-modified-files | xargs hx"
 
 # bat
 if command -v bat &> /dev/null; then

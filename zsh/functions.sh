@@ -1,7 +1,5 @@
-function rip-video {
-    for url in "$@"; do
-        _rip-video "$url" "%(uploader)s--%(upload_date>%Y-%m-%d)s--%(title)s--%(id)s.%(ext)s"
-    done
+function list-modified-files {
+    (git diff --name-only && git diff --name-only --cached) 2>/dev/null
 }
 
 function dump-books {
@@ -44,6 +42,12 @@ function dump-books {
         backup
 
     echo " ◆ Complete! Saved to: $root"
+}
+
+function rip-video {
+    for url in "$@"; do
+        _rip-video "$url" "%(uploader)s--%(upload_date>%Y-%m-%d)s--%(title)s--%(id)s.%(ext)s"
+    done
 }
 
 # https://stackoverflow.com/a/55171807

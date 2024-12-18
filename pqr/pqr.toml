@@ -103,7 +103,7 @@ filename = "{filament-material}_{filament-brand}_{filament-name}"
 #   type:      list[str]
 #   default:   []
 #
-filename-transformations = []
+filename-transformations = ["to-ascii", "remove-spaces"]
 
 # Template used to generate the caption - line one.
 #
@@ -356,7 +356,7 @@ filament-preset = ""
 #   type:      str
 #   default:   ""
 #
-printer-preset = ""
+printer-preset = "TexturedSheet"
 
 # The max volumetric speed.
 #

@@ -31,6 +31,10 @@ source "$(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.z
 # https://github.com/zsh-users/zsh-autosuggestions
 source "$(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 
+# zsh-vi-mode
+# https://github.com/jeffreytse/zsh-vi-mode
+source "$(brew --prefix)/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh"
+
 # starship
 # https://github.com/starship/starship
 eval "$(starship init zsh)"

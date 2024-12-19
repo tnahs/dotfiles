@@ -1,2 +1,7 @@
 [line_break]
 disabled = true
+
+[character]
+success_symbol = "[❯](green)"
+error_symbol = "[!](red)"
+vimcmd_symbol = "[❯](red)"

@@ -10,13 +10,15 @@ fi
 # shell
 alias reload="source ~/.dotfiles/zsh/.zshrc"
 alias rr=reload
+alias hd="history-disable"
+alias he="history-enable"
 
 # navigation
 alias k="cd $HOME/Desktop && ll"
 alias l="cd $HOME/Downloads && ll"
-alias p="cd $HOME/Projects && ll"
-alias a="cd $HOME/Projects/10-active && ll"
 alias d="cd $HOME/.dotfiles"
+alias p="cd $PROJECTS && ll"
+alias a="cd $PROJECTS_ACTIVE && ll"
 
 # git
 alias m="list-modified-files"
@@ -24,9 +26,6 @@ alias m="list-modified-files"
 # gitui
 alias g="gitui"
 alias gg="git-graph"
-
-# homebrew
-alias brewski="brew update && brew upgrade && brew cleanup; brew doctor"
 
 # helix
 alias h="hx ."
@@ -39,17 +38,8 @@ if command -v bat &> /dev/null; then
     alias more="bat"
 fi
 
-# 3d-printing
-alias slice-prusa="/Applications/PrusaSlicer.app/Contents/MacOS/PrusaSlicer"
-alias slice-orca="/Applications/OrcaSlicer.app/Contents/MacOS/OrcaSlicer"
-
-# python
-alias vn="python -m venv .venv && pip install --upgrade pip"
-alias va="source .venv/bin/activate"
-
-# bup
-export PYTHONPATH=$HOME/.dotfiles/bup/src:$PYTHONPATH
-alias bup="python -m bup"
+# homebrew
+alias brewski="brew update && brew upgrade && brew cleanup; brew doctor"
 
 # rust
 alias cr="cargo run"
@@ -57,3 +47,14 @@ alias cb="cargo build"
 alias cc="cargo check"
 alias cl="cargo lint"
 alias ct="cargo test"
+
+# python
+alias vn="python -m venv .venv && pip install --upgrade pip"
+alias va="source .venv/bin/activate"
+
+# bup
+alias bup="python -m bup"
+
+# 3d-printing
+alias slice-prusa="/Applications/PrusaSlicer.app/Contents/MacOS/PrusaSlicer"
+alias slice-orca="/Applications/OrcaSlicer.app/Contents/MacOS/OrcaSlicer"

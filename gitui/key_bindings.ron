@@ -6,19 +6,19 @@
 // Note: Find `KeysList` type in src/keys/key_list.rs for all possible keys.
 // Every key not overwritten via the config file will use the default specified there.
 (
-    move_left  : Some(( code: Char('h'), modifiers: "" )),
-    move_right : Some(( code: Char('l'), modifiers: "" )),
-    move_up    : Some(( code: Char('k'), modifiers: "" )),
-    move_down  : Some(( code: Char('j'), modifiers: "" )),
-    shift_up   : Some(( code: Char('K'), modifiers: "SHIFT")),
-    shift_down : Some(( code: Char('J'), modifiers: "SHIFT")),
+    move_left:  Some((code: Char('h'), modifiers: "" )),
+    move_right: Some((code: Char('l'), modifiers: "" )),
+    move_up:    Some((code: Char('k'), modifiers: "" )),
+    move_down:  Some((code: Char('j'), modifiers: "" )),
+    shift_up:   Some((code: Char('K'), modifiers: "SHIFT")),
+    shift_down: Some((code: Char('J'), modifiers: "SHIFT")),
 
-    home       : Some(( code: Char('g'), modifiers: "")),
-    end        : Some(( code: Char('G'), modifiers: "SHIFT")),
-    page_up    : Some(( code: Char('b'), modifiers: "CONTROL")),
-    page_down  : Some(( code: Char('f'), modifiers: "CONTROL")),
-    popup_up   : Some(( code: Char('p'), modifiers: "CONTROL")),
-    popup_down : Some(( code: Char('n'), modifiers: "CONTROL")),
+    home:       Some((code: Char('g'), modifiers: "")),
+    end:        Some((code: Char('G'), modifiers: "SHIFT")),
+    page_up:    Some((code: Char('b'), modifiers: "CONTROL")),
+    page_down:  Some((code: Char('f'), modifiers: "CONTROL")),
+    popup_up:   Some((code: Char('p'), modifiers: "CONTROL")),
+    popup_down: Some((code: Char('n'), modifiers: "CONTROL")),
 
-    open_help  : Some(( code: Char('?'), modifiers: ( bits: 0 ) )),
+    open_help:  Some((code: Char('?'), modifiers: "" )),
 )

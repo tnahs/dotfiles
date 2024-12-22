@@ -26,9 +26,9 @@ function _rip-video {
      --embed-subs                                      \
      --check-formats                                   \
      --concurrent-fragments 5                          \
-     --output "${2 : ? 'Missing argument for OUTPUT'}" \
+     --output "${2:?'Missing argument for OUTPUT'}"    \
      --merge-output-format "mp4"                       \
      --throttled-rate 100K                             \
      --no-check-certificate                            \
-     "${1 : ? 'Missing argument for URL'}"
+     "${1:?'Missing argument for URL'}"
 }

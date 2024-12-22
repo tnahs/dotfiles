@@ -44,6 +44,12 @@ if type brew &>/dev/null; then
     compinit
 fi
 
+# themes for zsh-syntax-highlighting
+# source "$DOTFILES/zsh/themes-zsh-syntax-highlighting/catppuccin_frappe.zsh"
+# source "$DOTFILES/zsh/themes-zsh-syntax-highlighting/catppuccin_latte.zsh"
+source "$DOTFILES/zsh/themes-zsh-syntax-highlighting/catppuccin_macchiato.zsh"
+# source "$DOTFILES/zsh/themes-zsh-syntax-highlighting/catppuccin_mocha.zsh"
+
 # zsh-syntax-highlighting
 # http://github.com/zsh-users/zsh-syntax-highlighting
 source "$(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"

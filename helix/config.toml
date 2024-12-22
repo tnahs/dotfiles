@@ -55,6 +55,12 @@ right = [
 auto-signature-help = false
 display-messages = true
 
+[editor.inline-diagnostics]
+cursor-line = "hint"
+other-lines = "disable"
+max-diagnostics = 20
+prefix-len = 3
+
 [editor.soft-wrap]
 enable = false
 wrap-indicator = ""
@@ -72,11 +78,11 @@ t = "@<space>/ (TODO|FIXME|WIP|HACK):"
 # Search for any NOTE-like strings.
 n = "@<space>/ (NOTE|QUESTION|MARK):"
 
-# Blindly open a todo file if it exists.
-d = ":open todo.md"
-
 # Rename the current file.
 m = "@:sh mv <C-r>% <C-r>%<C-w>"
+
+# Copy the diagnostic message under the cursor
+d = ":yank-diagnostic"
 
 # Reflow current selection.
 r = ":reflow"
@@ -94,14 +100,13 @@ f = ":toggle auto-format"
 [keys.normal.space.c]
 c = ":open ~/.dotfiles/helix/config.toml"
 l = ":open ~/.dotfiles/helix/languages.toml"
-r = ":config-reload"
-t = ":lsp-restart"
+r = [":config-reload", ":lsp-restart"]
 
 
 # Space
-[keys.normal.space]
-e = "file_browser"
-E = "file_browser_in_current_directory"
+# [keys.normal.space]
+# e = "file_browser"
+# E = "file_browser_in_current_directory"
 
 
 # Normal Mode Keymaps ----------------------------------------------------------

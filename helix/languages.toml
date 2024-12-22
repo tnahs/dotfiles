@@ -43,9 +43,16 @@ language-servers = ["ruff", "basedpyright"]
 command = "ruff"
 args = ["server", "--preview"]
 
-# FIXME: This doens't work.
-# [language-server.ruff.config]
-# configuration = "~/.ruff.toml"
+# Ruff supports hierarchical configuration, such that the "closest" config file
+# in the directory hierarchy is used for every individual file, with all paths
+# in the config file (e.g., exclude globs, src paths) being resolved relative to
+# the directory containing that config file.
+#
+# https://docs.astral.sh/ruff/configuration/
+#
+# The following line allows setting the config in Helix.
+# [language-server.ruff.config.settings.lint]
+# select = []
 
 # basedpyright ---
 
@@ -77,13 +84,6 @@ diagnostics.globals = [
   "hs",
   "spoon",
 ]
-
-# Bash -------------------------------------------------------------------------
-
-# https://github.com/helix-editor/helix/issues/6896
-[[language]]
-name = "bash"
-indent = { tab-width = 4, unit = "    " }
 
 # Markdown ---------------------------------------------------------------------
 
@@ -142,29 +142,6 @@ auto-format = true
 name = "yaml"
 auto-format = true
 indent = { tab-width = 2, unit = "  " }
-
-# Ruby -------------------------------------------------------------------------
-
-[[language]]
-name = "ruby"
-file-types = [
-  "rb",
-  "rake",
-  "rakefile",
-  "irb",
-  "gemfile",
-  "gemspec",
-  "Rakefile",
-  "Gemfile",
-  "rabl",
-  "jbuilder",
-  "jb",
-  "Podfile",
-  "podspec",
-  # Additions
-  "Brewfile",
-  "Brewfile-dump",
-]
 
 # Text -------------------------------------------------------------------------
 

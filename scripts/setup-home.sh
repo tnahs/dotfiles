@@ -28,17 +28,10 @@ function create_directories {
     echo
 
     mkdir "$HOME/.config"
+    touch "$HOME/.hushlogin"
     mkdir "$HOME/Projects"
     mkdir "$HOME/Media"
-    mkdir "$HOME/Media/incoming"
     mkdir "$HOME/Archives"
-    mkdir "$HOME/Archives/anki"
-    mkdir "$HOME/Archives/anki-collectionn"
-    mkdir "$HOME/Archives/apple-books"
-    mkdir "$HOME/Archives/downloads"
-    mkdir "$HOME/Archives/media"
-    mkdir "$HOME/Archives/projects"
-    touch "$HOME/.hushlogin"
 }
 
 
@@ -53,15 +46,16 @@ function link_dotfiles {
     ln -sihv "$HOME/.dotfiles/git/.gitignore" "$HOME/.gitignore"
 
     # Misc Tools
-    ln -sihv "$HOME/.dotfiles/homebrew/Brewfile" "$HOME/Brewfile"
-    ln -sihv "$HOME/.dotfiles/hammerspoon"       "$HOME/.hammerspoon"
-    ln -sihv "$HOME/.dotfiles/karabiner"         "$HOME/.config/karabiner"
-    ln -sihv "$HOME/.dotfiles/kitty"             "$HOME/.config/kitty"
-    ln -sihv "$HOME/.dotfiles/helix"             "$HOME/.config/helix"
-    ln -sihv "$HOME/.dotfiles/gitui"             "$HOME/.config/gitui"
-    ln -sihv "$HOME/.dotfiles/bat"               "$HOME/.config/bat"
-    ln -sihv "$HOME/.dotfiles/ruff/ruff.toml"    "$HOME/.ruff.toml"
-    ln -sihv "$HOME/.dotfiles/tridactyl"         "$HOME/.config/tridactyl"
+    ln -sihv "$HOME/.dotfiles/homebrew/Brewfile"      "$HOME/Brewfile"
+    ln -sihv "$HOME/.dotfiles/hammerspoon"            "$HOME/.hammerspoon"
+    ln -sihv "$HOME/.dotfiles/starship/starship.toml" "$HOME/.config/starship.toml"
+    ln -sihv "$HOME/.dotfiles/karabiner"              "$HOME/.config/karabiner"
+    ln -sihv "$HOME/.dotfiles/kitty"                  "$HOME/.config/kitty"
+    ln -sihv "$HOME/.dotfiles/helix"                  "$HOME/.config/helix"
+    ln -sihv "$HOME/.dotfiles/gitui"                  "$HOME/.config/gitui"
+    ln -sihv "$HOME/.dotfiles/bat"                    "$HOME/.config/bat"
+    ln -sihv "$HOME/.dotfiles/ruff/ruff.toml"         "$HOME/.ruff.toml"
+    ln -sihv "$HOME/.dotfiles/tridactyl"              "$HOME/.config/tridactyl"
 }
 
 
@@ -72,6 +66,7 @@ function link_application_dotfiles {
     ln -sihv "$HOME/.dotfiles/syntax-highlight/styles"  "$APPLICATION_SUPPORT/Syntax Highlight/Styles"
     ln -sihv "$HOME/.dotfiles/syntax-highlight/themes"  "$APPLICATION_SUPPORT/Syntax Highlight/Themes"
 
+    # PrintQR
     mkdir -p "$HOME/.pqr"
     ln -sihv "$HOME/.dotfiles/pqr/config.toml"   "$HOME/.pqr/config.toml"
 

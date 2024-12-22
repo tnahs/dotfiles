@@ -63,20 +63,11 @@ eval "$(starship init zsh)"
 # bup
 export PYTHONPATH=$HOME/.dotfiles/bup/src:$PYTHONPATH
 
-# project directories
-export PROJECTS="$HOME/Projects/"
-export PROJECTS_ALWAYS="$PROJECTS/00-always"
-export PROJECTS_ACTIVE="$PROJECTS/10-active"
-export PROJECTS_NEXTUP="$PROJECTS/20-next-up"
-export PROJECTS_FUTURE="$PROJECTS/30-future"
-export PROJECTS_ONHOLD="$PROJECTS/40-on-hold"
-export PROJECTS_INACTIVE="$PROJECTS/50-inactive"
-export PROJECTS_ARCHIVE="$PROJECTS/99-archive"
 
 # aliases/functions
-source "$HOME/.dotfiles/zsh/functions.sh"
-source "$HOME/.dotfiles/zsh/aliases.sh"
+source "$DOTFILES/zsh/functions.sh"
+source "$DOTFILES/zsh/aliases.sh"
 
-for file in "$HOME/.dotfiles/zsh/functions"/*.sh; do
+for file in "$DOTFILES/zsh/functions"/*.sh; do
     source "$file"
 done

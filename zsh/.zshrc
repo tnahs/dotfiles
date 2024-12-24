@@ -12,11 +12,8 @@ setopt HIST_IGNORE_SPACE         # Do not record an event starting with a space.
 setopt HIST_SAVE_NO_DUPS         # Do not write a duplicate event to the history file.
 setopt SHARE_HISTORY             # Share history between all sessions.
 
-# Enable if not using `zsh-vi-mode`
-# bindkey '^K' history-search-backward
-# bindkey '^J' history-search-forward
-# bindkey '^[[A' history-search-backward  # Up
-# bindkey '^[[B' history-search-forward   # Down
+# zsh keybinding
+source "$DOTFILES/zsh/keybindings.sh"
 
 # shell
 export EDITOR=hx
@@ -44,12 +41,6 @@ if type brew &>/dev/null; then
     compinit
 fi
 
-# themes for zsh-syntax-highlighting
-# source "$DOTFILES/zsh/themes-zsh-syntax-highlighting/catppuccin_frappe.zsh"
-# source "$DOTFILES/zsh/themes-zsh-syntax-highlighting/catppuccin_latte.zsh"
-source "$DOTFILES/zsh/themes-zsh-syntax-highlighting/catppuccin_macchiato.zsh"
-# source "$DOTFILES/zsh/themes-zsh-syntax-highlighting/catppuccin_mocha.zsh"
-
 # zsh-syntax-highlighting
 # http://github.com/zsh-users/zsh-syntax-highlighting
 source "$(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
@@ -57,10 +48,6 @@ source "$(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.z
 # zsh-autosuggestions
 # https://github.com/zsh-users/zsh-autosuggestions
 source "$(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
-
-# zsh-vi-mode
-# https://github.com/jeffreytse/zsh-vi-mode
-source "$(brew --prefix)/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh"
 
 # starship
 # https://github.com/starship/starship

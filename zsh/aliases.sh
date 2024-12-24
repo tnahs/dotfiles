@@ -10,6 +10,7 @@ fi
 # shell
 alias reload="source ~/.dotfiles/zsh/.zshrc"
 alias rr=reload
+alias fresh="zsh -idf"
 alias hd="history-disable"
 alias he="history-enable"
 

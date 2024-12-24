@@ -5,11 +5,13 @@ select = ["ALL"]
 
 ignore = [
   # Ignore Rule Sets
-  "CPY", # flake8-copyright
+  "S",   # flake8-bandit
   "FBT", # flake8-boolean-trap
+  "CPY", # flake8-copyright
+  "EM",  # flake8-errmsg
+  "FIX", # flake8-fixme
   "G",   # flake8-logging-format
   "LOG", # flake8-logging (LOG)
-  "S",   # flake8-bandit
   "T20", # flake8-print
   "D",   # pydocstyle
 
@@ -18,6 +20,10 @@ ignore = [
   "D202",   # no-blank-line-after-function
   "E501",   # line-too-long
   "RET504", # unnecessary-assign
+  "TD002",  # missing-todo-author
+  "TD003",  # missing-todo-link
+  "COM812", # missing-trailing-comma
+  "TRY003", # raise-vanilla-args
 
   # Ruff warned that ISC001 might cause errors during formatting.
   "ISC001", # single-line-implicit-string-concatenation

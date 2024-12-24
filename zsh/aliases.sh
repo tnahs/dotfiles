@@ -52,9 +52,6 @@ alias ct="cargo test"
 alias vn="python -m venv .venv && pip install --upgrade pip"
 alias va="source .venv/bin/activate"
 
-# bup
-alias bup="python -m bup"
-
 # 3d-printing
 alias slice-prusa="/Applications/PrusaSlicer.app/Contents/MacOS/PrusaSlicer"
 alias slice-orca="/Applications/OrcaSlicer.app/Contents/MacOS/OrcaSlicer"

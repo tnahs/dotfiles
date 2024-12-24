@@ -66,10 +66,6 @@ source "$(brew --prefix)/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh"
 # https://github.com/starship/starship
 eval "$(starship init zsh)"
 
-# bup
-export PYTHONPATH=$HOME/.dotfiles/bup/src:$PYTHONPATH
-
-
 # aliases/functions
 source "$DOTFILES/zsh/functions.sh"
 source "$DOTFILES/zsh/aliases.sh"

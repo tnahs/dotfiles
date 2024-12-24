@@ -120,3 +120,12 @@ cask "transmission"
 cask "utm"
 cask "vcv-rack"
 cask "visual-studio-code"
+
+# VSCode
+vscode "bierner.markdown-footnotes"
+vscode "bierner.markdown-preview-github-styles"
+vscode "catppuccin.catppuccin-vsc"
+vscode "catppuccin.catppuccin-vsc-icons"
+vscode "jasew.vscode-helix-emulation"
+vscode "ozaki.markdown-github-dark"
+vscode "tamasfe.even-better-toml"

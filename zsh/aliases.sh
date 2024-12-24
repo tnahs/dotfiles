@@ -22,7 +22,7 @@ alias p="cd $PROJECTS && ll"
 alias a="cd $PROJECTS_ACTIVE && ll"
 
 # git
-alias m="list-modified-files"
+alias gm="git-modified"
 
 # gitui
 alias g="gitui"
@@ -30,7 +30,7 @@ alias gg="git-graph"
 
 # helix
 alias h="hx ."
-alias hm="list-modified-files | xargs hx"
+alias hm="git-modified | xargs hx"
 
 # bat
 if command -v bat &> /dev/null; then

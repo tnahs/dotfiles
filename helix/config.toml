@@ -72,6 +72,21 @@ wrap-at-text-width = true
 # Space-Q -- Custom
 [keys.normal.space.q]
 
+# Write file.
+w = ":write"
+
+# Write file.
+S-w = ":write-all"
+
+# Close file.
+c = ":buffer-close"
+
+# Quit.
+S-q = ":quit"
+
+# Format document.
+f = ":format"
+
 # Search for any TODO-like strings.
 t = "@<space>/ (TODO|FIXME|WIP|HACK):"
 
@@ -87,6 +102,8 @@ d = ":yank-diagnostic"
 # Reflow current selection.
 r = ":reflow"
 
+# Reflow current selection.
+l = ":log-open"
 
 # Space-T -- Toggle
 [keys.normal.space.t]
@@ -119,10 +136,15 @@ C-j = "jump_view_down"
 C-h = "jump_view_left"
 C-l = "jump_view_right"
 
-# Go to next change
+# Go to next change.
 C-n = "@]g"
-# Go to prev change
+# Go to prev change.
 C-p = "@[g"
+
+# Go to next diagnostic.
+A-n = "@]d"
+# Go to prev diagnostic.
+A-p = "@[d"
 
 # Scroll page up and down.
 C-A-k = ["scroll_up", "scroll_up", "scroll_up", "scroll_up"]

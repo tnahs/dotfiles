@@ -63,8 +63,10 @@ function link_application_dotfiles {
     echo "Linking application dotfiles..."
 
     # Syntax-Highlight - https://github.com/sbarex/SourceCodeSyntaxHighlight
-    ln -sihv "$HOME/.dotfiles/syntax-highlight/styles"  "$APPLICATION_SUPPORT/Syntax Highlight/Styles"
-    ln -sihv "$HOME/.dotfiles/syntax-highlight/themes"  "$APPLICATION_SUPPORT/Syntax Highlight/Themes"
+    ln -sihv "$HOME/.dotfiles/syntax-highlight/styles" "$APPLICATION_SUPPORT/Syntax Highlight/Styles"
+    ln -sihv "$HOME/.dotfiles/syntax-highlight/themes" "$APPLICATION_SUPPORT/Syntax Highlight/Themes"
+    ln -sihv "$HOME/.dotfiles/syntax-highlight/org.sbarex.SourceCodeSyntaxHighlight.plist" \
+        "$PREFERENCES/org.sbarex.SourceCodeSyntaxHighlight.plist"
 
     # PrintQR
     mkdir -p "$HOME/.pqr"

@@ -11,6 +11,7 @@ brew "node"
 brew "python"
 
 # LS/Linters/Formatters
+brew "basedpyright"
 brew "black"
 brew "flake8"
 brew "isort"
@@ -21,7 +22,6 @@ brew "lua-language-server"
 brew "marksman"
 brew "pre-commit"
 brew "prettier"
-brew "basedpyright"
 brew "ruff"
 brew "rust-analyzer"
 brew "shellcheck"
@@ -57,7 +57,6 @@ brew "starship"
 brew "zsh-autosuggestions"
 brew "zsh-completions"
 brew "zsh-syntax-highlighting"
-brew "zsh-vi-mode"
 
 # macFUSE
 tap "gromgit/fuse"
@@ -66,12 +65,12 @@ cask "macfuse"
 
 # Fonts
 cask "font-fira-code"
-cask "font-iosevka-nerd-font"
 cask "font-iosevka"
-cask "font-jetbrains-mono-nerd-font"
+cask "font-iosevka-nerd-font"
 cask "font-jetbrains-mono"
-cask "font-monoid-nerd-font"
+cask "font-jetbrains-mono-nerd-font"
 cask "font-monoid"
+cask "font-monoid-nerd-font"
 
 # Apps
 cask "affinity-designer"

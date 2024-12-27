@@ -3,11 +3,12 @@
     "editor.fontSize": 16,
     "editor.minimap.renderCharacters": false,
     "editor.minimap.scale": 2,
-    "files.hotExit": "off",
     "extensions.ignoreRecommendations": true,
+    "files.hotExit": "off",
     "markdown-preview-github-styles.colorTheme": "light",
     "security.workspace.trust.enabled": false,
     "telemetry.telemetryLevel": "off",
+    "window.confirmSaveUntitledWorkspace": false,
     "window.restoreWindows": "none",
     "workbench.colorTheme": "Catppuccin Macchiato",
     "workbench.iconTheme": "catppuccin-macchiato"

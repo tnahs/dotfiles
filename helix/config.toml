@@ -65,6 +65,7 @@ prefix-len = 3
 enable = false
 wrap-indicator = ""
 wrap-at-text-width = true
+max-wrap = 100
 
 
 # Normal Mode Custom Space Keymaps -----------------------------------------------------
@@ -105,12 +106,14 @@ r = ":reflow"
 # Reflow current selection.
 l = ":log-open"
 
+
 # Space-T -- Toggle
 [keys.normal.space.t]
 h = ":toggle file-picker.hidden"
 i = ":toggle lsp.display-inlay-hints"
 w = ":toggle soft-wrap.enable"
 f = ":toggle auto-format"
+n = ":toggle insert-final-newline"
 
 
 # Space-C -- Config

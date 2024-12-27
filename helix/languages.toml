@@ -16,6 +16,7 @@
 #    brew install taplo
 #    brew install prettier
 #    brew install yaml-language-server
+#    brew install markdown-oxide
 #    brew install marksman
 #    brew install ltex-ls
 #    npm i -g vscode-langservers-extracted
@@ -90,29 +91,11 @@ diagnostics.globals = [
 [[language]]
 name = "markdown"
 auto-format = true
-indent = { tab-width = 2, unit = "  " }
-language-servers = ["marksman", "ltex-ls"]
-
-# Markdown LS
-[language-server.marksman]
-command = "marksman"
-
-# Good for spell check
-[language-server.ltex-ls]
-command = "ltex-ls"
+text-width = 100
 
 [language.formatter]
 command = "prettier"
 args = ["--parser", "markdown"]
-
-[language.auto-pairs]
-'(' = ')'
-'{' = '}'
-'[' = ']'
-'`' = '`'
-'"' = '"'
-'_' = '_'
-'<' = '>'
 
 # CSS --------------------------------------------------------------------------
 
@@ -130,6 +113,7 @@ args = ["--parser", "css"]
 name = "json"
 auto-format = true
 indent = { tab-width = 4, unit = "    " }
+text-width = 100
 
 # TOML -------------------------------------------------------------------------
 
@@ -153,6 +137,7 @@ injection-regex = "txt"
 file-types = ["txt"]
 roots = []
 indent = { tab-width = 2, unit = "  " }
+text-width = 100
 
 # INI --------------------------------------------------------------------------
 

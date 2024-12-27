@@ -129,7 +129,7 @@ r = [":config-reload", ":lsp-restart"]
 # E = "file_browser_in_current_directory"
 
 
-# Normal Mode Keymaps ----------------------------------------------------------
+# Normal Mode Keymaps ------------------------------------------------------------------
 
 [keys.normal]
 
@@ -217,7 +217,7 @@ A-j = "copy_selection_on_next_line"
 # Remap from: A-C
 A-k = "copy_selection_on_prev_line"
 
-# Select Mode Keymaps ----------------------------------------------------------
+# Select Mode Keymaps ------------------------------------------------------------------
 
 [keys.select]
 

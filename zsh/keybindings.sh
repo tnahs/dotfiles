@@ -2,7 +2,7 @@
 bindkey -v
 
 # Unbind all keybindings.
-bindkey -rp ''
+bindkey -rp ""
 
 # Unbind other keymaps. Keymaps via: bindkey -l.
 for keymap in \
@@ -16,7 +16,7 @@ for keymap in \
     command   \
     ; do
 
-    bindkey -M $keymap -rp ''
+    bindkey -M $keymap -rp ""
 done
 
 # Shorten command timeout.
@@ -28,7 +28,7 @@ export KEYTIMEOUT=20
 
 
 # vi toggle
-bindkey -M vicmd '^[' vi-cmd-mode
+bindkey -M vicmd "^[" vi-cmd-mode
 
 # vi movement
 bindkey -M vicmd "h"    vi-backward-char
@@ -56,12 +56,11 @@ bindkey -M vicmd "C"  vi-change-eol
 bindkey -M vicmd "D"  vi-kill-eol
 bindkey -M vicmd "r"  vi-replace-chars
 bindkey -M vicmd "R"  vi-replace
-bindkey -M vicmd "y"  vi-yank
-bindkey -M vicmd "Y"  vi-yank-whole-line
 bindkey -M vicmd "wd" delete-word
+bindkey -M vicmd "ed" delete-word
 
 # mon-vi toggle
-bindkey '^[' vi-cmd-mode
+bindkey "^[" vi-cmd-mode
 
 # non-vi movement
 bindkey "^A"      beginning-of-line
@@ -72,7 +71,7 @@ bindkey "^[[C"    vi-forward-char
 bindkey "^[[D"    vi-backward-char
 
 # non-vi editing
-bindkey '^?' backward-delete-char
+bindkey "^?" backward-delete-char
 
 
 # Insert-mode --------------------------------------------------------------------------
@@ -92,7 +91,6 @@ bindkey -M vicmd "P" vi-put-before
 
 
 bindkey -M vicmd "v" visual-mode
-bindkey -M vicmd "x" visual-line-mode
 
 
 # History ------------------------------------------------------------------------------
@@ -102,8 +100,9 @@ bindkey -M vicmd "x" visual-line-mode
 # vi
 bindkey -M vicmd "u"  undo
 bindkey -M vicmd "U"  redo
-bindkey -M vicmd "//" vi-history-search-backward
+bindkey -M vicmd "/"  vi-history-search-backward
 bindkey -M vicmd "n"  vi-repeat-search
+bindkey -M vicmd "N"  vi-rev-repeat-search
 
 # non-vi
 bindkey "^[[A" up-line-or-history
@@ -115,12 +114,12 @@ bindkey "^[[B" down-line-or-history
 
 
 # vi
-bindkey -M vicmd '^M' accept-line
+bindkey -M vicmd "^M" accept-line
 
 # non-vi
 bindkey "^J"               accept-line
 bindkey "^M"               accept-line
-bindkey '^I'               expand-or-complete
+bindkey "^I"               expand-or-complete
 bindkey "^[[200~"          bracketed-paste
 bindkey -R "^\\\\"-"~"     self-insert
 bindkey -R "\M-^@"-"\M-^?" self-insert
@@ -156,9 +155,8 @@ export ZSH_AUTOSUGGEST_PARTIAL_ACCEPT_WIDGETS=(
 # --------------------------------------------------------------------------------------
 
 
-# Widget to handle 'd' key.
-function zsh-delete-visual-selection {
-    if [[ $REGION_ACTIVE == "1" ]]; then
+function delete-char-or-visual-selection {
+    if [[ $REGION_ACTIVE -eq 1 ]]; then
         zle kill-region
     else
         zle delete-char
@@ -167,5 +165,35 @@ function zsh-delete-visual-selection {
     zle reset-prompt
 }
 
-zle -N zsh-delete-visual-selection
-bindkey -M vicmd 'd' zsh-delete-visual-selection
+zle -N delete-char-or-visual-selection
+bindkey -M vicmd "d" delete-char-or-visual-selection
+
+
+function yank-visual-selection {
+    if [[ $REGION_ACTIVE -eq 1 ]]; then
+        zle vi-yank
+        printf "%s" "$CUTBUFFER" | pbcopy
+        zle reset-prompt
+    fi
+}
+
+zle -N yank-visual-selection
+bindkey -M vicmd "y" yank-visual-selection
+
+
+function yank-commandline {
+  printf "%s" "$BUFFER" | pbcopy
+}
+
+zle -N yank-commandline
+bindkey -M vicmd "Y" yank-commandline
+
+
+function select-line {
+    zle vi-beginning-of-line
+    zle visual-mode
+    zle vi-end-of-line
+}
+
+zle -N select-line
+bindkey -M vicmd "x" select-line

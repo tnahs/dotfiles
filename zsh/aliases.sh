@@ -21,6 +21,9 @@ alias d="cd $HOME/.dotfiles"
 alias p="cd $PROJECTS && ll"
 alias a="cd $PROJECTS_ACTIVE && ll"
 
+# lighthouse
+alias lh="cd $PROJECTS_ALWAYS/lighthouse && ll"
+
 # git
 alias gm="git-modified"
 

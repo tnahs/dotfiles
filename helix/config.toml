@@ -34,21 +34,25 @@ mode.insert = "INSERT"
 mode.select = "SELECT"
 left = [
   "mode",
+  "spacer",
+  "spinner",
   "file-name",
   "spacer",
   "version-control",
-  "spacer",
-  "spacer",
   "workspace-diagnostics",
+  "file-modification-indicator",
+  "read-only-indicator",
 ]
 right = [
   "file-encoding",
   "spacer",
+  "spacer",
+  "selections",
+  "spacer",
   "position-percentage",
   "spacer",
   "position",
-  "spacer",
-  "spinner",
+  "total-line-numbers",
 ]
 
 [editor.lsp]
@@ -170,6 +174,9 @@ S-l = ["extend_to_line_end"]
 
 # Select from cursor to start of the line.
 S-h = ["extend_to_line_start"]
+
+# Select the current line and trim whitespace.
+S-x = ["extend_line_below", "trim_selections"]
 
 # TODO: Remap this.
 # Search word under cursor.

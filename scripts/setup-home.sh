@@ -51,6 +51,7 @@ function link_dotfiles {
     ln -sihv "$HOME/.dotfiles/starship/starship.toml" "$HOME/.config/starship.toml"
     ln -sihv "$HOME/.dotfiles/karabiner"              "$HOME/.config/karabiner"
     ln -sihv "$HOME/.dotfiles/kitty"                  "$HOME/.config/kitty"
+    ln -sihv "$HOME/.dotfiles/ghostty"                "$HOME/.config/ghostty"
     ln -sihv "$HOME/.dotfiles/helix"                  "$HOME/.config/helix"
     ln -sihv "$HOME/.dotfiles/gitui"                  "$HOME/.config/gitui"
     ln -sihv "$HOME/.dotfiles/bat"                    "$HOME/.config/bat"

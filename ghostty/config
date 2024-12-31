@@ -1,0 +1,73 @@
+# ghostty +show-config --default --docs
+# ghostty +list-themes
+# https://github.com/lukejanicke/ghostty-app-icon
+
+# fonts --------------------------------------------------------------------------------
+# https://fontdrop.info/
+
+font-family                       = JetBrainsMonoNL Nerd Font Mono
+font-size                         = 18
+font-feature                      = liga
+font-feature                      = calt
+font-feature                      = dlig
+font-feature                      = ccmp
+
+# general ------------------------------------------------------------------------------
+
+theme                             = catppuccin-macchiato
+macos-option-as-alt               = true
+macos-titlebar-style              = tabs
+window-padding-x                  = 10,10
+window-padding-y                  = 0,5
+
+# tabs ---------------------------------------------------------------------------------
+
+keybind                           = super+g>1=goto_tab:1
+keybind                           = super+g>2=goto_tab:2
+keybind                           = super+g>3=goto_tab:3
+keybind                           = super+g>4=goto_tab:4
+keybind                           = super+g>5=goto_tab:5
+keybind                           = super+g>6=goto_tab:6
+keybind                           = super+g>7=goto_tab:7
+keybind                           = super+g>8=goto_tab:8
+keybind                           = super+g>9=goto_tab:9
+keybind                           = super+g>0=last_tab
+keybind                           = super+shift+ctrl+h=resize_split:left,25
+keybind                           = super+shift+ctrl+j=resize_split:down,25
+keybind                           = super+shift+ctrl+k=resize_split:up,25
+keybind                           = super+shift+ctrl+l=resize_split:right,25
+
+# tabs defaults
+# keybind                         = super+t=new_tab
+# keybind                         = super+w=close_surface
+# keybind                         = super+shift+left_bracket=previous_tab
+# keybind                         = super+shift+right_bracket=next_tab
+# keybind                         = ctrl+tab=next_tab
+# keybind                         = ctrl+shift+tab=next_tab
+
+# splits -------------------------------------------------------------------------------
+
+keybind                           = ctrl+shift+enter=new_split:right
+keybind                           = super+s>n>l=new_split:right
+keybind                           = super+s>n>h=new_split:left
+keybind                           = super+s>n>j=new_split:down
+keybind                           = super+s>n>k=new_split:up
+keybind                           = ctrl+shift+h=goto_split:left
+keybind                           = ctrl+shift+j=goto_split:bottom
+keybind                           = ctrl+shift+k=goto_split:top
+keybind                           = ctrl+shift+l=goto_split:right
+
+# split defaults
+# keybind                         = ctrl+shift+enter=new_split:right
+# keybind                         = super+shift+enter=toggle_split_zoom
+
+# buffer -----------------------------------------------------------------------------
+
+keybind                           = super+b>k=scroll_page_up
+keybind                           = super+b>j=scroll_page_down
+keybind                           = super+b>s=write_screen_file:paste
+keybind                           = super+b>h=write_scrollback_file:paste
+
+# meta ---------------------------------------------------------------------------------
+
+keybind                           = super+\>r=reload_config

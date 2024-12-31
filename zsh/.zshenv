@@ -1,3 +1,10 @@
+# ~/.zshenv
+#
+# Source for both interactive or non-interactive shells.
+# Use it configuration necessary for all zsh sessions.
+#
+# .zshenv -> .zprofile -> .zshrc -> .zlogin
+
 # dotfiles directory
 export DOTFILES="$HOME/.dotfiles"
 
@@ -5,6 +12,7 @@ export DOTFILES="$HOME/.dotfiles"
 export PROJECTS="$HOME/Projects"
 export PROJECTS_ALWAYS="$PROJECTS/00-always"
 export PROJECTS_ACTIVE="$PROJECTS/10-active"
+export PROJECTS_COLLAB="$PROJECTS/11-collab"
 export PROJECTS_MAINTN="$PROJECTS/20-maintain"
 export PROJECTS_NEXTUP="$PROJECTS/30-next-up"
 export PROJECTS_FUTURE="$PROJECTS/40-future"

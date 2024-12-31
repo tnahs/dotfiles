@@ -1,8 +1,48 @@
 # eza
 if hash eza 2>/dev/null; then
-    alias ls="eza --all --color=always --git --group-directories-first --ignore-glob=.git"
-    alias ll="ls --long"
-    alias lt="ls --long --tree --git-ignore"
+    alias ls="eza                 \
+        --all                     \
+        --group-directories-first
+    "
+
+    alias ll="eza                 \
+        --all                     \
+        --long                    \
+        --icons=always            \
+        --no-user                 \
+        --no-time                 \
+        --no-filesize             \
+        --git                     \
+        --git-ignore              \
+        --git-repos-no-status     \
+        --group-directories-first
+    "
+
+    alias lla="eza                \
+        --all                     \
+        --long                    \
+        --icons=always            \
+        --no-user                 \
+        --no-time                 \
+        --no-filesize             \
+        --git                     \
+        --git-repos-no-status     \
+        --group-directories-first
+    "
+
+    alias lt="eza                 \
+        --all                     \
+        --tree                    \
+        --level=3                 \
+        --icons=always            \
+        --no-user                 \
+        --no-time                 \
+        --no-filesize             \
+        --git                     \
+        --git-ignore              \
+        --git-repos-no-status     \
+        --group-directories-first
+    "
 else
     alias ll="ls -alh"
 fi
@@ -14,15 +54,33 @@ alias fresh="zsh -idf"
 alias hd="history-disable"
 alias he="history-enable"
 
+alias hs="hx \$HOME/.zhistory"
+
+# skim
+if command -v sk &> /dev/null; then
+    alias hs="bat \$HOME/.zhistory | sk"
+else
+    alias hs=eh
+fi
+
 # navigation
-alias k="cd $HOME/Desktop && ll"
-alias l="cd $HOME/Downloads && ll"
-alias d="cd $HOME/.dotfiles"
-alias p="cd $PROJECTS && ll"
-alias a="cd $PROJECTS_ACTIVE && ll"
+alias k="cd \$HOME/Desktop && ll"
+alias l="cd \$HOME/Downloads && ll"
+alias d="cd \$HOME/.dotfiles"
+
+# projects
+alias p="cd \$PROJECTS && ll"
+alias pw="cd \$PROJECTS_ALWAYS && ll"
+alias pa="cd \$PROJECTS_ACTIVE && ll"
+alias pc="cd \$PROJECTS_COLLAB && ll"
+alias pm="cd \$PROJECTS_MAINTN && ll"
 
 # lighthouse
-alias lh="cd $PROJECTS_ALWAYS/lighthouse && ll"
+alias pl="cd \$PROJECTS_ALWAYS/lighthouse && ll"
+alias pv="cd \$PROJECTS_ALWAYS/lighthouse/vault && ll"
+
+# ghosty
+alias gc="hx \$HOME/.dotfiles/ghostty/config"
 
 # git
 alias gm="git-modified"

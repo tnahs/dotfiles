@@ -12,12 +12,8 @@
 # -----------------------------------------------------------------------------
 
 
-if [ -n "$ZSH_VERSION" ]; then
-    script_name=$(basename "${(%):-%N}")
-else
-    script_name=$(basename "$0")
-fi
-
+# shellcheck disable=2296
+NAME=$(basename "${(%):-%N}")
 
 APPLICATION_SUPPORT="$HOME/Library/Application Support"
 PREFERENCES="$HOME/Library/Preferences"
@@ -100,10 +96,9 @@ function link_application_dotfiles {
 
 
 function print_help {
-    cat <<EOF
-Setup home directories and dotfiles.
+    echo -e "Setup home directories and dotfiles.
 
-\e[4mUsage:\e[0m ${script_name} [OPTIONS] <COMMAND>
+\e[4mUsage:\e[0m ${NAME} [OPTIONS] <COMMAND>
 
 \e[4mCommands:\e[0m
   directories           Create home directories
@@ -111,8 +106,7 @@ Setup home directories and dotfiles.
   application-dotfiles  Link 'Library'/'Application Support' dotfiles
 
 \e[4mOptions:\e[0m
-  -h, --help   Show help
-EOF
+  -h, --help  Show help"
 }
 
 
@@ -120,9 +114,10 @@ function main {
     if [[ "$1" == "--help" ||  "$1" == "-h" ]]; then
         print_help
         exit 0
-    elif [ $# -eq 0 ]; then
-        echo "Error: Missing command"
-        echo
+    fi
+
+    if [[ $# -ne 1 ]]; then
+        echo "Error: missing required positional argument 'command'"
         print_help
         exit 1
     fi
@@ -138,13 +133,12 @@ function main {
             link_application_dotfiles
             ;;
         *)
-            echo "Error: Invalid command '$1'"
-            echo
+            echo "Error: invalid command '$1'"
             print_usage
             exit 1
             ;;
     esac
-
 }
+
 
 main "$@"

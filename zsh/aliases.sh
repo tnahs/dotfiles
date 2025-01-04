@@ -1,5 +1,21 @@
+# shell
+alias reload="source ~/.dotfiles/zsh/.zshrc"
+alias rr=reload
+alias fresh="zsh -idf"
+
+alias hd="history-disable"
+alias he="history-enable"
+alias hs="hx \$HOME/.zhistory"
+
+if hash sk 2> /dev/null; then
+    alias hs="bat \$HOME/.zhistory | sk"
+else
+    alias hs=eh
+fi
+
+
 # eza
-if hash eza 2>/dev/null; then
+if hash eza 2> /dev/null; then
     alias ls="eza                 \
         --all                     \
         --group-directories-first
@@ -47,35 +63,19 @@ else
     alias ll="ls -alh"
 fi
 
-# shell
-alias reload="source ~/.dotfiles/zsh/.zshrc"
-alias rr=reload
-alias fresh="zsh -idf"
-alias hd="history-disable"
-alias he="history-enable"
-
-alias hs="hx \$HOME/.zhistory"
-
-# skim
-if command -v sk &> /dev/null; then
-    alias hs="bat \$HOME/.zhistory | sk"
-else
-    alias hs=eh
-fi
-
 # navigation
 alias k="cd \$HOME/Desktop && ll"
 alias l="cd \$HOME/Downloads && ll"
 alias d="cd \$HOME/.dotfiles"
 
-# projects
+# navigation - projects
 alias p="cd \$PROJECTS && ll"
 alias pw="cd \$PROJECTS_ALWAYS && ll"
 alias pa="cd \$PROJECTS_ACTIVE && ll"
 alias pc="cd \$PROJECTS_COLLAB && ll"
 alias pm="cd \$PROJECTS_MAINTN && ll"
 
-# lighthouse
+# navigation - lighthouse
 alias pl="cd \$PROJECTS_ALWAYS/lighthouse && ll"
 alias pv="cd \$PROJECTS_ALWAYS/lighthouse/vault && ll"
 
@@ -94,7 +94,7 @@ alias h="hx ."
 alias hm="git-modified | xargs hx"
 
 # bat
-if command -v bat &> /dev/null; then
+if hash bat 2> /dev/null; then
     alias cat="bat"
     alias less="bat"
     alias more="bat"

@@ -134,6 +134,10 @@ name = "yaml"
 auto-format = true
 indent = { tab-width = 2, unit = "  " }
 
+[language.formatter]
+command = "prettier"
+args = ["--parser", "yaml"]
+
 # Text -------------------------------------------------------------------------
 
 [[language]]

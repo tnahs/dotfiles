@@ -79,6 +79,9 @@ alias pm="cd \$PROJECTS_MAINTN && ll"
 alias pl="cd \$PROJECTS_ALWAYS/lighthouse && ll"
 alias pv="cd \$PROJECTS_ALWAYS/lighthouse/vault && ll"
 
+# yazi
+alias y="yazi"
+
 # ghosty
 alias gc="hx \$HOME/.dotfiles/ghostty/config"
 

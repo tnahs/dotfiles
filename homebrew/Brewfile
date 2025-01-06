@@ -54,6 +54,7 @@ brew "sk"
 brew "tnahs/formulas/readstor"
 brew "tokei"
 brew "tree"
+brew "yazi"
 brew "yt-dlp"
 
 # shell

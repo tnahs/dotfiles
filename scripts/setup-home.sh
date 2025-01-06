@@ -53,6 +53,7 @@ function link_dotfiles {
     ln -sihv "$HOME/.dotfiles/bat"                    "$HOME/.config/bat"
     ln -sihv "$HOME/.dotfiles/ruff/ruff.toml"         "$HOME/.ruff.toml"
     ln -sihv "$HOME/.dotfiles/tridactyl"              "$HOME/.config/tridactyl"
+    ln -sihv "$HOME/.dotfiles/yazi"                   "$HOME/.config/yazi"
 }
 
 

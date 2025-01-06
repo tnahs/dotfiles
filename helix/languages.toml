@@ -36,7 +36,9 @@ checkOnSave.command = "clippy"
 name = "python"
 auto-format = true
 text-width = 88
-language-servers = ["ruff", "basedpyright"]
+# https://github.com/helix-editor/helix/issues/1898#issuecomment-1826785304
+# The order matters here. Documentation on hover doesn't work the other way around.
+language-servers = ["basedpyright", "ruff"]
 
 # ruff ---
 
@@ -62,8 +64,9 @@ command = "basedpyright-langserver"
 args = ["--stdio"]
 except-features = ["format", "code-action"]
 
-[language-server.basedpyright.config.basedpyright.analysis]
-typeCheckingMode = "standard"
+[language-server.basedpyright.config]
+basedpyright.analysis.typeCheckingMode = "standard"
+basedpyright.analysis.diagnosticMode = "workspace"
 
 # formatter ---
 

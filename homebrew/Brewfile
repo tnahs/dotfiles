@@ -1,16 +1,16 @@
-# Homebrew
+# homebrew
 tap "homebrew/bundle"
 tap "homebrew/cask-fonts"
 tap "homebrew/cask-versions"
 tap "homebrew/services"
 
-# Languages
+# languages
 tap "sass/sass"
 brew "sass/sass/sass"
 brew "node"
 brew "python"
 
-# LS/Linters/Formatters
+# ls/linters/formatters
 brew "basedpyright"
 brew "black"
 brew "flake8"
@@ -31,7 +31,7 @@ brew "taplo"
 brew "uv"
 brew "yaml-language-server"
 
-# CLI
+# tools
 tap "tnahs/formulas"
 brew "aria2"
 brew "bat"
@@ -56,7 +56,7 @@ brew "tokei"
 brew "tree"
 brew "yt-dlp"
 
-# Terminal
+# shell
 brew "nushell"
 brew "starship"
 brew "zsh-autosuggestions"
@@ -68,7 +68,7 @@ tap "gromgit/fuse"
 brew "gromgit/fuse/ifuse-mac"
 cask "macfuse"
 
-# Fonts
+# fonts
 cask "font-fira-code"
 cask "font-iosevka"
 cask "font-iosevka-nerd-font"
@@ -77,7 +77,7 @@ cask "font-jetbrains-mono-nerd-font"
 cask "font-monoid"
 cask "font-monoid-nerd-font"
 
-# Apps
+# apps
 cask "affinity-designer"
 cask "affinity-photo"
 cask "affinity-publisher"
@@ -125,7 +125,7 @@ cask "utm"
 cask "vcv-rack"
 cask "visual-studio-code"
 
-# VSCode
+# vscode extension
 vscode "bierner.markdown-footnotes"
 vscode "bierner.markdown-preview-github-styles"
 vscode "catppuccin.catppuccin-vsc"

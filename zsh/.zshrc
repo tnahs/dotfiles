@@ -59,6 +59,9 @@ eval "$(starship init zsh)"
 source "$DOTFILES/zsh/functions.sh"
 source "$DOTFILES/zsh/aliases.sh"
 
+# python
+export PYTHONDONTWRITEBYTECODE=1
+
 for file in "$DOTFILES/zsh/functions"/*.sh; do
     source "$file"
 done

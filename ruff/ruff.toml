@@ -25,6 +25,12 @@ ignore = [
   "COM812", # missing-trailing-comma
   "TRY003", # raise-vanilla-args
 
+  # This causes issues with 'uv' scripts.
+  "ERA001", # commented-out-code
+
+  # Allow non-module scripts.
+  "INP001", # implicit-namespace-package
+
   # Ruff warned that ISC001 might cause errors during formatting.
   "ISC001", # single-line-implicit-string-concatenation
 ]

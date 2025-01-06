@@ -124,6 +124,10 @@ auto-format = true
 indent = { tab-width = 4, unit = "    " }
 text-width = 100
 
+[language.formatter]
+command = "prettier"
+args = ["--parser", "json"]
+
 # TOML -------------------------------------------------------------------------
 
 [[language]]

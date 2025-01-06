@@ -13,7 +13,6 @@ else
     alias hs=eh
 fi
 
-
 # eza
 if hash eza 2> /dev/null; then
     alias ls="eza                 \
@@ -81,6 +80,10 @@ alias pv="cd \$PROJECTS_ALWAYS/lighthouse/vault && ll"
 
 # yazi
 alias y="yazi"
+
+# rg
+function rga { rg --hidden "$1"; }
+function rgf { rg --files --glob "$1"; }
 
 # ghosty
 alias gc="hx \$HOME/.dotfiles/ghostty/config"

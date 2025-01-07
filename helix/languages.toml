@@ -150,9 +150,7 @@ args = ["--parser", "yaml"]
 [[language]]
 name = "text"
 scope = "source.txt"
-injection-regex = "txt"
 file-types = ["txt"]
-roots = []
 indent = { tab-width = 2, unit = "  " }
 text-width = 100
 

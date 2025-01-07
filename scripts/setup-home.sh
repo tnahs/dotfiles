@@ -36,8 +36,8 @@ function link_dotfiles {
 
     mkdir -p "$HOME/.config"
 
-    ln -sihv "$HOME/.dotfiles/zsh/.zshrc"     "$HOME/.zshrc"
     ln -sihv "$HOME/.dotfiles/zsh/.zshenv"    "$HOME/.zshenv"
+    ln -sihv "$HOME/.dotfiles/zsh/.zshrc"     "$HOME/.zshrc"
     ln -sihv "$HOME/.dotfiles/git/.gitconfig" "$HOME/.gitconfig"
     ln -sihv "$HOME/.dotfiles/git/.gitignore" "$HOME/.gitignore"
 

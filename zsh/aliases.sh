@@ -1,5 +1,5 @@
 # shell
-alias reload="source ~/.dotfiles/zsh/.zshrc"
+alias reload="source \$DOTFILES/zsh/.zshrc"
 alias rr=reload
 alias fresh="zsh -idf"
 
@@ -82,8 +82,8 @@ alias pv="cd \$PROJECTS_ALWAYS/lighthouse/vault && ll"
 alias y="yazi"
 
 # rg
-function rga { rg --hidden "$1"; }
-function rgf { rg --files --glob "$1"; }
+alias rga="rg --no-ignore-dot --hidden --glob"
+alias rgf="rg --no-ignore-dot --hidden --files --glob"
 
 # ghosty
 alias gc="hx \$HOME/.dotfiles/ghostty/config"

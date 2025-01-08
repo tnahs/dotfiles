@@ -121,12 +121,12 @@ args = ["--parser", "css"]
 [[language]]
 name = "json"
 auto-format = true
-indent = { tab-width = 4, unit = "    " }
+indent = { tab-width = 2, unit = "  " }
 text-width = 100
 
 [language.formatter]
-command = "prettier"
-args = ["--parser", "json"]
+command = "jq"
+args = ["--indent", "2"]
 
 # TOML -------------------------------------------------------------------------
 

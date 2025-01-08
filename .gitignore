@@ -223,7 +223,9 @@ pip-selfcheck.json
 
 # End of https://www.toptal.com/developers/gitignore/api/macos,homebrew,python,venv
 
-Brewfile-dump
+
+# Misc
+.tmp*/
 helix/runtime/
+homebrew/Brewfile-dump
 karabiner/automatic_backups/
-tmp/

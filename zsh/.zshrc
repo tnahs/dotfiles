@@ -6,11 +6,10 @@
 # .zshenv -> .zprofile -> .zshrc -> .zlogin
 
 
-# zsh
-HISTFILE=$HOME/.zhistory
-HISTSIZE=999
-SAVEHIST=999
-
+# history
+HISTFILE="$HOME/.zhistory"
+HISTSIZE=9999                    # Size of in-memory history.
+SAVEHIST=9999                    # Size of history saved to HISTFILE.
 setopt HIST_EXPIRE_DUPS_FIRST    # Expire a duplicate event first when trimming history.
 setopt HIST_FIND_NO_DUPS         # Do not display a previously found event.
 setopt HIST_IGNORE_ALL_DUPS      # Delete an old recorded event if a new event is a duplicate.
@@ -45,10 +44,12 @@ fi
 
 # zsh-syntax-highlighting
 # http://github.com/zsh-users/zsh-syntax-highlighting
+# shellcheck disable=SC1091
 source "$(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
 # zsh-autosuggestions
 # https://github.com/zsh-users/zsh-autosuggestions
+# shellcheck disable=SC1091
 source "$(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 
 # starship
@@ -62,6 +63,7 @@ source "$DOTFILES/zsh/aliases.sh"
 # python
 export PYTHONDONTWRITEBYTECODE=1
 
+# shellcheck disable=SC1090
 for file in "$DOTFILES/zsh/functions"/*.sh; do
     source "$file"
 done

@@ -111,7 +111,7 @@ r = ":reflow"
 l = ":log-open"
 
 # Sort all lines
-s = "@% @<A-s> @:sort"
+s = "@<A-s> @:sort <ret> @,"
 
 # Space-T -- Toggle
 [keys.normal.space.t]

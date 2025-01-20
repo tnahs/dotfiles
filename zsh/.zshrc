@@ -64,7 +64,7 @@ source "$DOTFILES/zsh/aliases.sh"
 export PYTHONDONTWRITEBYTECODE=1
 
 # shellcheck disable=SC1090
-for file in "$DOTFILES/zsh/functions"/*.sh; do
+for file in "$DOTFILES/zsh/functions/"*.sh; do
     source "$file"
 done
 

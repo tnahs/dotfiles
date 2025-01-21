@@ -62,7 +62,7 @@ args = ["server", "--preview"]
 [language-server.basedpyright]
 command = "basedpyright-langserver"
 args = ["--stdio"]
-except-features = ["format", "code-action"]
+except-features = ["format"]
 
 [language-server.basedpyright.config]
 basedpyright.analysis.typeCheckingMode = "standard"
@@ -183,4 +183,5 @@ file-types = [
   "directory",
   # Additions
   "conf",
+  "config",
 ]

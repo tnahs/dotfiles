@@ -4,4 +4,6 @@ cargo-outdated
 flip-link
 git-graph
 mdbook
+mdbook-linkcheck
 probe-rs
+probe-run

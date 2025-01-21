@@ -1,3 +1,2 @@
 bash-language-server
-npm
 vscode-langservers-extracted

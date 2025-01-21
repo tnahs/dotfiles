@@ -1,7 +1,0 @@
-bierner.markdown-footnotes
-bierner.markdown-preview-github-styles
-catppuccin.catppuccin-vsc
-catppuccin.catppuccin-vsc-icons
-jasew.vscode-helix-emulation
-streetsidesoftware.code-spell-checker
-tamasfe.even-better-toml

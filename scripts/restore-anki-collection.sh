@@ -1,6 +1,8 @@
 #!/usr/bin/env zsh
 
 
+# TODO: Update.
+
 function quit_anki {
     echo "Quitting Anki Books..."
     osascript -e 'tell application "Anki" to quit'
@@ -10,8 +12,8 @@ function quit_anki {
 function extract_archive {
     tempdir=$(mktemp -d 2> /dev/null)
     echo "Extracting Anki collection archive to $tempdir..."
-    tar \
-        --extract \
+    tar             \
+        --extract   \
         --file="$1" \
         --directory="$tempdir"
 }
@@ -19,9 +21,9 @@ function extract_archive {
 
 function restore_collection {
     echo "Deleting Anki collection..."
-    rm -rf "$HOME/Library/Application\ Support/Anki2"
+    rm -rf "$HOME/Library/Application Support/Anki2"
     echo "Retoring Anki collection..."
-    mv "$tempdir/Anki2" "$HOME/Library/Application\ Support"
+    mv "$tempdir/Anki2" "$HOME/Library/Application Support"
 }
 
 

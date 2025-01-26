@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
 
-NPM_PACKAGES_TXT="$HOME/.dotfiles/npm/packages.txt"
+NPM_PACKAGES_TXT="$DOTFILES/npm/packages.txt"
 
 
 # Installs packages listed in a text file.

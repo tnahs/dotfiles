@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
 
-UV_TOOLS_TXT="$HOME/.dotfiles/uv/tools.txt"
+UV_TOOLS_TXT="$DOTFILES/uv/tools.txt"
 
 
 # Installs tools listed in a text file.

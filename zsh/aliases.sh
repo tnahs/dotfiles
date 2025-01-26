@@ -117,6 +117,7 @@ alias cl="cargo lint"
 alias ct="cargo test"
 
 # python
+alias uv-new="uv init --package --build-backend setuptools"
 alias vn="python -m venv .venv && pip install --upgrade pip"
 alias va="source .venv/bin/activate"
 

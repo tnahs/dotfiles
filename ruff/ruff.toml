@@ -16,6 +16,8 @@ ignore = [
   "D",   # pydocstyle
 
   # Ignore Specific Rules
+  "ANN002", # missing-type-args
+  "ANN003", # missing-type-kwargs
   "ANN401", # any-type
   "D202",   # no-blank-line-after-function
   "E501",   # line-too-long

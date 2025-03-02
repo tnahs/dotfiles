@@ -117,8 +117,8 @@ alias cl="cargo lint"
 alias ct="cargo test"
 
 # python
-alias uv-new="uv init --package --build-backend setuptools"
-alias vn="python -m venv .venv && pip install --upgrade pip"
+alias vn="uv init"
+alias vnp="uv init --package --build-backend setuptools"
 alias va="source .venv/bin/activate"
 
 # 3d-printing

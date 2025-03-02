@@ -1,5 +1,8 @@
 inherits = "catppuccin_macchiato"
 
+# Removed italics.
+"comment" = { fg = "overlay2" }
+
 # https://colors.dopely.top/color-blender/
 # https://colors.dopely.top/color-converter/
 #

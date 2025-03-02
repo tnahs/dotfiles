@@ -8,7 +8,7 @@ cursorline = true
 color-modes = true
 bufferline = "always"
 idle-timeout = 100
-line-number = "relative"
+line-number = "absolute"
 completion-replace = false
 completion-trigger-len = 1
 
@@ -93,10 +93,10 @@ S-q = ":quit"
 f = ":format"
 
 # Search for any TODO-like strings.
-t = "@<space>/ (TODO|FIXME|WIP|HACK):"
+t = "@<space>/ (TODO|FIX|FIXME|WIP|HACK)(\\(.+\\))?:"
 
 # Search for any NOTE-like strings.
-n = "@<space>/ (NOTE|QUESTION|MARK):"
+n = "@<space>/ (NOTE|QUESTION|MARK)(\\(.+\\))?:"
 
 # Rename the current file.
 m = "@:sh mv <C-r>% <C-r>%<C-w>"
@@ -112,6 +112,9 @@ l = ":log-open"
 
 # Sort all lines
 s = "@<A-s> @:sort <ret> @,"
+
+# Show blame on the current line.
+b = ":sh git blame -L %{cursor_line},%{cursor_line} %{buffer_name}"
 
 # Space-T -- Toggle
 [keys.normal.space.t]

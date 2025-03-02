@@ -67,6 +67,10 @@ except-features = ["format"]
 [language-server.basedpyright.config]
 basedpyright.analysis.typeCheckingMode = "standard"
 basedpyright.analysis.diagnosticMode = "workspace"
+basedpyright.analysis.inlayHints.variableTypes = true
+basedpyright.analysis.inlayHints.callArgumentNames = true
+basedpyright.analysis.inlayHints.functionReturnTypes = true
+basedpyright.analysis.inlayHints.genericTypes = true
 
 # formatter ---
 

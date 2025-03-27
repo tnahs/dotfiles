@@ -65,6 +65,7 @@ fi
 # navigation
 alias k="cd \$HOME/Desktop && ll"
 alias l="cd \$HOME/Downloads && ll"
+alias m="cd \$HOME/Media && ll"
 alias d="cd \$HOME/.dotfiles"
 
 # navigation - projects

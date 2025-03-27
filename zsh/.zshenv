@@ -25,3 +25,6 @@ export PATH="$PATH:$HOME/.local/bin"
 
 # rust/cargo
 export PATH="$HOME/.cargo/bin:$PATH"
+
+# darktable
+export PATH="$PATH:/Applications/darktable.app/Contents/MacOS/"

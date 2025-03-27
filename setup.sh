@@ -68,7 +68,7 @@ function link_application_dotfiles {
 
     # PrintQR
     mkdir -p "$HOME/.pqr"
-    ln -sihv "$HOME/.dotfiles/pqr/config.toml"   "$HOME/.pqr/config.toml"
+    ln -sihv "$HOME/.dotfiles/pqr/config.toml" "$HOME/.pqr/config.toml"
 
     # VSCode
     ln -sihv "$HOME/.dotfiles/vscode/settings.json" "$APPLICATION_SUPPORT/Code/User/settings.json"

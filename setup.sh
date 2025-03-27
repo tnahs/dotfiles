@@ -97,6 +97,14 @@ function link_application_dotfiles {
 }
 
 
+function link_games {
+    # Caves of Qud
+    # https://wiki.cavesofqud.com/wiki/File_locations
+    rm -r"$HOME/Library/Application Support/com.FreeholdGames.CavesOfQud"
+    ln -sihv "$HOME/Games/CavesOfQud" "$HOME/Library/Application Support/com.FreeholdGames.CavesOfQud"
+}
+
+
 function print_help {
     echo -e "Setup home directories and dotfiles.
 
@@ -133,6 +141,9 @@ function main {
             ;;
         "application-dotfiles")
             link_application_dotfiles
+            ;;
+        "games")
+            link_games
             ;;
         *)
             echo "Error: invalid command '$1'"

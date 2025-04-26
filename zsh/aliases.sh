@@ -86,6 +86,10 @@ alias y="yazi"
 alias rga="rg --no-ignore-dot --hidden --glob"
 alias rgf="rg --no-ignore-dot --hidden --files --glob"
 
+# todos
+alias td="list-todo-files"
+alias todo="list-todo-files"
+
 # ghosty
 alias gc="hx \$HOME/.dotfiles/ghostty/config"
 
@@ -99,6 +103,9 @@ alias gg="git-graph"
 # helix
 alias h="hx ."
 alias hm="git-modified | xargs hx"
+
+# ssh
+alias meow="kitten ssh"
 
 # bat
 if hash bat 2> /dev/null; then

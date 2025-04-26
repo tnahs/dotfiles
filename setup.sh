@@ -34,31 +34,34 @@ function create_directories {
 function link_dotfiles {
     echo "Linking dotfiles..."
 
-    mkdir -p "$HOME/.config"
-
-    ln -sihv "$HOME/.dotfiles/zsh/.zshenv"    "$HOME/.zshenv"
-    ln -sihv "$HOME/.dotfiles/zsh/.zshrc"     "$HOME/.zshrc"
-    ln -sihv "$HOME/.dotfiles/git/.gitconfig" "$HOME/.gitconfig"
-    ln -sihv "$HOME/.dotfiles/git/.gitignore" "$HOME/.gitignore"
-
-    # Misc Tools
-    ln -sihv "$HOME/.dotfiles/homebrew/Brewfile"      "$HOME/Brewfile"
-    ln -sihv "$HOME/.dotfiles/hammerspoon"            "$HOME/.hammerspoon"
-    ln -sihv "$HOME/.dotfiles/starship/starship.toml" "$HOME/.config/starship.toml"
-    ln -sihv "$HOME/.dotfiles/karabiner"              "$HOME/.config/karabiner"
-    ln -sihv "$HOME/.dotfiles/kitty"                  "$HOME/.config/kitty"
-    ln -sihv "$HOME/.dotfiles/ghostty"                "$HOME/.config/ghostty"
-    ln -sihv "$HOME/.dotfiles/helix"                  "$HOME/.config/helix"
-    ln -sihv "$HOME/.dotfiles/gitui"                  "$HOME/.config/gitui"
-    ln -sihv "$HOME/.dotfiles/bat"                    "$HOME/.config/bat"
-    ln -sihv "$HOME/.dotfiles/ruff/ruff.toml"         "$HOME/.ruff.toml"
-    ln -sihv "$HOME/.dotfiles/tridactyl"              "$HOME/.config/tridactyl"
-    ln -sihv "$HOME/.dotfiles/yazi"                   "$HOME/.config/yazi"
+    ln -sihv "$HOME/.dotfiles/zsh/.zshenv"       "$HOME/.zshenv"
+    ln -sihv "$HOME/.dotfiles/zsh/.zshrc"        "$HOME/.zshrc"
+    ln -sihv "$HOME/.dotfiles/git/.gitconfig"    "$HOME/.gitconfig"
+    ln -sihv "$HOME/.dotfiles/git/.gitignore"    "$HOME/.gitignore"
+    ln -sihv "$HOME/.dotfiles/homebrew/Brewfile" "$HOME/Brewfile"
+    ln -sihv "$HOME/.dotfiles/ruff/ruff.toml"    "$HOME/.ruff.toml"
+    ln -sihv "$HOME/.dotfiles/hammerspoon"       "$HOME/.hammerspoon"
 }
 
 
 function link_application_dotfiles {
     echo "Linking application dotfiles..."
+
+    mkdir -p "$HOME/.config"
+
+    ln -sihv "$HOME/.dotfiles/starship/starship.toml" "$HOME/.config/starship.toml"
+    ln -sihv "$HOME/.dotfiles/karabiner"              "$HOME/.config/karabiner"
+    ln -sihv "$HOME/.dotfiles/kitty"                  "$HOME/.config/kitty"
+    ln -sihv "$HOME/.dotfiles/ghostty"                "$HOME/.config/ghostty"
+    ln -sihv "$HOME/.dotfiles/gitui"                  "$HOME/.config/gitui"
+    ln -sihv "$HOME/.dotfiles/bat"                    "$HOME/.config/bat"
+    ln -sihv "$HOME/.dotfiles/tridactyl"              "$HOME/.config/tridactyl"
+    ln -sihv "$HOME/.dotfiles/yazi"                   "$HOME/.config/yazi"
+
+    # helix
+    git clone https://github.com/helix-editor/helix.git "$HOME/.dotfiles/helix/helix"
+    ln -sihv "$HOME/.dotfiles/helix"                    "$HOME/.config/helix"
+    ln -sihv "$HOME/.dotfiles/helix/helix/runtime/"     "$HOME/.dotfiles/helix/runtime"
 
     # Syntax-Highlight - https://github.com/sbarex/SourceCodeSyntaxHighlight
     ln -sihv "$HOME/.dotfiles/syntax-highlight/styles" "$APPLICATION_SUPPORT/Syntax Highlight/Styles"

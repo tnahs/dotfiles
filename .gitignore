@@ -227,6 +227,7 @@ pip-selfcheck.json
 # Misc
 .tmp*/
 helix/runtime/
+helix/helix/
 homebrew/Brewfile-dump
 homebrew/Brewfile-diff
 karabiner/automatic_backups/

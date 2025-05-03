@@ -65,7 +65,7 @@ function git-status-recursive() {
                     " C") color_code="33:49" ;;  # copied:    yellow
                     " D") color_code="30;49" ;;  # deleted:   grey
                     " M") color_code="35;49" ;;  # modified:  pink
-                    " R") color_code="33;49" ;;  # renamed:   yellow
+                    "R ") color_code="33;49" ;;  # renamed:   yellow
                     "??") color_code="36;49" ;;  # untracked: cyan
                     *)    color_code="37;49" ;;  # default:   white
                 esac

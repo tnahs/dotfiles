@@ -226,8 +226,9 @@ pip-selfcheck.json
 
 # Misc
 .tmp*/
-helix/runtime/
 helix/helix/
-homebrew/Brewfile-dump
+helix/runtime/
 homebrew/Brewfile-diff
+homebrew/Brewfile-dump
 karabiner/automatic_backups/
+zsh/plugins

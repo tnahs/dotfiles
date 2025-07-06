@@ -107,6 +107,9 @@ alias hm="git-modified | xargs hx"
 # ssh
 alias meow="kitten ssh"
 
+# misc
+alias aw="archive-webpage"
+
 # bat
 if hash bat 2> /dev/null; then
     alias cat="bat"

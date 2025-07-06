@@ -18,6 +18,20 @@ function history-enable() {
 }
 
 
+function archive-webpage() {
+    monolith                            \
+        --isolate                       \
+        --blacklist-domains             \
+        --domain .google.com            \
+        --domain .googlesyndication.com \
+        --domain .googletagmanager.com  \
+        --domain .googleusercontent.com \
+        --domain googleanalytics.com    \
+        --output "$2"                   \
+        "$1"
+}
+
+
 # TODO: Add color over default
 #
 # ANSI 4-bit Color

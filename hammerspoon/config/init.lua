@@ -30,11 +30,12 @@ AppBundleIds = {
     firefox = "org.mozilla.firefox",
     kagi = "com.kagi.kagimacOS",
     kitty = "net.kovidgoyal.kitty",
+    ghotty = "com.mitchellh.ghostty",
     screenshot = "com.apple.screenshot.launcher",
 }
 
 Apps = {
     browser = AppBundleIds.firefox,
-    terminal = AppBundleIds.kitty,
+    terminal = AppBundleIds.ghotty,
     screenshot = AppBundleIds.screenshot,
 }

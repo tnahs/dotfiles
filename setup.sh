@@ -88,9 +88,6 @@ function link_application_dotfiles {
     ln -sihv "$HOME/.dotfiles/freecad/preference_packs/ShantConfig" "$APPLICATION_SUPPORT/FreeCAD/SavedPreferencePacks/ShantConfig"
     ln -sihv "$HOME/.dotfiles/freecad/preference_packs/package.xml" "$APPLICATION_SUPPORT/FreeCAD/SavedPreferencePacks/package.xml"
     ln -sihv "$HOME/.dotfiles/freecad/macros"                       "$APPLICATION_SUPPORT/FreeCAD/Macro"
-    ln -sihv "$HOME/.dotfiles/freecad/materials"                    "$APPLICATION_SUPPORT/FreeCAD/Material"
-    ln -sihv "$HOME/.dotfiles/freecad/system.cfg"                   "$PREFERENCES/FreeCAD/system.cfg"
-    ln -sihv "$HOME/.dotfiles/freecad/user.cfg"                     "$PREFERENCES/FreeCAD/user.cfg"
 
     # darktable config & library @ ~/Media/photos/darktable
 }

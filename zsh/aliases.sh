@@ -29,7 +29,7 @@ if hash eza 2> /dev/null; then
         --no-filesize             \
         --git                     \
         --git-ignore              \
-        --git-repos-no-status     \
+        --git-repos               \
         --group-directories-first
     "
 
@@ -95,6 +95,7 @@ alias gc="hx \$HOME/.dotfiles/ghostty/config"
 
 # git
 alias gm="git-modified"
+alias gu="git config --get remote.origin.url"
 
 # gitui
 alias g="gitui"

@@ -76,10 +76,6 @@ function link_application_dotfiles {
     # VSCode
     ln -sihv "$HOME/.dotfiles/vscode/settings.json" "$APPLICATION_SUPPORT/Code/User/settings.json"
 
-    # KiCad
-    rm -r                                "$HOME/Library/Preferences/kicad/9.0"
-    ln -sihv "$HOME/.dotfiles/kicad/9.0" "$HOME/Library/Preferences/kicad/9.0"
-
     # PrusaSlicer
     ln -sihv "$HOME/.dotfiles/prusa/PrusaSlicer.ini"  "$APPLICATION_SUPPORT/PrusaSlicer/PrusaSlicer.ini"
     ln -sihv "$HOME/.dotfiles/prusa/filament"         "$APPLICATION_SUPPORT/PrusaSlicer/filament"

@@ -12,14 +12,12 @@ repos:
       - id: end-of-file-fixer
         exclude: |
           (?x)^(
-            kicad
-            |freecad
+            freecad
             |prusa
           )/
       - id: trailing-whitespace
         exclude: |
           (?x)^(
-            kicad
-            |freecad
+            freecad
             |prusa
           )/

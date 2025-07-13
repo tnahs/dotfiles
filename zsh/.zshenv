@@ -20,6 +20,9 @@ export PROJECTS_ONHOLD="$PROJECTS/500-on-hold"
 export PROJECTS_INACTV="$PROJECTS/600-inactive"
 export PROJECTS_ARCHIV="$PROJECTS/999-archive"
 
+# ochre
+export OCHRE_COMPONENT_LIBRARY="$PROJECTS_ALWAYS/ochre-component-library/library"
+
 # bin
 export PATH="$PATH:$HOME/.local/bin"
 

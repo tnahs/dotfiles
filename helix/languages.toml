@@ -110,6 +110,21 @@ text-width = 100
 command = "prettier"
 args = ["--parser", "markdown"]
 
+# Scheme -----------------------------------------------------------------------
+
+[[language]]
+name = "scheme"
+file-types = [
+  "ss",
+  "scm",
+  "sld",
+  # Additions
+  { glob = "fp-lib-table" },
+  { glob = "sym-lib-table" },
+  { glob = "*.kicad_pcb" },
+  { glob = "*.kicad_sch" },
+]
+
 # CSS --------------------------------------------------------------------------
 
 [[language]]
@@ -127,6 +142,10 @@ name = "json"
 auto-format = true
 indent = { tab-width = 2, unit = "  " }
 text-width = 100
+file-types = [
+  "json",
+  { glob = "*.kicad_pro" },
+]
 
 [language.formatter]
 command = "jq"

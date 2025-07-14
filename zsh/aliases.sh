@@ -95,6 +95,7 @@ alias gc="hx \$HOME/.dotfiles/ghostty/config"
 
 # git
 alias gm="git-modified"
+alias gs="git-status-recursive"
 alias gu="git config --get remote.origin.url"
 
 # gitui
@@ -130,6 +131,7 @@ alias ct="cargo test"
 
 # python
 alias vn="uv init"
+alias vb="uv tool install . --force --no-cache"
 alias vnp="uv init --package --build-backend setuptools"
 alias va="source .venv/bin/activate"
 

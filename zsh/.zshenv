@@ -5,6 +5,15 @@
 #
 # .zshenv -> .zprofile -> .zshrc -> .zlogin
 
+# bin
+export PATH="$PATH:$HOME/.local/bin"
+
+# rust/cargo
+export PATH="$HOME/.cargo/bin:$PATH"
+
+# darktable
+export PATH="$PATH:/Applications/darktable.app/Contents/MacOS/"
+
 # dotfiles directory
 export DOTFILES="$HOME/.dotfiles"
 
@@ -23,11 +32,5 @@ export PROJECTS_ARCHIV="$PROJECTS/999-archive"
 # ochre
 export OCHRE_COMPONENT_LIBRARY="$PROJECTS_ALWAYS/ochre-component-library/library"
 
-# bin
-export PATH="$PATH:$HOME/.local/bin"
-
-# rust/cargo
-export PATH="$HOME/.cargo/bin:$PATH"
-
-# darktable
-export PATH="$PATH:/Applications/darktable.app/Contents/MacOS/"
+# FreeCADConfig
+export FREECAD_CONFIG="$PROJECTS_ALWAYS/FreeCADConfig"

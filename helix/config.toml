@@ -92,6 +92,9 @@ S-q = ":quit"
 # Format document.
 f = ":format"
 
+# Copy document contents.
+e = "@<C-s> @% @<space>y @<C-o>"
+
 # Search for any TODO-like strings.
 t = "@<space>/ (TODO|FIX|FIXME|WIP|HACK)(\\(.+\\))?:"
 

@@ -106,6 +106,10 @@ name = "markdown"
 auto-format = true
 text-width = 100
 
+[language.auto-pairs]
+'"' = '"'
+"'" = "'"
+
 [language.formatter]
 command = "prettier"
 args = ["--parser", "markdown"]

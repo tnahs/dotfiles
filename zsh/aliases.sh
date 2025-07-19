@@ -74,6 +74,8 @@ alias pw="cd \$PROJECTS_ALWAYS && ll"
 alias pa="cd \$PROJECTS_ACTIVE && ll"
 alias pc="cd \$PROJECTS_COLLAB && ll"
 alias pm="cd \$PROJECTS_MAINTN && ll"
+alias pn="cd \$PROJECTS_NEXTUP && ll"
+alias pf="cd \$PROJECTS_FUTURE && ll"
 
 # navigation - lighthouse
 alias pl="cd \$PROJECTS_ALWAYS/lighthouse && ll"

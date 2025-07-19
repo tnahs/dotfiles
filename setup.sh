@@ -38,7 +38,6 @@ function link_dotfiles {
     ln -sihv "$HOME/.dotfiles/zsh/.zshrc"        "$HOME/.zshrc"
     ln -sihv "$HOME/.dotfiles/git/.gitconfig"    "$HOME/.gitconfig"
     ln -sihv "$HOME/.dotfiles/git/.gitignore"    "$HOME/.gitignore"
-    ln -sihv "$HOME/.dotfiles/homebrew/Brewfile" "$HOME/Brewfile"
     ln -sihv "$HOME/.dotfiles/ruff/ruff.toml"    "$HOME/.ruff.toml"
     ln -sihv "$HOME/.dotfiles/hammerspoon"       "$HOME/.hammerspoon"
 }

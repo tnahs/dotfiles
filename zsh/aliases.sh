@@ -81,6 +81,8 @@ alias pf="cd \$PROJECTS_FUTURE && ll"
 alias pl="cd \$PROJECTS_ALWAYS/lighthouse && ll"
 alias pv="cd \$PROJECTS_ALWAYS/lighthouse/vault && ll"
 
+alias oo="open ."
+
 # yazi
 alias y="yazi"
 

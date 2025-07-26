@@ -72,7 +72,7 @@ wrap-at-text-width = true
 max-wrap = 100
 
 
-# Normal Mode Custom Space Keymaps -----------------------------------------------------
+# Normal Mode Custom Space Keymaps ---------------------------------------------
 
 # Space-Q -- Custom
 [keys.normal.space.q]
@@ -93,7 +93,7 @@ S-q = ":quit"
 f = ":format"
 
 # Copy document contents.
-e = "@<C-s> @% @<space>y @<C-o>"
+e = "@<C-s> @% @<space>y @<C-o> @:echo yanked document to clipboard<ret>"
 
 # Search for any TODO-like strings.
 t = "@<space>/ (TODO|FIX|FIXME|WIP|HACK)(\\(.+\\))?:"
@@ -127,7 +127,6 @@ w = ":toggle soft-wrap.enable"
 f = ":toggle auto-format"
 n = ":toggle insert-final-newline"
 
-
 # Space-C -- Config
 [keys.normal.space.c]
 c = ":open ~/.dotfiles/helix/config.toml"
@@ -135,13 +134,7 @@ l = ":open ~/.dotfiles/helix/languages.toml"
 r = [":config-reload", ":lsp-restart"]
 
 
-# Space
-# [keys.normal.space]
-# e = "file_browser"
-# E = "file_browser_in_current_directory"
-
-
-# Normal Mode Keymaps ------------------------------------------------------------------
+# Normal Mode Keymaps ----------------------------------------------------------
 
 [keys.normal]
 
@@ -223,7 +216,6 @@ A-w = [
   "surround_add",
 ]
 
-
 # Normal Mode Remaps ---
 
 # Remap from: C
@@ -232,7 +224,7 @@ A-j = "copy_selection_on_next_line"
 # Remap from: A-C
 A-k = "copy_selection_on_prev_line"
 
-# Select Mode Keymaps ------------------------------------------------------------------
+# Select Mode Keymaps ----------------------------------------------------------
 
 [keys.select]
 

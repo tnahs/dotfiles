@@ -6,45 +6,36 @@
 #    brew install rust-analyzer
 #
 #  Python
-#    brew install ruff
 #    brew install basedpyright
+#    brew install ruff
 #
 #  Lua
 #    brew install lua-language-server
 #
 #  Other
-#    brew install taplo
-#    brew install prettier
-#    brew install yaml-language-server
+#    brew install harper
+#    brew install ltex-ls
 #    brew install markdown-oxide
 #    brew install marksman
-#    brew install ltex-ls
+#    brew install prettier
+#    brew install taplo
+#    brew install yaml-language-server
 #    npm i -g vscode-langservers-extracted
 
-# Rust -------------------------------------------------------------------------
-
-[[language]]
-name = "rust"
-text-width = 100
+# rust-analyzer ----------------------------------------------------------------
 
 [language-server.rust-analyzer.config]
 checkOnSave.command = "clippy"
 
-# Python -----------------------------------------------------------------------
-
-[[language]]
-name = "python"
-auto-format = true
-text-width = 88
-# https://github.com/helix-editor/helix/issues/1898#issuecomment-1826785304
-# The order matters here. Documentation on hover doesn't work the other way around.
-language-servers = ["basedpyright", "ruff"]
-
-# ruff ---
+# Ruff -------------------------------------------------------------------------
 
 [language-server.ruff]
 command = "ruff"
-args = ["server", "--preview"]
+args = [
+  "server",
+  "--preview",
+  # ...
+]
 
 # Ruff supports hierarchical configuration, such that the "closest" config file
 # in the directory hierarchy is used for every individual file, with all paths
@@ -57,7 +48,16 @@ args = ["server", "--preview"]
 # [language-server.ruff.config.settings.lint]
 # select = []
 
-# basedpyright ---
+# ty ---------------------------------------------------------------------------
+
+[language-server.ty]
+command = "ty"
+args = [
+  "server",
+  # ...
+]
+
+# basedpyright -----------------------------------------------------------------
 
 [language-server.basedpyright]
 command = "basedpyright-langserver"
@@ -72,7 +72,43 @@ basedpyright.analysis.inlayHints.callArgumentNames = true
 basedpyright.analysis.inlayHints.functionReturnTypes = true
 basedpyright.analysis.inlayHints.genericTypes = true
 
-# formatter ---
+# Harper -----------------------------------------------------------------------
+
+[language-server.harper-ls]
+command = "harper-ls"
+args = ["--stdio"]
+
+# lua-language-server ----------------------------------------------------------
+
+[language-server.lua-language-server.config.Lua]
+runtime.version = "LuaJIT"
+diagnostics.globals = [
+  # Hammerspoon
+  "hs",
+  "spoon",
+]
+
+# Rust -------------------------------------------------------------------------
+
+[[language]]
+name = "rust"
+text-width = 100
+
+# Python -----------------------------------------------------------------------
+
+[[language]]
+name = "python"
+auto-format = true
+text-width = 88
+# https://github.com/helix-editor/helix/issues/1898#issuecomment-1826785304
+# The order matters here. Documentation on hover doesn't work the other way around.
+language-servers = [
+  "basedpyright",
+  "ruff",
+  # "ty",
+  # "harper-ls",
+  # ...
+]
 
 [language.formatter]
 command = "ruff"
@@ -91,20 +127,18 @@ name = "lua"
 auto-format = true
 indent = { tab-width = 4, unit = "    " }
 
-[language-server.lua-language-server.config.Lua]
-runtime.version = "LuaJIT"
-diagnostics.globals = [
-  # Hammerspoon
-  "hs",
-  "spoon",
-]
-
 # Markdown ---------------------------------------------------------------------
 
 [[language]]
 name = "markdown"
 auto-format = true
 text-width = 100
+language-servers = [
+  "marksman",
+  "markdown-oxide",
+  # "harper-ls",
+  # ..
+]
 
 [language.auto-pairs]
 '"' = '"'
@@ -146,10 +180,7 @@ name = "json"
 auto-format = true
 indent = { tab-width = 2, unit = "  " }
 text-width = 100
-file-types = [
-  "json",
-  { glob = "*.kicad_pro" },
-]
+file-types = ["json", { glob = "*.kicad_pro" }]
 
 [language.formatter]
 command = "jq"

@@ -1,3 +1,8 @@
+function mkignore() {
+    curl -sLw "\n" https://www.toptal.com/developers/gitignore/api/"$1" > .gitignore
+}
+
+
 function git-modified {
     git_root=$(git rev-parse --show-toplevel 2>/dev/null)
 
